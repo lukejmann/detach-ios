@@ -8,9 +8,28 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
+    
+    @State public var cScreen: String = "HomeMenu"
+    
+    
     var body: some View {
-        Text("Hello, World!")
+        VStack{
+            if cScreen=="HomeMenu"{
+                HomeMenu { (screen) in
+                    self.cScreen=screen
+                }
+            }
+            else if cScreen=="Start"{
+                StartScreen{ (screen) in
+                    self.cScreen=screen
+                }
+            }
+            else {
+                Text("Unknown Screen"+self.cScreen)
+            }
+        }
     }
 }
 

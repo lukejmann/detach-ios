@@ -15,6 +15,10 @@
 		A32A96E024E32DAF002C1145 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A32A96DE24E32DAF002C1145 /* LaunchScreen.storyboard */; };
 		A32A96EB24E32DAF002C1145 /* detach2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32A96EA24E32DAF002C1145 /* detach2Tests.swift */; };
 		A32A96F624E32DAF002C1145 /* detach2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32A96F524E32DAF002C1145 /* detach2UITests.swift */; };
+		A32A970724E3330B002C1145 /* georgia italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A32A970624E3330B002C1145 /* georgia italic.ttf */; };
+		A32A970B24E3405B002C1145 /* HomeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32A970A24E3405B002C1145 /* HomeMenu.swift */; };
+		A32A970F24E341DA002C1145 /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32A970E24E341DA002C1145 /* StartScreen.swift */; };
+		A3B7E5FF24E34B4900E06E47 /* NewYorkLarge-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A3B7E5FE24E34B4900E06E47 /* NewYorkLarge-SemiboldItalic.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		A32A96F124E32DAF002C1145 /* detach2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = detach2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A32A96F524E32DAF002C1145 /* detach2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detach2UITests.swift; sourceTree = "<group>"; };
 		A32A96F724E32DAF002C1145 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A32A970624E3330B002C1145 /* georgia italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "georgia italic.ttf"; sourceTree = "<group>"; };
+		A32A970A24E3405B002C1145 /* HomeMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMenu.swift; sourceTree = "<group>"; };
+		A32A970E24E341DA002C1145 /* StartScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreen.swift; sourceTree = "<group>"; };
+		A3B7E5FE24E34B4900E06E47 /* NewYorkLarge-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NewYorkLarge-SemiboldItalic.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +107,17 @@
 		A32A96D224E32DAD002C1145 /* detach2 */ = {
 			isa = PBXGroup;
 			children = (
+				A3B7E5FE24E34B4900E06E47 /* NewYorkLarge-SemiboldItalic.otf */,
 				A32A96D324E32DAD002C1145 /* AppDelegate.swift */,
 				A32A96D524E32DAD002C1145 /* SceneDelegate.swift */,
 				A32A96D724E32DAD002C1145 /* ContentView.swift */,
 				A32A96D924E32DAF002C1145 /* Assets.xcassets */,
+				A32A970624E3330B002C1145 /* georgia italic.ttf */,
 				A32A96DE24E32DAF002C1145 /* LaunchScreen.storyboard */,
 				A32A96E124E32DAF002C1145 /* Info.plist */,
 				A32A96DB24E32DAF002C1145 /* Preview Content */,
+				A32A970A24E3405B002C1145 /* HomeMenu.swift */,
+				A32A970E24E341DA002C1145 /* StartScreen.swift */,
 			);
 			path = detach2;
 			sourceTree = "<group>";
@@ -240,8 +252,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3B7E5FF24E34B4900E06E47 /* NewYorkLarge-SemiboldItalic.otf in Resources */,
 				A32A96E024E32DAF002C1145 /* LaunchScreen.storyboard in Resources */,
 				A32A96DD24E32DAF002C1145 /* Preview Assets.xcassets in Resources */,
+				A32A970724E3330B002C1145 /* georgia italic.ttf in Resources */,
 				A32A96DA24E32DAF002C1145 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,7 +281,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A32A970B24E3405B002C1145 /* HomeMenu.swift in Sources */,
 				A32A96D424E32DAD002C1145 /* AppDelegate.swift in Sources */,
+				A32A970F24E341DA002C1145 /* StartScreen.swift in Sources */,
 				A32A96D624E32DAD002C1145 /* SceneDelegate.swift in Sources */,
 				A32A96D824E32DAD002C1145 /* ContentView.swift in Sources */,
 			);
