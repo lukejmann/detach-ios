@@ -14,30 +14,13 @@ class TunnelController: NSObject {
     override private init() {
         super.init()
         Print("MARK: In TunnelController init ")
-        refreshManager()
-    }
 
-    func connect(i: Int) {
-        LoggingConfiguration.configure()
-        let seconds = 1.0
-        if i >= 1 {
-            return
-        }
-        setEnabled(true) { _ in
-            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-                let status = self.status()
-                Print("in connect(). status: \(status.rawValue)")
-                if status == .connected {
-                    return
-                } else {
-                    self.connect(i: i + 1)
-                }
-            }
-        }
+        refreshManager()
     }
 
     func refreshManager(completion: @escaping (_ error: Error?) -> Void = { _ in }) {
         Print("MARK: In TunnelController refreshManager ")
+
         // get the reference to the latest manager in Settings
         NETunnelProviderManager.loadAllFromPreferences { (managers, error) -> Void in
             if let managers = managers, !managers.isEmpty {
@@ -94,9 +77,7 @@ class TunnelController: NSObject {
                 } else {
                     self.manager = nil
                     self.manager = NETunnelProviderManager()
-                    let config = NETunnelProviderProtocol()
-                    config.providerBundleIdentifier = "com.detachapp.detach2.DetachExtension"
-                    self.manager!.protocolConfiguration = config
+                    self.manager!.protocolConfiguration = NETunnelProviderProtocol()
                 }
                 let manager = self.manager!
                 manager.localizedDescription = "Detach Tunnel"

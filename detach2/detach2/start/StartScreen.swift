@@ -25,6 +25,24 @@ struct StartScreen: View {
         self.setScreen = setScreen
     }
 
+    func connect(i: Int) {
+        let seconds = 1.0
+        if i >= 4 {
+            return
+        }
+        TunnelController.shared.setEnabled(true) { _ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+                let status = TunnelController.shared.status()
+                Print("in connect(). status: \(status)")
+                if status == .connected {
+                    return
+                } else {
+                    self.connect(i: i + 1)
+                }
+            }
+        }
+    }
+
     func proxyDeclined() {
         print("proxyDeclined")
         resetSlider()
@@ -34,7 +52,7 @@ struct StartScreen: View {
         print("proxyAgreed")
         resetSlider()
         setBlockedDomains(domains: ["instagram.com"])
-        TunnelController.shared.connect(i: 0)
+        connect(i: 0)
     }
 
     func resetSlider() {
