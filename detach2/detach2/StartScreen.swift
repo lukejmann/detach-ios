@@ -16,11 +16,21 @@ struct StartScreen: View {
     
     @State var durationString: String = "00:00"
     
+    @State private var showProxyAlert = false
     
     
     init(setScreen: @escaping (_ screen:String)->Void) {
         self.setScreen = setScreen
     }
+    
+    func proxyDeclined() {
+        print("proxyDeclined")
+    }
+    
+    func proxyAgreed() {
+        print("proxyAgreed")
+    }
+    
     
     var body: some View {
         return GeometryReader { geometry in
@@ -33,9 +43,9 @@ struct StartScreen: View {
                 HStack(alignment: .center, spacing: 0) {
                     Spacer()
                     CustomUIKitTextField(text: self.$durationString, sliderMode: self.$sliderMode, placeholder: "00:00").padding(.top, 30.0)
-                        .introspectTextField { textField in
-                            textField.becomeFirstResponder()
-                    }
+                    //                        .introspectTextField { textField in
+                    //                            textField.becomeFirstResponder()
+                    //                    }
                     Spacer()
                 }
                 HStack(alignment: .center, spacing: 0) {
@@ -50,7 +60,22 @@ struct StartScreen: View {
                     Text("MINUTES")
                     Spacer()
                 }.padding(.top,8)
-                SliderBar(percentage: self.$sliderPercent, mode: self.$sliderMode)
+                SliderBar(percentage: self.$sliderPercent, mode: self.$sliderMode){
+                    self.showProxyAlert.toggle()
+                }.alert(isPresented: self.$showProxyAlert) {
+                    Alert(
+                          title:  Text("Proxy Setup"),
+                          message: Text("Detach uses a local DNS proxy to filter connections from the selected blocked apps. This proxy never records, collects, or stores any user data."),
+                          primaryButton: .default(Text("Continue"),
+                                                  action: {
+                                                    self.proxyAgreed()
+                          }),
+                          secondaryButton: .default(Text("Continue"),
+                                                    action: {
+                                                        self.proxyAgreed()
+                          }))
+                    
+                }
                 
             }.padding(.top, 10).padding(.horizontal,37)
                 .frame(width: geometry.size.width,
@@ -160,8 +185,13 @@ enum SliderMode {
 struct SliderBar: View {
     
     @Binding var percentage: Float
+    var lastPercent = 0
+    
     @State var distance: CGFloat = 0
     @Binding var mode: SliderMode
+    
+    var thresholdReached : () -> Void
+    
     
     func barColor(mode: SliderMode) -> Color {
         switch mode {
@@ -188,21 +218,24 @@ struct SliderBar: View {
                 Rectangle()
                     .foregroundColor(.black)
                     .frame(width: self.distance)
-                Image("slider").resizable().frame(width: 55, height: 55, alignment: .leading).padding(.leading,CGFloat(self.distance))
-                
-            }.frame(width: nil, height: 55, alignment: .leading)
-                .gesture(DragGesture(minimumDistance: 0)
+                Image("slider").resizable().frame(width: 55, height: 55, alignment: .leading).padding(.leading,CGFloat(self.distance)).gesture(DragGesture(minimumDistance: 0)
                     .onChanged({ value in
                         let xDist = value.location.x
                         if !(xDist>geometry.size.width-55 || xDist<0){
                             self.distance = value.location.x
                             self.percentage = min(max(0, Float(value.location.x / geometry.size.width * 100)), 100)
-                            if self.percentage > 80 {
-                                print("reached 80!")
-                                Alert(title: Text("reached!"))
+                            print("percent: \(self.percentage)")
+                            if self.percentage > 75 {
+                                print("reached 75!")
+                                UIApplication.shared.hideKeyboard()
+                                self.thresholdReached()
                             }
+                            self.percentage = Float(self.lastPercent)
                         }
-                    })).border(Color.black)
+                    }))
+                
+            }.frame(width: nil, height: 55, alignment: .leading)
+                .border(Color.black)
         }.frame(width: nil, height: 55, alignment: .leading).padding(.top,42)
     }
 }
@@ -211,5 +244,11 @@ struct SliderBar: View {
 extension StringProtocol {
     subscript(offset: Int) -> String {
         String(self[index(startIndex, offsetBy: offset)])
+    }
+}
+
+extension UIApplication {
+    func hideKeyboard() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
