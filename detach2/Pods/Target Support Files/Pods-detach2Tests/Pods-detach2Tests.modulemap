@@ -1,0 +1,6 @@
+framework module Pods_detach2Tests {
+  umbrella header "Pods-detach2Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
