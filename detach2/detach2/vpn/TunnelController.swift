@@ -20,7 +20,7 @@ class TunnelController: NSObject {
     func connect(i: Int) {
         LoggingConfiguration.configure()
         let seconds = 1.0
-        if i >= 1 {
+        if i >= 4 {
             return
         }
         setEnabled(true) { _ in

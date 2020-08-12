@@ -1,5 +1,3 @@
-
-
 import Foundation
 
 func isBlocked(domain: String) -> Bool {
@@ -15,19 +13,6 @@ func isBlocked(domain: String) -> Bool {
         }
     }
 
-    if shouldAdBlock() {
-        let sortedDomains = getSortedAdblockList()
-        let domainsToCheck = sortedDomains[String(domain.first ?? ".")] ?? [String]()
-        for blockedDomain in domainsToCheck {
-            if domain.hasSuffix(blockedDomain) {
-                let diff = CFAbsoluteTimeGetCurrent() - start
-                Print("\(domain) AD BLOCKED by \(blockedDomain) (\(diff) s)")
-                return true
-            }
-        }
-    } else {
-        Print("ADBLOCK DISABLED")
-    }
     let diff = CFAbsoluteTimeGetCurrent() - start
     Print("\(domain) ALLOWED (\(diff) s)")
     return false
