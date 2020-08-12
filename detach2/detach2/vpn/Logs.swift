@@ -15,7 +15,7 @@ struct LoggingConfiguration {
 
         if #available(iOS 10.0, *) {
             let consoleWriter = OSLogWriter(subsystem: "xyz.mann.Detach", category: "host", modifiers: [TimestampModifier()])
-            print("made OFLogWriter")
+//            print("made OFLogWriter")
 
             return Logger(logLevels: [.all], writers: [consoleWriter], executionMethod: .synchronous(lock: NSRecursiveLock()))
 
@@ -34,7 +34,7 @@ func Print(_ msg: String) {
     if #available(iOS 10.0, *) {
         let consoleWriter = OSLogWriter(subsystem: "xyz.mann.Detach", category: msg, modifiers: [])
         let logger = Logger(logLevels: [.all], writers: [consoleWriter], executionMethod: .synchronous(lock: NSRecursiveLock()))
-        print("called infoMessage()")
+//        print("called infoMessage()")
         logger.infoMessage("")
 
     } else {

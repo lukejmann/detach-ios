@@ -34,7 +34,7 @@ struct StartScreen: View {
         print("proxyAgreed")
         resetSlider()
         setBlockedDomains(domains: ["instagram.com"])
-        TunnelController.shared.setEnabled(true)
+        TunnelController.shared.connect(i: 0)
     }
 
     func resetSlider() {

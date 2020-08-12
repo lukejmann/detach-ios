@@ -14,8 +14,26 @@ class TunnelController: NSObject {
     override private init() {
         super.init()
         Print("MARK: In TunnelController init ")
-
         refreshManager()
+    }
+
+    func connect(i: Int) {
+        LoggingConfiguration.configure()
+        let seconds = 1.0
+        if i >= 1 {
+            return
+        }
+        setEnabled(true) { _ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+                let status = self.status()
+                Print("in connect(). status: \(status.rawValue)")
+                if status == .connected {
+                    return
+                } else {
+                    self.connect(i: i + 1)
+                }
+            }
+        }
     }
 
     func refreshManager(completion: @escaping (_ error: Error?) -> Void = { _ in }) {
