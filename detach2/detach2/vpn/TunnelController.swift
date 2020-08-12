@@ -20,7 +20,7 @@ class TunnelController: NSObject {
     func connect(i: Int) {
         LoggingConfiguration.configure()
         let seconds = 1.0
-        if i >= 4 {
+        if i >= 1 {
             return
         }
         setEnabled(true) { _ in
@@ -94,7 +94,9 @@ class TunnelController: NSObject {
                 } else {
                     self.manager = nil
                     self.manager = NETunnelProviderManager()
-                    self.manager!.protocolConfiguration = NETunnelProviderProtocol()
+                    let config = NETunnelProviderProtocol()
+                    config.providerBundleIdentifier = "com.detachapp.detach2.DetachExtension"
+                    self.manager!.protocolConfiguration = config
                 }
                 let manager = self.manager!
                 manager.localizedDescription = "Detach Tunnel"
