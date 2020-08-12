@@ -9,10 +9,14 @@
 import SwiftUI
 import Introspect
 
+//reset bar and show keyboard then format
+
 struct StartScreen: View {
     var setScreen: (_ screen:String)->Void
     @State var sliderPercent: Float = 20
     @State var sliderMode: SliderMode = .disabled
+    @State var sliderDistance: CGFloat = 0
+
     
     @State var durationString: String = "00:00"
     
@@ -25,10 +29,16 @@ struct StartScreen: View {
     
     func proxyDeclined() {
         print("proxyDeclined")
+        resetSlider()
     }
     
     func proxyAgreed() {
         print("proxyAgreed")
+        resetSlider()
+    }
+    
+    func resetSlider() {
+        self.sliderDistance = 0
     }
     
     
@@ -42,7 +52,7 @@ struct StartScreen: View {
                 Text("SET HOW LONG THE SELECTED APPS WILL BE BLOCKED FOR").font(.system(size: 14, weight: .regular, design: .default)).padding(.top,10)
                 HStack(alignment: .center, spacing: 0) {
                     Spacer()
-                    CustomUIKitTextField(text: self.$durationString, sliderMode: self.$sliderMode, placeholder: "00:00").padding(.top, 30.0)
+                    CustomUIKitTextField(text: self.$durationString, sliderMode: self.$sliderMode, resetSlider: self.resetSlider, placeholder: "00:00").padding(.top, 30.0)
                     //                        .introspectTextField { textField in
                     //                            textField.becomeFirstResponder()
                     //                    }
@@ -60,15 +70,15 @@ struct StartScreen: View {
                     Text("MINUTES")
                     Spacer()
                 }.padding(.top,8)
-                SliderBar(percentage: self.$sliderPercent, mode: self.$sliderMode){
+                SliderBar(percentage: self.$sliderPercent, distance: self.$sliderDistance, mode: self.$sliderMode){
                     self.showProxyAlert.toggle()
                 }.alert(isPresented: self.$showProxyAlert) {
                     Alert(
                           title:  Text("Proxy Setup"),
                           message: Text("Detach uses a local DNS proxy to filter connections from the selected blocked apps. This proxy never records, collects, or stores any user data."),
-                          primaryButton: .default(Text("Continue"),
+                          primaryButton: .default(Text("Cancel"),
                                                   action: {
-                                                    self.proxyAgreed()
+                                                    self.proxyDeclined()
                           }),
                           secondaryButton: .default(Text("Continue"),
                                                     action: {
@@ -96,12 +106,17 @@ struct CustomUIKitTextField: UIViewRepresentable {
     
     @Binding var text: String{
         didSet{
+            resetSlider()
             if text != "00:00" && sliderMode == .disabled {
                 sliderMode = .proxyDisabled
+            }
+            if text == "00:00" && sliderMode == .proxyDisabled || sliderMode == .enabled {
+                sliderMode = .disabled
             }
         }
     }
     @Binding var sliderMode: SliderMode
+    var resetSlider: ()->Void
     
     
     var placeholder: String
@@ -187,7 +202,7 @@ struct SliderBar: View {
     @Binding var percentage: Float
     var lastPercent = 0
     
-    @State var distance: CGFloat = 0
+    @Binding var distance: CGFloat
     @Binding var mode: SliderMode
     
     var thresholdReached : () -> Void
@@ -198,7 +213,6 @@ struct SliderBar: View {
         case .enabled:
             return Color.green
         case .proxyDisabled:
-            //            return Color.blue
             return Color(red: 247/255, green: 255/255, blue: 182/255)
         default:
             return Color.gray
@@ -218,8 +232,13 @@ struct SliderBar: View {
                 Rectangle()
                     .foregroundColor(.black)
                     .frame(width: self.distance)
-                Image("slider").resizable().frame(width: 55, height: 55, alignment: .leading).padding(.leading,CGFloat(self.distance)).gesture(DragGesture(minimumDistance: 0)
+                Image("slider").resizable().frame(width: 55, height: 55, alignment: .leading).padding(.leading,CGFloat(self.distance)).gesture(DragGesture(minimumDistance: 0).onEnded({ (value) in
+                    self.distance = 0
+                })
                     .onChanged({ value in
+                        if self.mode == .disabled {
+                            return
+                        }
                         let xDist = value.location.x
                         if !(xDist>geometry.size.width-55 || xDist<0){
                             self.distance = value.location.x
@@ -233,7 +252,6 @@ struct SliderBar: View {
                             self.percentage = Float(self.lastPercent)
                         }
                     }))
-                
             }.frame(width: nil, height: 55, alignment: .leading)
                 .border(Color.black)
         }.frame(width: nil, height: 55, alignment: .leading).padding(.top,42)
