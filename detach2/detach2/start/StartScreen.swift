@@ -33,7 +33,7 @@ struct StartScreen: View {
         TunnelController.shared.setEnabled(true) { _ in
             DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
                 let status = TunnelController.shared.status()
-                Print("in connect(). status: \(status)")
+                Print("in connect(). status: \(status.rawValue)")
                 if status == .connected {
                     return
                 } else {

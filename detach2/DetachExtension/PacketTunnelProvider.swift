@@ -74,74 +74,67 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     // MARK: - OVERRIDES
 
     override func startTunnel(options _: [String: NSObject]?, completionHandler: @escaping (Error?) -> Void) {
-        let seconds = 15.0
-        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-            // Put your code which should be executed with a delay here
+//        let seconds = 15.0
+//        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+        // Put your code which should be executed with a delay here
 
-            Print("MARK: in startTunnel")
-            if self.proxyServer != nil {
-                self.proxyServer.stop()
-            }
-            self.proxyServer = nil
-
-            let settings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: self.proxyServerAddress)
-            settings.mtu = NSNumber(value: 1500)
-
-            // Start MARK: from OldPacketTunnelProvider
-
-            //      let ipv4Settings = NEIPv4Settings.init(addresses: ["10.0.0.8"], subnetMasks: ["255.255.255.0"])
-            //      ipv4Settings.includedRoutes = [NEIPv4Route]()
-            //      let ipv6Settings = NEIPv6Settings.init(addresses: ["fe80:1ca8:5ee3:4d6d:aaf5"], networkPrefixLengths: [64])
-            //      ipv6Settings.includedRoutes = [NEIPv6Route]()
-
-            //      settings.ipv4Settings = ipv4Settings;
-            //      settings.ipv6Settings = ipv6Settings;
-
-            // End MARK: from OldPacketTunnelProvider
-
-            let proxySettings = NEProxySettings()
-
-            proxySettings.httpEnabled = true
-            proxySettings.httpServer = NEProxyServer(address: self.proxyServerAddress, port: Int(self.proxyServerPort))
-
-            // MARK: might want to change
-
-            proxySettings.httpsEnabled = true
-            proxySettings.httpsServer = NEProxyServer(address: self.proxyServerAddress, port: Int(self.proxyServerPort))
-            proxySettings.excludeSimpleHostnames = false
-            proxySettings.exceptionList = []
-            proxySettings.matchDomains = [""]
-            //    proxySettings.matchDomains = getUserDomains()
-
-            settings.dnsSettings = NEDNSSettings(servers: ["127.0.0.1"])
-            settings.proxySettings = proxySettings
-            RawSocketFactory.TunnelProvider = self
-            ObserverFactory.currentFactory = LDObserverFactory()
-
-            self.setTunnelNetworkSettings(settings, completionHandler: { error in
-                guard error == nil else {
-                    Print("Error setting tunnel network settings \(error)")
-                    completionHandler(error)
-                    return
-                }
-                //          let directAdapterFactory = DirectAdapterFactory()
-                //          let rejectAdapter = RejectAdapterFactory()
-                //          let allRule = AllRule(adapterFactory: directAdapterFactory)
-                //          let listRule = try! DomainListRule(adapterFactory: rejectAdapter, criteria: [.suffix("snap.com")])
-                //
-                //          let manager = RuleManager(fromRules: [ allRule,listRule], appendDirect: true)
-                //          RuleManager.currentManager = manager
-
-                self.proxyServer = GCDHTTPProxyServer(address: IPAddress(fromString: self.proxyServerAddress), port: Port(port: self.proxyServerPort))
-                do {
-                    try self.proxyServer.start()
-                    completionHandler(nil)
-                } catch let proxyError {
-                    Print("Error starting proxy server \(proxyError)")
-                    completionHandler(proxyError)
-                }
-            })
+        Print("MARK: in startTunnel")
+        if proxyServer != nil {
+            proxyServer.stop()
         }
+        proxyServer = nil
+
+        let settings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: proxyServerAddress)
+        settings.mtu = NSNumber(value: 1500)
+
+        // Start MARK: from OldPacketTunnelProvider
+
+        //      let ipv4Settings = NEIPv4Settings.init(addresses: ["10.0.0.8"], subnetMasks: ["255.255.255.0"])
+        //      ipv4Settings.includedRoutes = [NEIPv4Route]()
+        //      let ipv6Settings = NEIPv6Settings.init(addresses: ["fe80:1ca8:5ee3:4d6d:aaf5"], networkPrefixLengths: [64])
+        //      ipv6Settings.includedRoutes = [NEIPv6Route]()
+
+        //      settings.ipv4Settings = ipv4Settings;
+        //      settings.ipv6Settings = ipv6Settings;
+
+        // End MARK: from OldPacketTunnelProvider
+
+        let proxySettings = NEProxySettings()
+
+        proxySettings.httpEnabled = true
+        proxySettings.httpServer = NEProxyServer(address: proxyServerAddress, port: Int(proxyServerPort))
+
+        // MARK: might want to change
+
+        proxySettings.httpsEnabled = true
+        proxySettings.httpsServer = NEProxyServer(address: proxyServerAddress, port: Int(proxyServerPort))
+        proxySettings.excludeSimpleHostnames = false
+        proxySettings.exceptionList = []
+        proxySettings.matchDomains = [""]
+        //    proxySettings.matchDomains = getUserDomains()
+
+        settings.dnsSettings = NEDNSSettings(servers: ["127.0.0.1"])
+        settings.proxySettings = proxySettings
+        RawSocketFactory.TunnelProvider = self
+        ObserverFactory.currentFactory = LDObserverFactory()
+
+        setTunnelNetworkSettings(settings, completionHandler: { error in
+            guard error == nil else {
+                Print("Error setting tunnel network settings \(error)")
+                completionHandler(error)
+                return
+            }
+
+            self.proxyServer = GCDHTTPProxyServer(address: IPAddress(fromString: self.proxyServerAddress), port: Port(port: self.proxyServerPort))
+            do {
+                try self.proxyServer.start()
+                completionHandler(nil)
+            } catch let proxyError {
+                Print("Error starting proxy server \(proxyError)")
+                completionHandler(proxyError)
+            }
+        })
+//        }
     }
 
     override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void) {

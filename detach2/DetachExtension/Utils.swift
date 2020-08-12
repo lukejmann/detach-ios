@@ -1,7 +1,7 @@
 
 import Foundation
 
-let defaults = UserDefaults(suiteName: "group.com.detachapp.detach2.vpnData")!
+let defaults = UserDefaults(suiteName: "group.com.detachapp.ios1.vpnData")!
 
 let kBlockedDomains = "blockedDomains"
 let kRefreshDomains = "refreshDomains"
