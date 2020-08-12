@@ -1,16 +1,20 @@
 PODS:
   - Introspect (0.1.0)
+  - Willow (5.2.1)
 
 DEPENDENCIES:
   - Introspect
+  - Willow (~> 5.0)
 
 SPEC REPOS:
   trunk:
     - Introspect
+    - Willow
 
 SPEC CHECKSUMS:
   Introspect: ad32f2b7b9e7ac2c008b9dfec3d5325fbd3660fa
+  Willow: a6310f9aedcb6f4de8c35b94fd3416a660ae9280
 
-PODFILE CHECKSUM: 4414b4eb23dbabef1d894c7ccc7b4f66c6adfb3a
+PODFILE CHECKSUM: 9592a006fa15d6889c335e36c779920e9c04ca82
 
 COCOAPODS: 1.9.3

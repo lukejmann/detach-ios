@@ -1,10 +1,9 @@
 #if canImport(UIKit)
-import UIKit
 import SwiftUI
+import UIKit
 
 /// Introspection UIView that is inserted alongside the target view.
 public class IntrospectionUIView: UIView {
-
     required init() {
         super.init(frame: .zero)
         isHidden = true
@@ -12,7 +11,7 @@ public class IntrospectionUIView: UIView {
     }
 
     @available(*, unavailable)
-    required init?(coder: NSCoder) {
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
@@ -20,7 +19,6 @@ public class IntrospectionUIView: UIView {
 /// Introspection View that is injected into the UIKit hierarchy alongside the target view.
 /// After `updateUIView` is called, it calls `selector` to find the target view, then `customize` when the target view is found.
 public struct UIKitIntrospectionView<TargetViewType: UIView>: UIViewRepresentable {
-
     /// Method that introspects the view hierarchy to find the target view.
     /// First argument is the introspection view itself, which is contained in a view host alongside the target view.
     let selector: (IntrospectionUIView) -> TargetViewType?
@@ -30,13 +28,13 @@ public struct UIKitIntrospectionView<TargetViewType: UIView>: UIViewRepresentabl
 
     public init(
         selector: @escaping (IntrospectionUIView) -> TargetViewType?,
-        customize: @escaping (TargetViewType) -> Void
-    ) {
+        customize: @escaping (TargetViewType) -> Void)
+    {
         self.selector = selector
         self.customize = customize
     }
 
-    public func makeUIView(context: UIViewRepresentableContext<UIKitIntrospectionView>) -> IntrospectionUIView {
+    public func makeUIView(context _: UIViewRepresentableContext<UIKitIntrospectionView>) -> IntrospectionUIView {
         let view = IntrospectionUIView()
         view.accessibilityLabel = "IntrospectionUIView<\(TargetViewType.self)>"
         return view
@@ -49,8 +47,8 @@ public struct UIKitIntrospectionView<TargetViewType: UIView>: UIViewRepresentabl
     /// gets called when the introspection view gets removed from the hierarchy.
     public func updateUIView(
         _ uiView: IntrospectionUIView,
-        context: UIViewRepresentableContext<UIKitIntrospectionView>
-    ) {
+        context _: UIViewRepresentableContext<UIKitIntrospectionView>)
+    {
         DispatchQueue.main.async {
             guard let targetView = self.selector(uiView) else {
                 return

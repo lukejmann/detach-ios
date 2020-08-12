@@ -1,0 +1,18 @@
+--self remove # redundantSelf
+--importgrouping testable-bottom # sortedImports
+--commas always # trailingCommas
+--trimwhitespace always # trailingSpace
+--ifdef no-indent #indent
+--wraparguments before-first # wrapArguments
+--wrapparameters before-first # wrapArguments
+--wrapcollections before-first # wrapArguments
+--closingparen same-line # wrapArguments
+--funcattributes prev-line # wrapAttributes
+--typeattributes prev-line # wrapAttributes
+--swiftversion 5.2
+
+
+--enable andOperator,blankLinesAtEndOfScope,blankLinesAtStartOfScope,blankLinesBetweenScopes,braces,consecutiveBlankLines,consecutiveSpaces,duplicateImports,elseOnSameLine,emptyBraces,indent,isEmpty,leadingDelimiters,redundantBreak,redundantGet,redundantInit,redundantLetError,redundantNilInit,redundantParens,redundantPattern,redundantRawValues,redundantReturn,redundantSelf,redundantVoidReturnType,sortedImports,spaceAroundBraces,spaceAroundBrackets,spaceAroundComments,spaceAroundGenerics,spaceAroundOperators,spaceAroundParens,spaceInsideBraces,spaceInsideBrackets,spaceInsideComments,spaceInsideGenerics,spaceInsideParens,todos,trailingClosures,trailingCommas,trailingSpace,typeSugar,void,wrap
+
+
+--exclude Pods,Generated,Carthage,res

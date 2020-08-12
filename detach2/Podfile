@@ -6,7 +6,8 @@ target 'detach2' do
   use_frameworks!
 
   # Pods for detach2
-pod "Introspect"
+  pod "Introspect"
+  pod 'Willow', '~> 5.0'
 
 
   target 'detach2Tests' do
@@ -17,5 +18,13 @@ pod "Introspect"
   target 'detach2UITests' do
     # Pods for testing
   end
+
+end
+
+
+target 'DetachExtension' do 
+  use_frameworks!
+
+  pod 'Willow', '~> 5.0'
 
 end

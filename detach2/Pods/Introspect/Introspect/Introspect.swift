@@ -16,14 +16,13 @@ public typealias PlatformViewController = UIViewController
 
 /// Utility methods to inspect the UIKit view hierarchy.
 public enum Introspect {
-
     /// Finds a subview of the specified type.
     /// This method will recursively look for this view.
     /// Returns nil if it can't find a view of the specified type.
     public static func findChild<AnyViewType: PlatformView>(
         ofType type: AnyViewType.Type,
-        in root: PlatformView
-    ) -> AnyViewType? {
+        in root: PlatformView) -> AnyViewType?
+    {
         for subview in root.subviews {
             if let typed = subview as? AnyViewType {
                 return typed
@@ -39,8 +38,8 @@ public enum Introspect {
     /// Returns nil if it can't find a view of the specified type.
     public static func findChild<AnyViewControllerType: PlatformViewController>(
         ofType type: AnyViewControllerType.Type,
-        in root: PlatformViewController
-    ) -> AnyViewControllerType? {
+        in root: PlatformViewController) -> AnyViewControllerType?
+    {
         for child in root.children {
             if let typed = child as? AnyViewControllerType {
                 return typed
@@ -56,9 +55,8 @@ public enum Introspect {
     /// Returns nil if no sibling contains the specified type.
     public static func previousSibling<AnyViewType: PlatformView>(
         containing type: AnyViewType.Type,
-        from entry: PlatformView
-    ) -> AnyViewType? {
-
+        from entry: PlatformView) -> AnyViewType?
+    {
         guard let superview = entry.superview,
             let entryIndex = superview.subviews.firstIndex(of: entry),
             entryIndex > 0
@@ -66,7 +64,7 @@ public enum Introspect {
             return nil
         }
 
-        for subview in superview.subviews[0..<entryIndex].reversed() {
+        for subview in superview.subviews[0 ..< entryIndex].reversed() {
             if let typed = findChild(ofType: type, in: subview) {
                 return typed
             }
@@ -81,9 +79,8 @@ public enum Introspect {
     @available(macOS, unavailable)
     public static func previousSibling<AnyViewControllerType: PlatformViewController>(
         containing type: AnyViewControllerType.Type,
-        from entry: PlatformViewController
-    ) -> AnyViewControllerType? {
-
+        from entry: PlatformViewController) -> AnyViewControllerType?
+    {
         guard let parent = entry.parent,
             let entryIndex = parent.children.firstIndex(of: entry),
             entryIndex > 0
@@ -91,7 +88,7 @@ public enum Introspect {
             return nil
         }
 
-        for child in parent.children[0..<entryIndex].reversed() {
+        for child in parent.children[0 ..< entryIndex].reversed() {
             if let typed = findChild(ofType: type, in: child) {
                 return typed
             }
@@ -104,10 +101,9 @@ public enum Introspect {
     /// This method does not inspect siblings recursively.
     /// Returns nil if no sibling is of the specified type.
     public static func previousSibling<AnyViewControllerType: PlatformViewController>(
-        ofType type: AnyViewControllerType.Type,
-        from entry: PlatformViewController
-    ) -> AnyViewControllerType? {
-
+        ofType _: AnyViewControllerType.Type,
+        from entry: PlatformViewController) -> AnyViewControllerType?
+    {
         guard let parent = entry.parent,
             let entryIndex = parent.children.firstIndex(of: entry),
             entryIndex > 0
@@ -115,7 +111,7 @@ public enum Introspect {
             return nil
         }
 
-        for child in parent.children[0..<entryIndex].reversed() {
+        for child in parent.children[0 ..< entryIndex].reversed() {
             if let typed = child as? AnyViewControllerType {
                 return typed
             }
@@ -129,16 +125,15 @@ public enum Introspect {
     /// Returns nil if no sibling contains the specified type.
     public static func nextSibling<AnyViewType: PlatformView>(
         containing type: AnyViewType.Type,
-        from entry: PlatformView
-    ) -> AnyViewType? {
-
+        from entry: PlatformView) -> AnyViewType?
+    {
         guard let superview = entry.superview,
             let entryIndex = superview.subviews.firstIndex(of: entry)
         else {
             return nil
         }
 
-        for subview in superview.subviews[entryIndex..<superview.subviews.endIndex] {
+        for subview in superview.subviews[entryIndex ..< superview.subviews.endIndex] {
             if let typed = findChild(ofType: type, in: subview) {
                 return typed
             }
@@ -149,7 +144,7 @@ public enum Introspect {
 
     /// Finds an ancestor of the specified type.
     /// If it reaches the top of the view without finding the specified view type, it returns nil.
-    public static func findAncestor<AnyViewType: PlatformView>(ofType type: AnyViewType.Type, from entry: PlatformView) -> AnyViewType? {
+    public static func findAncestor<AnyViewType: PlatformView>(ofType _: AnyViewType.Type, from entry: PlatformView) -> AnyViewType? {
         var superview = entry.superview
         while let s = superview {
             if let typed = s as? AnyViewType {

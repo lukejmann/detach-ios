@@ -10,27 +10,26 @@ public class IntrospectionUIViewController: UIViewController {
     }
 
     @available(*, unavailable)
-    required init?(coder: NSCoder) {
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 
 /// This is the same logic as IntrospectionView but for view controllers. Please see details above.
 public struct UIKitIntrospectionViewController<TargetViewControllerType: UIViewController>: UIViewControllerRepresentable {
-
     let selector: (IntrospectionUIViewController) -> TargetViewControllerType?
     let customize: (TargetViewControllerType) -> Void
 
     public init(
         selector: @escaping (UIViewController) -> TargetViewControllerType?,
-        customize: @escaping (TargetViewControllerType) -> Void
-    ) {
+        customize: @escaping (TargetViewControllerType) -> Void)
+    {
         self.selector = selector
         self.customize = customize
     }
 
     public func makeUIViewController(
-        context: UIViewControllerRepresentableContext<UIKitIntrospectionViewController>
+        context _: UIViewControllerRepresentableContext<UIKitIntrospectionViewController>
     ) -> IntrospectionUIViewController {
         let viewController = IntrospectionUIViewController()
         viewController.accessibilityLabel = "IntrospectionUIViewController<\(TargetViewControllerType.self)>"
@@ -40,8 +39,8 @@ public struct UIKitIntrospectionViewController<TargetViewControllerType: UIViewC
 
     public func updateUIViewController(
         _ uiViewController: IntrospectionUIViewController,
-        context: UIViewControllerRepresentableContext<UIKitIntrospectionViewController>
-    ) {
+        context _: UIViewControllerRepresentableContext<UIKitIntrospectionViewController>)
+    {
         DispatchQueue.main.async {
             guard let targetView = self.selector(uiViewController) else {
                 return

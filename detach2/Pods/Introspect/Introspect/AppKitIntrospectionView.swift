@@ -1,21 +1,20 @@
 #if canImport(AppKit)
-import SwiftUI
 import AppKit
+import SwiftUI
 
 /// Introspection NSView that is inserted alongside the target view.
 public class IntrospectionNSView: NSView {
-
     required init() {
         super.init(frame: .zero)
         isHidden = true
     }
 
-    public override func hitTest(_ point: NSPoint) -> NSView? {
-        return nil
+    override public func hitTest(_: NSPoint) -> NSView? {
+        nil
     }
 
     @available(*, unavailable)
-    required init?(coder: NSCoder) {
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
@@ -23,7 +22,6 @@ public class IntrospectionNSView: NSView {
 /// Introspection View that is injected into the UIKit hierarchy alongside the target view.
 /// After `updateNSView` is called, it calls `selector` to find the target view, then `customize` when the target view is found.
 public struct AppKitIntrospectionView<TargetViewType: NSView>: NSViewRepresentable {
-
     /// Method that introspects the view hierarchy to find the target view.
     /// First argument is the introspection view itself, which is contained in a view host alongside the target view.
     let selector: (IntrospectionNSView) -> TargetViewType?
@@ -33,13 +31,13 @@ public struct AppKitIntrospectionView<TargetViewType: NSView>: NSViewRepresentab
 
     public init(
         selector: @escaping (IntrospectionNSView) -> TargetViewType?,
-        customize: @escaping (TargetViewType) -> Void
-    ) {
+        customize: @escaping (TargetViewType) -> Void)
+    {
         self.selector = selector
         self.customize = customize
     }
 
-    public func makeNSView(context: NSViewRepresentableContext<AppKitIntrospectionView>) -> IntrospectionNSView {
+    public func makeNSView(context _: NSViewRepresentableContext<AppKitIntrospectionView>) -> IntrospectionNSView {
         let view = IntrospectionNSView()
         view.setAccessibilityLabel("IntrospectionNSView<\(TargetViewType.self)>")
         return view
@@ -52,8 +50,8 @@ public struct AppKitIntrospectionView<TargetViewType: NSView>: NSViewRepresentab
     /// gets called when the introspection view gets removed from the hierarchy.
     public func updateNSView(
         _ nsView: IntrospectionNSView,
-        context: NSViewRepresentableContext<AppKitIntrospectionView>
-    ) {
+        context _: NSViewRepresentableContext<AppKitIntrospectionView>)
+    {
         DispatchQueue.main.async {
             guard let targetView = self.selector(nsView) else {
                 return

@@ -3,106 +3,176 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		04516B10D23612F1EF169D07F5E5D412 /* AppKitIntrospectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEB0B7659B3CBF3514D1FC9567D4F80 /* AppKitIntrospectionView.swift */; };
-		07512F391DD23F1122B6A670543AF147 /* Pods-detach2-detach2UITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E2EFBD344E5E34B62AD2023B7A0F2056 /* Pods-detach2-detach2UITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		21777447FB03B746A692DA86253DBF07 /* Pods-detach2-detach2UITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F7E267CE10D6AA1B1CCE007ECAFAD3 /* Pods-detach2-detach2UITests-dummy.m */; };
-		26A76676C1314B46DF5F1F1313ABE2F4 /* Introspect.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F97B7DBE7B5E51378241115EFD843 /* Introspect.swift */; };
-		3DD5491AAC8B79034084438189BB8E37 /* Pods-detach2-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DF83FAE948F7BB105609525589C10BEC /* Pods-detach2-dummy.m */; };
-		7476A8F2D49017FCC2E4D57803C0F138 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		019C4CC978830391CBCA28E717A7A2F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		04516B10D23612F1EF169D07F5E5D412 /* AppKitIntrospectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313E20E753D31F09064FDA4D2355463C /* AppKitIntrospectionView.swift */; };
+		12216FF30FA278EE8BA2C8C2048040BB /* Pods-DetachExtension-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8604975CF999AB2F4B4C40A344C5B7 /* Pods-DetachExtension-dummy.m */; };
+		26A76676C1314B46DF5F1F1313ABE2F4 /* Introspect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8C72BD241EC35B9C120C19890CD0BC /* Introspect.swift */; };
+		2F4BAD5C8195A8762F4FF1239E3E07A9 /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61A7161417F3BCAE5B5A22D5DAE7AAE /* LogLevel.swift */; };
+		3184CCE76594089CAF9E86B9436C69DB /* LogModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04EDC13254C6F87F103F2715925B90D /* LogModifier.swift */; };
+		482E4ADC9C265D31607CA8F4BA1A5FA2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		495CC23122E06E38DD76FC832635F0E8 /* LogWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D5C96823AA8AC343490912373709E /* LogWriter.swift */; };
+		54D968EE66F36A5D637A3F2BEBE1352B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		68169B47361AC822AF6A7D4E45D63AEF /* Pods-DetachExtension-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1B3F653C122DA37E40BEAF4EFF2655D7 /* Pods-DetachExtension-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DE7DBF9DF1DC8C1FCB5D2178E3B3C48 /* Pods-detach2-detach2UITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A02305F26FC15FB994F08B6042F30F /* Pods-detach2-detach2UITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6F54B1E865F8C388C020C6DC51259FD2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		7EF1E6C28E2057A3D80D8F1971780DE5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		91F7189C0B83D94AEDAB21A28AE4245C /* Pods-detach2Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CCB1220C766BACD13DBC128299D3D16F /* Pods-detach2Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A8B0DC12BE200007F9EB2D65531A84CA /* UIKitIntrospectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD39E502C826E5A7C5BAF30974FAEBB /* UIKitIntrospectionView.swift */; };
-		AE5A61EC159FB35D73078D08372DDF93 /* Pods-detach2-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 09AA9E05B51F4BDC10DDB34D7D58768D /* Pods-detach2-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B72AC84A6524680F3F9082AFD476648C /* Pods-detach2Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC4F0A90E93F9C3DC13F401518B837F /* Pods-detach2Tests-dummy.m */; };
+		8209A55DC7AC631C4F3731221C4199EC /* Willow-iOS13.6-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD7FB18146C0093C352AD40D5FA53E1 /* Willow-iOS13.6-dummy.m */; };
+		900BB0496671C2BB1A860A4728B8F2FD /* LogWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D5C96823AA8AC343490912373709E /* LogWriter.swift */; };
+		91F7189C0B83D94AEDAB21A28AE4245C /* Pods-detach2Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 266C436C81509BE78B22388DC5398DED /* Pods-detach2Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		95BBBD180E231C10005279E06CA25714 /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61A7161417F3BCAE5B5A22D5DAE7AAE /* LogLevel.swift */; };
+		971A8697EA5AE15845941116772BF7C8 /* Willow-iOS13.6-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B13B31DB894942B516B6040DCD4E09EE /* Willow-iOS13.6-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9F5B4761AB33B11111755BAD8B30E505 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C540A3B496E49149B54F07554CF6D1C /* Logger.swift */; };
+		A8B0DC12BE200007F9EB2D65531A84CA /* UIKitIntrospectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0992DAF0541F27F493CF72274DFC350 /* UIKitIntrospectionView.swift */; };
+		AE32CBC28ABEBC06325A9AF9BAC50B76 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		B68159A4DA080519C9E5739E0187B6C9 /* Pods-detach2-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B2208C65CC2A1D96866596ABC34E8521 /* Pods-detach2-dummy.m */; };
+		B72AC84A6524680F3F9082AFD476648C /* Pods-detach2Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D68CD5D0CD2AD6D5DAF1638E622357D /* Pods-detach2Tests-dummy.m */; };
+		C8483E7332D0CA3BA4420A1B9FA2EF5A /* Pods-detach2-detach2UITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 97A13F8C73DDF93FBED680E74E8FFA94 /* Pods-detach2-detach2UITests-dummy.m */; };
 		CB485DF96B843B0720B142CE227F4274 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		CBBB3C3152D4C6E2F661C3E5E813147C /* Introspect-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1B6C185AFAF683A8F8152324DD89EEDF /* Introspect-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1EADEE33E125BC27B17145FD70626E3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		D8DE7403B046571663D236C6905B4E52 /* UIKitIntrospectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8642AA28CFA4B0B137E3325D9FC24B36 /* UIKitIntrospectionViewController.swift */; };
-		DE9FE1FE2E7B9C17B1FB97C6E613DFF2 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6519D1DDA6EB4B5EE3D38A3A0A7649DC /* ViewExtensions.swift */; };
-		FEE53BB666EC19D440243E6ED59F33CC /* Introspect-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A7133B45DB27B49E3F6A06E50B650D08 /* Introspect-dummy.m */; };
+		CBBB3C3152D4C6E2F661C3E5E813147C /* Introspect-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 27F4C2203FD7C08A2A24F96B224B1F29 /* Introspect-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CCCB7A000731A7241AEA69DD7458F742 /* Pods-detach2-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 98DFC8AF0E699C0536F132F1598A5E41 /* Pods-detach2-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D84E55E0CFBB248680E2E79255684EE6 /* LogModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04EDC13254C6F87F103F2715925B90D /* LogModifier.swift */; };
+		D8DE7403B046571663D236C6905B4E52 /* UIKitIntrospectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D498E61FF26613C5B39E3A3C63EA4B87 /* UIKitIntrospectionViewController.swift */; };
+		DDB0C8E3E2EEDE92B9B9B6A2D7713E56 /* Willow-iOS13.5-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B7790F01ADEFBE0E1D2F053D5E93BEFE /* Willow-iOS13.5-dummy.m */; };
+		DE9FE1FE2E7B9C17B1FB97C6E613DFF2 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82F968D6BDBB7FC9C7454C166C3DBF5 /* ViewExtensions.swift */; };
+		E11E6E3EB0EC0031FFE25DE18164DE4D /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C540A3B496E49149B54F07554CF6D1C /* Logger.swift */; };
+		E35D6C393C17D1DB1AA6CE09A5B61B65 /* Willow-iOS13.5-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 39BCA8F85DC7E32EC2BE47A398691B0F /* Willow-iOS13.5-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ED650BD43F72B74D8725F7114DA48E91 /* LogMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018D3B3F899FB1D08441EE252A041D88 /* LogMessage.swift */; };
+		FCA393A1DF903C932C0E507697763A34 /* LogMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018D3B3F899FB1D08441EE252A041D88 /* LogMessage.swift */; };
+		FEE53BB666EC19D440243E6ED59F33CC /* Introspect-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 62EACB489EDC22A2586B0D18CBC26FD3 /* Introspect-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		296B48974539A6D24A3DFC9AEF18D75C /* PBXContainerItemProxy */ = {
+		147B8B181710B11842B3507F0239F393 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D04EAF5AA7CAFEE680DA34211FBA06DA;
+			remoteInfo = "Willow-iOS13.6";
+		};
+		42B75D740406982291CD991DCBC28EAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 82DBA25BF6F7D05C82509C10CBE8C710;
+			remoteInfo = "Willow-iOS13.5";
+		};
+		4E1949DF0403654EA6085C5DF6607336 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 97E3685499568DCCBA6C15905F707BDC;
 			remoteInfo = Introspect;
 		};
-		44F9D29893C4BB962B15D791EBB082A3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 97E3685499568DCCBA6C15905F707BDC;
-			remoteInfo = Introspect;
-		};
-		A2111B91F0B7935E0E67CDAC334E24ED /* PBXContainerItemProxy */ = {
+		ACD44D581F0A82CF4FCFE44AA0B69901 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 57ABCD971C25345B93A7191CDB8F343F;
 			remoteInfo = "Pods-detach2";
 		};
+		F7BEAD5EEA0996ACFBA3059B44D0BC54 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 82DBA25BF6F7D05C82509C10CBE8C710;
+			remoteInfo = "Willow-iOS13.5";
+		};
+		F895A7592F2D1D630F6BAD1F183A1E08 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 97E3685499568DCCBA6C15905F707BDC;
+			remoteInfo = Introspect;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		018D3B3F899FB1D08441EE252A041D88 /* LogMessage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LogMessage.swift; path = Source/LogMessage.swift; sourceTree = "<group>"; };
 		01F89F75D8F41C5731B0A0F6D3D8EF13 /* Pods_detach2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_detach2Tests.framework; path = "Pods-detach2Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		09AA9E05B51F4BDC10DDB34D7D58768D /* Pods-detach2-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-detach2-umbrella.h"; sourceTree = "<group>"; };
-		14F7E267CE10D6AA1B1CCE007ECAFAD3 /* Pods-detach2-detach2UITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-detach2-detach2UITests-dummy.m"; sourceTree = "<group>"; };
-		1B6C185AFAF683A8F8152324DD89EEDF /* Introspect-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Introspect-umbrella.h"; sourceTree = "<group>"; };
-		1FEB0B7659B3CBF3514D1FC9567D4F80 /* AppKitIntrospectionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppKitIntrospectionView.swift; path = Introspect/AppKitIntrospectionView.swift; sourceTree = "<group>"; };
-		288568E45117FAB05ADEEF409CD3B86C /* Pods-detach2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-detach2.release.xcconfig"; sourceTree = "<group>"; };
-		2FD39E502C826E5A7C5BAF30974FAEBB /* UIKitIntrospectionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIKitIntrospectionView.swift; path = Introspect/UIKitIntrospectionView.swift; sourceTree = "<group>"; };
+		0A41D0959ABCBAC4D05482F7B4410A3F /* Pods-detach2-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-detach2-acknowledgements.plist"; sourceTree = "<group>"; };
+		0DD79B39F636077E86FDB2058676A052 /* Willow-iOS13.6.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Willow-iOS13.6.release.xcconfig"; path = "../Willow-iOS13.6/Willow-iOS13.6.release.xcconfig"; sourceTree = "<group>"; };
+		18A02305F26FC15FB994F08B6042F30F /* Pods-detach2-detach2UITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-detach2-detach2UITests-umbrella.h"; sourceTree = "<group>"; };
+		1B3F653C122DA37E40BEAF4EFF2655D7 /* Pods-DetachExtension-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-DetachExtension-umbrella.h"; sourceTree = "<group>"; };
+		1E56EE2BD5AA6DE9B7D2C60AF5D08197 /* Introspect-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Introspect-Info.plist"; sourceTree = "<group>"; };
+		1EC75C9615E8CE583448DB7763ABEED5 /* Willow-iOS13.5.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Willow-iOS13.5.modulemap"; sourceTree = "<group>"; };
+		266C436C81509BE78B22388DC5398DED /* Pods-detach2Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-detach2Tests-umbrella.h"; sourceTree = "<group>"; };
+		27C710FEA4FBBE326D1E1AD9464445BF /* Introspect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Introspect.release.xcconfig; sourceTree = "<group>"; };
+		27F4C2203FD7C08A2A24F96B224B1F29 /* Introspect-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Introspect-umbrella.h"; sourceTree = "<group>"; };
+		2A66B7EBEA1063F0AA6DDF9D7833ACBF /* Pods-detach2-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-detach2-frameworks.sh"; sourceTree = "<group>"; };
+		2C2D5C96823AA8AC343490912373709E /* LogWriter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LogWriter.swift; path = Source/LogWriter.swift; sourceTree = "<group>"; };
+		2D5B568F088DD6E77FEDD0A93AF8AABF /* Pods-detach2-detach2UITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-detach2-detach2UITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		2E0B524D7A304F9C09BE2C40350A56C2 /* Pods-DetachExtension-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DetachExtension-Info.plist"; sourceTree = "<group>"; };
+		313E20E753D31F09064FDA4D2355463C /* AppKitIntrospectionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppKitIntrospectionView.swift; path = Introspect/AppKitIntrospectionView.swift; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		3618D3EC82E0B69B6A272889773ABCAD /* Pods-detach2-detach2UITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-detach2-detach2UITests.modulemap"; sourceTree = "<group>"; };
-		3CB34C5A763EE49C898E9EF1CCA71749 /* Pods-detach2-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-detach2-acknowledgements.markdown"; sourceTree = "<group>"; };
-		3DF18865B218BCE5D62D0C436F575AFE /* Introspect-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Introspect-prefix.pch"; sourceTree = "<group>"; };
-		4FC4F0A90E93F9C3DC13F401518B837F /* Pods-detach2Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-detach2Tests-dummy.m"; sourceTree = "<group>"; };
-		59288D47B1F3B597A85C166E83ED458D /* Pods-detach2-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-detach2-Info.plist"; sourceTree = "<group>"; };
-		5BFF549B439F3EB9CB4B4E6B807F3A7E /* Pods-detach2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-detach2Tests.release.xcconfig"; sourceTree = "<group>"; };
-		5C5E0F2346DC7416EB2D6CCF19F51151 /* Pods-detach2-detach2UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-detach2-detach2UITests.debug.xcconfig"; sourceTree = "<group>"; };
-		6519D1DDA6EB4B5EE3D38A3A0A7649DC /* ViewExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ViewExtensions.swift; path = Introspect/ViewExtensions.swift; sourceTree = "<group>"; };
-		662D814CC4B00847A07909ADDC1D449C /* Pods-detach2Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-detach2Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		6C1E665789D1B6E1BB94144C5D4341A6 /* Pods-detach2-detach2UITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-detach2-detach2UITests-frameworks.sh"; sourceTree = "<group>"; };
+		32A5167BFD8FED4DA5AA95FFD613766C /* Pods-DetachExtension.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-DetachExtension.modulemap"; sourceTree = "<group>"; };
+		34EA18CA06F6E43D91A69F221915C440 /* Pods-detach2-detach2UITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-detach2-detach2UITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		39BCA8F85DC7E32EC2BE47A398691B0F /* Willow-iOS13.5-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Willow-iOS13.5-umbrella.h"; sourceTree = "<group>"; };
+		39F768C2B84D5385D06723B5C9584A45 /* Willow-iOS13.6-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Willow-iOS13.6-prefix.pch"; path = "../Willow-iOS13.6/Willow-iOS13.6-prefix.pch"; sourceTree = "<group>"; };
+		3A1E2B313C7851784B0FC07557B64236 /* Willow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Willow.framework; path = "Willow-iOS13.6.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C811B80D1685D5372D9A32329E72941 /* Willow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Willow.framework; path = "Willow-iOS13.5.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FF7B5983FD950C0CB029E5ABA95F6FB /* Pods-detach2-detach2UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-detach2-detach2UITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4C154D4930584709D605381644F72F98 /* Willow-iOS13.6.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Willow-iOS13.6.debug.xcconfig"; path = "../Willow-iOS13.6/Willow-iOS13.6.debug.xcconfig"; sourceTree = "<group>"; };
+		4F29567741F5197E51D187517650EFD2 /* Introspect-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Introspect-prefix.pch"; sourceTree = "<group>"; };
+		5058A6788E955C972CC013EB1C33A160 /* Willow-iOS13.6.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; name = "Willow-iOS13.6.modulemap"; path = "../Willow-iOS13.6/Willow-iOS13.6.modulemap"; sourceTree = "<group>"; };
+		55CB78F103DF5A9BFA77C5F46B5CE812 /* Pods-DetachExtension-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-DetachExtension-acknowledgements.markdown"; sourceTree = "<group>"; };
+		59B95E9CD43BC9BF9A30AD79B855D7CC /* Pods_DetachExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_DetachExtension.framework; path = "Pods-DetachExtension.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D68CD5D0CD2AD6D5DAF1638E622357D /* Pods-detach2Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-detach2Tests-dummy.m"; sourceTree = "<group>"; };
+		62EACB489EDC22A2586B0D18CBC26FD3 /* Introspect-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Introspect-dummy.m"; sourceTree = "<group>"; };
+		66D82FB99047FC2229D1F87EEFE97464 /* Pods-detach2.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-detach2.modulemap"; sourceTree = "<group>"; };
+		6C540A3B496E49149B54F07554CF6D1C /* Logger.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Logger.swift; path = Source/Logger.swift; sourceTree = "<group>"; };
 		721D5DA32553F4E632F4DA6380B613ED /* Pods_detach2_detach2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_detach2_detach2UITests.framework; path = "Pods-detach2-detach2UITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7F88D54609EB99831EB3B8A9CB037831 /* Pods-detach2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-detach2.debug.xcconfig"; sourceTree = "<group>"; };
-		7FA8350B21394CC67B4C811628A647AB /* Introspect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Introspect.release.xcconfig; sourceTree = "<group>"; };
-		8642AA28CFA4B0B137E3325D9FC24B36 /* UIKitIntrospectionViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIKitIntrospectionViewController.swift; path = Introspect/UIKitIntrospectionViewController.swift; sourceTree = "<group>"; };
-		9B66370AB2689AC66291149351D2DC4B /* Pods-detach2-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-detach2-acknowledgements.plist"; sourceTree = "<group>"; };
+		730860751D91EFBF3DD56A006B9D37C2 /* Pods-detach2Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-detach2Tests-Info.plist"; sourceTree = "<group>"; };
+		85AD67150F7AF4DD59FA38E2F9C5AB94 /* Willow-iOS13.5.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Willow-iOS13.5.release.xcconfig"; sourceTree = "<group>"; };
+		866C3A84B2BDD86D94221185051D567A /* Pods-detach2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-detach2.debug.xcconfig"; sourceTree = "<group>"; };
+		8ACD9D40DEFA6076861A27D564441FE4 /* Introspect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Introspect.debug.xcconfig; sourceTree = "<group>"; };
+		95997844C0A92EB1584B6D69C8F6204A /* Pods-DetachExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DetachExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		97A13F8C73DDF93FBED680E74E8FFA94 /* Pods-detach2-detach2UITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-detach2-detach2UITests-dummy.m"; sourceTree = "<group>"; };
+		98DFC8AF0E699C0536F132F1598A5E41 /* Pods-detach2-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-detach2-umbrella.h"; sourceTree = "<group>"; };
+		99A76A7BE6CE4E18FC69429840FD8E45 /* Pods-detach2-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-detach2-Info.plist"; sourceTree = "<group>"; };
+		9A8C72BD241EC35B9C120C19890CD0BC /* Introspect.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Introspect.swift; path = Introspect/Introspect.swift; sourceTree = "<group>"; };
+		9CD7FB18146C0093C352AD40D5FA53E1 /* Willow-iOS13.6-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Willow-iOS13.6-dummy.m"; path = "../Willow-iOS13.6/Willow-iOS13.6-dummy.m"; sourceTree = "<group>"; };
+		9D05A40CD744826B27C321E93503D359 /* Pods-DetachExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DetachExtension.release.xcconfig"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A7133B45DB27B49E3F6A06E50B650D08 /* Introspect-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Introspect-dummy.m"; sourceTree = "<group>"; };
-		B0CF37A7143418441C854D6BD1E2CA22 /* Pods-detach2-detach2UITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-detach2-detach2UITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		9EE624354D421B1B9D4289E11DE9BE3F /* Pods-detach2Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-detach2Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		A0992DAF0541F27F493CF72274DFC350 /* UIKitIntrospectionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIKitIntrospectionView.swift; path = Introspect/UIKitIntrospectionView.swift; sourceTree = "<group>"; };
+		A0EDDBFA2AEA1649D54D5A7D240FB403 /* Pods-detach2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-detach2.release.xcconfig"; sourceTree = "<group>"; };
+		A174FA6F91863E622E8959B042EE7720 /* Pods-detach2Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-detach2Tests.modulemap"; sourceTree = "<group>"; };
+		A791968C0D86048B176CD59CA50FF3E7 /* Pods-detach2-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-detach2-acknowledgements.markdown"; sourceTree = "<group>"; };
+		A9AE08B099459A60D0CC93D43B95320E /* Pods-detach2-detach2UITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-detach2-detach2UITests-Info.plist"; sourceTree = "<group>"; };
+		AA7C25AB872A80B5E2D25628B7887E1E /* Willow-iOS13.6-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Willow-iOS13.6-Info.plist"; path = "../Willow-iOS13.6/Willow-iOS13.6-Info.plist"; sourceTree = "<group>"; };
+		ADC201DA5773E0BC825AFE0B30CF3FEB /* Pods-detach2-detach2UITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-detach2-detach2UITests-frameworks.sh"; sourceTree = "<group>"; };
+		B13B31DB894942B516B6040DCD4E09EE /* Willow-iOS13.6-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Willow-iOS13.6-umbrella.h"; path = "../Willow-iOS13.6/Willow-iOS13.6-umbrella.h"; sourceTree = "<group>"; };
+		B2208C65CC2A1D96866596ABC34E8521 /* Pods-detach2-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-detach2-dummy.m"; sourceTree = "<group>"; };
 		B475A2AA029D3B1C490C1FB9CB4AA45D /* Pods_detach2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_detach2.framework; path = "Pods-detach2.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B8335EFAB4B4A97E0431C5BFE8C43533 /* Pods-detach2Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-detach2Tests-Info.plist"; sourceTree = "<group>"; };
-		C16A57B7BAC12B839B47B64EA86CB745 /* Introspect-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Introspect-Info.plist"; sourceTree = "<group>"; };
-		C6935A6B76A1F3ACA7781AE41385A149 /* Introspect.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Introspect.modulemap; sourceTree = "<group>"; };
-		C7C6E86B9F7A23B8561F72CEAFD3E01A /* Pods-detach2-detach2UITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-detach2-detach2UITests-acknowledgements.plist"; sourceTree = "<group>"; };
-		CCB1220C766BACD13DBC128299D3D16F /* Pods-detach2Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-detach2Tests-umbrella.h"; sourceTree = "<group>"; };
+		B61A7161417F3BCAE5B5A22D5DAE7AAE /* LogLevel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LogLevel.swift; path = Source/LogLevel.swift; sourceTree = "<group>"; };
+		B7790F01ADEFBE0E1D2F053D5E93BEFE /* Willow-iOS13.5-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Willow-iOS13.5-dummy.m"; sourceTree = "<group>"; };
+		B8BE15345427457E9191CD98ECFCD71C /* Introspect.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Introspect.modulemap; sourceTree = "<group>"; };
+		BA00F17BAF9C86FECD70F96253ACC4F1 /* Pods-detach2-detach2UITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-detach2-detach2UITests.modulemap"; sourceTree = "<group>"; };
+		C2E0CAF508B2C4F836A5F868832E0897 /* Willow-iOS13.5-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Willow-iOS13.5-prefix.pch"; sourceTree = "<group>"; };
+		C71DDC1194F8D2113F2C602F33C11ECA /* Willow-iOS13.5-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Willow-iOS13.5-Info.plist"; sourceTree = "<group>"; };
 		D0A70003FD5E49B30CA83DAAFE03116B /* Introspect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Introspect.framework; path = Introspect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D1119A951EC43052081C7A9A0544F754 /* Introspect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Introspect.debug.xcconfig; sourceTree = "<group>"; };
-		D327ED74DE856BD27EB269FF0281BC81 /* Pods-detach2Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-detach2Tests.modulemap"; sourceTree = "<group>"; };
-		D6E73F91FA29A833BC413407A13C4983 /* Pods-detach2Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-detach2Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		DC946C5CA2A3EA633A7062A33181FBF7 /* Pods-detach2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-detach2Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		DF83FAE948F7BB105609525589C10BEC /* Pods-detach2-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-detach2-dummy.m"; sourceTree = "<group>"; };
-		E2EFBD344E5E34B62AD2023B7A0F2056 /* Pods-detach2-detach2UITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-detach2-detach2UITests-umbrella.h"; sourceTree = "<group>"; };
-		E61E643B9E660E71CE5A012844C5FC31 /* Pods-detach2.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-detach2.modulemap"; sourceTree = "<group>"; };
-		EE8CF8487BB3C5DF27B2FB6847D604EF /* Pods-detach2-detach2UITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-detach2-detach2UITests-Info.plist"; sourceTree = "<group>"; };
-		EE9F97B7DBE7B5E51378241115EFD843 /* Introspect.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Introspect.swift; path = Introspect/Introspect.swift; sourceTree = "<group>"; };
-		F3848AC0BDFC3EC4CF99AE5C9FE4B840 /* Pods-detach2-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-detach2-frameworks.sh"; sourceTree = "<group>"; };
-		F5740FCA5FA1C1CBE8C608B246D1BDB9 /* Pods-detach2-detach2UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-detach2-detach2UITests.release.xcconfig"; sourceTree = "<group>"; };
+		D2D3FAAE9B0845D5414658FDA958531C /* Pods-DetachExtension-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DetachExtension-acknowledgements.plist"; sourceTree = "<group>"; };
+		D498E61FF26613C5B39E3A3C63EA4B87 /* UIKitIntrospectionViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIKitIntrospectionViewController.swift; path = Introspect/UIKitIntrospectionViewController.swift; sourceTree = "<group>"; };
+		D50094C0CD09B30E5F503D78C1EF931C /* Pods-detach2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-detach2Tests.release.xcconfig"; sourceTree = "<group>"; };
+		D67428F06B1FCD753B3EA7659B7B4B36 /* Willow-iOS13.5.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Willow-iOS13.5.debug.xcconfig"; sourceTree = "<group>"; };
+		E04EDC13254C6F87F103F2715925B90D /* LogModifier.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LogModifier.swift; path = Source/LogModifier.swift; sourceTree = "<group>"; };
+		E82F968D6BDBB7FC9C7454C166C3DBF5 /* ViewExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ViewExtensions.swift; path = Introspect/ViewExtensions.swift; sourceTree = "<group>"; };
+		EAD4C56E09601512F237C8B72CB51ABD /* Pods-detach2-detach2UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-detach2-detach2UITests.release.xcconfig"; sourceTree = "<group>"; };
+		EC8604975CF999AB2F4B4C40A344C5B7 /* Pods-DetachExtension-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-DetachExtension-dummy.m"; sourceTree = "<group>"; };
+		F9C81C04DD912C5C63087947D3085E35 /* Pods-detach2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-detach2Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		FF3C3DC2515F2DAA5E29C35DE0A0FB55 /* Pods-detach2Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-detach2Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		30FA151D9811849C183B0788141D0978 /* Frameworks */ = {
+		2FCDA49EF7E472560ECF71ECAB54B327 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1EADEE33E125BC27B17145FD70626E3 /* Foundation.framework in Frameworks */,
+				AE32CBC28ABEBC06325A9AF9BAC50B76 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,11 +184,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		379F1ABFA03696A6DA2FF92BA449C8CD /* Frameworks */ = {
+		371C079C12609F6C21F54565F3E6B149 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7476A8F2D49017FCC2E4D57803C0F138 /* Foundation.framework in Frameworks */,
+				6F54B1E865F8C388C020C6DC51259FD2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64D43FB11E63438CD204FAF55DA012C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				019C4CC978830391CBCA28E717A7A2F3 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,90 +208,120 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CEF37AB9DFCB7D58614DD964E48CF66F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				482E4ADC9C265D31607CA8F4BA1A5FA2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6553C6AE0FABA7CBCFCEA0FEAC24B29 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54D968EE66F36A5D637A3F2BEBE1352B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		20C24BE28A8BC1948F8DA34D666339A7 /* Pods */ = {
+		060ED184977667761756407116C1C3C3 /* Willow */ = {
 			isa = PBXGroup;
 			children = (
-				51CA0CEB90A680AD71900D5AB951F5AE /* Introspect */,
+				6C540A3B496E49149B54F07554CF6D1C /* Logger.swift */,
+				B61A7161417F3BCAE5B5A22D5DAE7AAE /* LogLevel.swift */,
+				018D3B3F899FB1D08441EE252A041D88 /* LogMessage.swift */,
+				E04EDC13254C6F87F103F2715925B90D /* LogModifier.swift */,
+				2C2D5C96823AA8AC343490912373709E /* LogWriter.swift */,
+				FC1632C75CE9A275AE7732C6F58E7DEE /* Support Files */,
 			);
-			name = Pods;
+			name = Willow;
+			path = Willow;
 			sourceTree = "<group>";
 		};
-		2606CAB469F529E71823AE0E5CC07AB9 /* Products */ = {
+		06CAE1FF73479F5DA5F0A7AFD5391A0C /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				D0A70003FD5E49B30CA83DAAFE03116B /* Introspect.framework */,
-				B475A2AA029D3B1C490C1FB9CB4AA45D /* Pods_detach2.framework */,
-				721D5DA32553F4E632F4DA6380B613ED /* Pods_detach2_detach2UITests.framework */,
-				01F89F75D8F41C5731B0A0F6D3D8EF13 /* Pods_detach2Tests.framework */,
+				BB4A0E50797224D20F14C772CC143690 /* Pods-detach2 */,
+				E73A2A615BBE96D6C77B989D26E44E8C /* Pods-detach2-detach2UITests */,
+				1BB187480ABDB4029FE2BD1A4F3E586E /* Pods-detach2Tests */,
+				088DD71517CFD63802F459644CAC4A71 /* Pods-DetachExtension */,
 			);
-			name = Products;
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		51CA0CEB90A680AD71900D5AB951F5AE /* Introspect */ = {
+		088DD71517CFD63802F459644CAC4A71 /* Pods-DetachExtension */ = {
 			isa = PBXGroup;
 			children = (
-				1FEB0B7659B3CBF3514D1FC9567D4F80 /* AppKitIntrospectionView.swift */,
-				EE9F97B7DBE7B5E51378241115EFD843 /* Introspect.swift */,
-				2FD39E502C826E5A7C5BAF30974FAEBB /* UIKitIntrospectionView.swift */,
-				8642AA28CFA4B0B137E3325D9FC24B36 /* UIKitIntrospectionViewController.swift */,
-				6519D1DDA6EB4B5EE3D38A3A0A7649DC /* ViewExtensions.swift */,
-				E74A7A19A59A269AF211D6D7D445E878 /* Support Files */,
+				32A5167BFD8FED4DA5AA95FFD613766C /* Pods-DetachExtension.modulemap */,
+				55CB78F103DF5A9BFA77C5F46B5CE812 /* Pods-DetachExtension-acknowledgements.markdown */,
+				D2D3FAAE9B0845D5414658FDA958531C /* Pods-DetachExtension-acknowledgements.plist */,
+				EC8604975CF999AB2F4B4C40A344C5B7 /* Pods-DetachExtension-dummy.m */,
+				2E0B524D7A304F9C09BE2C40350A56C2 /* Pods-DetachExtension-Info.plist */,
+				1B3F653C122DA37E40BEAF4EFF2655D7 /* Pods-DetachExtension-umbrella.h */,
+				95997844C0A92EB1584B6D69C8F6204A /* Pods-DetachExtension.debug.xcconfig */,
+				9D05A40CD744826B27C321E93503D359 /* Pods-DetachExtension.release.xcconfig */,
+			);
+			name = "Pods-DetachExtension";
+			path = "Target Support Files/Pods-DetachExtension";
+			sourceTree = "<group>";
+		};
+		1BB187480ABDB4029FE2BD1A4F3E586E /* Pods-detach2Tests */ = {
+			isa = PBXGroup;
+			children = (
+				A174FA6F91863E622E8959B042EE7720 /* Pods-detach2Tests.modulemap */,
+				9EE624354D421B1B9D4289E11DE9BE3F /* Pods-detach2Tests-acknowledgements.markdown */,
+				FF3C3DC2515F2DAA5E29C35DE0A0FB55 /* Pods-detach2Tests-acknowledgements.plist */,
+				5D68CD5D0CD2AD6D5DAF1638E622357D /* Pods-detach2Tests-dummy.m */,
+				730860751D91EFBF3DD56A006B9D37C2 /* Pods-detach2Tests-Info.plist */,
+				266C436C81509BE78B22388DC5398DED /* Pods-detach2Tests-umbrella.h */,
+				F9C81C04DD912C5C63087947D3085E35 /* Pods-detach2Tests.debug.xcconfig */,
+				D50094C0CD09B30E5F503D78C1EF931C /* Pods-detach2Tests.release.xcconfig */,
+			);
+			name = "Pods-detach2Tests";
+			path = "Target Support Files/Pods-detach2Tests";
+			sourceTree = "<group>";
+		};
+		65B8B8662EC3E1D50350143E038DFA31 /* Introspect */ = {
+			isa = PBXGroup;
+			children = (
+				313E20E753D31F09064FDA4D2355463C /* AppKitIntrospectionView.swift */,
+				9A8C72BD241EC35B9C120C19890CD0BC /* Introspect.swift */,
+				A0992DAF0541F27F493CF72274DFC350 /* UIKitIntrospectionView.swift */,
+				D498E61FF26613C5B39E3A3C63EA4B87 /* UIKitIntrospectionViewController.swift */,
+				E82F968D6BDBB7FC9C7454C166C3DBF5 /* ViewExtensions.swift */,
+				E50A7CED3928664CC18DD5C7FEBBD92B /* Support Files */,
 			);
 			name = Introspect;
 			path = Introspect;
 			sourceTree = "<group>";
 		};
-		709177657D34CDA79C6AA0E25B61FC91 /* Pods-detach2-detach2UITests */ = {
+		7B3F5CE6A8BAB3A58392EA9906FD74CC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3618D3EC82E0B69B6A272889773ABCAD /* Pods-detach2-detach2UITests.modulemap */,
-				B0CF37A7143418441C854D6BD1E2CA22 /* Pods-detach2-detach2UITests-acknowledgements.markdown */,
-				C7C6E86B9F7A23B8561F72CEAFD3E01A /* Pods-detach2-detach2UITests-acknowledgements.plist */,
-				14F7E267CE10D6AA1B1CCE007ECAFAD3 /* Pods-detach2-detach2UITests-dummy.m */,
-				6C1E665789D1B6E1BB94144C5D4341A6 /* Pods-detach2-detach2UITests-frameworks.sh */,
-				EE8CF8487BB3C5DF27B2FB6847D604EF /* Pods-detach2-detach2UITests-Info.plist */,
-				E2EFBD344E5E34B62AD2023B7A0F2056 /* Pods-detach2-detach2UITests-umbrella.h */,
-				5C5E0F2346DC7416EB2D6CCF19F51151 /* Pods-detach2-detach2UITests.debug.xcconfig */,
-				F5740FCA5FA1C1CBE8C608B246D1BDB9 /* Pods-detach2-detach2UITests.release.xcconfig */,
+				65B8B8662EC3E1D50350143E038DFA31 /* Introspect */,
+				060ED184977667761756407116C1C3C3 /* Willow */,
 			);
-			name = "Pods-detach2-detach2UITests";
-			path = "Target Support Files/Pods-detach2-detach2UITests";
+			name = Pods;
 			sourceTree = "<group>";
 		};
-		7E445338FD404E6B6E4EB0BDCDDC913B /* Pods-detach2 */ = {
+		BB4A0E50797224D20F14C772CC143690 /* Pods-detach2 */ = {
 			isa = PBXGroup;
 			children = (
-				E61E643B9E660E71CE5A012844C5FC31 /* Pods-detach2.modulemap */,
-				3CB34C5A763EE49C898E9EF1CCA71749 /* Pods-detach2-acknowledgements.markdown */,
-				9B66370AB2689AC66291149351D2DC4B /* Pods-detach2-acknowledgements.plist */,
-				DF83FAE948F7BB105609525589C10BEC /* Pods-detach2-dummy.m */,
-				F3848AC0BDFC3EC4CF99AE5C9FE4B840 /* Pods-detach2-frameworks.sh */,
-				59288D47B1F3B597A85C166E83ED458D /* Pods-detach2-Info.plist */,
-				09AA9E05B51F4BDC10DDB34D7D58768D /* Pods-detach2-umbrella.h */,
-				7F88D54609EB99831EB3B8A9CB037831 /* Pods-detach2.debug.xcconfig */,
-				288568E45117FAB05ADEEF409CD3B86C /* Pods-detach2.release.xcconfig */,
+				66D82FB99047FC2229D1F87EEFE97464 /* Pods-detach2.modulemap */,
+				A791968C0D86048B176CD59CA50FF3E7 /* Pods-detach2-acknowledgements.markdown */,
+				0A41D0959ABCBAC4D05482F7B4410A3F /* Pods-detach2-acknowledgements.plist */,
+				B2208C65CC2A1D96866596ABC34E8521 /* Pods-detach2-dummy.m */,
+				2A66B7EBEA1063F0AA6DDF9D7833ACBF /* Pods-detach2-frameworks.sh */,
+				99A76A7BE6CE4E18FC69429840FD8E45 /* Pods-detach2-Info.plist */,
+				98DFC8AF0E699C0536F132F1598A5E41 /* Pods-detach2-umbrella.h */,
+				866C3A84B2BDD86D94221185051D567A /* Pods-detach2.debug.xcconfig */,
+				A0EDDBFA2AEA1649D54D5A7D240FB403 /* Pods-detach2.release.xcconfig */,
 			);
 			name = "Pods-detach2";
 			path = "Target Support Files/Pods-detach2";
-			sourceTree = "<group>";
-		};
-		86A3AB047F77A654C2357AE90F368AD6 /* Pods-detach2Tests */ = {
-			isa = PBXGroup;
-			children = (
-				D327ED74DE856BD27EB269FF0281BC81 /* Pods-detach2Tests.modulemap */,
-				D6E73F91FA29A833BC413407A13C4983 /* Pods-detach2Tests-acknowledgements.markdown */,
-				662D814CC4B00847A07909ADDC1D449C /* Pods-detach2Tests-acknowledgements.plist */,
-				4FC4F0A90E93F9C3DC13F401518B837F /* Pods-detach2Tests-dummy.m */,
-				B8335EFAB4B4A97E0431C5BFE8C43533 /* Pods-detach2Tests-Info.plist */,
-				CCB1220C766BACD13DBC128299D3D16F /* Pods-detach2Tests-umbrella.h */,
-				DC946C5CA2A3EA633A7062A33181FBF7 /* Pods-detach2Tests.debug.xcconfig */,
-				5BFF549B439F3EB9CB4B4E6B807F3A7E /* Pods-detach2Tests.release.xcconfig */,
-			);
-			name = "Pods-detach2Tests";
-			path = "Target Support Files/Pods-detach2Tests";
 			sourceTree = "<group>";
 		};
 		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
@@ -224,14 +332,18 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		C2937929F5E9C4BE5F800DB2FFDED311 /* Targets Support Files */ = {
+		C7BE9BD4470BFC1E6DD43778673E10A9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7E445338FD404E6B6E4EB0BDCDDC913B /* Pods-detach2 */,
-				709177657D34CDA79C6AA0E25B61FC91 /* Pods-detach2-detach2UITests */,
-				86A3AB047F77A654C2357AE90F368AD6 /* Pods-detach2Tests */,
+				D0A70003FD5E49B30CA83DAAFE03116B /* Introspect.framework */,
+				B475A2AA029D3B1C490C1FB9CB4AA45D /* Pods_detach2.framework */,
+				721D5DA32553F4E632F4DA6380B613ED /* Pods_detach2_detach2UITests.framework */,
+				01F89F75D8F41C5731B0A0F6D3D8EF13 /* Pods_detach2Tests.framework */,
+				59B95E9CD43BC9BF9A30AD79B855D7CC /* Pods_DetachExtension.framework */,
+				3C811B80D1685D5372D9A32329E72941 /* Willow.framework */,
+				3A1E2B313C7851784B0FC07557B64236 /* Willow.framework */,
 			);
-			name = "Targets Support Files";
+			name = Products;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -239,9 +351,9 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				20C24BE28A8BC1948F8DA34D666339A7 /* Pods */,
-				2606CAB469F529E71823AE0E5CC07AB9 /* Products */,
-				C2937929F5E9C4BE5F800DB2FFDED311 /* Targets Support Files */,
+				7B3F5CE6A8BAB3A58392EA9906FD74CC /* Pods */,
+				C7BE9BD4470BFC1E6DD43778673E10A9 /* Products */,
+				06CAE1FF73479F5DA5F0A7AFD5391A0C /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
@@ -253,24 +365,79 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E74A7A19A59A269AF211D6D7D445E878 /* Support Files */ = {
+		E50A7CED3928664CC18DD5C7FEBBD92B /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				C6935A6B76A1F3ACA7781AE41385A149 /* Introspect.modulemap */,
-				A7133B45DB27B49E3F6A06E50B650D08 /* Introspect-dummy.m */,
-				C16A57B7BAC12B839B47B64EA86CB745 /* Introspect-Info.plist */,
-				3DF18865B218BCE5D62D0C436F575AFE /* Introspect-prefix.pch */,
-				1B6C185AFAF683A8F8152324DD89EEDF /* Introspect-umbrella.h */,
-				D1119A951EC43052081C7A9A0544F754 /* Introspect.debug.xcconfig */,
-				7FA8350B21394CC67B4C811628A647AB /* Introspect.release.xcconfig */,
+				B8BE15345427457E9191CD98ECFCD71C /* Introspect.modulemap */,
+				62EACB489EDC22A2586B0D18CBC26FD3 /* Introspect-dummy.m */,
+				1E56EE2BD5AA6DE9B7D2C60AF5D08197 /* Introspect-Info.plist */,
+				4F29567741F5197E51D187517650EFD2 /* Introspect-prefix.pch */,
+				27F4C2203FD7C08A2A24F96B224B1F29 /* Introspect-umbrella.h */,
+				8ACD9D40DEFA6076861A27D564441FE4 /* Introspect.debug.xcconfig */,
+				27C710FEA4FBBE326D1E1AD9464445BF /* Introspect.release.xcconfig */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/Introspect";
 			sourceTree = "<group>";
 		};
+		E73A2A615BBE96D6C77B989D26E44E8C /* Pods-detach2-detach2UITests */ = {
+			isa = PBXGroup;
+			children = (
+				BA00F17BAF9C86FECD70F96253ACC4F1 /* Pods-detach2-detach2UITests.modulemap */,
+				2D5B568F088DD6E77FEDD0A93AF8AABF /* Pods-detach2-detach2UITests-acknowledgements.markdown */,
+				34EA18CA06F6E43D91A69F221915C440 /* Pods-detach2-detach2UITests-acknowledgements.plist */,
+				97A13F8C73DDF93FBED680E74E8FFA94 /* Pods-detach2-detach2UITests-dummy.m */,
+				ADC201DA5773E0BC825AFE0B30CF3FEB /* Pods-detach2-detach2UITests-frameworks.sh */,
+				A9AE08B099459A60D0CC93D43B95320E /* Pods-detach2-detach2UITests-Info.plist */,
+				18A02305F26FC15FB994F08B6042F30F /* Pods-detach2-detach2UITests-umbrella.h */,
+				3FF7B5983FD950C0CB029E5ABA95F6FB /* Pods-detach2-detach2UITests.debug.xcconfig */,
+				EAD4C56E09601512F237C8B72CB51ABD /* Pods-detach2-detach2UITests.release.xcconfig */,
+			);
+			name = "Pods-detach2-detach2UITests";
+			path = "Target Support Files/Pods-detach2-detach2UITests";
+			sourceTree = "<group>";
+		};
+		FC1632C75CE9A275AE7732C6F58E7DEE /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				1EC75C9615E8CE583448DB7763ABEED5 /* Willow-iOS13.5.modulemap */,
+				B7790F01ADEFBE0E1D2F053D5E93BEFE /* Willow-iOS13.5-dummy.m */,
+				C71DDC1194F8D2113F2C602F33C11ECA /* Willow-iOS13.5-Info.plist */,
+				C2E0CAF508B2C4F836A5F868832E0897 /* Willow-iOS13.5-prefix.pch */,
+				39BCA8F85DC7E32EC2BE47A398691B0F /* Willow-iOS13.5-umbrella.h */,
+				D67428F06B1FCD753B3EA7659B7B4B36 /* Willow-iOS13.5.debug.xcconfig */,
+				85AD67150F7AF4DD59FA38E2F9C5AB94 /* Willow-iOS13.5.release.xcconfig */,
+				5058A6788E955C972CC013EB1C33A160 /* Willow-iOS13.6.modulemap */,
+				9CD7FB18146C0093C352AD40D5FA53E1 /* Willow-iOS13.6-dummy.m */,
+				AA7C25AB872A80B5E2D25628B7887E1E /* Willow-iOS13.6-Info.plist */,
+				39F768C2B84D5385D06723B5C9584A45 /* Willow-iOS13.6-prefix.pch */,
+				B13B31DB894942B516B6040DCD4E09EE /* Willow-iOS13.6-umbrella.h */,
+				4C154D4930584709D605381644F72F98 /* Willow-iOS13.6.debug.xcconfig */,
+				0DD79B39F636077E86FDB2058676A052 /* Willow-iOS13.6.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Willow-iOS13.5";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		00DC0ED5C93DF92FD78B39390B6B5352 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				971A8697EA5AE15845941116772BF7C8 /* Willow-iOS13.6-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24CF7A39C9C5B47B805C91DD4B4884B2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CCCB7A000731A7241AEA69DD7458F742 /* Pods-detach2-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		405CF6AD9C1F7D450DDAD551310EF898 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -279,19 +446,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		57C8B15D17C29A8143226A55C409FC55 /* Headers */ = {
+		40E08F276DABED5BD81822226028B769 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE5A61EC159FB35D73078D08372DDF93 /* Pods-detach2-umbrella.h in Headers */,
+				68169B47361AC822AF6A7D4E45D63AEF /* Pods-DetachExtension-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6E9BDAD9141919B895324B3E0E148860 /* Headers */ = {
+		4D683D37BF906EB9EDF37CE3D8714480 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07512F391DD23F1122B6A670543AF147 /* Pods-detach2-detach2UITests-umbrella.h in Headers */,
+				E35D6C393C17D1DB1AA6CE09A5B61B65 /* Willow-iOS13.5-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		514544556D9CBD9EC4150D9A335AD47D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DE7DBF9DF1DC8C1FCB5D2178E3B3C48 /* Pods-detach2-detach2UITests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,17 +483,18 @@
 /* Begin PBXNativeTarget section */
 		5124FA23EBE479013DF11C0996FD5943 /* Pods-detach2-detach2UITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0674AEFF8A6FB5E863991D7CD1DD5079 /* Build configuration list for PBXNativeTarget "Pods-detach2-detach2UITests" */;
+			buildConfigurationList = 3DABF15BCCFC2C46A292CFEF93AFEAC7 /* Build configuration list for PBXNativeTarget "Pods-detach2-detach2UITests" */;
 			buildPhases = (
-				6E9BDAD9141919B895324B3E0E148860 /* Headers */,
-				4919EBD97B6940706084DE780E2AAE40 /* Sources */,
-				379F1ABFA03696A6DA2FF92BA449C8CD /* Frameworks */,
-				3EFC585C58F63DECDB7960BEB39E568C /* Resources */,
+				514544556D9CBD9EC4150D9A335AD47D /* Headers */,
+				54EC86DC980593A7A0068BF76E311F74 /* Sources */,
+				2FCDA49EF7E472560ECF71ECAB54B327 /* Frameworks */,
+				5E340860DA3641532662BEEFB1283F5A /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C5796B886F60D12FDAC3F0F7E1537614 /* PBXTargetDependency */,
+				10ADE646E353C0F0C666B260AEFCA116 /* PBXTargetDependency */,
+				EE4564C80B87ED9E756748289CDF7E1E /* PBXTargetDependency */,
 			);
 			name = "Pods-detach2-detach2UITests";
 			productName = "Pods-detach2-detach2UITests";
@@ -327,21 +503,40 @@
 		};
 		57ABCD971C25345B93A7191CDB8F343F /* Pods-detach2 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EE865015E7E7719B7F9833218B3F247F /* Build configuration list for PBXNativeTarget "Pods-detach2" */;
+			buildConfigurationList = 75E968C15427FAF6220F5C0F8F52982D /* Build configuration list for PBXNativeTarget "Pods-detach2" */;
 			buildPhases = (
-				57C8B15D17C29A8143226A55C409FC55 /* Headers */,
-				E78B1C587F6936FC530D823DFD2A8C91 /* Sources */,
-				30FA151D9811849C183B0788141D0978 /* Frameworks */,
-				CE0C31294710F76AF16B153D193F8BC9 /* Resources */,
+				24CF7A39C9C5B47B805C91DD4B4884B2 /* Headers */,
+				10D0B596DD355796ADAE8C8356CE7059 /* Sources */,
+				D6553C6AE0FABA7CBCFCEA0FEAC24B29 /* Frameworks */,
+				915AD93D176A809C7B6A6917938723AA /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				F85D64DE76DAFA3CE9019F4898B8FBDA /* PBXTargetDependency */,
+				B24984F66C562FC21CC783CFFFC1291F /* PBXTargetDependency */,
+				1F64EC222840A34A0F6FBC2E010A8071 /* PBXTargetDependency */,
 			);
 			name = "Pods-detach2";
 			productName = "Pods-detach2";
 			productReference = B475A2AA029D3B1C490C1FB9CB4AA45D /* Pods_detach2.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		82DBA25BF6F7D05C82509C10CBE8C710 /* Willow-iOS13.5 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B485D57D9D3233396A2661B0DA878FB3 /* Build configuration list for PBXNativeTarget "Willow-iOS13.5" */;
+			buildPhases = (
+				4D683D37BF906EB9EDF37CE3D8714480 /* Headers */,
+				E2C8AB6E10B625A4B6EE5FC74352C333 /* Sources */,
+				CEF37AB9DFCB7D58614DD964E48CF66F /* Frameworks */,
+				F142EA5A44EC214EE2C85B651DB1CAB7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Willow-iOS13.5";
+			productName = "Willow-iOS13.5";
+			productReference = 3C811B80D1685D5372D9A32329E72941 /* Willow.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		967F98F468082BBEF8997638D9EB1A1B /* Pods-detach2Tests */ = {
@@ -356,7 +551,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				B5E5500AC41BE2F8C2D115B54DA594CC /* PBXTargetDependency */,
+				B443D80FFBFD8E2DAF72778F86CFDEE7 /* PBXTargetDependency */,
 			);
 			name = "Pods-detach2Tests";
 			productName = "Pods-detach2Tests";
@@ -381,6 +576,43 @@
 			productReference = D0A70003FD5E49B30CA83DAAFE03116B /* Introspect.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		CDB0F2AA28E3FA03A68528AE98FEBE0A /* Pods-DetachExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 429BCBBA19D26285A57E17B06C29C92C /* Build configuration list for PBXNativeTarget "Pods-DetachExtension" */;
+			buildPhases = (
+				40E08F276DABED5BD81822226028B769 /* Headers */,
+				45DFA65E226039AB0146E9C657D2904A /* Sources */,
+				371C079C12609F6C21F54565F3E6B149 /* Frameworks */,
+				4A031D899280DE6BD468B042BFAD3D54 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BE5E48AB34AC0B5A61BC16E36716736A /* PBXTargetDependency */,
+			);
+			name = "Pods-DetachExtension";
+			productName = "Pods-DetachExtension";
+			productReference = 59B95E9CD43BC9BF9A30AD79B855D7CC /* Pods_DetachExtension.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D04EAF5AA7CAFEE680DA34211FBA06DA /* Willow-iOS13.6 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 65007C5F86B3F386E27A0DA018318310 /* Build configuration list for PBXNativeTarget "Willow-iOS13.6" */;
+			buildPhases = (
+				00DC0ED5C93DF92FD78B39390B6B5352 /* Headers */,
+				7EE379991EF137614F62F8B8E1D3D44A /* Sources */,
+				64D43FB11E63438CD204FAF55DA012C7 /* Frameworks */,
+				05E05F6F8226E71B30F04266E77EB164 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Willow-iOS13.6";
+			productName = "Willow-iOS13.6";
+			productReference = 3A1E2B313C7851784B0FC07557B64236 /* Willow.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -391,7 +623,7 @@
 				LastUpgradeCheck = 1100;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -399,7 +631,7 @@
 				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 2606CAB469F529E71823AE0E5CC07AB9 /* Products */;
+			productRefGroup = C7BE9BD4470BFC1E6DD43778673E10A9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -407,19 +639,22 @@
 				57ABCD971C25345B93A7191CDB8F343F /* Pods-detach2 */,
 				5124FA23EBE479013DF11C0996FD5943 /* Pods-detach2-detach2UITests */,
 				967F98F468082BBEF8997638D9EB1A1B /* Pods-detach2Tests */,
+				CDB0F2AA28E3FA03A68528AE98FEBE0A /* Pods-DetachExtension */,
+				82DBA25BF6F7D05C82509C10CBE8C710 /* Willow-iOS13.5 */,
+				D04EAF5AA7CAFEE680DA34211FBA06DA /* Willow-iOS13.6 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		0CF6844CDBF49121C460836A8676E396 /* Resources */ = {
+		05E05F6F8226E71B30F04266E77EB164 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3EFC585C58F63DECDB7960BEB39E568C /* Resources */ = {
+		0CF6844CDBF49121C460836A8676E396 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -433,7 +668,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CE0C31294710F76AF16B153D193F8BC9 /* Resources */ = {
+		4A031D899280DE6BD468B042BFAD3D54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E340860DA3641532662BEEFB1283F5A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		915AD93D176A809C7B6A6917938723AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F142EA5A44EC214EE2C85B651DB1CAB7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -443,11 +699,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		4919EBD97B6940706084DE780E2AAE40 /* Sources */ = {
+		10D0B596DD355796ADAE8C8356CE7059 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21777447FB03B746A692DA86253DBF07 /* Pods-detach2-detach2UITests-dummy.m in Sources */,
+				B68159A4DA080519C9E5739E0187B6C9 /* Pods-detach2-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45DFA65E226039AB0146E9C657D2904A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12216FF30FA278EE8BA2C8C2048040BB /* Pods-DetachExtension-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,11 +723,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E78B1C587F6936FC530D823DFD2A8C91 /* Sources */ = {
+		54EC86DC980593A7A0068BF76E311F74 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DD5491AAC8B79034084438189BB8E37 /* Pods-detach2-dummy.m in Sources */,
+				C8483E7332D0CA3BA4420A1B9FA2EF5A /* Pods-detach2-detach2UITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7EE379991EF137614F62F8B8E1D3D44A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F5B4761AB33B11111755BAD8B30E505 /* Logger.swift in Sources */,
+				2F4BAD5C8195A8762F4FF1239E3E07A9 /* LogLevel.swift in Sources */,
+				FCA393A1DF903C932C0E507697763A34 /* LogMessage.swift in Sources */,
+				D84E55E0CFBB248680E2E79255684EE6 /* LogModifier.swift in Sources */,
+				900BB0496671C2BB1A860A4728B8F2FD /* LogWriter.swift in Sources */,
+				8209A55DC7AC631C4F3731221C4199EC /* Willow-iOS13.6-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E2C8AB6E10B625A4B6EE5FC74352C333 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E11E6E3EB0EC0031FFE25DE18164DE4D /* Logger.swift in Sources */,
+				95BBBD180E231C10005279E06CA25714 /* LogLevel.swift in Sources */,
+				ED650BD43F72B74D8725F7114DA48E91 /* LogMessage.swift in Sources */,
+				3184CCE76594089CAF9E86B9436C69DB /* LogModifier.swift in Sources */,
+				495CC23122E06E38DD76FC832635F0E8 /* LogWriter.swift in Sources */,
+				DDB0C8E3E2EEDE92B9B9B6A2D7713E56 /* Willow-iOS13.5-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,33 +773,49 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B5E5500AC41BE2F8C2D115B54DA594CC /* PBXTargetDependency */ = {
+		10ADE646E353C0F0C666B260AEFCA116 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Introspect;
+			target = 97E3685499568DCCBA6C15905F707BDC /* Introspect */;
+			targetProxy = 4E1949DF0403654EA6085C5DF6607336 /* PBXContainerItemProxy */;
+		};
+		1F64EC222840A34A0F6FBC2E010A8071 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Willow-iOS13.5";
+			target = 82DBA25BF6F7D05C82509C10CBE8C710 /* Willow-iOS13.5 */;
+			targetProxy = F7BEAD5EEA0996ACFBA3059B44D0BC54 /* PBXContainerItemProxy */;
+		};
+		B24984F66C562FC21CC783CFFFC1291F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Introspect;
+			target = 97E3685499568DCCBA6C15905F707BDC /* Introspect */;
+			targetProxy = F895A7592F2D1D630F6BAD1F183A1E08 /* PBXContainerItemProxy */;
+		};
+		B443D80FFBFD8E2DAF72778F86CFDEE7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-detach2";
 			target = 57ABCD971C25345B93A7191CDB8F343F /* Pods-detach2 */;
-			targetProxy = A2111B91F0B7935E0E67CDAC334E24ED /* PBXContainerItemProxy */;
+			targetProxy = ACD44D581F0A82CF4FCFE44AA0B69901 /* PBXContainerItemProxy */;
 		};
-		C5796B886F60D12FDAC3F0F7E1537614 /* PBXTargetDependency */ = {
+		BE5E48AB34AC0B5A61BC16E36716736A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = Introspect;
-			target = 97E3685499568DCCBA6C15905F707BDC /* Introspect */;
-			targetProxy = 296B48974539A6D24A3DFC9AEF18D75C /* PBXContainerItemProxy */;
+			name = "Willow-iOS13.6";
+			target = D04EAF5AA7CAFEE680DA34211FBA06DA /* Willow-iOS13.6 */;
+			targetProxy = 147B8B181710B11842B3507F0239F393 /* PBXContainerItemProxy */;
 		};
-		F85D64DE76DAFA3CE9019F4898B8FBDA /* PBXTargetDependency */ = {
+		EE4564C80B87ED9E756748289CDF7E1E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = Introspect;
-			target = 97E3685499568DCCBA6C15905F707BDC /* Introspect */;
-			targetProxy = 44F9D29893C4BB962B15D791EBB082A3 /* PBXContainerItemProxy */;
+			name = "Willow-iOS13.5";
+			target = 82DBA25BF6F7D05C82509C10CBE8C710 /* Willow-iOS13.5 */;
+			targetProxy = 42B75D740406982291CD991DCBC28EAE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		070DE5CBAE66F96D5424277A41A61935 /* Release */ = {
+		0C2F0D01425D4DF17D7758F18A9493E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F5740FCA5FA1C1CBE8C608B246D1BDB9 /* Pods-detach2-detach2UITests.release.xcconfig */;
+			baseConfigurationReference = D67428F06B1FCD753B3EA7659B7B4B36 /* Willow-iOS13.5.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -519,33 +825,31 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-detach2-detach2UITests/Pods-detach2-detach2UITests-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/Willow-iOS13.5/Willow-iOS13.5-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Willow-iOS13.5/Willow-iOS13.5-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-detach2-detach2UITests/Pods-detach2-detach2UITests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				MODULEMAP_FILE = "Target Support Files/Willow-iOS13.5/Willow-iOS13.5.modulemap";
+				PRODUCT_MODULE_NAME = Willow;
+				PRODUCT_NAME = Willow;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 		2646167C4A526ED24C9959C58C55F4E6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5BFF549B439F3EB9CB4B4E6B807F3A7E /* Pods-detach2Tests.release.xcconfig */;
+			baseConfigurationReference = D50094C0CD09B30E5F503D78C1EF931C /* Pods-detach2Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -582,47 +886,9 @@
 			};
 			name = Release;
 		};
-		291D74994F9E0BEC635411DDBA80179E /* Debug */ = {
+		416C26DD313F699339778E3B2B19635C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5C5E0F2346DC7416EB2D6CCF19F51151 /* Pods-detach2-detach2UITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-detach2-detach2UITests/Pods-detach2-detach2UITests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-detach2-detach2UITests/Pods-detach2-detach2UITests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		2ED12F70E2BCCF3E21A24760F085EF9C /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 288568E45117FAB05ADEEF409CD3B86C /* Pods-detach2.release.xcconfig */;
+			baseConfigurationReference = 866C3A84B2BDD86D94221185051D567A /* Pods-detach2.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -653,15 +919,49 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
+		};
+		7CF2EC0572A9AB76A7A9D09E061D6631 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C154D4930584709D605381644F72F98 /* Willow-iOS13.6.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Willow-iOS13.6/Willow-iOS13.6-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Willow-iOS13.6/Willow-iOS13.6-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/Willow-iOS13.6/Willow-iOS13.6.modulemap";
+				PRODUCT_MODULE_NAME = Willow;
+				PRODUCT_NAME = Willow;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		810328A36DDEEA8450085A4F3909F28A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DC946C5CA2A3EA633A7062A33181FBF7 /* Pods-detach2Tests.debug.xcconfig */;
+			baseConfigurationReference = F9C81C04DD912C5C63087947D3085E35 /* Pods-detach2Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -684,6 +984,80 @@
 				);
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-detach2Tests/Pods-detach2Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8F7BF7CA8133326356D0B844BCB1DF07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0DD79B39F636077E86FDB2058676A052 /* Willow-iOS13.6.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Willow-iOS13.6/Willow-iOS13.6-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Willow-iOS13.6/Willow-iOS13.6-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/Willow-iOS13.6/Willow-iOS13.6.modulemap";
+				PRODUCT_MODULE_NAME = Willow;
+				PRODUCT_NAME = Willow;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		90279E7D8E95EAA55959613BA32248B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95997844C0A92EB1584B6D69C8F6204A /* Pods-DetachExtension.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-DetachExtension/Pods-DetachExtension-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-DetachExtension/Pods-DetachExtension.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -699,7 +1073,7 @@
 		};
 		95FC1123250AE77E404DD57C3E1F5300 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7FA8350B21394CC67B4C811628A647AB /* Introspect.release.xcconfig */;
+			baseConfigurationReference = 27C710FEA4FBBE326D1E1AD9464445BF /* Introspect.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -734,9 +1108,45 @@
 			};
 			name = Release;
 		};
+		9B63DF21767A545560DC174D3599B6A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85AD67150F7AF4DD59FA38E2F9C5AB94 /* Willow-iOS13.5.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Willow-iOS13.5/Willow-iOS13.5-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Willow-iOS13.5/Willow-iOS13.5-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/Willow-iOS13.5/Willow-iOS13.5.modulemap";
+				PRODUCT_MODULE_NAME = Willow;
+				PRODUCT_NAME = Willow;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		9F1CEB789C4DA89392A2041E6D30CA68 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D1119A951EC43052081C7A9A0544F754 /* Introspect.debug.xcconfig */;
+			baseConfigurationReference = 8ACD9D40DEFA6076861A27D564441FE4 /* Introspect.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -770,9 +1180,9 @@
 			};
 			name = Debug;
 		};
-		B58EB4B0620754648B5D35048D366399 /* Debug */ = {
+		D1B0345A699992510BB4CFF921BFE1B1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7F88D54609EB99831EB3B8A9CB037831 /* Pods-detach2.debug.xcconfig */;
+			baseConfigurationReference = A0EDDBFA2AEA1649D54D5A7D240FB403 /* Pods-detach2.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -803,10 +1213,11 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 		DFD9D19FEEBF98DE271D7FBABCB845B5 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -872,6 +1283,84 @@
 			};
 			name = Debug;
 		};
+		ECCF28B063B1D3F95B4B9746E7F72405 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EAD4C56E09601512F237C8B72CB51ABD /* Pods-detach2-detach2UITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-detach2-detach2UITests/Pods-detach2-detach2UITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-detach2-detach2UITests/Pods-detach2-detach2UITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		EE2017DCB3ECD4FF3055F1006F02D267 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D05A40CD744826B27C321E93503D359 /* Pods-DetachExtension.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-DetachExtension/Pods-DetachExtension-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-DetachExtension/Pods-DetachExtension.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		F5F04600F5626DC980F02790D1ED2C19 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -932,18 +1421,47 @@
 			};
 			name = Release;
 		};
+		FC4090026DCD57B2D476348EE8DAC084 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3FF7B5983FD950C0CB029E5ABA95F6FB /* Pods-detach2-detach2UITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-detach2-detach2UITests/Pods-detach2-detach2UITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-detach2-detach2UITests/Pods-detach2-detach2UITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0674AEFF8A6FB5E863991D7CD1DD5079 /* Build configuration list for PBXNativeTarget "Pods-detach2-detach2UITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				291D74994F9E0BEC635411DDBA80179E /* Debug */,
-				070DE5CBAE66F96D5424277A41A61935 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		0FC8B7FB1536AE9455A5E723862ED35F /* Build configuration list for PBXNativeTarget "Pods-detach2Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -962,6 +1480,24 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		3DABF15BCCFC2C46A292CFEF93AFEAC7 /* Build configuration list for PBXNativeTarget "Pods-detach2-detach2UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC4090026DCD57B2D476348EE8DAC084 /* Debug */,
+				ECCF28B063B1D3F95B4B9746E7F72405 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		429BCBBA19D26285A57E17B06C29C92C /* Build configuration list for PBXNativeTarget "Pods-DetachExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90279E7D8E95EAA55959613BA32248B5 /* Debug */,
+				EE2017DCB3ECD4FF3055F1006F02D267 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -971,11 +1507,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EE865015E7E7719B7F9833218B3F247F /* Build configuration list for PBXNativeTarget "Pods-detach2" */ = {
+		65007C5F86B3F386E27A0DA018318310 /* Build configuration list for PBXNativeTarget "Willow-iOS13.6" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B58EB4B0620754648B5D35048D366399 /* Debug */,
-				2ED12F70E2BCCF3E21A24760F085EF9C /* Release */,
+				7CF2EC0572A9AB76A7A9D09E061D6631 /* Debug */,
+				8F7BF7CA8133326356D0B844BCB1DF07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		75E968C15427FAF6220F5C0F8F52982D /* Build configuration list for PBXNativeTarget "Pods-detach2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				416C26DD313F699339778E3B2B19635C /* Debug */,
+				D1B0345A699992510BB4CFF921BFE1B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B485D57D9D3233396A2661B0DA878FB3 /* Build configuration list for PBXNativeTarget "Willow-iOS13.5" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0C2F0D01425D4DF17D7758F18A9493E7 /* Debug */,
+				9B63DF21767A545560DC174D3599B6A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -20,7 +20,21 @@
 		A32A970724E3330B002C1145 /* georgia italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A32A970624E3330B002C1145 /* georgia italic.ttf */; };
 		A32A970B24E3405B002C1145 /* HomeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32A970A24E3405B002C1145 /* HomeMenu.swift */; };
 		A32A970F24E341DA002C1145 /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32A970E24E341DA002C1145 /* StartScreen.swift */; };
+		A392C7BB24E4480F00D5DAF4 /* TunnelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A392C7BA24E4480F00D5DAF4 /* TunnelController.swift */; };
+		A392C7BD24E4482400D5DAF4 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A392C7BC24E4482400D5DAF4 /* Util.swift */; };
+		A392C7BF24E448C300D5DAF4 /* Logs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A392C7BE24E448C300D5DAF4 /* Logs.swift */; };
+		A392C7E524E449A500D5DAF4 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A392C7E424E449A500D5DAF4 /* PacketTunnelProvider.swift */; };
+		A392C7EA24E449A500D5DAF4 /* DetachExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A392C7E224E449A500D5DAF4 /* DetachExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A392C7EF24E44A7500D5DAF4 /* Logs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A392C7EE24E44A7500D5DAF4 /* Logs.swift */; };
+		A392C7F124E44A8700D5DAF4 /* DetachProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A392C7F024E44A8700D5DAF4 /* DetachProxy.swift */; };
+		A392C7F324E44A9400D5DAF4 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A392C7F224E44A9400D5DAF4 /* Utils.swift */; };
+		A392C7F524E44AA100D5DAF4 /* DomainEval.swift in Sources */ = {isa = PBXBuildFile; fileRef = A392C7F424E44AA100D5DAF4 /* DomainEval.swift */; };
+		A392C7F724E44F9300D5DAF4 /* NEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A392C7F624E44F9300D5DAF4 /* NEKit.framework */; };
+		A392C7F824E44F9300D5DAF4 /* NEKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A392C7F624E44F9300D5DAF4 /* NEKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A392C7FC24E4507C00D5DAF4 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A392C7FB24E4507C00D5DAF4 /* NetworkExtension.framework */; };
+		A392C7FE24E4509800D5DAF4 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A392C7FB24E4507C00D5DAF4 /* NetworkExtension.framework */; };
 		A3B7E5FF24E34B4900E06E47 /* NewYorkLarge-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A3B7E5FE24E34B4900E06E47 /* NewYorkLarge-SemiboldItalic.otf */; };
+		D732C81721DC1FE5DF292F49 /* Pods_DetachExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6938E312E8825119B207F5DB /* Pods_DetachExtension.framework */; };
 		E40EEC7263ACEACD371AC373 /* Pods_detach2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE560AD3B45B5337811B579 /* Pods_detach2Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,16 +53,51 @@
 			remoteGlobalIDString = A32A96CF24E32DAD002C1145;
 			remoteInfo = detach2;
 		};
+		A392C7E824E449A500D5DAF4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A32A96C824E32DAD002C1145 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A392C7E124E449A500D5DAF4;
+			remoteInfo = DetachExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A392C7D024E448E200D5DAF4 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A392C7EA24E449A500D5DAF4 /* DetachExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A392C7F924E44F9300D5DAF4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A392C7F824E44F9300D5DAF4 /* NEKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1CA2610A608D9E90C8C24611 /* Pods-detach2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-detach2Tests.debug.xcconfig"; path = "Target Support Files/Pods-detach2Tests/Pods-detach2Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		1D3D6CB7977FAA53E7E1BDF3 /* Pods-detach2-detach2UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-detach2-detach2UITests.debug.xcconfig"; path = "Target Support Files/Pods-detach2-detach2UITests/Pods-detach2-detach2UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3BC449EC7055B0DC4D89CAF9 /* Pods-detach2-detach2UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-detach2-detach2UITests.release.xcconfig"; path = "Target Support Files/Pods-detach2-detach2UITests/Pods-detach2-detach2UITests.release.xcconfig"; sourceTree = "<group>"; };
 		3BCE06EF48515C1B15CE4DA9 /* Pods_detach2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_detach2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		56DB5790292F58BA22A639B3 /* Pods-DetachExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DetachExtension.release.xcconfig"; path = "Target Support Files/Pods-DetachExtension/Pods-DetachExtension.release.xcconfig"; sourceTree = "<group>"; };
 		66F78CA2F68FFF3D03E003D0 /* Pods-detach2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-detach2.debug.xcconfig"; path = "Target Support Files/Pods-detach2/Pods-detach2.debug.xcconfig"; sourceTree = "<group>"; };
+		6938E312E8825119B207F5DB /* Pods_DetachExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DetachExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CE560AD3B45B5337811B579 /* Pods_detach2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_detach2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9796B68AD7CE6C28E4A8600E /* Pods-detach2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-detach2Tests.release.xcconfig"; path = "Target Support Files/Pods-detach2Tests/Pods-detach2Tests.release.xcconfig"; sourceTree = "<group>"; };
+		A108B8F14C8CADE803752A5C /* Pods-DetachExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DetachExtension.debug.xcconfig"; path = "Target Support Files/Pods-DetachExtension/Pods-DetachExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		A32A96D024E32DAD002C1145 /* detach2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = detach2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A32A96D324E32DAD002C1145 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A32A96D524E32DAD002C1145 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +115,20 @@
 		A32A970624E3330B002C1145 /* georgia italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "georgia italic.ttf"; sourceTree = "<group>"; };
 		A32A970A24E3405B002C1145 /* HomeMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMenu.swift; sourceTree = "<group>"; };
 		A32A970E24E341DA002C1145 /* StartScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreen.swift; sourceTree = "<group>"; };
+		A392C7BA24E4480F00D5DAF4 /* TunnelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunnelController.swift; sourceTree = "<group>"; };
+		A392C7BC24E4482400D5DAF4 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		A392C7BE24E448C300D5DAF4 /* Logs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logs.swift; sourceTree = "<group>"; };
+		A392C7E224E449A500D5DAF4 /* DetachExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DetachExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A392C7E424E449A500D5DAF4 /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
+		A392C7E624E449A500D5DAF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A392C7E724E449A500D5DAF4 /* DetachExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DetachExtension.entitlements; sourceTree = "<group>"; };
+		A392C7EE24E44A7500D5DAF4 /* Logs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logs.swift; sourceTree = "<group>"; };
+		A392C7F024E44A8700D5DAF4 /* DetachProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetachProxy.swift; sourceTree = "<group>"; };
+		A392C7F224E44A9400D5DAF4 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		A392C7F424E44AA100D5DAF4 /* DomainEval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainEval.swift; sourceTree = "<group>"; };
+		A392C7F624E44F9300D5DAF4 /* NEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NEKit.framework; path = Carthage/Build/iOS/NEKit.framework; sourceTree = "<group>"; };
+		A392C7FB24E4507C00D5DAF4 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		A392C7FD24E4509800D5DAF4 /* detach2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = detach2.entitlements; sourceTree = "<group>"; };
 		A3B7E5FE24E34B4900E06E47 /* NewYorkLarge-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NewYorkLarge-SemiboldItalic.otf"; sourceTree = "<group>"; };
 		D24F1A8E5C92D27387E11352 /* Pods_detach2_detach2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_detach2_detach2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB1C2CAFEC693BFB03A01934 /* Pods-detach2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-detach2.release.xcconfig"; path = "Target Support Files/Pods-detach2/Pods-detach2.release.xcconfig"; sourceTree = "<group>"; };
@@ -77,6 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				066A323AEBD9C1179F372DEB /* Pods_detach2.framework in Frameworks */,
+				A392C7FE24E4509800D5DAF4 /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +160,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A392C7DF24E449A500D5DAF4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A392C7F724E44F9300D5DAF4 /* NEKit.framework in Frameworks */,
+				A392C7FC24E4507C00D5DAF4 /* NetworkExtension.framework in Frameworks */,
+				D732C81721DC1FE5DF292F49 /* Pods_DetachExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -108,6 +182,8 @@
 				3BC449EC7055B0DC4D89CAF9 /* Pods-detach2-detach2UITests.release.xcconfig */,
 				1CA2610A608D9E90C8C24611 /* Pods-detach2Tests.debug.xcconfig */,
 				9796B68AD7CE6C28E4A8600E /* Pods-detach2Tests.release.xcconfig */,
+				A108B8F14C8CADE803752A5C /* Pods-DetachExtension.debug.xcconfig */,
+				56DB5790292F58BA22A639B3 /* Pods-DetachExtension.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -118,6 +194,7 @@
 				A32A96D224E32DAD002C1145 /* detach2 */,
 				A32A96E924E32DAF002C1145 /* detach2Tests */,
 				A32A96F424E32DAF002C1145 /* detach2UITests */,
+				A392C7E324E449A500D5DAF4 /* DetachExtension */,
 				A32A96D124E32DAD002C1145 /* Products */,
 				5070862D29D4F34C11649BDC /* Pods */,
 				C7832D03B69040BEA28028E3 /* Frameworks */,
@@ -130,6 +207,7 @@
 				A32A96D024E32DAD002C1145 /* detach2.app */,
 				A32A96E624E32DAF002C1145 /* detach2Tests.xctest */,
 				A32A96F124E32DAF002C1145 /* detach2UITests.xctest */,
+				A392C7E224E449A500D5DAF4 /* DetachExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -137,6 +215,8 @@
 		A32A96D224E32DAD002C1145 /* detach2 */ = {
 			isa = PBXGroup;
 			children = (
+				A392C7FD24E4509800D5DAF4 /* detach2.entitlements */,
+				A392C7B924E4480000D5DAF4 /* vpn */,
 				A392C78F24E42DC600D5DAF4 /* start */,
 				A3B7E5FE24E34B4900E06E47 /* NewYorkLarge-SemiboldItalic.otf */,
 				A32A96D324E32DAD002C1145 /* AppDelegate.swift */,
@@ -148,7 +228,6 @@
 				A32A96E124E32DAF002C1145 /* Info.plist */,
 				A32A96DB24E32DAF002C1145 /* Preview Content */,
 				A32A970A24E3405B002C1145 /* HomeMenu.swift */,
-				A32A970E24E341DA002C1145 /* StartScreen.swift */,
 			);
 			path = detach2;
 			sourceTree = "<group>";
@@ -182,16 +261,44 @@
 		A392C78F24E42DC600D5DAF4 /* start */ = {
 			isa = PBXGroup;
 			children = (
+				A32A970E24E341DA002C1145 /* StartScreen.swift */,
 			);
 			path = start;
+			sourceTree = "<group>";
+		};
+		A392C7B924E4480000D5DAF4 /* vpn */ = {
+			isa = PBXGroup;
+			children = (
+				A392C7BA24E4480F00D5DAF4 /* TunnelController.swift */,
+				A392C7BC24E4482400D5DAF4 /* Util.swift */,
+				A392C7BE24E448C300D5DAF4 /* Logs.swift */,
+			);
+			path = vpn;
+			sourceTree = "<group>";
+		};
+		A392C7E324E449A500D5DAF4 /* DetachExtension */ = {
+			isa = PBXGroup;
+			children = (
+				A392C7E424E449A500D5DAF4 /* PacketTunnelProvider.swift */,
+				A392C7E624E449A500D5DAF4 /* Info.plist */,
+				A392C7E724E449A500D5DAF4 /* DetachExtension.entitlements */,
+				A392C7EE24E44A7500D5DAF4 /* Logs.swift */,
+				A392C7F024E44A8700D5DAF4 /* DetachProxy.swift */,
+				A392C7F224E44A9400D5DAF4 /* Utils.swift */,
+				A392C7F424E44AA100D5DAF4 /* DomainEval.swift */,
+			);
+			path = DetachExtension;
 			sourceTree = "<group>";
 		};
 		C7832D03B69040BEA28028E3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A392C7FB24E4507C00D5DAF4 /* NetworkExtension.framework */,
+				A392C7F624E44F9300D5DAF4 /* NEKit.framework */,
 				3BCE06EF48515C1B15CE4DA9 /* Pods_detach2.framework */,
 				D24F1A8E5C92D27387E11352 /* Pods_detach2_detach2UITests.framework */,
 				8CE560AD3B45B5337811B579 /* Pods_detach2Tests.framework */,
+				6938E312E8825119B207F5DB /* Pods_DetachExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -204,14 +311,17 @@
 			buildConfigurationList = A32A96FA24E32DAF002C1145 /* Build configuration list for PBXNativeTarget "detach2" */;
 			buildPhases = (
 				34F16910D4BA93AB8AB613E4 /* [CP] Check Pods Manifest.lock */,
+				A392C79024E4468D00D5DAF4 /* Swiftformat */,
 				A32A96CC24E32DAD002C1145 /* Sources */,
 				A32A96CD24E32DAD002C1145 /* Frameworks */,
 				A32A96CE24E32DAD002C1145 /* Resources */,
 				F5EC3852E1C47B15D1C6A2F0 /* [CP] Embed Pods Frameworks */,
+				A392C7D024E448E200D5DAF4 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A392C7E924E449A500D5DAF4 /* PBXTargetDependency */,
 			);
 			name = detach2;
 			productName = detach2;
@@ -257,6 +367,26 @@
 			productReference = A32A96F124E32DAF002C1145 /* detach2UITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		A392C7E124E449A500D5DAF4 /* DetachExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A392C7EB24E449A500D5DAF4 /* Build configuration list for PBXNativeTarget "DetachExtension" */;
+			buildPhases = (
+				C137AA7CCD66F33AF7F3EB31 /* [CP] Check Pods Manifest.lock */,
+				A392C7DE24E449A500D5DAF4 /* Sources */,
+				A392C7DF24E449A500D5DAF4 /* Frameworks */,
+				A392C7E024E449A500D5DAF4 /* Resources */,
+				A392C7F924E44F9300D5DAF4 /* Embed Frameworks */,
+				A392C7FA24E44FE700D5DAF4 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DetachExtension;
+			productName = DetachExtension;
+			productReference = A392C7E224E449A500D5DAF4 /* DetachExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -278,6 +408,9 @@
 						CreatedOnToolsVersion = 11.6;
 						TestTargetID = A32A96CF24E32DAD002C1145;
 					};
+					A392C7E124E449A500D5DAF4 = {
+						CreatedOnToolsVersion = 11.6;
+					};
 				};
 			};
 			buildConfigurationList = A32A96CB24E32DAD002C1145 /* Build configuration list for PBXProject "detach2" */;
@@ -296,6 +429,7 @@
 				A32A96CF24E32DAD002C1145 /* detach2 */,
 				A32A96E524E32DAF002C1145 /* detach2Tests */,
 				A32A96F024E32DAF002C1145 /* detach2UITests */,
+				A392C7E124E449A500D5DAF4 /* DetachExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -321,6 +455,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A32A96EF24E32DAF002C1145 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A392C7E024E449A500D5DAF4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -374,6 +515,42 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A392C79024E4468D00D5DAF4 /* Swiftformat */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftformat;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nswiftformat . --config f.swiftformat  --verbose\n";
+		};
+		A392C7FA24E44FE700D5DAF4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/NEKit.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+		};
 		BA3BA1F941D658F731659415 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -390,6 +567,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-detach2Tests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C137AA7CCD66F33AF7F3EB31 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DetachExtension-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -438,8 +637,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A32A970B24E3405B002C1145 /* HomeMenu.swift in Sources */,
+				A392C7BB24E4480F00D5DAF4 /* TunnelController.swift in Sources */,
+				A392C7BF24E448C300D5DAF4 /* Logs.swift in Sources */,
 				A32A96D424E32DAD002C1145 /* AppDelegate.swift in Sources */,
 				A32A970F24E341DA002C1145 /* StartScreen.swift in Sources */,
+				A392C7BD24E4482400D5DAF4 /* Util.swift in Sources */,
 				A32A96D624E32DAD002C1145 /* SceneDelegate.swift in Sources */,
 				A32A96D824E32DAD002C1145 /* ContentView.swift in Sources */,
 			);
@@ -461,6 +663,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A392C7DE24E449A500D5DAF4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A392C7F524E44AA100D5DAF4 /* DomainEval.swift in Sources */,
+				A392C7EF24E44A7500D5DAF4 /* Logs.swift in Sources */,
+				A392C7E524E449A500D5DAF4 /* PacketTunnelProvider.swift in Sources */,
+				A392C7F124E44A8700D5DAF4 /* DetachProxy.swift in Sources */,
+				A392C7F324E44A9400D5DAF4 /* Utils.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -473,6 +687,11 @@
 			isa = PBXTargetDependency;
 			target = A32A96CF24E32DAD002C1145 /* detach2 */;
 			targetProxy = A32A96F224E32DAF002C1145 /* PBXContainerItemProxy */;
+		};
+		A392C7E924E449A500D5DAF4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A392C7E124E449A500D5DAF4 /* DetachExtension */;
+			targetProxy = A392C7E824E449A500D5DAF4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -606,7 +825,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 66F78CA2F68FFF3D03E003D0 /* Pods-detach2.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = detach2/detach2.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"detach2/Preview Content\"";
 				DEVELOPMENT_TEAM = 356ZKVC65R;
@@ -628,7 +849,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FB1C2CAFEC693BFB03A01934 /* Pods-detach2.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = detach2/detach2.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"detach2/Preview Content\"";
 				DEVELOPMENT_TEAM = 356ZKVC65R;
@@ -734,6 +957,56 @@
 			};
 			name = Release;
 		};
+		A392C7EC24E449A500D5DAF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A108B8F14C8CADE803752A5C /* Pods-DetachExtension.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = DetachExtension/DetachExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 356ZKVC65R;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = DetachExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.detachapp.detach2.DetachExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A392C7ED24E449A500D5DAF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56DB5790292F58BA22A639B3 /* Pods-DetachExtension.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = DetachExtension/DetachExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 356ZKVC65R;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = DetachExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.detachapp.detach2.DetachExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -769,6 +1042,15 @@
 			buildConfigurations = (
 				A32A970124E32DAF002C1145 /* Debug */,
 				A32A970224E32DAF002C1145 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A392C7EB24E449A500D5DAF4 /* Build configuration list for PBXNativeTarget "DetachExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A392C7EC24E449A500D5DAF4 /* Debug */,
+				A392C7ED24E449A500D5DAF4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

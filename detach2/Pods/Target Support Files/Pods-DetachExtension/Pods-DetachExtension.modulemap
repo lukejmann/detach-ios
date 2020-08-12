@@ -1,0 +1,6 @@
+framework module Pods_DetachExtension {
+  umbrella header "Pods-DetachExtension-umbrella.h"
+
+  export *
+  module * { export * }
+}
