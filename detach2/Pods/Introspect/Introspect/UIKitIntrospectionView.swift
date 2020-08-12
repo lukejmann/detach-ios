@@ -4,13 +4,13 @@ import SwiftUI
 
 /// Introspection UIView that is inserted alongside the target view.
 public class IntrospectionUIView: UIView {
-    
+
     required init() {
         super.init(frame: .zero)
         isHidden = true
         isUserInteractionEnabled = false
     }
-    
+
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -20,14 +20,14 @@ public class IntrospectionUIView: UIView {
 /// Introspection View that is injected into the UIKit hierarchy alongside the target view.
 /// After `updateUIView` is called, it calls `selector` to find the target view, then `customize` when the target view is found.
 public struct UIKitIntrospectionView<TargetViewType: UIView>: UIViewRepresentable {
-    
+
     /// Method that introspects the view hierarchy to find the target view.
     /// First argument is the introspection view itself, which is contained in a view host alongside the target view.
     let selector: (IntrospectionUIView) -> TargetViewType?
-    
+
     /// User-provided customization method for the target view.
     let customize: (TargetViewType) -> Void
-    
+
     public init(
         selector: @escaping (IntrospectionUIView) -> TargetViewType?,
         customize: @escaping (TargetViewType) -> Void
@@ -35,7 +35,7 @@ public struct UIKitIntrospectionView<TargetViewType: UIView>: UIViewRepresentabl
         self.selector = selector
         self.customize = customize
     }
-    
+
     public func makeUIView(context: UIViewRepresentableContext<UIKitIntrospectionView>) -> IntrospectionUIView {
         let view = IntrospectionUIView()
         view.accessibilityLabel = "IntrospectionUIView<\(TargetViewType.self)>"

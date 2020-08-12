@@ -8,7 +8,7 @@ public class IntrospectionUIViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         view = IntrospectionUIView()
     }
-    
+
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -17,10 +17,10 @@ public class IntrospectionUIViewController: UIViewController {
 
 /// This is the same logic as IntrospectionView but for view controllers. Please see details above.
 public struct UIKitIntrospectionViewController<TargetViewControllerType: UIViewController>: UIViewControllerRepresentable {
-    
+
     let selector: (IntrospectionUIViewController) -> TargetViewControllerType?
     let customize: (TargetViewControllerType) -> Void
-    
+
     public init(
         selector: @escaping (UIViewController) -> TargetViewControllerType?,
         customize: @escaping (TargetViewControllerType) -> Void
@@ -28,7 +28,7 @@ public struct UIKitIntrospectionViewController<TargetViewControllerType: UIViewC
         self.selector = selector
         self.customize = customize
     }
-    
+
     public func makeUIViewController(
         context: UIViewControllerRepresentableContext<UIKitIntrospectionViewController>
     ) -> IntrospectionUIViewController {
@@ -37,7 +37,7 @@ public struct UIKitIntrospectionViewController<TargetViewControllerType: UIViewC
         viewController.view.accessibilityLabel = "IntrospectionUIView<\(TargetViewControllerType.self)>"
         return viewController
     }
-    
+
     public func updateUIViewController(
         _ uiViewController: IntrospectionUIViewController,
         context: UIViewControllerRepresentableContext<UIKitIntrospectionViewController>
