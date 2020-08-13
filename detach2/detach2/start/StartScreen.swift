@@ -9,11 +9,11 @@ struct StartScreen: View {
     @State var startMode: StartMode = .disabled {
         didSet {
             print("START MODE SET TO \(startMode)")
-            if startMode == .proxyEnabled {
-//                DispatchQueue.main.asyncAfter(deadline: .now()+1) {
-                startMode = .showSlider
-//                }
-            }
+//            if startMode == .proxyEnabled {
+//          DispatchQueue.main.asyncAfter(deadline: .now()+1) {
+//                startMode = .showSlider
+//               }
+//            }
 //            if startMode == .validInput {
 //                print("in set to .validInput. TunnelController.shared.status(): \(TunnelController.shared.status().rawValue)")
 //                
@@ -140,7 +140,7 @@ enum StartMode {
     case validInput
     case proxyEnabled
     case proxyFailure
-    case showSlider
+//    case showSlider
 }
 
 extension StringProtocol {

@@ -22,7 +22,7 @@ struct SliderBar: View {
 
     func barColor(mode: StartMode) -> Color {
         switch mode {
-        case .showSlider:
+        case .proxyEnabled:
             return Color.sliderGreen
         case .validInput:
             return Color(red: 247 / 255, green: 255 / 255, blue: 182 / 255)
