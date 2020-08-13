@@ -12,10 +12,8 @@ struct CustomUIKitTextField: UIViewRepresentable {
     @Binding var text: String {
         didSet {
             resetSlider()
-            print("in set text. startMode: \(startMode)")
             if text != "00:00" && startMode == .disabled {
                 let status = TunnelController.shared.status()
-                print("proxy status: \(status.rawValue)")
                 if status == .connected {
                     self.startMode = .proxyEnabled
                 } else {

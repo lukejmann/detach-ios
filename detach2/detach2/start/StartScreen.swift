@@ -6,39 +6,20 @@ import SwiftUI
 struct StartScreen: View {
     var setScreen: (_ screen: String) -> Void
     @State var sliderPercent: Float = 20
-    @State var startMode: StartMode = .disabled {
-        didSet {
-            print("START MODE SET TO \(startMode)")
-//            if startMode == .proxyEnabled {
-//          DispatchQueue.main.asyncAfter(deadline: .now()+1) {
-//                startMode = .showSlider
-//               }
-//            }
-//            if startMode == .validInput {
-//                print("in set to .validInput. TunnelController.shared.status(): \(TunnelController.shared.status().rawValue)")
-//                
-//            }
-        }
-    }
+    @State var startMode: StartMode = .disabled
 
     @State var sliderDistance: CGFloat = 0
 
     @State var durationString: String = "00:00"
 
-    @State var keyboardVisible: Bool = true {
-        didSet {
-            print("keyboardVisible: \(keyboardVisible)")
-        }
-    }
+    @State var keyboardVisible: Bool = true
 
     func hideKeyboard() {
-        print("hide keyboard called")
         UIApplication.shared.hideKeyboard()
         keyboardVisible = false
     }
 
     func showKeyboard() {
-        print("show keyboard called")
         keyboardVisible = true
     }
 

@@ -9,11 +9,7 @@
 import SwiftUI
 
 struct SetupProxyButton: View {
-    @Binding var mode: StartMode {
-        didSet {
-            print("SetupProxyButton mode set to \(mode)")
-        }
-    }
+    @Binding var mode: StartMode 
 
     @State private var showProxyAlert = false
 
