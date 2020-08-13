@@ -30,6 +30,7 @@ struct LoggingConfiguration {
 }
 
 func Print(_ msg: String) {
+    return
     print("going to print \(msg)")
     if #available(iOS 10.0, *) {
         let consoleWriter = OSLogWriter(subsystem: "xyz.mann.Detach", category: msg, modifiers: [])

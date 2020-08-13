@@ -33,6 +33,10 @@
 		A392C7F824E44F9300D5DAF4 /* NEKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A392C7F624E44F9300D5DAF4 /* NEKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A392C7FC24E4507C00D5DAF4 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A392C7FB24E4507C00D5DAF4 /* NetworkExtension.framework */; };
 		A392C7FE24E4509800D5DAF4 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A392C7FB24E4507C00D5DAF4 /* NetworkExtension.framework */; };
+		A39A952624E4B79900377CD5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39A952524E4B79900377CD5 /* Colors.swift */; };
+		A39A952824E4C0EA00377CD5 /* SliderBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39A952724E4C0EA00377CD5 /* SliderBar.swift */; };
+		A39A952A24E4C15D00377CD5 /* SetupProxyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39A952924E4C15D00377CD5 /* SetupProxyButton.swift */; };
+		A39A952C24E4C17D00377CD5 /* CustomUIKitTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39A952B24E4C17D00377CD5 /* CustomUIKitTextField.swift */; };
 		A3B7E5FF24E34B4900E06E47 /* NewYorkLarge-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A3B7E5FE24E34B4900E06E47 /* NewYorkLarge-SemiboldItalic.otf */; };
 		D732C81721DC1FE5DF292F49 /* Pods_DetachExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6938E312E8825119B207F5DB /* Pods_DetachExtension.framework */; };
 		E40EEC7263ACEACD371AC373 /* Pods_detach2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE560AD3B45B5337811B579 /* Pods_detach2Tests.framework */; };
@@ -129,6 +133,10 @@
 		A392C7F624E44F9300D5DAF4 /* NEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NEKit.framework; path = Carthage/Build/iOS/NEKit.framework; sourceTree = "<group>"; };
 		A392C7FB24E4507C00D5DAF4 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		A392C7FD24E4509800D5DAF4 /* detach2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = detach2.entitlements; sourceTree = "<group>"; };
+		A39A952524E4B79900377CD5 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		A39A952724E4C0EA00377CD5 /* SliderBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderBar.swift; sourceTree = "<group>"; };
+		A39A952924E4C15D00377CD5 /* SetupProxyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProxyButton.swift; sourceTree = "<group>"; };
+		A39A952B24E4C17D00377CD5 /* CustomUIKitTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIKitTextField.swift; sourceTree = "<group>"; };
 		A3B7E5FE24E34B4900E06E47 /* NewYorkLarge-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NewYorkLarge-SemiboldItalic.otf"; sourceTree = "<group>"; };
 		D24F1A8E5C92D27387E11352 /* Pods_detach2_detach2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_detach2_detach2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB1C2CAFEC693BFB03A01934 /* Pods-detach2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-detach2.release.xcconfig"; path = "Target Support Files/Pods-detach2/Pods-detach2.release.xcconfig"; sourceTree = "<group>"; };
@@ -228,6 +236,7 @@
 				A32A96E124E32DAF002C1145 /* Info.plist */,
 				A32A96DB24E32DAF002C1145 /* Preview Content */,
 				A32A970A24E3405B002C1145 /* HomeMenu.swift */,
+				A39A952524E4B79900377CD5 /* Colors.swift */,
 			);
 			path = detach2;
 			sourceTree = "<group>";
@@ -262,6 +271,9 @@
 			isa = PBXGroup;
 			children = (
 				A32A970E24E341DA002C1145 /* StartScreen.swift */,
+				A39A952724E4C0EA00377CD5 /* SliderBar.swift */,
+				A39A952924E4C15D00377CD5 /* SetupProxyButton.swift */,
+				A39A952B24E4C17D00377CD5 /* CustomUIKitTextField.swift */,
 			);
 			path = start;
 			sourceTree = "<group>";
@@ -531,7 +543,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nswiftformat . --config f.swiftformat  --verbose\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#swiftformat . --config f.swiftformat  --verbose\n";
 		};
 		A392C7FA24E44FE700D5DAF4 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -646,13 +658,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				A32A970B24E3405B002C1145 /* HomeMenu.swift in Sources */,
+				A39A952624E4B79900377CD5 /* Colors.swift in Sources */,
 				A392C7BB24E4480F00D5DAF4 /* TunnelController.swift in Sources */,
 				A392C7BF24E448C300D5DAF4 /* Logs.swift in Sources */,
+				A39A952824E4C0EA00377CD5 /* SliderBar.swift in Sources */,
 				A32A96D424E32DAD002C1145 /* AppDelegate.swift in Sources */,
 				A32A970F24E341DA002C1145 /* StartScreen.swift in Sources */,
 				A392C7BD24E4482400D5DAF4 /* Util.swift in Sources */,
 				A32A96D624E32DAD002C1145 /* SceneDelegate.swift in Sources */,
+				A39A952A24E4C15D00377CD5 /* SetupProxyButton.swift in Sources */,
 				A32A96D824E32DAD002C1145 /* ContentView.swift in Sources */,
+				A39A952C24E4C17D00377CD5 /* CustomUIKitTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
