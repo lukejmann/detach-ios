@@ -11,6 +11,6 @@ import SwiftUI
 
 extension Color {
     public static var sliderGreen: Color {
-        return Color(red: 204 / 255.0, green: 255 / 255.0, blue: 182 / 255.0)
+        return Color(red: 18 / 255.0, green: 212 / 255.0, blue: 0 / 255.0)
     }
 }

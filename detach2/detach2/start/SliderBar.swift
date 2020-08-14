@@ -31,6 +31,8 @@ struct SliderBar: View {
         }
     }
 
+    @Environment(\.colorScheme) var colorScheme
+
     var body: some View {
         GeometryReader { geometry in
             // TODO: - there might be a need for horizontal and vertical alignments
@@ -43,36 +45,38 @@ struct SliderBar: View {
 
                 Rectangle()
                     .foregroundColor(.black)
-                    .frame(width: self.distance).border(Color.white)
-                Image("slider").resizable().frame(width: 55, height: 55, alignment: .leading).padding(.leading, CGFloat(self.distance)).gesture(DragGesture(minimumDistance: 0).onEnded { _ in
-                    self.distance = 0
-                    self.showKeyboard()
-                }
-                .onChanged { value in
-                    if self.mode == .disabled {
-                        return
+                    .frame(width: self.distance)
+                    .border(self.colorScheme == .dark ? Color.white : Color.black)
+                Image("slider").resizable().frame(width: 55, height: 55, alignment: .leading).border(self.colorScheme == .dark ? Color.white : Color.black)
+                    .padding(.leading, CGFloat(self.distance)).gesture(DragGesture(minimumDistance: 0).onEnded { _ in
+                        self.distance = 0
+                        self.showKeyboard()
                     }
-                    let xDist = value.location.x
-                    if !(xDist > geometry.size.width - 55 || xDist < 0) {
-                        self.distance = value.location.x
-                        self.percentage = min(max(0, Float(value.location.x / geometry.size.width * 100)), 100)
-//                        print("percent: \(self.percentage)")
-                        if self.percentage > 75 {
-//                            print("reached 75!")
-                            self.hideKeyboard()
-                            self.thresholdReached()
+                    .onChanged { value in
+                        if self.mode == .disabled {
+                            return
                         }
-                        self.percentage = Float(self.lastPercent)
-                    }
-                })
+                        let xDist = value.location.x
+                        if !(xDist > geometry.size.width - 55 || xDist < 0) {
+                            self.distance = value.location.x
+                            self.percentage = min(max(0, Float(value.location.x / geometry.size.width * 100)), 100)
+//                        print("percent: \(self.percentage)")
+                            if self.percentage > 82 {
+//                            print("reached 75!")
+                                self.hideKeyboard()
+                                self.thresholdReached()
+                            }
+                            self.percentage = Float(self.lastPercent)
+                        }
+                    })
             }.frame(width: nil, height: 55, alignment: .leading)
-                .border(Color.black)
+                .border(self.colorScheme == .dark ? Color.white : Color.black)
         }.frame(width: nil, height: 55, alignment: .leading).padding(.top, 42)
     }
 }
 
 struct SliderBar_Previews: PreviewProvider {
     static var previews: some View {
-      Text("N/A")
+        Text("N/A")
     }
 }

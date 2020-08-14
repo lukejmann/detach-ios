@@ -6,13 +6,16 @@ import SwiftUI
 struct StartScreen: View {
     var setScreen: (_ screen: String) -> Void
     @State var sliderPercent: Float = 20
-    @State var startMode: StartMode = .disabled
+    @State var startMode: StartMode = .proxyEnabled
 
     @State var sliderDistance: CGFloat = 0
 
     @State var durationString: String = "00:00"
 
     @State var keyboardVisible: Bool = true
+    
+    @Environment(\.colorScheme) var colorScheme
+
 
     func hideKeyboard() {
         UIApplication.shared.hideKeyboard()
@@ -25,7 +28,7 @@ struct StartScreen: View {
 
     init(setScreen: @escaping (_ screen: String) -> Void) {
         self.setScreen = setScreen
-    }
+    } 
 
     func connect(i: Int, callback: @escaping (_ success: Bool) -> Void) {
         let seconds = 1.0
@@ -52,7 +55,7 @@ struct StartScreen: View {
 
     func proxyAgreed() {
         resetSlider()
-        setBlockedDomains(domains: ["instagram.com"])
+//        setBlockedDomains(domains: ["instagram.com"])
         connect(i: 0) { success in
             if success {
                 self.startMode = .proxyEnabled
@@ -62,7 +65,24 @@ struct StartScreen: View {
         }
     }
 
-    func startSession() {}
+    func beginSess() {
+        let endTimeSec = calculateEndTimeSec(duration: self.durationString)
+        uploadSession(endTime: endTimeSec) { success in
+            if success {
+                self.setScreen("Session")
+            }
+        }
+    }
+    
+    func calculateEndTimeSec(duration: String) -> Int {
+        // TODO: unwrap
+        let hours = Int(duration[0]+duration[1])!
+        let minutes = Int(duration[3]+duration[4])!
+        let today = Date()
+        let hoursAdded = Calendar.current.date(byAdding: .hour, value: hours, to: today)!
+        let minutesAdded = Calendar.current.date(byAdding: .minute, value: minutes, to: hoursAdded)!
+        return Int(minutesAdded.timeIntervalSince1970)
+    }
 
     func resetSlider() {
         sliderDistance = 0
@@ -72,7 +92,7 @@ struct StartScreen: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .leading, spacing: 0) {
-                Image("back").resizable().frame(width: 9, height: 17, alignment: .leading).onTapGesture {
+                Image(self.colorScheme == .dark ? "backDark" : "backLight").resizable().frame(width: 9, height: 17, alignment: .leading).onTapGesture {
                     self.setScreen("HomeMenu")
                 }
                 Text("begin blocking session").font(.custom("Georgia-Italic", size: 25)).padding(.top, 30)
@@ -93,9 +113,9 @@ struct StartScreen: View {
                     Spacer().frame(width: 31, height: 0, alignment: .center)
                     Text("MINUTES")
                     Spacer()
-                }.padding(.top, 8)
+                }.padding(.top, 60)
                 if self.startMode == .proxyEnabled {
-                    SliderBar(percentage: self.$sliderPercent, distance: self.$sliderDistance, mode: self.$startMode, showKeyboard: self.showKeyboard, hideKeyboard: self.hideKeyboard, thresholdReached: self.startSession)
+                    SliderBar(percentage: self.$sliderPercent, distance: self.$sliderDistance, mode: self.$startMode, showKeyboard: self.showKeyboard, hideKeyboard: self.hideKeyboard, thresholdReached: self.beginSess)
                 } else {
                     SetupProxyButton(mode: self.$startMode, proxyDeclined: self.proxyDeclined, proxyAgreed: self.proxyAgreed, hideKeyboard: self.hideKeyboard)
                 }

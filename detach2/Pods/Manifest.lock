@@ -1,20 +1,30 @@
 PODS:
+  - Alamofire (5.2.2)
   - Introspect (0.1.0)
+  - Moya (14.0.0):
+    - Moya/Core (= 14.0.0)
+  - Moya/Core (14.0.0):
+    - Alamofire (~> 5.0)
   - Willow (5.2.1)
 
 DEPENDENCIES:
   - Introspect
+  - Moya (~> 14.0)
   - Willow (~> 5.0)
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - Introspect
+    - Moya
     - Willow
 
 SPEC CHECKSUMS:
+  Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
   Introspect: ad32f2b7b9e7ac2c008b9dfec3d5325fbd3660fa
+  Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   Willow: a6310f9aedcb6f4de8c35b94fd3416a660ae9280
 
-PODFILE CHECKSUM: 9592a006fa15d6889c335e36c779920e9c04ca82
+PODFILE CHECKSUM: 648f65f4dd4aa0b036caed66cc4cbd63f0d09899
 
 COCOAPODS: 1.9.3

@@ -17,6 +17,12 @@ class TunnelController: NSObject {
 
         refreshManager()
     }
+    
+    
+    func disable() {
+        setBlockedDomains(domains: [""])
+        setEnabled(false)
+    }
 
     func refreshManager(completion: @escaping (_ error: Error?) -> Void = { _ in }) {
         Print("MARK: In TunnelController refreshManager ")
