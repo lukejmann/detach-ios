@@ -12,8 +12,9 @@ var timerEnd = Date()
 
 func uploadSession(endTime: Int, completion: @escaping (Bool) -> Void) {
     let appNames = getSelectedAppNames()
+    setupBlockedDomains(appNames: appNames)
 
-    let sessionCreateOpt = SessionCreateOpt(userID: "1", endTime: endTime, appNames: appNames, deviceToken: "deviceToken")
+    let sessionCreateOpt = SessionCreateOpt(userID: "1", endTime: endTime, deviceToken: "deviceToken")
     detachProvier.request(.createSession(opt: sessionCreateOpt)) { result in
 
         print("result in createSession res: \(result)")
@@ -29,6 +30,7 @@ func uploadSession(endTime: Int, completion: @escaping (Bool) -> Void) {
                     print("res: \(res)")
                     if res.success{
                         setSessionID(sessionID: res.sessionID)
+                        print("successfully started session \(res.sessionID)")
                         completion(true)
                     } else {
                         completion(false)
@@ -48,6 +50,15 @@ func uploadSession(endTime: Int, completion: @escaping (Bool) -> Void) {
             completion(false)
         }
     }
+}
+
+
+func setupBlockedDomains(appNames: [String]) {
+    print("in setupBlockedDomains. appNames: \(appNames)")
+    if appNames.contains("instagram") {
+        setVPNDomains(domains: ["instagram.com"])
+    }
+    
 }
 
 public struct SessionCreateRes: Decodable {

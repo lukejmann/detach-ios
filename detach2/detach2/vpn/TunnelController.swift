@@ -20,7 +20,7 @@ class TunnelController: NSObject {
     
     
     func disable() {
-        setBlockedDomains(domains: [""])
+        setVPNDomains(domains: [""])
         setEnabled(false)
     }
 

@@ -18,7 +18,7 @@ public let detachProvier = MoyaProvider<DetachAPI>(plugins: [
         configuration:
         .init(formatter:
             .init(responseData: JSONResponseDataFormatter),
-            logOptions: .verbose)
+              logOptions: .default )
     ),
 ]
 )
@@ -35,10 +35,12 @@ public enum DetachAPI {
     case login(userID: String, email: String)
     case createSession(opt: SessionCreateOpt)
     case cancelSession(opt: SessionCancelOpt)
+    case fetchAppDomains
+
 }
 
 extension DetachAPI: TargetType {
-    public var baseURL: URL { return URL(string: "http://localhost/1")! }
+    public var baseURL: URL { return URL(string: "http://192.168.1.90/1")! }
     public var path: String {
         switch self {
         case .login:
@@ -47,6 +49,8 @@ extension DetachAPI: TargetType {
             return "/sessions/create"
         case .cancelSession:
             return "/sessions/cancel"
+        case .fetchAppDomains:
+            return "/static/ADs"
         }
     }
 
@@ -58,6 +62,8 @@ extension DetachAPI: TargetType {
             return .post
         case .cancelSession:
             return .post
+        case .fetchAppDomains:
+            return .get
         }
     }
 
@@ -70,6 +76,9 @@ extension DetachAPI: TargetType {
             return .requestJSONEncodable(opt)
         case let .cancelSession(opt):
             return .requestJSONEncodable(opt)
+        case .fetchAppDomains:
+            return .requestPlain
+//        case .updateUser
 //        default:
 //            return .requestJSONEncodable()
         }
@@ -102,6 +111,8 @@ extension DetachAPI: TargetType {
             return "{\"opt\": \"\(opt)\"}".data(using: String.Encoding.utf8)!
         case let .cancelSession(opt):
             return "{\"opt\": \"\(opt)\"}".data(using: String.Encoding.utf8)!
+        case .fetchAppDomains:
+            return "{}".data(using: String.Encoding.utf8)!
         }
     }
 
@@ -129,7 +140,6 @@ extension Moya.Response {
 public struct SessionCreateOpt: Codable {
     var userID: String
     var endTime: Int
-    var appNames: [String]
     var deviceToken: String
 }
 

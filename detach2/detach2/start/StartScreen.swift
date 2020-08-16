@@ -6,7 +6,7 @@ import SwiftUI
 struct StartScreen: View {
     var setScreen: (_ screen: String) -> Void
     @State var sliderPercent: Float = 20
-    @State var startMode: StartMode = .proxyEnabled
+    @State var startMode: StartMode = .disabled
 
     @State var sliderDistance: CGFloat = 0
 
@@ -55,7 +55,7 @@ struct StartScreen: View {
 
     func proxyAgreed() {
         resetSlider()
-//        setBlockedDomains(domains: ["instagram.com"])
+//        setVPNDomains(domains: ["instagram.com"])
         connect(i: 0) { success in
             if success {
                 self.startMode = .proxyEnabled

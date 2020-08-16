@@ -13,12 +13,11 @@ struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
 
     func onAppAppears() {
-        setUserID(userID: "1")
-        detachProvier.request(.login(userID: "1", email: "l@mann.xyz")) { result in
-            print("login result: \(result)")
-        }
+        loginUser()
+
         if Date() > timerEnd {
             TunnelController.shared.disable()
+            self.cScreen = "HomeMenu"
         }
     }
 
@@ -36,12 +35,19 @@ struct ContentView: View {
                 SessionScreen { screen in
                     self.cScreen = screen
                 }
-            } else {
+            } else if self.cScreen == "SelectApps" {
+                SelectAppsScreen { screen in
+                    self.cScreen = screen
+                }
+            }
+            
+
+            else {
                 Text("Unknown Screen" + self.cScreen)
             }
         }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity).edgesIgnoringSafeArea(.all).onAppear {
             self.onAppAppears()
-        }
+        }.padding(.top,10)
     }
 }
 

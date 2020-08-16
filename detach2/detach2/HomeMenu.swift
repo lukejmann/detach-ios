@@ -20,7 +20,7 @@ struct HomeMenu: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .center, spacing: 95.0) {
-                Text("detach").font(.custom("Georgia-Italic", size: 42)).padding(.top, 120)
+                Text("detach").font(.custom("Georgia-Italic", size: 42)).padding(.top, 70)
                 VStack(alignment: .leading, spacing: 95) {
 //                NavigationLink(destination: StartView()){
                     HStack(alignment: .center, spacing: 28) {
@@ -39,7 +39,10 @@ struct HomeMenu: View {
                             Text("SELECT")
                             Text("APPS")
                         }
+                    }.onTapGesture {
+                        self.setScreen("SelectApps")
                     }
+
                     HStack(alignment: .center, spacing: 28) {
                         Image(self.colorScheme == .dark ? "plusDark" : "plusLight").resizable().frame(width: 50, height: 50, alignment: .center)
                         VStack(alignment: .leading, spacing: -12) {

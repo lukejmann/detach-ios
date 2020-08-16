@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct SetupProxyButton: View {
-    @Binding var mode: StartMode 
+    @Binding var mode: StartMode
 
     @State private var showProxyAlert = false
 
@@ -67,11 +67,13 @@ struct SetupProxyButton: View {
                         primaryButton: .default(
                             Text("Cancel"),
                             action: {
+                                setUserAgreedToVPN(userAgreedToVPN: false)
                                 self.proxyDeclined()
                             }),
                         secondaryButton: .default(
                             Text("Continue"),
                             action: {
+                                setUserAgreedToVPN(userAgreedToVPN: true)
                                 self.proxyAgreed()
                             }))
                 }

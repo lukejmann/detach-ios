@@ -8,6 +8,8 @@ let userInfoDefaults = UserDefaults(suiteName: "group.com.detachapp.ios1.userInf
 
 let kEndTime = "timerEndTime"
 
+var supportedApps = [App]()
+
 public func getEndTime() -> Int {
     let endTime = timerDefaults.integer(forKey: kEndTime)
     print("in getEndTime. endTime: \(endTime)")
@@ -23,6 +25,7 @@ let kSupportedApps = "supportedApps"
 let kSelectedAppNames = "selectedAppNames"
 
 public func getSupportedApps() -> [App] {
+    return supportedApps
     if let apps = appsDefaults.array(forKey: kSupportedApps) {
         print("in getSupportedApps. supported apps: \(apps)")
         return apps as! [App]
@@ -33,8 +36,18 @@ public func getSupportedApps() -> [App] {
 }
 
 public func setSupportedApps(apps: [App]) {
-    print("in setSupportedApps. setting apps to : \(apps)")
-    appsDefaults.set(apps, forKey: kSupportedApps)
+    supportedApps = apps
+    return
+    
+    //TODO: add UserDefaults support
+    print("in setSupportedApps. setting apps to arr of len: \(apps.count)")
+    do {
+        let appsData = try NSKeyedArchiver.archivedData(withRootObject: apps, requiringSecureCoding: false)
+        appsDefaults.set(appsData, forKey: kSupportedApps)
+    }
+    catch {
+        print("failed to set supported apps. failed to archive data")
+    }
 }
 
 public func getSelectedAppNames() -> [String] {
@@ -50,11 +63,6 @@ public func getSelectedAppNames() -> [String] {
 public func setSelectedAppNames(appNames: [String]) {
     print("in setSelectedAppNames. setting apps to : \(appNames)")
     appsDefaults.set(appNames, forKey: kSelectedAppNames)
-}
-
-public struct App {
-    var name: String
-    var domains: [String]
 }
 
 let kUserID = "userID"
@@ -81,4 +89,17 @@ public func getSessionID() -> String {
 public func setSessionID(sessionID: String) {
     print("in setSessionID.setting sessionID to : \(sessionID)")
     userInfoDefaults.set(sessionID, forKey: kSessionID)
+}
+
+let kUserAgreedToVPN = "userAgreedToVPN"
+
+public func getUserAgreedToVPN() -> Bool {
+    let userAgreedToVPN = userInfoDefaults.bool(forKey: kUserAgreedToVPN)
+    print("in getUserAgreedToVPN. userAgreedToVPN: \(userAgreedToVPN)")
+    return userAgreedToVPN ?? false
+}
+
+public func setUserAgreedToVPN(userAgreedToVPN: Bool) {
+    print("in userAgreedToVPN. Setting userAgreedToVPN to : \(userAgreedToVPN)")
+    userInfoDefaults.set(userAgreedToVPN, forKey: kUserAgreedToVPN)
 }
