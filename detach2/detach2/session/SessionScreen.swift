@@ -18,6 +18,7 @@ struct SessionScreen: View {
         df.pmSymbol = "pm"
 
         df.dateFormat = "hh:mm a."
+        print("timer end: \(timerEnd)")
 //        : "hh:mm a.'on' MMMM dd"
         if calendar.isDateInTomorrow(timerEnd) {
             df.dateFormat = "hh:mm a 'tommorow.'"
@@ -57,7 +58,7 @@ struct SessionScreen: View {
                         self.cancelPressed()
                     }
                 }.padding(.horizontal, 42)
-            }
+            }.background(Color.red)
             .frame(
                 width: geometry.size.width,
                 height: geometry.size.height,

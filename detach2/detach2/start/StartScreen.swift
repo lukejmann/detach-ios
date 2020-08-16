@@ -9,13 +9,16 @@ struct StartScreen: View {
     @State var startMode: StartMode = .disabled
 
     @State var sliderDistance: CGFloat = 0
+//    @State var sliderIsLocked: Bool = false
+    
+    @State var showProxyAlert: Bool = false
+
 
     @State var durationString: String = "00:00"
 
     @State var keyboardVisible: Bool = true
-    
-    @Environment(\.colorScheme) var colorScheme
 
+    @Environment(\.colorScheme) var colorScheme
 
     func hideKeyboard() {
         UIApplication.shared.hideKeyboard()
@@ -28,7 +31,7 @@ struct StartScreen: View {
 
     init(setScreen: @escaping (_ screen: String) -> Void) {
         self.setScreen = setScreen
-    } 
+    }
 
     func connect(i: Int, callback: @escaping (_ success: Bool) -> Void) {
         let seconds = 1.0
@@ -66,18 +69,19 @@ struct StartScreen: View {
     }
 
     func beginSess() {
-        let endTimeSec = calculateEndTimeSec(duration: self.durationString)
-        uploadSession(endTime: endTimeSec) { success in
+        print("begin sess called")
+        let endTimeSec = calculateEndTimeSec(duration: durationString)
+        uploadSession(endTimeUnix: endTimeSec) { success in
             if success {
                 self.setScreen("Session")
             }
         }
     }
-    
+
     func calculateEndTimeSec(duration: String) -> Int {
         // TODO: unwrap
-        let hours = Int(duration[0]+duration[1])!
-        let minutes = Int(duration[3]+duration[4])!
+        let hours = Int(duration[0] + duration[1])!
+        let minutes = Int(duration[3] + duration[4])!
         let today = Date()
         let hoursAdded = Calendar.current.date(byAdding: .hour, value: hours, to: today)!
         let minutesAdded = Calendar.current.date(byAdding: .minute, value: minutes, to: hoursAdded)!
@@ -87,6 +91,9 @@ struct StartScreen: View {
     func resetSlider() {
         sliderDistance = 0
         keyboardVisible = true
+    }
+    func toggleShowAlert() {
+        showProxyAlert.toggle()
     }
 
     var body: some View {
@@ -115,12 +122,12 @@ struct StartScreen: View {
                     Spacer()
                 }.padding(.top, 60)
                 if self.startMode == .proxyEnabled {
-                    SliderBar(percentage: self.$sliderPercent, distance: self.$sliderDistance, mode: self.$startMode, showKeyboard: self.showKeyboard, hideKeyboard: self.hideKeyboard, thresholdReached: self.beginSess)
+                    SliderBar(proxyAlertIsShowing: self.$showProxyAlert, percentage: self.$sliderPercent, distance: self.$sliderDistance, mode: self.$startMode, showKeyboard: self.showKeyboard, hideKeyboard: self.hideKeyboard, thresholdReached: self.beginSess)
                 } else {
-                    SetupProxyButton(mode: self.$startMode, proxyDeclined: self.proxyDeclined, proxyAgreed: self.proxyAgreed, hideKeyboard: self.hideKeyboard)
+                    SetupProxyButton(mode: self.$startMode, showProxyAlert: self.$showProxyAlert, proxyDeclined: self.proxyDeclined, proxyAgreed: self.proxyAgreed, hideKeyboard: self.hideKeyboard, toggleShowProxyAlert: self.toggleShowAlert)
                 }
 
-            }.padding(.top, 40).padding(.horizontal, 37)
+            }.padding(.top, 80).padding(.horizontal, 37)
                 .frame(
                     width: geometry.size.width,
                     height: geometry.size.height,

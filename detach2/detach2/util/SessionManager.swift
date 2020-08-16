@@ -10,11 +10,11 @@ import Foundation
 
 var timerEnd = Date()
 
-func uploadSession(endTime: Int, completion: @escaping (Bool) -> Void) {
+func uploadSession(endTimeUnix: Int, completion: @escaping (Bool) -> Void) {
     let appNames = getSelectedAppNames()
     setupBlockedDomains(appNames: appNames)
 
-    let sessionCreateOpt = SessionCreateOpt(userID: "1", endTime: endTime, deviceToken: "deviceToken")
+    let sessionCreateOpt = SessionCreateOpt(userID: "1", endTime: endTimeUnix, deviceToken: deviceToken)
     detachProvier.request(.createSession(opt: sessionCreateOpt)) { result in
 
         print("result in createSession res: \(result)")
@@ -28,7 +28,8 @@ func uploadSession(endTime: Int, completion: @escaping (Bool) -> Void) {
                 do {
                     let res = try JSONDecoder().decode(SessionCreateRes.self, from: data)
                     print("res: \(res)")
-                    if res.success{
+                    if res.success {
+                        timerEnd = Date(timeIntervalSince1970: TimeInterval(endTimeUnix))
                         setSessionID(sessionID: res.sessionID)
                         print("successfully started session \(res.sessionID)")
                         completion(true)
@@ -36,7 +37,7 @@ func uploadSession(endTime: Int, completion: @escaping (Bool) -> Void) {
                         completion(false)
                     }
 
-                } catch  {
+                } catch {
                     print("err: \(error)")
                 }
 
@@ -52,13 +53,17 @@ func uploadSession(endTime: Int, completion: @escaping (Bool) -> Void) {
     }
 }
 
-
 func setupBlockedDomains(appNames: [String]) {
     print("in setupBlockedDomains. appNames: \(appNames)")
-    if appNames.contains("instagram") {
-        setVPNDomains(domains: ["instagram.com"])
+    var domains = [String]()
+    supportedApps.forEach { app in
+        if appNames.contains(app.Name.lowercased()) {
+            app.URLs.forEach { url in
+                domains.append(url)
+            }
+        }
     }
-    
+    setVPNDomains(domains: domains)
 }
 
 public struct SessionCreateRes: Decodable {

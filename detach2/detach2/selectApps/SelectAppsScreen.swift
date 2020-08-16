@@ -18,9 +18,7 @@ struct SelectAppsScreen: View {
                     }
                     Text("select apps").font(.custom("Georgia-Italic", size: 25)).padding(.top, 30)
                     Text("SELECT WHICH APPS ARE BLOCKED DURING\nA SESSON").font(.system(size: 14, weight: .regular, design: .default)).padding(.top, 10)
-                }
-                .padding(.top, 40).padding(.horizontal, 37)
-//                Padding(
+                }.padding(.horizontal, 37)
                 Rectangle()
                     .border(Color.black, width: 2)
                     .frame(width: 0, height: 38, alignment: .leading)
@@ -30,7 +28,7 @@ struct SelectAppsScreen: View {
                         AppRow(app: sApp).listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0)).padding(.horizontal, 37).padding(.vertical, 5)
                     }
                 }
-            }
+            }.padding(.top, 80)
         }
     }
 }

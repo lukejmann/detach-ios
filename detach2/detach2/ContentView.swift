@@ -22,32 +22,31 @@ struct ContentView: View {
     }
 
     var body: some View {
-        VStack {
-            if self.cScreen == "HomeMenu" {
-                HomeMenu { screen in
-                    self.cScreen = screen
+        GeometryReader { geo in
+            VStack {
+                if self.cScreen == "HomeMenu" {
+                    HomeMenu { screen in
+                        self.cScreen = screen
+                    }
+                } else if self.cScreen == "Start" {
+                    StartScreen { screen in
+                        self.cScreen = screen
+                    }
+                } else if self.cScreen == "Session" {
+                    SessionScreen { screen in
+                        self.cScreen = screen
+                    }
+                } else if self.cScreen == "SelectApps" {
+                    SelectAppsScreen { screen in
+                        self.cScreen = screen
+                    }
+                } else {
+                    Text("Unknown Screen" + self.cScreen)
                 }
-            } else if self.cScreen == "Start" {
-                StartScreen { screen in
-                    self.cScreen = screen
-                }
-            } else if self.cScreen == "Session" {
-                SessionScreen { screen in
-                    self.cScreen = screen
-                }
-            } else if self.cScreen == "SelectApps" {
-                SelectAppsScreen { screen in
-                    self.cScreen = screen
-                }
+            }.frame(width: CGFloat(UIApplication.shared.windows.first!.frame.width), height: CGFloat(UIApplication.shared.windows.first!.frame.height+10), alignment: .topLeading).onAppear {
+                self.onAppAppears()
             }
-            
-
-            else {
-                Text("Unknown Screen" + self.cScreen)
-            }
-        }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity).edgesIgnoringSafeArea(.all).onAppear {
-            self.onAppAppears()
-        }.padding(.top,10)
+        }
     }
 }
 

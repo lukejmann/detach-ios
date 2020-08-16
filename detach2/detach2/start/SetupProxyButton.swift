@@ -11,11 +11,12 @@ import SwiftUI
 struct SetupProxyButton: View {
     @Binding var mode: StartMode
 
-    @State private var showProxyAlert = false
+    @Binding var showProxyAlert: Bool
 
     var proxyDeclined: () -> Void
     var proxyAgreed: () -> Void
     var hideKeyboard: () -> Void
+    var toggleShowProxyAlert: () -> Void
 
     enum ButtonMode {
         case pressed
@@ -58,8 +59,7 @@ struct SetupProxyButton: View {
                     }
                     self.pressType = .pressed
 //                    self.hideKeyboard()
-                    self.showProxyAlert.toggle()
-
+                    self.toggleShowProxyAlert()
                 }.alert(isPresented: self.$showProxyAlert) {
                     Alert(
                         title: Text("Proxy Setup"),

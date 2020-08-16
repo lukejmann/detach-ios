@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct SliderBar: View {
+    @Binding var proxyAlertIsShowing: Bool
     @Binding var percentage: Float
     var lastPercent = 0
 
@@ -61,7 +62,7 @@ struct SliderBar: View {
                             self.distance = value.location.x
                             self.percentage = min(max(0, Float(value.location.x / geometry.size.width * 100)), 100)
 //                        print("percent: \(self.percentage)")
-                            if self.percentage > 75 {
+                            if self.percentage > 75 && !self.proxyAlertIsShowing{
 //                            print("reached 75!")
                                 self.hideKeyboard()
                                 self.thresholdReached()

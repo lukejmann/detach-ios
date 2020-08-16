@@ -8,10 +8,14 @@
 
 import UIKit
 
+var deviceToken = "default"
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        registerForPushNotifications()
+
         return true
     }
 
@@ -27,5 +31,72 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    }
+
+    func registerForPushNotifications() {
+        UNUserNotificationCenter.current()
+            .requestAuthorization(options: [.alert, .sound, .badge]) {
+                [weak self] granted, _ in
+
+                print("Permission granted: \(granted)")
+                guard granted else { return }
+                self?.getNotificationSettings()
+            }
+    }
+
+    func getNotificationSettings() {
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            print("Notification settings: \(settings)")
+            guard settings.authorizationStatus == .authorized else { return }
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+            }
+        }
+    }
+
+    func application(_: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken dToken: Data) {
+        let tokenParts = dToken.map { data in String(format: "%02.2hhx", data) }
+        let token = tokenParts.joined()
+        print("Device Token: \(token)")
+        deviceToken = token
+    }
+
+    func application(_: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Failed to register: \(error)")
+    }
+
+    ////   fetch notifications in the background and foreground
+//    -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)notification
+//    fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+//      NSLog(@"[notif]didReceiveRemoteNotification %@", notification);
+//    [RNCPushNotificationIOS didReceiveRemoteNotification:notification fetchCompletionHandler:completionHandler];
+//    NSLog(@"[notif]Notification Body %@", notification);
+    //  completionHandler(UIBackgroundFetchResultNewData);
+//    }
+//    func application(_: UIApplication, didReceiveRemoteNotification notif: [AnyHashable: Any], fetchCompletionHandler completion: @escaping (UIBackgroundFetchResult) -> Void) {
+//        Print("in notifDidReceiveRemoteNotification. notif: \(notif)")
+//        print("in notifDidReceiveRemoteNotification. notif: \(notif)")
+//
+//        if Date() > timerEnd {
+//            print("in notifDidReceiveRemoteNotification. notif: \(notif)")
+//            print("disabling VPN")
+//            TunnelController.shared.disable()
+//        }
+//        completion(.newData)
+//    }
+
+    func application(
+        _ notif: UIApplication,
+        didReceiveRemoteNotification userInfo: [AnyHashable: Any],
+        fetchCompletionHandler completion:
+        @escaping (UIBackgroundFetchResult) -> Void
+    ) {
+        print("in didReceiveRemoteNotification. notif: \(notif). userInfo: \(userInfo)")
+        if Date() > timerEnd {
+            print("in notifDidReceiveRemoteNotification. notif: \(notif)")
+            print("disabling VPN")
+            TunnelController.shared.disable()
+        } 
+        completion(.newData)
     }
 }

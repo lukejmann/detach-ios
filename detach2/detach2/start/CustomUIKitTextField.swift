@@ -14,7 +14,7 @@ struct CustomUIKitTextField: UIViewRepresentable {
             resetSlider()
             if text != "00:00" && startMode == .disabled {
                 let userAgreedToVPN = getUserAgreedToVPN()
-                if getUserAgreedToVPN(){
+                if TunnelController.shared.status() == .connected{
                     self.startMode = .proxyEnabled
                 } else {
                     self.startMode = .validInput
