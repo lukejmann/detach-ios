@@ -5,11 +5,13 @@ PODS:
     - Moya/Core (= 14.0.0)
   - Moya/Core (14.0.0):
     - Alamofire (~> 5.0)
+  - SwiftyStoreKit (0.16.1)
   - Willow (5.2.1)
 
 DEPENDENCIES:
   - Introspect
   - Moya (~> 14.0)
+  - SwiftyStoreKit
   - Willow (~> 5.0)
 
 SPEC REPOS:
@@ -17,14 +19,16 @@ SPEC REPOS:
     - Alamofire
     - Introspect
     - Moya
+    - SwiftyStoreKit
     - Willow
 
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
   Introspect: ad32f2b7b9e7ac2c008b9dfec3d5325fbd3660fa
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
+  SwiftyStoreKit: 6b9c08810269f030586dac1fae8e75871a82e84a
   Willow: a6310f9aedcb6f4de8c35b94fd3416a660ae9280
 
-PODFILE CHECKSUM: 648f65f4dd4aa0b036caed66cc4cbd63f0d09899
+PODFILE CHECKSUM: 26855fe6c8ef7a3642d79528e8fbe4cc5c5934e1
 
 COCOAPODS: 1.9.3
