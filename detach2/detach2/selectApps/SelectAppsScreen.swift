@@ -35,15 +35,18 @@ struct SelectAppsScreen: View {
 
 struct RowButton: View {
     var app: SelectableApp
+    
+    @Environment(\.colorScheme) var colorScheme
+
 
     var body: some View {
         ZStack(alignment: .center) {
             Rectangle()
-                .border(Color.black, width: 2)
+                .border(self.colorScheme == .dark ? Color.white : Color.black, width: 2)
                 .frame(width: 20, height: 20, alignment: .leading)
                 .foregroundColor(Color(hue: 0, saturation: 0, brightness: 0, opacity: 0))
             Rectangle()
-                .frame(width: 8, height: 8, alignment: .leading).foregroundColor(Color(hue: 1, saturation: 1, brightness: 0, opacity: app.selected ? 1.0 : 0.0))
+                .frame(width: 8, height: 8, alignment: .leading).foregroundColor(Color(hue: 0, saturation: 0, brightness: self.colorScheme == .dark ? 1 : 0, opacity: app.selected ? 1.0 : 0.0))
         }
     }
 }
@@ -51,6 +54,9 @@ struct RowButton: View {
 struct SelectableApp: Identifiable {
     public let id = UUID()
     var app: App
+    
+    @Environment(\.colorScheme) var colorScheme
+    
     var selected: Bool {
         didSet {
             print("app \(app.Name) toggled to \(selected)")
@@ -82,11 +88,13 @@ struct AppRow: View {
     @State var app: SelectableApp
 
 //    let hPadding = CGFloat(37-10)
+    @Environment(\.colorScheme) var colorScheme
+
 
     var body: some View {
         HStack(alignment: .center, spacing: 18) {
             RowButton(app: app)
-            Text("\(app.app.Name.uppercased())").foregroundColor(.black).font(.system(size: 16, weight: .regular, design: .default))
+            Text("\(app.app.Name.uppercased())").foregroundColor(self.colorScheme == .dark ? Color.white : Color.black).font(.system(size: 16, weight: .regular, design: .default))
         }.frame(minWidth: 0, maxWidth: .infinity, alignment: .leading).onTapGesture {
             self.app.toggle()
         }

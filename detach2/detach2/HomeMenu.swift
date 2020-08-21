@@ -49,6 +49,8 @@ struct HomeMenu: View {
                             Text("DETACH")
                             Text("PLUS")
                         }
+                    }.onTapGesture {
+                        self.setScreen("Upgrade")
                     }
                 }.font(.system(size: 40, weight: .medium, design: .default))
                 Spacer()

@@ -24,6 +24,7 @@
 		A37D8BC024E88FBC00E8EAFE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D8BBF24E88FBC00E8EAFE /* User.swift */; };
 		A37D8BC224E88FDD00E8EAFE /* AppDomains.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D8BC124E88FDD00E8EAFE /* AppDomains.swift */; };
 		A37D8BC724E89C7400E8EAFE /* SelectAppsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D8BC624E89C7400E8EAFE /* SelectAppsScreen.swift */; };
+		A38CDC1A24E9C15800B226B6 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38CDC1924E9C15800B226B6 /* LoginScreen.swift */; };
 		A392C7BB24E4480F00D5DAF4 /* TunnelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A392C7BA24E4480F00D5DAF4 /* TunnelController.swift */; };
 		A392C7BD24E4482400D5DAF4 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A392C7BC24E4482400D5DAF4 /* Util.swift */; };
 		A392C7BF24E448C300D5DAF4 /* Logs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A392C7BE24E448C300D5DAF4 /* Logs.swift */; };
@@ -44,6 +45,8 @@
 		A39B285324E4F41B004DCE2C /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B285224E4F41B004DCE2C /* Images.swift */; };
 		A39B285524E4F571004DCE2C /* SessionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B285424E4F571004DCE2C /* SessionScreen.swift */; };
 		A3B7E5FF24E34B4900E06E47 /* NewYorkLarge-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A3B7E5FE24E34B4900E06E47 /* NewYorkLarge-SemiboldItalic.otf */; };
+		A3D639D324EF672E00612AF9 /* SignInWithAppleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D639D224EF672E00612AF9 /* SignInWithAppleButton.swift */; };
+		A3D639D624EF75AA00612AF9 /* UpgradeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D639D524EF75AA00612AF9 /* UpgradeScreen.swift */; };
 		A3F5E60D24E5EBFF00DCF879 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F5E60C24E5EBFF00DCF879 /* Storage.swift */; };
 		A3F5E61024E5F8CD00DCF879 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F5E60F24E5F8CD00DCF879 /* SessionManager.swift */; };
 		A3F5E61224E600D700DCF879 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F5E61124E600D700DCF879 /* API.swift */; };
@@ -132,6 +135,7 @@
 		A37D8BBF24E88FBC00E8EAFE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A37D8BC124E88FDD00E8EAFE /* AppDomains.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDomains.swift; sourceTree = "<group>"; };
 		A37D8BC624E89C7400E8EAFE /* SelectAppsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAppsScreen.swift; sourceTree = "<group>"; };
+		A38CDC1924E9C15800B226B6 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		A392C7BA24E4480F00D5DAF4 /* TunnelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunnelController.swift; sourceTree = "<group>"; };
 		A392C7BC24E4482400D5DAF4 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		A392C7BE24E448C300D5DAF4 /* Logs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logs.swift; sourceTree = "<group>"; };
@@ -153,6 +157,8 @@
 		A39B285224E4F41B004DCE2C /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		A39B285424E4F571004DCE2C /* SessionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionScreen.swift; sourceTree = "<group>"; };
 		A3B7E5FE24E34B4900E06E47 /* NewYorkLarge-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NewYorkLarge-SemiboldItalic.otf"; sourceTree = "<group>"; };
+		A3D639D224EF672E00612AF9 /* SignInWithAppleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleButton.swift; sourceTree = "<group>"; };
+		A3D639D524EF75AA00612AF9 /* UpgradeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeScreen.swift; sourceTree = "<group>"; };
 		A3F5E60C24E5EBFF00DCF879 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		A3F5E60F24E5F8CD00DCF879 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		A3F5E61124E600D700DCF879 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -241,6 +247,8 @@
 		A32A96D224E32DAD002C1145 /* detach2 */ = {
 			isa = PBXGroup;
 			children = (
+				A3D639D424EF759600612AF9 /* upgrade */,
+				A38CDC1B24E9C16600B226B6 /* auth */,
 				A37D8BC324E89C5D00E8EAFE /* selectApps */,
 				A37D8BBA24E881ED00E8EAFE /* session */,
 				A3F5E60E24E5EC0500DCF879 /* util */,
@@ -306,6 +314,15 @@
 			path = selectApps;
 			sourceTree = "<group>";
 		};
+		A38CDC1B24E9C16600B226B6 /* auth */ = {
+			isa = PBXGroup;
+			children = (
+				A38CDC1924E9C15800B226B6 /* LoginScreen.swift */,
+				A3D639D224EF672E00612AF9 /* SignInWithAppleButton.swift */,
+			);
+			path = auth;
+			sourceTree = "<group>";
+		};
 		A392C78F24E42DC600D5DAF4 /* start */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,6 +356,14 @@
 				A392C7F424E44AA100D5DAF4 /* DomainEval.swift */,
 			);
 			path = DetachExtension;
+			sourceTree = "<group>";
+		};
+		A3D639D424EF759600612AF9 /* upgrade */ = {
+			isa = PBXGroup;
+			children = (
+				A3D639D524EF75AA00612AF9 /* UpgradeScreen.swift */,
+			);
+			path = upgrade;
 			sourceTree = "<group>";
 		};
 		A3F5E60E24E5EC0500DCF879 /* util */ = {
@@ -709,6 +734,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A32A970B24E3405B002C1145 /* HomeMenu.swift in Sources */,
+				A3D639D324EF672E00612AF9 /* SignInWithAppleButton.swift in Sources */,
 				A37D8BC724E89C7400E8EAFE /* SelectAppsScreen.swift in Sources */,
 				A39A952624E4B79900377CD5 /* Colors.swift in Sources */,
 				A39B285524E4F571004DCE2C /* SessionScreen.swift in Sources */,
@@ -717,9 +743,11 @@
 				A39B285324E4F41B004DCE2C /* Images.swift in Sources */,
 				A39A952824E4C0EA00377CD5 /* SliderBar.swift in Sources */,
 				A37D8BC224E88FDD00E8EAFE /* AppDomains.swift in Sources */,
+				A38CDC1A24E9C15800B226B6 /* LoginScreen.swift in Sources */,
 				A32A96D424E32DAD002C1145 /* AppDelegate.swift in Sources */,
 				A32A970F24E341DA002C1145 /* StartScreen.swift in Sources */,
 				A37D8BBE24E8821600E8EAFE /* EndingSessionScreen.swift in Sources */,
+				A3D639D624EF75AA00612AF9 /* UpgradeScreen.swift in Sources */,
 				A392C7BD24E4482400D5DAF4 /* Util.swift in Sources */,
 				A32A96D624E32DAD002C1145 /* SceneDelegate.swift in Sources */,
 				A39A952A24E4C15D00377CD5 /* SetupProxyButton.swift in Sources */,

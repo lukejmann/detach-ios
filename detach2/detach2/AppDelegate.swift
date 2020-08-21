@@ -7,14 +7,20 @@
 //
 
 import UIKit
+import AuthenticationServices
 
 var deviceToken = "default"
+//var userLoggedInOnOpen = false
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         registerForPushNotifications()
+
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        
+        
 
         return true
     }
@@ -96,7 +102,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("in notifDidReceiveRemoteNotification. notif: \(notif)")
             print("disabling VPN")
             TunnelController.shared.disable()
-        } 
+        }
         completion(.newData)
     }
 }

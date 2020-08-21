@@ -8,11 +8,11 @@
 
 import Foundation
 
-
-func loginUser() {
-    setUserID(userID: "1")
-    detachProvier.request(.login(userID: "1", email: "l@mann.xyz")) { result in
+public func loginUser(userID: String, email: String, completion: @escaping (_ success: Bool) -> ()) {
+    setUserID(userID: userID)
+    detachProvier.request(.login(userID: userID, email: email)) { result in
         print("login result: \(result)")
+        completion(true)
     }
     updateApps()
 }
