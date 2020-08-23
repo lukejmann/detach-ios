@@ -12,7 +12,44 @@ public func loginUser(userID: String, email: String, completion: @escaping (_ su
     setUserID(userID: userID)
     detachProvier.request(.login(userID: userID, email: email)) { result in
         print("login result: \(result)")
+        switch result {
+            case let .success(moyaResponse):
+            print("log in successful.")
+            completion(true)
+            case let .failure(error):
+                print("failure updating appDomains")
+                
+        }
         completion(true)
     }
     updateApps()
 }
+
+public struct LoginRes: Decodable {
+    var subStatus: SubStatus
+    var success: Bool
+}
+
+
+
+
+//
+// User Flow:
+// first app open ever:
+//      - get userID from SignIn
+//      - save userID
+//      - mark user not subscribed
+// reopens app:
+//      - if userID stored:
+//            - check if user is subscribed
+//            - proceed to app
+//      - else:
+//            - make user log back in
+//
+//
+//
+//
+//
+//
+//
+//

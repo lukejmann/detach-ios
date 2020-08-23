@@ -18,7 +18,7 @@ public let detachProvier = MoyaProvider<DetachAPI>(plugins: [
         configuration:
         .init(formatter:
             .init(responseData: JSONResponseDataFormatter),
-              logOptions: .default )
+            logOptions: .default)
     ),
 ]
 )
@@ -35,8 +35,8 @@ public enum DetachAPI {
     case login(userID: String, email: String)
     case createSession(opt: SessionCreateOpt)
     case cancelSession(opt: SessionCancelOpt)
+    case checkReceipt(opt: CheckReceiptOpt)
     case fetchAppDomains
-
 }
 
 extension DetachAPI: TargetType {
@@ -49,6 +49,8 @@ extension DetachAPI: TargetType {
             return "/sessions/create"
         case .cancelSession:
             return "/sessions/cancel"
+        case .checkReceipt:
+            return "/users/checkReceipt"
         case .fetchAppDomains:
             return "/static/ADs"
         }
@@ -61,6 +63,8 @@ extension DetachAPI: TargetType {
         case .createSession:
             return .post
         case .cancelSession:
+            return .post
+        case .checkReceipt:
             return .post
         case .fetchAppDomains:
             return .get
@@ -75,6 +79,8 @@ extension DetachAPI: TargetType {
             print("opt in task: \(opt)")
             return .requestJSONEncodable(opt)
         case let .cancelSession(opt):
+            return .requestJSONEncodable(opt)
+        case let .checkReceipt(opt):
             return .requestJSONEncodable(opt)
         case .fetchAppDomains:
             return .requestPlain
@@ -111,6 +117,8 @@ extension DetachAPI: TargetType {
             return "{\"opt\": \"\(opt)\"}".data(using: String.Encoding.utf8)!
         case let .cancelSession(opt):
             return "{\"opt\": \"\(opt)\"}".data(using: String.Encoding.utf8)!
+        case let .checkReceipt(opt):
+            return "{\"opt\": \"\(opt)\"}".data(using: String.Encoding.utf8)!
         case .fetchAppDomains:
             return "{}".data(using: String.Encoding.utf8)!
         }
@@ -146,4 +154,9 @@ public struct SessionCreateOpt: Codable {
 public struct SessionCancelOpt: Codable {
     var userID: String
     var sessionID: String
+}
+
+public struct CheckReceiptOpt: Codable {
+    var userID: String
+    var AppleReceipt: String
 }

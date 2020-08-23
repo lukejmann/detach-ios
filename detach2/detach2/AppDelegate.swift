@@ -8,6 +8,7 @@
 
 import UIKit
 import AuthenticationServices
+import SwiftyStoreKit
 
 var deviceToken = "default"
 //var userLoggedInOnOpen = false
@@ -19,6 +20,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         registerForPushNotifications()
 
         let appleIDProvider = ASAuthorizationAppleIDProvider()
+        
+        SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
+            for purchase in purchases {
+                switch purchase.transaction.transactionState {
+                case .purchased, .restored:
+                    if purchase.needsFinishTransaction {
+                        // Deliver content from server, then:
+                        SwiftyStoreKit.finishTransaction(purchase.transaction)
+                    }
+                    // Unlock content
+                case .failed, .purchasing, .deferred:
+                    break // do nothing
+                }
+            }
+        }
+        SwiftyStoreKit.retrieveProductsInfo(["com.detachapp.ios1.onemonth"]) { result in
+            if let product = result.retrievedProducts.first {
+                let priceString = product.localizedPrice!
+                print("Product: \(product.localizedDescription), price: \(priceString)")
+            }
+            else if let invalidProductId = result.invalidProductIDs.first {
+                print("Invalid product identifier: \(invalidProductId)")
+            }
+            else {
+                print("Error: \(result.error)")
+            }
+        }
+
         
         
 

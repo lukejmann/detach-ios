@@ -47,6 +47,7 @@
 		A3B7E5FF24E34B4900E06E47 /* NewYorkLarge-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A3B7E5FE24E34B4900E06E47 /* NewYorkLarge-SemiboldItalic.otf */; };
 		A3D639D324EF672E00612AF9 /* SignInWithAppleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D639D224EF672E00612AF9 /* SignInWithAppleButton.swift */; };
 		A3D639D624EF75AA00612AF9 /* UpgradeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D639D524EF75AA00612AF9 /* UpgradeScreen.swift */; };
+		A3F537FF24EF86B200D107DE /* IAP.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F537FE24EF86B200D107DE /* IAP.swift */; };
 		A3F5E60D24E5EBFF00DCF879 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F5E60C24E5EBFF00DCF879 /* Storage.swift */; };
 		A3F5E61024E5F8CD00DCF879 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F5E60F24E5F8CD00DCF879 /* SessionManager.swift */; };
 		A3F5E61224E600D700DCF879 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F5E61124E600D700DCF879 /* API.swift */; };
@@ -159,6 +160,7 @@
 		A3B7E5FE24E34B4900E06E47 /* NewYorkLarge-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NewYorkLarge-SemiboldItalic.otf"; sourceTree = "<group>"; };
 		A3D639D224EF672E00612AF9 /* SignInWithAppleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleButton.swift; sourceTree = "<group>"; };
 		A3D639D524EF75AA00612AF9 /* UpgradeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeScreen.swift; sourceTree = "<group>"; };
+		A3F537FE24EF86B200D107DE /* IAP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAP.swift; sourceTree = "<group>"; };
 		A3F5E60C24E5EBFF00DCF879 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		A3F5E60F24E5F8CD00DCF879 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		A3F5E61124E600D700DCF879 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -374,6 +376,7 @@
 				A3F5E61124E600D700DCF879 /* API.swift */,
 				A37D8BBF24E88FBC00E8EAFE /* User.swift */,
 				A37D8BC124E88FDD00E8EAFE /* AppDomains.swift */,
+				A3F537FE24EF86B200D107DE /* IAP.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -736,6 +739,7 @@
 				A32A970B24E3405B002C1145 /* HomeMenu.swift in Sources */,
 				A3D639D324EF672E00612AF9 /* SignInWithAppleButton.swift in Sources */,
 				A37D8BC724E89C7400E8EAFE /* SelectAppsScreen.swift in Sources */,
+				A3F537FF24EF86B200D107DE /* IAP.swift in Sources */,
 				A39A952624E4B79900377CD5 /* Colors.swift in Sources */,
 				A39B285524E4F571004DCE2C /* SessionScreen.swift in Sources */,
 				A392C7BB24E4480F00D5DAF4 /* TunnelController.swift in Sources */,

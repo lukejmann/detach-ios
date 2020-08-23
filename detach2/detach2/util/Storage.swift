@@ -36,11 +36,12 @@ public func getSupportedApps() -> [App] {
 }
 
 public func setSupportedApps(apps: [App]) {
+    // TODO: change?
     supportedApps = apps
     return
-    
-    //TODO: add UserDefaults support
-    print("in setSupportedApps. setting apps to arr of len: \(apps.count)")
+
+            // TODO: add UserDefaults support
+            print("in setSupportedApps. setting apps to arr of len: \(apps.count)")
     do {
         let appsData = try NSKeyedArchiver.archivedData(withRootObject: apps, requiringSecureCoding: false)
         appsDefaults.set(appsData, forKey: kSupportedApps)
@@ -103,3 +104,41 @@ public func setUserAgreedToVPN(userAgreedToVPN: Bool) {
     print("in userAgreedToVPN. Setting userAgreedToVPN to : \(userAgreedToVPN)")
     userInfoDefaults.set(userAgreedToVPN, forKey: kUserAgreedToVPN)
 }
+
+let kSubStatus = "subStatus"
+
+public func getSubStatus() -> SubStatus? {
+    if let data = appsDefaults.object(forKey: kSubStatus) as? Data {
+        let decoder = JSONDecoder()
+        if let subStatus = try? decoder.decode(SubStatus.self, from: data) {
+            return subStatus
+        }
+    }
+    return nil
+}
+
+public func setSubStatus(status: SubStatus) {
+    let encoder = JSONEncoder()
+    if let encoded = try? encoder.encode(status) {
+        appsDefaults.set(encoded, forKey: kSubStatus)
+        print("set sub status in store")
+    }
+    else {
+        print("failed to store sub status")
+    }
+}
+
+// public func setSupportedApps(apps: [App]) {
+//    supportedApps = apps
+//    return
+//
+//            // TODO: add UserDefaults support
+//            print("in setSupportedApps. setting apps to arr of len: \(apps.count)")
+//    do {
+//        let appsData = try NSKeyedArchiver.archivedData(withRootObject: apps, requiringSecureCoding: false)
+//        appsDefaults.set(appsData, forKey: kSupportedApps)
+//    }
+//    catch {
+//        print("failed to set supported apps. failed to archive data")
+//    }
+// }

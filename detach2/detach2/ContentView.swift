@@ -11,12 +11,27 @@ import SwiftUI
 struct ContentView: View {
     @State public var cScreen: String = "HomeMenu"
     @State var showLoginScreen = getUserID() == "N/A userID"
+    @State var hasDetachPlus = false
+
     @Environment(\.colorScheme) var colorScheme
 
     func onAppAppears() {
         if Date() > timerEnd {
             TunnelController.shared.disable()
-            self.cScreen = "HomeMenu"
+            cScreen = "HomeMenu"
+        }
+        checkSubscription()
+    }
+
+    func checkSubscription() {
+        checkUserReceipt { success in
+            if success {
+                let subStatus = getSubStatus()
+                if subStatus != nil {
+                    print("in check sub. subStatus: \(subStatus?.status)")
+                    self.hasDetachPlus = subStatus?.status == "active"
+                }
+            }
         }
     }
 
@@ -29,7 +44,7 @@ struct ContentView: View {
                     }
                 } else {
                     if self.cScreen == "HomeMenu" {
-                        HomeMenu { screen in
+                        HomeMenu(hasDetachPlus: self.$hasDetachPlus) { screen in
                             self.cScreen = screen
                         }
                     } else if self.cScreen == "Start" {
@@ -45,7 +60,7 @@ struct ContentView: View {
                             self.cScreen = screen
                         }
                     } else if self.cScreen == "Upgrade" {
-                        UpgradeScreen { screen in
+                        UpgradeScreen(parentRefreshSubStatus: self.checkSubscription) { screen in
                             self.cScreen = screen
                         }
                     } else {

@@ -9,19 +9,23 @@
 import SwiftUI
 
 struct HomeMenu: View {
+    @Binding var hasDetachPlus: Bool
     var setScreen: (_ screen: String) -> Void
-    init(setScreen: @escaping (_ screen: String) -> Void) {
-        self.setScreen = setScreen
-    }
-    
+
     @Environment(\.colorScheme) var colorScheme
-    
 
     var body: some View {
         GeometryReader { geometry in
-            VStack(alignment: .center, spacing: 95.0) {
-                Text("detach").font(.custom("Georgia-Italic", size: 42)).padding(.top, 70)
-                VStack(alignment: .leading, spacing: 95) {
+            VStack(alignment: .center) {
+                Text("detach").font(.custom("Georgia-Italic", size: 42)).padding(.top, 100)
+
+                if !self.hasDetachPlus {
+                    ZStack(alignment: .center) {
+                        Rectangle().foregroundColor(Color(.sRGB, red: 1.0, green: 0.0, blue: 0.0, opacity: 0.1)).border(Color.red).frame(width: geometry.size.width - 65 * 2, height: 50).cornerRadius(5).clipped()
+                        Text("Daily session limit reached. Upgrade to\nDetach Plus for unlimited sessions.").font(.system(size: 14, weight: .medium, design: .default)).foregroundColor(.red)
+                    }.padding(.top, 20)
+                }
+                VStack(alignment: .center, spacing: 75) {
 //                NavigationLink(destination: StartView()){
                     HStack(alignment: .center, spacing: 28) {
                         Image(self.colorScheme == .dark ? "startDark" : "startLight").resizable().frame(width: 58, height: 58, alignment: .center)
@@ -30,8 +34,10 @@ struct HomeMenu: View {
                             Text("BLOCKING")
                         }
                     }.onTapGesture {
-                        self.setScreen("Start")
-                    }
+                        if self.hasDetachPlus{
+                            self.setScreen("Start")
+                        }
+                    }.opacity(self.hasDetachPlus ? 1.0 : 0.6)
 
                     HStack(alignment: .center, spacing: 28) {
                         Image(self.colorScheme == .dark ? "selectDark" : "selectLight").resizable().frame(width: 50, height: 50, alignment: .center)
@@ -52,7 +58,7 @@ struct HomeMenu: View {
                     }.onTapGesture {
                         self.setScreen("Upgrade")
                     }
-                }.font(.system(size: 40, weight: .medium, design: .default))
+                }.font(.system(size: 40, weight: .medium, design: .default)).padding(.top,60)
                 Spacer()
             }.frame(
                 width: geometry.size.width,
@@ -63,8 +69,13 @@ struct HomeMenu: View {
 }
 
 struct HomeMenu_Previews: PreviewProvider {
+    @State static var hasDetachPlus = false
+
     static var previews: some View {
-        HomeMenu { _ in
+        HomeMenu(hasDetachPlus: self.$hasDetachPlus) {
+            _ in
         }
+        .previewDevice(PreviewDevice(rawValue: "iPhone 11"))
+        .previewDisplayName("iPhone 11")
     }
 }
