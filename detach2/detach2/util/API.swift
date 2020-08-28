@@ -81,6 +81,7 @@ extension DetachAPI: TargetType {
         case let .cancelSession(opt):
             return .requestJSONEncodable(opt)
         case let .checkReceipt(opt):
+            print("check Receipt opt: \(opt)")
             return .requestJSONEncodable(opt)
         case .fetchAppDomains:
             return .requestPlain
@@ -158,5 +159,5 @@ public struct SessionCancelOpt: Codable {
 
 public struct CheckReceiptOpt: Codable {
     var userID: String
-    var AppleReceipt: String
+    var appleReciept: String
 }

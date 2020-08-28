@@ -21,6 +21,7 @@ struct ContentView: View {
             cScreen = "HomeMenu"
         }
         checkSubscription()
+        refreshSupportedApps()
     }
 
     func checkSubscription() {
@@ -36,12 +37,13 @@ struct ContentView: View {
     }
 
     var body: some View {
-        GeometryReader { _ in
+        GeometryReader { geo in
+//        VStack {
             VStack {
                 if self.showLoginScreen {
-                    LoginScreen {
+                    LoginScreen(loginCompleted: {
                         self.showLoginScreen = false
-                    }
+                    })
                 } else {
                     if self.cScreen == "HomeMenu" {
                         HomeMenu(hasDetachPlus: self.$hasDetachPlus) { screen in
@@ -67,16 +69,24 @@ struct ContentView: View {
                         Text("Unknown Screen" + self.cScreen)
                     }
                 }
-
-            }.frame(width: CGFloat(UIApplication.shared.windows.first!.frame.width), height: CGFloat(UIApplication.shared.windows.first!.frame.height + 10), alignment: .topLeading).onAppear {
-                self.onAppAppears()
             }
         }
     }
 }
 
+// .frame(width: CGFloat(UIApplication.shared.windows.first!.frame.width), height: CGFloat(UIApplication.shared.windows.first!.frame.height - (UIDevice.current.hasNotch ? 100 : 70)), alignment: .topLeading).onAppear {
+//    self.onAppAppears()
+// }
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+extension UIDevice {
+    var hasNotch: Bool {
+        let bottom = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
+        return bottom > 0
     }
 }

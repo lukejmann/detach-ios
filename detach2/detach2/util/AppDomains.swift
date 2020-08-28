@@ -8,7 +8,7 @@
 
 import Foundation
 
-func updateApps() {
+func refreshSupportedApps() {
     detachProvier.request(.fetchAppDomains) { result in
         print("result in fetchAppDomains callback: \(result)")
         switch result {
@@ -42,7 +42,7 @@ func updateApps() {
 
 
 
-public struct App: Decodable {
+public struct App: Codable {
     var Name: String
     var URLs: [String]
 }

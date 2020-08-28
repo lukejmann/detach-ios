@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct SelectAppsScreen: View {
-    @State var apps: [SelectableApp] = supportedApps.map { (app) -> SelectableApp in
+    @State var apps: [SelectableApp] = getSupportedApps().map { (app) -> SelectableApp in
         SelectableApp(app: app, selected: getSelectedAppNames().contains(app.Name.lowercased()))
     }
 
@@ -10,7 +10,7 @@ struct SelectAppsScreen: View {
     @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
-        GeometryReader { _ in
+        GeometryReader { geo in
             VStack(alignment: .leading, spacing: 0) {
                 VStack(alignment: .leading, spacing: 0) {
                     Image(self.colorScheme == .dark ? "backDark" : "backLight").resizable().frame(width: 9, height: 17, alignment: .leading).onTapGesture {
@@ -27,8 +27,9 @@ struct SelectAppsScreen: View {
                     ForEach(self.apps) { sApp in
                         AppRow(app: sApp).listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0)).padding(.horizontal, 37).padding(.vertical, 5)
                     }
-                }
-            }.padding(.top, 80)
+                    Rectangle().frame(width: 0, height: 50, alignment: .center)
+                    }.clipped()
+            }.padding(.top, 60).frame(width: nil, height: geo.size.height, alignment: .center)
         }
     }
 }
@@ -115,3 +116,4 @@ struct SelectAppsScreen_Previews: PreviewProvider {
 
 
 
+     

@@ -14,7 +14,7 @@ func uploadSession(endTimeUnix: Int, completion: @escaping (Bool) -> Void) {
     let appNames = getSelectedAppNames()
     setupBlockedDomains(appNames: appNames)
 
-    let sessionCreateOpt = SessionCreateOpt(userID: "1", endTime: endTimeUnix, deviceToken: deviceToken)
+    let sessionCreateOpt = SessionCreateOpt(userID: getUserID(), endTime: endTimeUnix, deviceToken: deviceToken)
     detachProvier.request(.createSession(opt: sessionCreateOpt)) { result in
 
         print("result in createSession res: \(result)")
@@ -31,6 +31,9 @@ func uploadSession(endTimeUnix: Int, completion: @escaping (Bool) -> Void) {
                     if res.success {
                         timerEnd = Date(timeIntervalSince1970: TimeInterval(endTimeUnix))
                         setSessionID(sessionID: res.sessionID)
+                        if getSubStatus()?.status != "active"{
+                            setTrialSession(trialSession: TrialSession(date: Date()))
+                        }
                         print("successfully started session \(res.sessionID)")
                         completion(true)
                     } else {

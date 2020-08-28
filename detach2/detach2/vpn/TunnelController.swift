@@ -102,6 +102,25 @@ class TunnelController: NSObject {
     }
 }
 
+func connectProxy(i: Int, callback: @escaping (_ success: Bool) -> Void) {
+    let seconds = 1.0
+    if i >= 4 {
+        callback(false)
+        return
+    }
+    TunnelController.shared.setEnabled(true) { _ in
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            let status = TunnelController.shared.status()
+            if status == .connected {
+                callback(true)
+                return
+            } else {
+                connectProxy(i: i + 1, callback: callback)
+            }
+        }
+    }
+}
+
 // just to be sure, reload the managers to make sure we don't make multiple configs
 //    NETunnelProviderManager.loadAllFromPreferences { (managers, error) -> Void in
 //      Print("MARK: In loadAllFromPreferences. error: \(error)")

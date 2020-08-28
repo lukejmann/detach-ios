@@ -16,7 +16,7 @@ func checkUserReceipt(completion: @escaping (_ success: Bool) -> ()) {
         case let .success(receiptData):
             let encryptedReceipt = receiptData.base64EncodedString(options: [])
             print("Fetch receipt success.")
-            let opt = CheckReceiptOpt(userID: getUserID(), AppleReceipt: encryptedReceipt)
+            let opt = CheckReceiptOpt(userID: getUserID(), appleReciept: encryptedReceipt)
             detachProvier.request(.checkReceipt(opt: opt)) { result in
                 print("checkReceipt completion result: \(result)")
                 switch result {
@@ -32,7 +32,7 @@ func checkUserReceipt(completion: @escaping (_ success: Bool) -> ()) {
                             if res.success {
 //                                print("successfully checked receipt subStatus: \(res.subStatus.status)")
 //                                                            setSupportedApps(apps: res)
-                                setSubStatus(status: res.subStatus) 
+                                setSubStatus(status: res.subStatus)
                                 completion(true)
                             } else {
                                 print("failed to decoded checkReceipt res.")
@@ -62,4 +62,8 @@ public class SubStatus: Codable {
     // "active" or "inactive"
     var status: String
     var subDate: Int
+}
+
+public struct TrialSession: Codable {
+    var date :Date
 }

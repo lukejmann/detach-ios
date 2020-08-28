@@ -25,32 +25,26 @@ let kSupportedApps = "supportedApps"
 let kSelectedAppNames = "selectedAppNames"
 
 public func getSupportedApps() -> [App] {
-    return supportedApps
-    if let apps = appsDefaults.array(forKey: kSupportedApps) {
-        print("in getSupportedApps. supported apps: \(apps)")
-        return apps as! [App]
+    if let data = appsDefaults.object(forKey: kSupportedApps) as? Data {
+        let decoder = JSONDecoder()
+        if let apps = try? decoder.decode([App].self, from: data) {
+            print("apps: \(apps)")
+            return apps
+        }
     }
-    print("in getSupportedApps. failed to apps")
-
     return [App]()
 }
 
 public func setSupportedApps(apps: [App]) {
-    // TODO: change?
-    supportedApps = apps
-    return
-
-            // TODO: add UserDefaults support
-            print("in setSupportedApps. setting apps to arr of len: \(apps.count)")
-    do {
-        let appsData = try NSKeyedArchiver.archivedData(withRootObject: apps, requiringSecureCoding: false)
-        appsDefaults.set(appsData, forKey: kSupportedApps)
+    let encoder = JSONEncoder()
+    if let encoded = try? encoder.encode(apps) {
+        appsDefaults.set(encoded, forKey: kSupportedApps)
+        print("set supportedApps in store")
     }
-    catch {
-        print("failed to set supported apps. failed to archive data")
+    else {
+        print("failed to store supportedApps")
     }
 }
-
 public func getSelectedAppNames() -> [String] {
     if let appNames = appsDefaults.array(forKey: kSelectedAppNames) {
         print("in getSelectedAppNames. selected app names: \(appNames)")
@@ -125,6 +119,29 @@ public func setSubStatus(status: SubStatus) {
     }
     else {
         print("failed to store sub status")
+    }
+}
+
+let kTrialSession = "trialSession"
+
+public func getTrialSession() -> TrialSession? {
+    if let data = userInfoDefaults.object(forKey: kTrialSession) as? Data {
+        let decoder = JSONDecoder()
+        if let trialSession = try? decoder.decode(TrialSession.self, from: data) {
+            return trialSession
+        }
+    }
+    return nil
+}
+
+public func setTrialSession(trialSession: TrialSession) {
+    let encoder = JSONEncoder()
+    if let encoded = try? encoder.encode(trialSession) {
+        userInfoDefaults.set(encoded, forKey: kTrialSession)
+        print("set trialSession in store")
+    }
+    else {
+        print("failed to store trialSession")
     }
 }
 

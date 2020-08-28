@@ -22,7 +22,7 @@ public func loginUser(userID: String, email: String, completion: @escaping (_ su
         }
         completion(true)
     }
-    updateApps()
+    refreshSupportedApps()
 }
 
 public struct LoginRes: Decodable {

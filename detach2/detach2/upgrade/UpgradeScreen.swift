@@ -85,7 +85,7 @@ struct UpgradeScreen: View {
                         self.triggerRestore()
                     }
                 }.padding(.horizontal, 37)
-            }.padding(.top, 80).frame(width: geo.size.width, height: geo.size.height, alignment: .topLeading)
+            }.padding(.top, 60).frame(width: geo.size.width, height: geo.size.height, alignment: .topLeading)
         }
     }
 }

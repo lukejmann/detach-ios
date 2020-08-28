@@ -30,7 +30,7 @@ struct SignInWithAppleButton: View {
         let button = ButtonController(setCredentials: setCredentials)
     
         return button
-            .frame(width: button.button.frame.width, height: button.button.frame.height, alignment: .center)
+//            .frame(width: button.button.frame.width, height: button.button.frame.height, alignment: .center)
     }
   
     struct ButtonController: UIViewControllerRepresentable {
@@ -42,6 +42,15 @@ struct SignInWithAppleButton: View {
 //        @Binding var credentials: CredentialsOrError?
     
         func makeCoordinator() -> Coordinator {
+//            self.button.constraints.forEach { (constraint) in
+//                if (constraint.firstAttribute == .width) {
+//                        constraint.isActive = false
+//                }
+//            }
+            self.button.translatesAutoresizingMaskIntoConstraints = false
+            self.button.widthAnchor.constraint(equalToConstant: 300).isActive = true
+            self.button.heightAnchor.constraint(equalToConstant: 44).isActive = true
+
             return Coordinator(self)
         }
     
@@ -99,6 +108,8 @@ struct SignInWithAppleButton: View {
 
 struct SignInWithAppleButton_Previews: PreviewProvider {
     static var previews: some View {
-        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+        SignInWithAppleButton { (c) in
+            //
+        }
     }
 }

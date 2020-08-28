@@ -33,24 +33,7 @@ struct StartScreen: View {
         self.setScreen = setScreen
     }
 
-    func connect(i: Int, callback: @escaping (_ success: Bool) -> Void) {
-        let seconds = 1.0
-        if i >= 4 {
-            callback(false)
-            return
-        }
-        TunnelController.shared.setEnabled(true) { _ in
-            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-                let status = TunnelController.shared.status()
-                if status == .connected {
-                    callback(true)
-                    return
-                } else {
-                    self.connect(i: i + 1, callback: callback)
-                }
-            }
-        }
-    }
+
 
     func proxyDeclined() {
         resetSlider()
@@ -59,7 +42,7 @@ struct StartScreen: View {
     func proxyAgreed() {
         resetSlider()
 //        setVPNDomains(domains: ["instagram.com"])
-        connect(i: 0) { success in
+        connectProxy(i: 0) { success in
             if success {
                 self.startMode = .proxyEnabled
             } else {
@@ -127,7 +110,7 @@ struct StartScreen: View {
                     SetupProxyButton(mode: self.$startMode, showProxyAlert: self.$showProxyAlert, proxyDeclined: self.proxyDeclined, proxyAgreed: self.proxyAgreed, hideKeyboard: self.hideKeyboard, toggleShowProxyAlert: self.toggleShowAlert)
                 }
 
-            }.padding(.top, 80).padding(.horizontal, 37)
+            }.padding(.top, 60).padding(.horizontal, 37)
                 .frame(
                     width: geometry.size.width,
                     height: geometry.size.height,
