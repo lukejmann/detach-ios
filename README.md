@@ -11,7 +11,7 @@ To run on iOS 14 without functioning proxy:
 - change signing if necessary  
 - change baseURL in DetachAPI to backend Docker    
 
-[Backend Repo](http://github.com/lukejmann/detach2-backend)
+[Backend Repo](http://github.com/lukejmann/detach-backend)
 
 To run backend servers with Docker 
 - install Docker  
