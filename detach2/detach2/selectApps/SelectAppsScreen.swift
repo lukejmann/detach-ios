@@ -18,7 +18,7 @@ struct SelectAppsScreen: View {
                     }
                     Text("select apps").font(.custom("Georgia-Italic", size: 25)).padding(.top, 30)
                     Text("SELECT WHICH APPS ARE BLOCKED DURING\nA SESSON").font(.system(size: 14, weight: .regular, design: .default)).padding(.top, 10)
-                }.padding(.horizontal, 37)
+                }.padding(.horizontal, 37) 
                 Rectangle()
                     .border(Color.black, width: 2)
                     .frame(width: 0, height: 38, alignment: .leading)

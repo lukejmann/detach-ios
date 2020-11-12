@@ -24,6 +24,8 @@
 		A37D8BC024E88FBC00E8EAFE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D8BBF24E88FBC00E8EAFE /* User.swift */; };
 		A37D8BC224E88FDD00E8EAFE /* AppDomains.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D8BC124E88FDD00E8EAFE /* AppDomains.swift */; };
 		A37D8BC724E89C7400E8EAFE /* SelectAppsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D8BC624E89C7400E8EAFE /* SelectAppsScreen.swift */; };
+		A38C12C1255D0ABA00E024D5 /* NEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A392C7F624E44F9300D5DAF4 /* NEKit.framework */; };
+		A38C12C2255D0ABA00E024D5 /* NEKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A392C7F624E44F9300D5DAF4 /* NEKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A38CDC1A24E9C15800B226B6 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38CDC1924E9C15800B226B6 /* LoginScreen.swift */; };
 		A392C7BB24E4480F00D5DAF4 /* TunnelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A392C7BA24E4480F00D5DAF4 /* TunnelController.swift */; };
 		A392C7BD24E4482400D5DAF4 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A392C7BC24E4482400D5DAF4 /* Util.swift */; };
@@ -34,8 +36,6 @@
 		A392C7F124E44A8700D5DAF4 /* DetachProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A392C7F024E44A8700D5DAF4 /* DetachProxy.swift */; };
 		A392C7F324E44A9400D5DAF4 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A392C7F224E44A9400D5DAF4 /* Utils.swift */; };
 		A392C7F524E44AA100D5DAF4 /* DomainEval.swift in Sources */ = {isa = PBXBuildFile; fileRef = A392C7F424E44AA100D5DAF4 /* DomainEval.swift */; };
-		A392C7F724E44F9300D5DAF4 /* NEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A392C7F624E44F9300D5DAF4 /* NEKit.framework */; };
-		A392C7F824E44F9300D5DAF4 /* NEKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A392C7F624E44F9300D5DAF4 /* NEKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A392C7FC24E4507C00D5DAF4 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A392C7FB24E4507C00D5DAF4 /* NetworkExtension.framework */; };
 		A392C7FE24E4509800D5DAF4 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A392C7FB24E4507C00D5DAF4 /* NetworkExtension.framework */; };
 		A39A952624E4B79900377CD5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39A952524E4B79900377CD5 /* Colors.swift */; };
@@ -80,6 +80,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		A38C12C3255D0ABA00E024D5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A38C12C2255D0ABA00E024D5 /* NEKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A392C7D024E448E200D5DAF4 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -89,17 +100,6 @@
 				A392C7EA24E449A500D5DAF4 /* DetachExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A392C7F924E44F9300D5DAF4 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				A392C7F824E44F9300D5DAF4 /* NEKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -136,6 +136,7 @@
 		A37D8BBF24E88FBC00E8EAFE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A37D8BC124E88FDD00E8EAFE /* AppDomains.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDomains.swift; sourceTree = "<group>"; };
 		A37D8BC624E89C7400E8EAFE /* SelectAppsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAppsScreen.swift; sourceTree = "<group>"; };
+		A38C12AE255D0A8700E024D5 /* NEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NEKit.framework; path = ../../Downloads/Carthage/Build/iOS/NEKit.framework; sourceTree = "<group>"; };
 		A38CDC1924E9C15800B226B6 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		A392C7BA24E4480F00D5DAF4 /* TunnelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunnelController.swift; sourceTree = "<group>"; };
 		A392C7BC24E4482400D5DAF4 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
@@ -198,8 +199,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A392C7F724E44F9300D5DAF4 /* NEKit.framework in Frameworks */,
 				A392C7FC24E4507C00D5DAF4 /* NetworkExtension.framework in Frameworks */,
+				A38C12C1255D0ABA00E024D5 /* NEKit.framework in Frameworks */,
 				D732C81721DC1FE5DF292F49 /* Pods_DetachExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -384,6 +385,7 @@
 		C7832D03B69040BEA28028E3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A38C12AE255D0A8700E024D5 /* NEKit.framework */,
 				A392C7FB24E4507C00D5DAF4 /* NetworkExtension.framework */,
 				A392C7F624E44F9300D5DAF4 /* NEKit.framework */,
 				3BCE06EF48515C1B15CE4DA9 /* Pods_detach2.framework */,
@@ -466,8 +468,8 @@
 				A392C7DE24E449A500D5DAF4 /* Sources */,
 				A392C7DF24E449A500D5DAF4 /* Frameworks */,
 				A392C7E024E449A500D5DAF4 /* Resources */,
-				A392C7F924E44F9300D5DAF4 /* Embed Frameworks */,
 				A392C7FA24E44FE700D5DAF4 /* ShellScript */,
+				A38C12C3255D0ABA00E024D5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1086,7 +1088,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = DetachExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1112,7 +1114,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = DetachExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

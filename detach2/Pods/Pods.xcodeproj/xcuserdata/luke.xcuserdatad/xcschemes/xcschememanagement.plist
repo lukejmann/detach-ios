@@ -44,7 +44,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Willow.xcscheme</key>
+		<key>Willow-iOS13.5.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Willow-iOS14.1.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

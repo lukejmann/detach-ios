@@ -14,6 +14,19 @@ fileprivate extension Danger.File {
         hasSuffix(".swift") || hasSuffix(".h") || hasSuffix(".m")
     }
 
+    private static let spmOnlyTargetNames: Set<String> = [
+        "CocoaLumberjackSwiftLogBackend",
+    ]
+    var isSPMOnlySourceFile: Bool {
+        guard isSourceFile else { return false }
+        if isInSources {
+            return Self.spmOnlyTargetNames.contains(where: { contains("/\($0)/") })
+        } else if isInTests {
+            return Self.spmOnlyTargetNames.contains(where: { contains("/\($0)Tests/") })
+        }
+        return false
+    }
+
     var isSwiftPackageDefintion: Bool {
         hasPrefix("Package") && hasSuffix(".swift")
     }
@@ -37,8 +50,9 @@ if danger.github?.pullRequest.title.contains("WIP") == true {
 }
 
 // Warn when there is a big PR
-if let additions = danger.github?.pullRequest.additions, let deletions = danger.github?.pullRequest.deletions, additions + deletions > 500 {
-    warn("Pull request is relatively big. If this PR contains multiple changes, consider splitting it into separate PRs for easier reviews.")
+if let additions = danger.github?.pullRequest.additions, let deletions = danger.github?.pullRequest.deletions,
+   case let sum = additions + deletions, sum > 1000 {
+    warn("Pull request is relatively big (\(sum) lines changed). If this PR contains multiple changes, consider splitting it into separate PRs for easier reviews.")
 }
 
 // Changelog entries are required for changes to library files.
@@ -56,8 +70,10 @@ SwiftLint.lint(.modifiedAndCreatedFiles(directory: "Sources"))
 
 // Added (or removed) library files need to be added (or removed) from the
 // Carthage Xcode project to avoid breaking things for our Carthage users.
-let xcodeProjectWasModified = git.modifiedFiles.contains("Lumberjack.xcodeproj")
-if (git.createdFiles + git.deletedFiles).contains(where: { $0.isInSources && $0.isSourceFile }) && !xcodeProjectWasModified {
+let xcodeProjectFile: Danger.File = "Lumberjack.xcodeproj/project.pbxproj"
+let xcodeProjectWasModified = git.modifiedFiles.contains(xcodeProjectFile)
+if (git.createdFiles + git.deletedFiles).contains(where: { $0.isInSources && $0.isSourceFile && !$0.isSPMOnlySourceFile })
+    && !xcodeProjectWasModified {
   fail("Added or removed library files require the Carthage Xcode project to be updated.")
 }
 
@@ -95,7 +111,7 @@ if xcodeProjectWasModified {
         "TARGETED_DEVICE_FAMILY",
         "WRAPPER_EXTENSION",
     ]
-    ["Lumberjack.xcodeproj/project.pbxproj"]
+    [xcodeProjectFile]
         .lazy
         .filter { FileManager.default.fileExists(atPath: $0) }
         .forEach { projectFile in
@@ -161,19 +177,31 @@ let filesWithInvalidCopyright = sourcefilesToCheck.lazy
     .filter { FileManager.default.fileExists(atPath: $0) }
     .filter {
         // Use correct copyright lines depending on source file location
-        let expectedLines: Array<String>
+        let (expectedLines, shouldMatchExactly): (Array<String>, Bool)
         if $0.isInDemos {
             expectedLines = copyrightLines.demos
+            shouldMatchExactly = false
         } else if $0.isInBenchmarking {
             expectedLines = copyrightLines.benchmarking
+            shouldMatchExactly = false
         } else {
             expectedLines = copyrightLines.source
+            shouldMatchExactly = true
         }
-        return !danger.utils.readFile($0).split(separator: "\n").lazy.map(String.init).starts(with: expectedLines)
+        let actualLines = danger.utils.readFile($0).split(separator: "\n").lazy.map(String.init)
+        if shouldMatchExactly {
+            return !actualLines.starts(with: expectedLines)
+        } else {
+            return !zip(actualLines, expectedLines).allSatisfy { $0.starts(with: $1) }
+        }
 }
 if !filesWithInvalidCopyright.isEmpty {
     filesWithInvalidCopyright.forEach {
         markdown(message: "Invalid copyright!", file: $0, line: 1)
     }
-    warn("Copyright is not valid. See our default copyright in all of our files (Sources, Demos and Benchmarking use different formats).")
+    warn("""
+         Copyright is not valid. See our default copyright in all of our files (Sources, Demos and Benchmarking use different formats).
+         Invalid files:
+         \(filesWithInvalidCopyright.map { "- \($0)" }.joined(separator: "\n"))
+         """)
 }
