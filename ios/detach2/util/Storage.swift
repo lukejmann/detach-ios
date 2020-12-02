@@ -39,7 +39,7 @@ public func setSupportedApps(apps: [App]) {
     let encoder = JSONEncoder()
     if let encoded = try? encoder.encode(apps) {
         appsDefaults.set(encoded, forKey: kSupportedApps)
-        print("set supportedApps in store")
+        print("set supportedApps in store. apps \(apps)")
     }
     else {
         print("failed to store supportedApps")

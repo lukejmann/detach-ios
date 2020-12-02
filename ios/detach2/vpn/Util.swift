@@ -23,7 +23,7 @@ let kRefreshDomains = "refreshDomains"
 //}
 
 func setVPNDomains(domains: [String]) {
-    Print("MARK: in setVPNDomains. setting domains to : \(domains)")
+    Print("in setVPNDomains. setting domains to : \(domains)")
     defaults.set(domains, forKey: kBlockedDomains)
     defaults.set(true, forKey: kRefreshDomains)
 }

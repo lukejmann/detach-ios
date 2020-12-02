@@ -59,7 +59,8 @@ func uploadSession(endTimeUnix: Int, completion: @escaping (Bool) -> Void) {
 func setupBlockedDomains(appNames: [String]) {
     print("in setupBlockedDomains. appNames: \(appNames)")
     var domains = [String]()
-    supportedApps.forEach { app in
+    print("supported apps :\(getSupportedApps())")
+    getSupportedApps().forEach { app in
         if appNames.contains(app.Name.lowercased()) {
             app.URLs.forEach { url in
                 domains.append(url)

@@ -11,11 +11,12 @@ import SwiftUI
 struct ContentView: View {
     @State public var cScreen: String = "HomeMenu"
     @State var showLoginScreen = getUserID() == "N/A userID"
-    @State var hasDetachPlus = false
+    @State var hasDetachPlus = true
 
     @Environment(\.colorScheme) var colorScheme
 
-    func onAppAppears() {
+    func onAppear() {
+        print("in app appeared")
         if Date() > timerEnd {
             TunnelController.shared.disable()
             cScreen = "HomeMenu"
@@ -30,7 +31,9 @@ struct ContentView: View {
                 let subStatus = getSubStatus()
                 if subStatus != nil {
                     print("in check sub. subStatus: \(subStatus?.status)")
-                    self.hasDetachPlus = subStatus?.status == "active"
+//                    self.hasDetachPlus = subStatus?.status == "active"
+                    self.hasDetachPlus = true
+
                 }
             }
         }
@@ -70,6 +73,8 @@ struct ContentView: View {
                     }
                 }
             }
+        }.onAppear {
+            self.onAppear()
         }
     }
 }

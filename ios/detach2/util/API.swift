@@ -131,7 +131,9 @@ extension DetachAPI: TargetType {
 }
 
 public func url(_ route: TargetType) -> String {
-    return route.baseURL.appendingPathComponent(route.path).absoluteString
+    let r = route.baseURL.appendingPathComponent(route.path).absoluteString
+    print("url: ", r)
+    return r
 }
 
 // MARK: - Response Handlers
