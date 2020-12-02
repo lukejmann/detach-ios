@@ -3,7 +3,7 @@
   "iOS" : [
     {
       "name" : "Sodium",
-      "hash" : "990bb42e4f1f2417dc3dc222fcadd81535b0b157e2c1dedea197ada84ad3d6d4",
+      "hash" : "8b02b9ce9429069accb76c2e75c4e83746cccbdc9569e084879ffa70a7626ed9",
       "linking" : "dynamic"
     }
   ]

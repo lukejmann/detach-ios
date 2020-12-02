@@ -1,16 +1,16 @@
 {
-  "commitish" : "3.6.2",
+  "commitish" : "3.7.0",
   "iOS" : [
     {
-      "hash" : "a34b8eb63a7803f5094ea44f2facb799d20d758986e2ec5fab5ebd39489c1dce",
-      "name" : "CocoaLumberjackSwift",
-      "linking" : "dynamic",
-      "swiftToolchainVersion" : "5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)"
+      "name" : "CocoaLumberjack",
+      "hash" : "b4f37f9251d16019c32c8d90a8e065a03087d3efa32808b23fb12dde3cb500d3",
+      "linking" : "dynamic"
     },
     {
-      "name" : "CocoaLumberjack",
-      "hash" : "a76ad378d21d6ad6c9bbf0f496b01b17c732dec4830a3fe5019eb56112cf8dea",
-      "linking" : "dynamic"
+      "hash" : "ebfcdab43c06359bc39f911b992fb57634ae278f0b7ec6ee766d4f662ee37ff7",
+      "name" : "CocoaLumberjackSwift",
+      "linking" : "dynamic",
+      "swiftToolchainVersion" : "5.3 (swiftlang-1200.0.29.2 clang-1200.0.30.1)"
     }
   ]
 }

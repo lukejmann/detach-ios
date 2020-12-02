@@ -2,10 +2,10 @@
   "commitish" : "0.5.0",
   "iOS" : [
     {
-      "hash" : "0658e60691649f936bc92cb62e314e1b46c69d985072a2b7b15f8be78e78fce3",
+      "hash" : "3bb6d7409f937a0ae155dc3502f3c72a8eb1b23b519efab0243e8b624b26795c",
       "name" : "MMDB",
       "linking" : "dynamic",
-      "swiftToolchainVersion" : "5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)"
+      "swiftToolchainVersion" : "5.3 (swiftlang-1200.0.29.2 clang-1200.0.30.1)"
     }
   ]
 }

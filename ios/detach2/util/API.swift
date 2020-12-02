@@ -40,7 +40,7 @@ public enum DetachAPI {
 }
 
 extension DetachAPI: TargetType {
-    public var baseURL: URL { return URL(string: "http://192.168.1.175/1")! }
+    public var baseURL: URL { return URL(string: "http://192.168.1.92/1")! }
     public var path: String {
         switch self {
         case .login:
@@ -57,7 +57,7 @@ extension DetachAPI: TargetType {
     }
 
     public var method: Moya.Method {
-        switch self {
+        switch self { 
         case .login:
             return .get
         case .createSession:

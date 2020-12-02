@@ -3,7 +3,7 @@ Apple clang version 12.0.0 (clang-1200.0.32.21)
 /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.1.sdk
 iPhoneOS14.1.sdk
 /Users/luke/Library/Caches/org.carthage.CarthageKit/DerivedData/12.1_12A7403/CocoaLumberjack/3.7.0/Build/Intermediates.noindex/ArchiveIntermediates/CocoaLumberjack/IntermediateBuildFilesPath/Lumberjack.build/Release-iphoneos/CocoaLumberjack.build/DerivedSources/CocoaLumberjack_vers.c
-/Users/luke/detach2/detach2/Carthage/Checkouts/CocoaLumberjack
+/Users/luke/detach2/ios/Carthage/Checkouts/CocoaLumberjack
 -[DDMultiFormatter init]
 -[DDMultiFormatter formatLogMessage:]
 ___Block_byref_object_copy_
@@ -64,7 +64,7 @@ _OBJC_IVAR_$_DDMultiFormatter._formatters
 __OBJC_$_INSTANCE_VARIABLES_DDMultiFormatter
 __OBJC_$_PROP_LIST_DDMultiFormatter
 __OBJC_CLASS_RO_$_DDMultiFormatter
-/Users/luke/detach2/detach2/Carthage/Checkouts/CocoaLumberjack/Sources/CocoaLumberjack/Extensions/DDMultiFormatter.m
+/Users/luke/detach2/ios/Carthage/Checkouts/CocoaLumberjack/Sources/CocoaLumberjack/Extensions/DDMultiFormatter.m
 Sources/CocoaLumberjack/Extensions/DDMultiFormatter.m
 __46-[DDMultiFormatter isFormattingWithFormatter:]_block_invoke
 __destroy_helper_block_e8_32s
@@ -82,7 +82,7 @@ __copy_helper_block_e8_32s40s48r
 __37-[DDMultiFormatter formatLogMessage:]_block_invoke
 __Block_byref_object_dispose_
 __Block_byref_object_copy_
-/Users/luke/detach2/detach2/Carthage/Checkouts/CocoaLumberjack/Sources/CocoaLumberjack/DDLoggerNames.m
+/Users/luke/detach2/ios/Carthage/Checkouts/CocoaLumberjack/Sources/CocoaLumberjack/DDLoggerNames.m
 +[DDTTYLogger initialize_colors_16]
 +[DDTTYLogger initialize_colors_256]
 +[DDTTYLogger getRed:green:blue:fromColor:]
@@ -224,7 +224,7 @@ __OBJC_$_INSTANCE_VARIABLES_DDTTYLoggerColorProfile
 __OBJC_CLASS_RO_$_DDTTYLoggerColorProfile
 _OBJC_CLASSLIST_REFERENCES_$_.314
 _OBJC_SELECTOR_REFERENCES_.316
-/Users/luke/detach2/detach2/Carthage/Checkouts/CocoaLumberjack/Sources/CocoaLumberjack/DDTTYLogger.m
+/Users/luke/detach2/ios/Carthage/Checkouts/CocoaLumberjack/Sources/CocoaLumberjack/DDTTYLogger.m
 Sources/CocoaLumberjack/DDTTYLogger.m
 Sources/CocoaLumberjack/include/CocoaLumberjack/DDTTYLogger.h
 __29-[DDTTYLogger clearAllColors]_block_invoke_2
@@ -478,7 +478,7 @@ __OBJC_$_INSTANCE_METHODS_DDLoggerInformation
 __OBJC_$_INSTANCE_VARIABLES_DDLoggerInformation
 __OBJC_$_PROP_LIST_DDLoggerInformation
 __OBJC_CLASS_RO_$_DDLoggerInformation
-/Users/luke/detach2/detach2/Carthage/Checkouts/CocoaLumberjack/Sources/CocoaLumberjack/DDLog.m
+/Users/luke/detach2/ios/Carthage/Checkouts/CocoaLumberjack/Sources/CocoaLumberjack/DDLog.m
 Sources/CocoaLumberjack/DDLog.m
 Sources/CocoaLumberjack/include/CocoaLumberjack/DDLog.h
 __36-[DDAbstractLogger setLogFormatter:]_block_invoke_2
@@ -549,7 +549,7 @@ _OBJC_IVAR_$_DDLoggingContextSet._set
 __OBJC_$_INSTANCE_VARIABLES_DDLoggingContextSet
 __OBJC_$_PROP_LIST_DDLoggingContextSet
 __OBJC_CLASS_RO_$_DDLoggingContextSet
-/Users/luke/detach2/detach2/Carthage/Checkouts/CocoaLumberjack/Sources/CocoaLumberjack/Extensions/DDContextFilterLogFormatter.m
+/Users/luke/detach2/ios/Carthage/Checkouts/CocoaLumberjack/Sources/CocoaLumberjack/Extensions/DDContextFilterLogFormatter.m
 Sources/CocoaLumberjack/Extensions/DDContextFilterLogFormatter.m
 +[DDASLLogCapture start]
 ___24+[DDASLLogCapture start]_block_invoke
@@ -574,13 +574,13 @@ __OBJC_$_CLASS_METHODS_DDASLLogCapture
 __OBJC_$_CLASS_PROP_LIST_DDASLLogCapture
 __OBJC_METACLASS_RO_$_DDASLLogCapture
 __OBJC_CLASS_RO_$_DDASLLogCapture
-/Users/luke/detach2/detach2/Carthage/Checkouts/CocoaLumberjack/Sources/CocoaLumberjack/DDASLLogCapture.m
+/Users/luke/detach2/ios/Carthage/Checkouts/CocoaLumberjack/Sources/CocoaLumberjack/DDASLLogCapture.m
 __destroy_helper_block_e8_40r
 __copy_helper_block_e8_40r
 __33+[DDASLLogCapture captureAslLogs]_block_invoke
 Sources/CocoaLumberjack/DDASLLogCapture.m
 __24+[DDASLLogCapture start]_block_invoke
-/Users/luke/detach2/detach2/Carthage/Checkouts/CocoaLumberjack/Sources/CocoaLumberjack/CLI/CLIColor.m
+/Users/luke/detach2/ios/Carthage/Checkouts/CocoaLumberjack/Sources/CocoaLumberjack/CLI/CLIColor.m
 +[DDLogFileManagerDefault automaticallyNotifiesObserversForKey:]
 -[DDLogFileManagerDefault init]
 -[DDLogFileManagerDefault initWithLogsDirectory:]
@@ -892,7 +892,7 @@ _OBJC_IVAR_$_DDLogFileInfo.filePath
 __OBJC_$_INSTANCE_VARIABLES_DDLogFileInfo
 __OBJC_$_PROP_LIST_DDLogFileInfo
 __OBJC_CLASS_RO_$_DDLogFileInfo
-/Users/luke/detach2/detach2/Carthage/Checkouts/CocoaLumberjack/Sources/CocoaLumberjack/DDFileLogger.m
+/Users/luke/detach2/ios/Carthage/Checkouts/CocoaLumberjack/Sources/CocoaLumberjack/DDFileLogger.m
 Sources/CocoaLumberjack/DDFileLogger.m
 __37-[DDFileLogger(Internal) lt_logData:]_block_invoke
 __34-[DDFileLogger(Internal) logData:]_block_invoke_2
@@ -953,7 +953,7 @@ __OBJC_$_INSTANCE_METHODS_DDOSLogger
 __OBJC_$_INSTANCE_VARIABLES_DDOSLogger
 __OBJC_$_PROP_LIST_DDOSLogger
 __OBJC_CLASS_RO_$_DDOSLogger
-/Users/luke/detach2/detach2/Carthage/Checkouts/CocoaLumberjack/Sources/CocoaLumberjack/DDOSLogger.m
+/Users/luke/detach2/ios/Carthage/Checkouts/CocoaLumberjack/Sources/CocoaLumberjack/DDOSLogger.m
 Sources/CocoaLumberjack/DDOSLogger.m
 __28+[DDOSLogger sharedInstance]_block_invoke
 -[DDBufferedProxy initWithFileLogger:]
@@ -1011,7 +1011,7 @@ _DDGetDefaultBufferSizeBytes.onceToken
 _DDGetMaxBufferSizeBytes.maxBufferSize
 _DDGetMaxBufferSizeBytes.onceToken
 ___block_literal_global.80
-/Users/luke/detach2/detach2/Carthage/Checkouts/CocoaLumberjack/Sources/CocoaLumberjack/Extensions/DDFileLogger+Buffering.m
+/Users/luke/detach2/ios/Carthage/Checkouts/CocoaLumberjack/Sources/CocoaLumberjack/Extensions/DDFileLogger+Buffering.m
 __DDGetMaxBufferSizeBytes_block_invoke
 Sources/CocoaLumberjack/Extensions/DDFileLogger+Buffering.m
 p_DDGetDefaultBufferSizeBytesMax
@@ -1070,7 +1070,7 @@ _OBJC_IVAR_$_DDAtomicCounter._value
 __OBJC_$_INSTANCE_VARIABLES_DDAtomicCounter
 __OBJC_$_PROP_LIST_DDAtomicCounter
 __OBJC_CLASS_RO_$_DDAtomicCounter
-/Users/luke/detach2/detach2/Carthage/Checkouts/CocoaLumberjack/Sources/CocoaLumberjack/Extensions/DDDispatchQueueLogFormatter.m
+/Users/luke/detach2/ios/Carthage/Checkouts/CocoaLumberjack/Sources/CocoaLumberjack/Extensions/DDDispatchQueueLogFormatter.m
 Sources/CocoaLumberjack/Extensions/DDDispatchQueueLogFormatter.m
 _qos_name
 -[DDAbstractDatabaseLogger init]
@@ -1134,7 +1134,7 @@ __OBJC_$_INSTANCE_METHODS_DDAbstractDatabaseLogger
 __OBJC_$_INSTANCE_VARIABLES_DDAbstractDatabaseLogger
 __OBJC_$_PROP_LIST_DDAbstractDatabaseLogger
 __OBJC_CLASS_RO_$_DDAbstractDatabaseLogger
-/Users/luke/detach2/detach2/Carthage/Checkouts/CocoaLumberjack/Sources/CocoaLumberjack/DDAbstractDatabaseLogger.m
+/Users/luke/detach2/ios/Carthage/Checkouts/CocoaLumberjack/Sources/CocoaLumberjack/DDAbstractDatabaseLogger.m
 Sources/CocoaLumberjack/DDAbstractDatabaseLogger.m
 __47-[DDAbstractDatabaseLogger deleteOldLogEntries]_block_invoke
 __49-[DDAbstractDatabaseLogger savePendingLogEntries]_block_invoke
@@ -1176,6 +1176,6 @@ __OBJC_$_INSTANCE_METHODS_DDASLLogger
 __OBJC_$_INSTANCE_VARIABLES_DDASLLogger
 __OBJC_$_PROP_LIST_DDASLLogger
 __OBJC_CLASS_RO_$_DDASLLogger
-/Users/luke/detach2/detach2/Carthage/Checkouts/CocoaLumberjack/Sources/CocoaLumberjack/DDASLLogger.m
+/Users/luke/detach2/ios/Carthage/Checkouts/CocoaLumberjack/Sources/CocoaLumberjack/DDASLLogger.m
 Sources/CocoaLumberjack/DDASLLogger.m
 __29+[DDASLLogger sharedInstance]_block_invoke

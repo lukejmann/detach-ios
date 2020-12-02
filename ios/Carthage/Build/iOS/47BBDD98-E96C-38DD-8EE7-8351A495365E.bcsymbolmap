@@ -3,7 +3,7 @@ Apple clang version 12.0.0 (clang-1200.0.32.21)
 /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.1.sdk
 iPhoneOS14.1.sdk
 /Users/luke/Library/Caches/org.carthage.CarthageKit/DerivedData/12.1_12A7403/CocoaAsyncSocket/7.6.4/Build/Intermediates.noindex/ArchiveIntermediates/iOS Framework/IntermediateBuildFilesPath/CocoaAsyncSocket.build/Release-iphoneos/iOS CocoaAsyncSocket.build/DerivedSources/CocoaAsyncSocket_vers.c
-/Users/luke/detach2/detach2/Carthage/Checkouts/CocoaAsyncSocket
+/Users/luke/detach2/ios/Carthage/Checkouts/CocoaAsyncSocket
 -[GCDAsyncUdpSendPacket init]
 -[GCDAsyncUdpSendPacket initWithData:timeout:tag:]
 -[GCDAsyncUdpSendPacket .cxx_destruct]
@@ -539,7 +539,7 @@ _OBJC_IVAR_$_GCDAsyncUdpSocket.writeStream6
 _OBJC_IVAR_$_GCDAsyncUdpSocket.userData
 __OBJC_$_INSTANCE_VARIABLES_GCDAsyncUdpSocket
 __OBJC_CLASS_RO_$_GCDAsyncUdpSocket
-/Users/luke/detach2/detach2/Carthage/Checkouts/CocoaAsyncSocket/Source/GCD/GCDAsyncUdpSocket.m
+/Users/luke/detach2/ios/Carthage/Checkouts/CocoaAsyncSocket/Source/GCD/GCDAsyncUdpSocket.m
 __CFWriteStreamCallback_block_invoke
 Source/GCD/GCDAsyncUdpSocket.m
 __CFReadStreamCallback_block_invoke
@@ -1296,7 +1296,7 @@ _OBJC_SELECTOR_REFERENCES_.902
 _OBJC_SELECTOR_REFERENCES_.903
 _OBJC_SELECTOR_REFERENCES_.904
 _OBJC_SELECTOR_REFERENCES_.905
-/Users/luke/detach2/detach2/Carthage/Checkouts/CocoaAsyncSocket/Source/GCD/GCDAsyncSocket.m
+/Users/luke/detach2/ios/Carthage/Checkouts/CocoaAsyncSocket/Source/GCD/GCDAsyncSocket.m
 __45-[GCDAsyncSocket connectWithAddressUN:error:]_block_invoke.cold.1
 Source/GCD/GCDAsyncSocket.m
 __CFWriteStreamCallback_block_invoke_2
