@@ -73,15 +73,13 @@ struct ContentView: View {
                     }
                 }
             }
-        }.onAppear {
+        } .frame(width: CGFloat(UIApplication.shared.windows.first!.frame.width), height: CGFloat(UIApplication.shared.windows.first!.frame.height - (UIDevice.current.hasNotch ? 100 : 70)), alignment: .topLeading).onAppear {
             self.onAppear()
-        }
+         }
     }
 }
 
-// .frame(width: CGFloat(UIApplication.shared.windows.first!.frame.width), height: CGFloat(UIApplication.shared.windows.first!.frame.height - (UIDevice.current.hasNotch ? 100 : 70)), alignment: .topLeading).onAppear {
-//    self.onAppAppears()
-// }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
