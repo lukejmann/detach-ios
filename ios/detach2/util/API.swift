@@ -16,7 +16,8 @@ private func JSONResponseDataFormatter(_ data: Data) -> String {
 public let detachProvier = MoyaProvider<DetachAPI>(plugins: [
     NetworkLoggerPlugin(
         configuration:
-        .init(formatter:
+        .init(
+            formatter:
             .init(responseData: JSONResponseDataFormatter),
             logOptions: .default)
     ),
@@ -27,7 +28,7 @@ public let detachProvier = MoyaProvider<DetachAPI>(plugins: [
 
 private extension String {
     var urlEscaped: String {
-        return self.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
     }
 }
 
@@ -40,7 +41,7 @@ public enum DetachAPI {
 }
 
 extension DetachAPI: TargetType {
-    public var baseURL: URL { return URL(string: "http://192.168.1.92/1")! }
+    public var baseURL: URL { URL(string: "http://192.168.1.92/1")! }
     public var path: String {
         switch self {
         case .login:
@@ -57,7 +58,7 @@ extension DetachAPI: TargetType {
     }
 
     public var method: Moya.Method {
-        switch self { 
+        switch self {
         case .login:
             return .get
         case .createSession:
@@ -126,7 +127,7 @@ extension DetachAPI: TargetType {
     }
 
     public var headers: [String: String]? {
-        return ["Content-type": "application/json"]
+        ["Content-type": "application/json"]
     }
 }
 
@@ -140,7 +141,7 @@ public func url(_ route: TargetType) -> String {
 
 extension Moya.Response {
     func mapNSArray() throws -> NSArray {
-        let any = try self.mapJSON()
+        let any = try mapJSON()
         guard let array = any as? NSArray else {
             throw MoyaError.jsonMapping(self)
         }

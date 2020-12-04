@@ -6,12 +6,12 @@
 //  Copyright © 2020 Luke Mann. All rights reserved.
 //
 
-import UIKit
 import AuthenticationServices
 import SwiftyStoreKit
+import UIKit
 
 var deviceToken = "default"
-//var userLoggedInOnOpen = false
+// var userLoggedInOnOpen = false
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         registerForPushNotifications()
 
         let appleIDProvider = ASAuthorizationAppleIDProvider()
-        
+
         SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
             for purchase in purchases {
                 switch purchase.transaction.transactionState {
@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         // Deliver content from server, then:
                         SwiftyStoreKit.finishTransaction(purchase.transaction)
                     }
-                    // Unlock content
+                // Unlock content
                 case .failed, .purchasing, .deferred:
                     break // do nothing
                 }
@@ -39,17 +39,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let product = result.retrievedProducts.first {
                 let priceString = product.localizedPrice!
                 print("Product: \(product.localizedDescription), price: \(priceString)")
-            }
-            else if let invalidProductId = result.invalidProductIDs.first {
+            } else if let invalidProductId = result.invalidProductIDs.first {
                 print("Invalid product identifier: \(invalidProductId)")
-            }
-            else {
+            } else {
                 print("Error: \(result.error)")
             }
         }
-
-        
-        
 
         return true
     }
@@ -124,8 +119,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ notif: UIApplication,
         didReceiveRemoteNotification userInfo: [AnyHashable: Any],
         fetchCompletionHandler completion:
-        @escaping (UIBackgroundFetchResult) -> Void
-    ) {
+        @escaping (UIBackgroundFetchResult) -> Void)
+    {
         print("in didReceiveRemoteNotification. notif: \(notif). userInfo: \(userInfo)")
         if Date() > timerEnd {
             print("in notifDidReceiveRemoteNotification. notif: \(notif)")

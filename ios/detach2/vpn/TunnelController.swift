@@ -17,8 +17,7 @@ class TunnelController: NSObject {
 
         refreshManager()
     }
-    
-    
+
     func disable() {
         setVPNDomains(domains: [""])
         setEnabled(false)

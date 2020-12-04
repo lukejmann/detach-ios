@@ -12,6 +12,6 @@ import SwiftUI
 
 extension Font {
     static func newYorkXL(size: CGFloat) -> Font {
-        return Font.custom("NewYorkLarge-SemiboldItalic", size: size)
+        Font.custom("NewYorkLarge-SemiboldItalic", size: size)
     }
 }

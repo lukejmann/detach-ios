@@ -10,7 +10,7 @@ import Foundation
 import SwiftyStoreKit
 
 // TODO: server doesn't recieve appleReceipt var
-func checkUserReceipt(completion: @escaping (_ success: Bool) -> ()) {
+func checkUserReceipt(completion: @escaping (_ success: Bool) -> Void) {
     SwiftyStoreKit.fetchReceipt(forceRefresh: true) { result in
         switch result {
         case let .success(receiptData):
@@ -65,5 +65,5 @@ public class SubStatus: Codable {
 }
 
 public struct TrialSession: Codable {
-    var date :Date
+    var date: Date
 }

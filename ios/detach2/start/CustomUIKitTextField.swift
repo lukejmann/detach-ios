@@ -12,16 +12,16 @@ struct CustomUIKitTextField: UIViewRepresentable {
     @Binding var text: String {
         didSet {
             resetSlider()
-            if text != "00:00" && startMode == .disabled {
+            if text != "00:00", startMode == .disabled {
                 let userAgreedToVPN = getUserAgreedToVPN()
-                if TunnelController.shared.status() == .connected{
-                    self.startMode = .proxyEnabled
+                if TunnelController.shared.status() == .connected {
+                    startMode = .proxyEnabled
                 } else {
-                    self.startMode = .validInput
+                    startMode = .validInput
                 }
             }
-            if text == "00:00" && startMode == .validInput {
-                self.startMode = .disabled
+            if text == "00:00", startMode == .validInput {
+                startMode = .disabled
             }
         }
     }
@@ -105,6 +105,6 @@ struct CustomUIKitTextField: UIViewRepresentable {
 
 struct CustomUIKitTextField_Previews: PreviewProvider {
     static var previews: some View {
-      Text("N/A")
+        Text("N/A")
     }
 }

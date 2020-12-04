@@ -40,7 +40,7 @@ struct SessionScreen: View {
             self.setScreen("HomeMenu")
         }
         TunnelController.shared.disable()
-        self.setScreen("HomeMenu")
+        setScreen("HomeMenu")
     }
 
     var body: some View {
@@ -59,10 +59,10 @@ struct SessionScreen: View {
                     }
                 }.padding(.horizontal, 42)
             }.background(Color.red)
-            .frame(
-                width: geometry.size.width,
-                height: geometry.size.height,
-                alignment: .topLeading)
+                .frame(
+                    width: geometry.size.width,
+                    height: geometry.size.height,
+                    alignment: .topLeading)
         }.background(Color.black).onAppear {
             UIApplication.shared.statusBarStyle = .lightContent
         }

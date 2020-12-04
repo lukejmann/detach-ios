@@ -39,7 +39,7 @@ struct LoginScreen: View {
             if success {
                 self.loginCompleted()
             } else {
-                //TODO: handle
+                // TODO: handle
             }
         }
     }

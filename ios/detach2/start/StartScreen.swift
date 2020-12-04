@@ -10,9 +10,8 @@ struct StartScreen: View {
 
     @State var sliderDistance: CGFloat = 0
 //    @State var sliderIsLocked: Bool = false
-    
-    @State var showProxyAlert: Bool = false
 
+    @State var showProxyAlert: Bool = false
 
     @State var durationString: String = "00:00"
 
@@ -32,8 +31,6 @@ struct StartScreen: View {
     init(setScreen: @escaping (_ screen: String) -> Void) {
         self.setScreen = setScreen
     }
-
-
 
     func proxyDeclined() {
         resetSlider()
@@ -75,6 +72,7 @@ struct StartScreen: View {
         sliderDistance = 0
         keyboardVisible = true
     }
+
     func toggleShowAlert() {
         showProxyAlert.toggle()
     }

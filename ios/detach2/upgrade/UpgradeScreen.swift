@@ -18,7 +18,7 @@ struct UpgradeScreen: View {
     func triggerPurchase() {
         SwiftyStoreKit.purchaseProduct("com.detachapp.ios1.onemonth", quantity: 1, atomically: true) { result in
             switch result {
-            case .success(let purchase):
+            case let .success(purchase):
                 print("Purchase Success: \(purchase)")
                 checkUserReceipt { success in
                     if success {
@@ -26,7 +26,7 @@ struct UpgradeScreen: View {
                         self.setScreen("HomeMenu")
                     }
                 }
-            case .error(let error):
+            case let .error(error):
                 switch error.code {
                 case .unknown: print("Unknown error. Please contact support")
                 case .clientInvalid: print("Not allowed to make the payment")
@@ -45,10 +45,9 @@ struct UpgradeScreen: View {
 
     func triggerRestore() {
         SwiftyStoreKit.restorePurchases(atomically: true) { results in
-            if results.restoreFailedPurchases.count > 0 {
+            if !results.restoreFailedPurchases.isEmpty {
                 print("Restore Failed: \(results.restoreFailedPurchases)")
-            }
-            else if results.restoredPurchases.count > 0 {
+            } else if !results.restoredPurchases.isEmpty {
                 print("Restore Success: \(results.restoredPurchases)")
                 checkUserReceipt { success in
                     if success {
@@ -56,8 +55,7 @@ struct UpgradeScreen: View {
                         self.setScreen("HomeMenu")
                     }
                 }
-            }
-            else {
+            } else {
                 print("Nothing to Restore")
             }
         }

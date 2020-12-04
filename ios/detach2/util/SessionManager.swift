@@ -31,7 +31,7 @@ func uploadSession(endTimeUnix: Int, completion: @escaping (Bool) -> Void) {
                     if res.success {
                         timerEnd = Date(timeIntervalSince1970: TimeInterval(endTimeUnix))
                         setSessionID(sessionID: res.sessionID)
-                        if getSubStatus()?.status != "active"{
+                        if getSubStatus()?.status != "active" {
                             setTrialSession(trialSession: TrialSession(date: Date()))
                         }
                         print("successfully started session \(res.sessionID)")

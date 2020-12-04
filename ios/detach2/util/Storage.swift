@@ -40,11 +40,11 @@ public func setSupportedApps(apps: [App]) {
     if let encoded = try? encoder.encode(apps) {
         appsDefaults.set(encoded, forKey: kSupportedApps)
         print("set supportedApps in store. apps \(apps)")
-    }
-    else {
+    } else {
         print("failed to store supportedApps")
     }
 }
+
 public func getSelectedAppNames() -> [String] {
     if let appNames = appsDefaults.array(forKey: kSelectedAppNames) {
         print("in getSelectedAppNames. selected app names: \(appNames)")
@@ -116,8 +116,7 @@ public func setSubStatus(status: SubStatus) {
     if let encoded = try? encoder.encode(status) {
         appsDefaults.set(encoded, forKey: kSubStatus)
         print("set sub status in store")
-    }
-    else {
+    } else {
         print("failed to store sub status")
     }
 }
@@ -139,8 +138,7 @@ public func setTrialSession(trialSession: TrialSession) {
     if let encoded = try? encoder.encode(trialSession) {
         userInfoDefaults.set(encoded, forKey: kTrialSession)
         print("set trialSession in store")
-    }
-    else {
+    } else {
         print("failed to store trialSession")
     }
 }

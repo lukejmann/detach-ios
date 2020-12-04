@@ -6,23 +6,22 @@
 ////  Copyright © 2020 Luke Mann. All rights reserved.
 ////
 //
-//import SwiftUI
+// import SwiftUI
 //
-//struct EndingSessionScreen: View {
+// struct EndingSessionScreen: View {
 //    var setScreen: (_ screen: String) -> Void
 //
 //    var body: some View {
 //        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
 //    }
-//}
+// }
 //
-//struct EndingSessionScreen_Previews: PreviewProvider {
+// struct EndingSessionScreen_Previews: PreviewProvider {
 //    static var previews: some View {
 //        EndingSessionScreen{ s in
 //            //
 //        }
 //    }
-//}
+// }
 
-
-//LATER after MVP
+// LATER after MVP
