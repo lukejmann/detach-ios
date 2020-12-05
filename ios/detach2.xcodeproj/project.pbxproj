@@ -20,6 +20,7 @@
 		A32A970724E3330B002C1145 /* georgia italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A32A970624E3330B002C1145 /* georgia italic.ttf */; };
 		A32A970B24E3405B002C1145 /* HomeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32A970A24E3405B002C1145 /* HomeMenu.swift */; };
 		A32A970F24E341DA002C1145 /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32A970E24E341DA002C1145 /* StartScreen.swift */; };
+		A34B1F3B257C37FD004753BE /* SetDurationOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34B1F3A257C37FD004753BE /* SetDurationOverlay.swift */; };
 		A350D57725785F3700DA3739 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A350D57625785F3700DA3739 /* Colors.xcassets */; };
 		A350D5912578781700DA3739 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A350D5902578781700DA3739 /* Fonts.swift */; };
 		A37D8BBE24E8821600E8EAFE /* EndingSessionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D8BBD24E8821600E8EAFE /* EndingSessionScreen.swift */; };
@@ -134,6 +135,7 @@
 		A32A970624E3330B002C1145 /* georgia italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "georgia italic.ttf"; sourceTree = "<group>"; };
 		A32A970A24E3405B002C1145 /* HomeMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMenu.swift; sourceTree = "<group>"; };
 		A32A970E24E341DA002C1145 /* StartScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreen.swift; sourceTree = "<group>"; };
+		A34B1F3A257C37FD004753BE /* SetDurationOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDurationOverlay.swift; sourceTree = "<group>"; };
 		A350D57625785F3700DA3739 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		A350D5902578781700DA3739 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		A37D8BBD24E8821600E8EAFE /* EndingSessionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndingSessionScreen.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				A32A970A24E3405B002C1145 /* HomeMenu.swift */,
 				A39A952524E4B79900377CD5 /* Colors.swift */,
 				A39B285224E4F41B004DCE2C /* Images.swift */,
+				A34B1F3A257C37FD004753BE /* SetDurationOverlay.swift */,
 			);
 			path = detach2;
 			sourceTree = "<group>";
@@ -751,6 +754,7 @@
 				A37D8BC724E89C7400E8EAFE /* SelectAppsScreen.swift in Sources */,
 				A3F537FF24EF86B200D107DE /* IAP.swift in Sources */,
 				A39A952624E4B79900377CD5 /* Colors.swift in Sources */,
+				A34B1F3B257C37FD004753BE /* SetDurationOverlay.swift in Sources */,
 				A39B285524E4F571004DCE2C /* SessionScreen.swift in Sources */,
 				A392C7BB24E4480F00D5DAF4 /* TunnelController.swift in Sources */,
 				A392C7BF24E448C300D5DAF4 /* Logs.swift in Sources */,

@@ -11,26 +11,12 @@ import SwiftUI
 struct CustomUIKitTextField: UIViewRepresentable {
     @Binding var text: String {
         didSet {
-            resetSlider()
-            if text != "00:00", startMode == .disabled {
-                let userAgreedToVPN = getUserAgreedToVPN()
-                if TunnelController.shared.status() == .connected {
-                    startMode = .proxyEnabled
-                } else {
-                    startMode = .validInput
-                }
-            }
-            if text == "00:00", startMode == .validInput {
-                startMode = .disabled
-            }
+            validInput = text != "00:00"
         }
     }
 
-    @Binding var startMode: StartMode
+    @Binding var validInput: Bool
     @Binding var isFirstResponder: Bool
-
-    var resetSlider: () -> Void
-//    var setValidInput
 
     var placeholder: String
 
@@ -50,7 +36,8 @@ struct CustomUIKitTextField: UIViewRepresentable {
         uiView.setContentCompressionResistancePriority(.required, for: .vertical)
         uiView.font = UIFont(name: "NewYorkLarge-SemiboldItalic", size: 70)
         uiView.keyboardType = .numberPad
-        uiView.tintColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+        uiView.textColor = UIColor(Color.darkBlue)
+        uiView.tintColor = UIColor(Color.darkBlue)
         uiView.textAlignment = .center
         if isFirstResponder {
             uiView.becomeFirstResponder()
@@ -106,5 +93,11 @@ struct CustomUIKitTextField: UIViewRepresentable {
 struct CustomUIKitTextField_Previews: PreviewProvider {
     static var previews: some View {
         Text("N/A")
+    }
+}
+
+extension StringProtocol {
+    subscript(offset: Int) -> String {
+        String(self[index(startIndex, offsetBy: offset)])
     }
 }

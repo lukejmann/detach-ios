@@ -14,9 +14,9 @@ struct SelectAppsScreen: View {
             VStack(alignment: .leading, spacing: 0) {
                 VStack(alignment: .leading, spacing: 0) {
                     Button(action: {
-                            self.setScreen("HomeMenu")
+                        self.setScreen("HomeMenu")
                     }) {
-                        Image("leftArrow").resizable().frame(width: 44, height: 21, alignment: .leading)
+                            Image("leftArrow").resizable().frame(width: 44, height: 21, alignment: .leading)
                     }
                     Text("Select Apps")
                         .font(.system(size: 25, weight: .bold, design: .default))
@@ -111,7 +111,7 @@ struct SelectAppsScreen_Previews: PreviewProvider {
         SelectAppsScreen {
             _ in
         }.background(Image("bg-grain"))
-        .previewDevice(PreviewDevice(rawValue: "iPhone XS Max"))
-        .previewDisplayName("iPhone 11 Pro")
+            .previewDevice(PreviewDevice(rawValue: "iPhone XS Max"))
+            .previewDisplayName("iPhone 11 Pro")
     }
 }
