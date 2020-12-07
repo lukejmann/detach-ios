@@ -13,6 +13,9 @@ struct ContentView: View {
     @State var showLoginScreen = getUserID() == "N/A userID"
     @State var hasDetachPlus = true
     @State var showSetDuration = false
+    @State var keyboardVisible: Bool = false
+    @State var durationString: String = "00:00"
+
 
     @Environment(\.colorScheme) var colorScheme
 
@@ -24,6 +27,18 @@ struct ContentView: View {
         }
         checkSubscription()
         refreshSupportedApps()
+    }
+    
+    func showDurationOverlay() {
+        self.showSetDuration = true
+        print("calling self.keyboardVisible = true")
+        self.keyboardVisible = true
+    }
+    
+    func hideDurationOverlay(){
+        self.showSetDuration = false
+        print("calling self.keyboardVisible = false")
+        self.keyboardVisible = false
     }
 
     func checkSubscription() {
@@ -47,15 +62,19 @@ struct ContentView: View {
             //                    })
             //                } else {
             ZStack {
-                HomeMenu { screen in
+                HomeMenu(durationString: self.$durationString){ screen in
                     self.cScreen = screen
                 } showDurationScreen: {
-                    self.showSetDuration = true
+                    self.showDurationOverlay()
                 }.offset(x: self.cScreen != "HomeMenu" ? -1 * geo.size.width : 0).animation(.spring())
                 SelectAppsScreen { screen in
                     self.cScreen = screen
                 }.offset(x: self.cScreen == "SelectApps" ? 0 : geo.size.width, y: 0).animation(.spring())
-                SetDurationOverlay().background(Color.tan).offset(y: self.showSetDuration ? 0 : geo.size.height).animation(.easeIn(duration: 0.15))
+                SetDurationOverlay(durationString: self.$durationString, setDurationString: { str in
+                    self.durationString = str
+                }, keyboardVisible: self.$keyboardVisible){
+                    self.hideDurationOverlay()
+                }.offset(y: self.showSetDuration ? 0 : geo.size.height).animation(.easeIn(duration: 0.15))
             }
 
             //                    else if self.cScreen == "Start" {
@@ -76,10 +95,12 @@ struct ContentView: View {
             //                        Text("Unknown Screen" + self.cScreen)
             //                    }
             //                }
-        }
-        .frame(width: CGFloat(UIApplication.shared.windows.first!.frame.width), height: CGFloat(UIApplication.shared.windows.first!.frame.height - (UIDevice.current.hasNotch ? 100 : 70)), alignment: .topLeading).onAppear {
+        }.background(Image("bg-grain")).ignoresSafeArea(.keyboard)
+//        .frame(width: CGFloat(UIApplication.shared.windows.first!.frame.width), height: CGFloat(UIApplication.shared.windows.first!.frame.height - (UIDevice.current.hasNotch ? 100 : 70)), alignment: .topLeading)
+        .onAppear {
             self.onAppear()
-        }.background(Image("bg-grain"))
+        }
+
     }
 }
 

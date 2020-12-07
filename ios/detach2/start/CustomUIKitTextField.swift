@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+//make final class? https://developer.apple.com/forums/thread/124671
 struct CustomUIKitTextField: UIViewRepresentable {
     @Binding var text: String {
         didSet {
@@ -39,9 +40,13 @@ struct CustomUIKitTextField: UIViewRepresentable {
         uiView.textColor = UIColor(Color.darkBlue)
         uiView.tintColor = UIColor(Color.darkBlue)
         uiView.textAlignment = .center
+        print("isFirstResponder in updateUIView:\(isFirstResponder)")
         if isFirstResponder {
-            uiView.becomeFirstResponder()
-            context.coordinator.didBecomeFirstResponder = true
+                    uiView.becomeFirstResponder()
+                    context.coordinator.didBecomeFirstResponder = true
+        } else {
+            uiView.resignFirstResponder()
+            context.coordinator.didBecomeFirstResponder = false
         }
     }
 

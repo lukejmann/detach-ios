@@ -9,7 +9,8 @@
 import SwiftUI
 
 struct HomeMenu: View {
-//    @Binding var hasDetachPlus: Bool
+    
+    @Binding var durationString: String
     var setScreen: (_ screen: String) -> Void
 
     var canStartSession: Bool {
@@ -34,7 +35,7 @@ struct HomeMenu: View {
                         Text("detach").font(.custom("Georgia-Italic", size: 42)).foregroundColor(Color.tan)
                     }.frame(width: geo.size.width, height: .none, alignment: .center).padding(.top, 65)
                     Text("Set Focus Duration").kerning(-0.65).font(.system(size: 25, weight: .light, design: .default)).padding(.top, 65).foregroundColor(Color.tan).padding(.horizontal, 25)
-                    SetDurationButton {
+                    SetDurationButton(durationString: self.$durationString) {
                         self.showDurationScreen()
                     }.padding(.top, 30)
                     Button(action: {
@@ -63,7 +64,8 @@ struct HomeMenu: View {
 
 struct SetDurationButton: View {
     @Environment(\.colorScheme) var colorScheme
-
+    @Binding var durationString: String
+    
     var showSetDuration: () -> Void
 
     var body: some View {
@@ -74,7 +76,7 @@ struct SetDurationButton: View {
                     showSetDuration()
                 }) {
                         VStack(alignment: .center) {
-                            Text("01:20").font(.newYorkXL(size: 60.0)).foregroundColor(Color.darkBlue)
+                            Text(self.durationString).font(.newYorkXL(size: 60.0)).foregroundColor(Color.darkBlue)
                             HStack(alignment: .center, spacing: 0) {
                                 Spacer()
                                 Rectangle().fill(Color.darkBlue).frame(width: 200, height: 1, alignment: .center)
@@ -98,10 +100,11 @@ struct SetDurationButton: View {
 
 struct HomeMenu_Previews: PreviewProvider {
     @State static var hasDetachPlus = false
+    @State static var durationString = "04:20"
 
     static var previews: some View {
         Group {
-            HomeMenu {
+            HomeMenu(durationString: self.$durationString){
                 _ in
             } showDurationScreen: {}.background(Image("bg-grain"))
                 .previewDevice(PreviewDevice(rawValue: "iPhone 11"))

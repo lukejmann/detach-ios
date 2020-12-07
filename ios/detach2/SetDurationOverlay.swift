@@ -10,23 +10,44 @@ import Foundation
 import SwiftUI
 
 struct SetDurationOverlay: View {
-    @State var durationString: String = "00:00"
+    @Binding var durationString: String
     @State var validInput: Bool = false
-
-    @State var keyboardVisible: Bool = true
-
+    var setDurationString: (_ str: String) -> Void
+    
+    @Binding var keyboardVisible: Bool
+    
+    var hideOverlay: () -> Void
+    
+    func calculateEndTimeSec(duration: String) -> Int {
+        // TODO: unwrap
+        let hours = Int(duration[0] + duration[1])!
+        let minutes = Int(duration[3] + duration[4])!
+        let today = Date()
+        let hoursAdded = Calendar.current.date(byAdding: .hour, value: hours, to: today)!
+        let minutesAdded = Calendar.current.date(byAdding: .minute, value: minutes, to: hoursAdded)!
+        return Int(minutesAdded.timeIntervalSince1970)
+    }
+    
+    func saveTime(durationString: String) {
+        let endTimeSec = calculateEndTimeSec(duration: durationString)
+        setDurationString(durationString)
+        setEndTime(endTime: endTimeSec)
+        hideOverlay()
+    }
+    
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .leading) {
-                Rectangle().frame(width: geo.size.width, height: geo.size.height, alignment: .leading).foregroundColor(Color.tan)
+                RoundedRectangle(cornerRadius: 18, style: .circular).fill(Color.tan).frame(width: geo.size.width, height: geo.size.height + 100)
+                
                 VStack(alignment: .leading, spacing: 0.0) {
                     Text("Set Duration").font(.system(size: 25, weight: .bold, design: .default)).kerning(-1).foregroundColor(Color.darkBlue)
                     Text("Set how long selected apps will be blocked for.").font(.system(size: 14, weight: .regular, design: .default)).kerning(-1).foregroundColor(Color.darkBlue).padding(.top, 0)
                     HStack(alignment: .center, spacing: 0) {
                         Spacer()
-                        CustomUIKitTextField(text: self.$durationString, validInput: self.$validInput, isFirstResponder: self.$keyboardVisible, placeholder: "00:00").padding(.top, 30.0)
+                        CustomUIKitTextField(text: self.$durationString, validInput: self.$validInput, isFirstResponder: self.$keyboardVisible, placeholder: "00:00")
                         Spacer()
-                    }.padding(.top, 20)
+                    }.padding(.top, 50)
                     HStack(alignment: .center, spacing: 0) {
                         Spacer()
                         Rectangle().fill(Color.darkBlue).frame(width: 245, height: 1, alignment: .center)
@@ -40,7 +61,9 @@ struct SetDurationOverlay: View {
                         Spacer()
                     }.padding(.top, 8)
                     HStack {
-                        Button(action: {}) {
+                        Button(action: {
+                            self.hideOverlay()
+                        }) {
                             HStack(alignment: .center, spacing: nil, content: {
                                 Image("cancelIcon").resizable().frame(width: 15, height: 15, alignment: .center)
                                 Text("Cancel").foregroundColor(.darkBlue).font(.system(size: 18, weight: .medium, design: .default))
@@ -50,7 +73,9 @@ struct SetDurationOverlay: View {
                             )
                         }
                         Spacer()
-                        Button(action: {}) {
+                        Button(action: {
+                            self.saveTime(durationString: self.durationString)
+                        }) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 8, style: .continuous)
                                     .fill(Color.darkBlue)
@@ -62,6 +87,29 @@ struct SetDurationOverlay: View {
                             }
                         }
                     }.padding(.top, 34).padding(.horizontal, 30)
+                    Text("Quick-Set").foregroundColor(.darkBlue)
+                        .font(.system(size: 24, weight: .medium, design: .default)).padding(.top, 30)
+                    HStack {
+                        quickSetButton(width: 0.41 * geo.size.width, numberText: "25", unitText: "MIN"){
+                            self.saveTime(durationString: "00:25")
+                        }
+                        Spacer()
+                        quickSetButton(width: 0.41 * geo.size.width, numberText: "45", unitText: "MIN"){
+                            self.saveTime(durationString: "00:45")
+
+                        }
+                    }.padding(.top, 10)
+                    HStack {
+                        quickSetButton(width: 0.41 * geo.size.width, numberText: "1", unitText: "HR"){
+                            self.saveTime(durationString: "01:00")
+
+                        }
+                        Spacer()
+                        quickSetButton(width: 0.41 * geo.size.width, numberText: "3", unitText: "HR"){
+                            self.saveTime(durationString: "03:00")
+
+                        }
+                    }.padding(.top, 10)
                     Spacer()
                 }.padding(.horizontal, 20).padding(.top, 50)
             }
@@ -71,12 +119,44 @@ struct SetDurationOverlay: View {
 
 struct SetDurationOverlayu_Previews: PreviewProvider {
     @State static var hasDetachPlus = false
+    @State static var keyboardVisible = false
+    @State static var durationString = "04:20"
 
+    
     static var previews: some View {
         Group {
-            SetDurationOverlay()
-                .previewDisplayName("iPhone 11")
+            SetDurationOverlay(durationString: self.$durationString, setDurationString: { _ in
+                
+            }, keyboardVisible: self.$keyboardVisible, hideOverlay: {
+                
+            })
+            .previewDisplayName("iPhone 11")
             //      r
+        }
+    }
+}
+
+struct quickSetButton: View {
+    var width: CGFloat
+    var numberText: String
+    var unitText: String
+    var onPress: ()->Void
+    
+    var body: some View {
+        Button(action: {
+            self.onPress()
+        }) {
+            ZStack(alignment: Alignment(horizontal: .center, vertical: .center)) {
+                RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    .fill(Color.darkBlue)
+                    .frame(width: width, height: 70)
+                HStack(alignment: .center, spacing: nil, content: {
+                    Text(numberText).foregroundColor(.white).font(.system(size: 40, weight: .heavy, design: .default))
+                    Text(unitText).foregroundColor(.white).font(.system(size: 40, weight: .medium, design: .default))
+                    
+                })
+            }
+            
         }
     }
 }
