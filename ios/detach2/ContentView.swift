@@ -14,13 +14,16 @@ struct ContentView: View {
     @State var hasDetachPlus = true
     @State var showSetDuration = false
     @State var keyboardVisible: Bool = false
-    @State var durationString: String = String(format: "%02d", getSessionDuration()/(60*60)) + ":" + String(format: "%02d", getSessionDuration()/(60))
+    @State var durationString: String = String(format: "%02d", getSessionDuration()/(60*60)) + ":" + String(format: "%02d", (getSessionDuration() % 3600)/(60))
     @State var sessionEndDate: Date? = nil
     
     func secondsToDurationString(seconds: Int) -> String {
+        print("in seconds to duration string. seconds:\(seconds)")
         let hours = seconds / (60*60)
         let minutes = seconds / (60)
-        return "\(hours):\(minutes)"
+        let r = "\(hours):\(minutes)"
+        print("returning \(r)")
+        return r
     }
     
     func startFocusPressed() {
@@ -93,7 +96,7 @@ struct ContentView: View {
                     self.durationString = str
                 }, keyboardVisible: self.$keyboardVisible){
                     self.hideDurationOverlay()
-                }.offset(y: self.showSetDuration ? 0 : geo.size.height).animation(.easeIn(duration: 0.15))
+                }.offset(y: self.showSetDuration ? 0 : (self.cScreen != "Start" ? geo.size.height : geo.size.height + 40)).animation(.easeIn(duration: 0.15))
             }
 
             //                    else if self.cScreen == "Start" {

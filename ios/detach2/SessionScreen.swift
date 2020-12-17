@@ -21,8 +21,8 @@ struct SessionScreen: View {
         if let endDate = endDateOpt as? Date {
             let now = Date()
             let secondsDiff = Int(endDate.timeIntervalSince(now))
-            let hours = Int(secondsDiff / (60*60))
-            let minutes = Int(secondsDiff / (60))
+            let hours = Int(secondsDiff / 3600)
+            let minutes = Int((secondsDiff % 3600) / 60)
             let seconds = secondsDiff - (minutes * 60) + (hours * 60 * 60)
             return "\(String(format: "%02d", hours)):\(String(format: "%02d", minutes)):\(String(format: "%02d", seconds))"
             
