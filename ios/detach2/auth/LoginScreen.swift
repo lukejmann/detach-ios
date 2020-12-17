@@ -11,7 +11,6 @@ import SwiftUI
 
 enum loginPage {
     case descriptionOne
-    case descriptionTwo
     case signIn
     case proxySetup
 }

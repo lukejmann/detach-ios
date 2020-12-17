@@ -6,10 +6,6 @@ let appsDefaults = UserDefaults(suiteName: "group.com.detachapp.ios1.blockedApps
 
 let userInfoDefaults = UserDefaults(suiteName: "group.com.detachapp.ios1.userInfo")!
 
-var supportedApps = [App]()
-
-
-
 let kSessionEndDate = "sessionEndDate"
 
 public func getSessionEndDate() -> Date? {
@@ -33,11 +29,11 @@ public func setSessionEndDate(date: Date) {
     }
 }
 
-public func clearSessionEndDate(){
+public func clearSessionEndDate() {
     timerDefaults.removeObject(forKey: kSessionEndDate)
 }
 
-//in seconds
+// in seconds
 let kSessionDuration = "sessionDuration"
 
 public func getSessionDuration() -> Int {
@@ -50,7 +46,6 @@ public func setSessionDuration(duration: Int) {
     print("in setSessionDuration. setting end time to : \(duration)")
     timerDefaults.set(duration, forKey: kSessionDuration)
 }
-
 
 let kSupportedApps = "supportedApps"
 let kSelectedAppNames = "selectedAppNames"

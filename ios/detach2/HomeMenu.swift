@@ -9,20 +9,9 @@
 import SwiftUI
 
 struct HomeMenu: View {
-    
     @Binding var durationString: String
     var setScreen: (_ screen: String) -> Void
 
-    var canStartSession: Bool {
-        true
-        //        print("getTrialSession()?.date: \(getTrialSession()?.date)")
-        //        let trialS = getTrialSession()
-        //        if trialS != nil {
-        //            return self.hasDetachPlus || !trialS!.date.isToday()
-        //        }
-        //        return true
-    }
-    
     var startFocusPressed: () -> Void
 
     var showDurationScreen: () -> Void
@@ -68,7 +57,7 @@ struct HomeMenu: View {
 struct SetDurationButton: View {
     @Environment(\.colorScheme) var colorScheme
     @Binding var durationString: String
-    
+
     var showSetDuration: () -> Void
 
     var body: some View {
@@ -102,12 +91,11 @@ struct SetDurationButton: View {
 }
 
 struct HomeMenu_Previews: PreviewProvider {
-    @State static var hasDetachPlus = false
     @State static var durationString = "04:20"
 
     static var previews: some View {
         Group {
-            HomeMenu(durationString: self.$durationString) { (_) in
+            HomeMenu(durationString: self.$durationString) { _ in
                 //
             } startFocusPressed: {
                 //
@@ -116,41 +104,6 @@ struct HomeMenu_Previews: PreviewProvider {
             }.background(Image("bg-grain"))
                 .previewDevice(PreviewDevice(rawValue: "iPhone 11"))
                 .previewDisplayName("iPhone 11")
-//      r
         }
     }
 }
-
-extension Date {
-    func isToday() -> Bool {
-        Calendar.current.isDateInToday(self)
-    }
-}
-
-//
-// struct CornerRadiusStyle: ViewModifier {
-//    var radius: CGFloat
-//    var corners: UIRectCorner
-//
-//    struct CornerRadiusShape: Shape {
-//
-//        var radius = CGFloat.infinity
-//        var corners = UIRectCorner.allCorners
-//
-//        func path(in rect: CGRect) -> Path {
-//            let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-//            return Path(path.cgPath)
-//        }
-//    }
-//
-//    func body(content: Content) -> some View {
-//        content
-//            .clipShape(CornerRadiusShape(radius: radius, corners: corners))
-//    }
-// }
-
-// extension View {
-//    func cornerRadius(radius: CGFloat, corners: UIRectCorner) -> some View {
-//        ModifiedContent(content: self, modifier: CornerRadiusStyle(radius: radius, corners: corners))
-//    }
-// }

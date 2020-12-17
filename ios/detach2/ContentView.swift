@@ -14,25 +14,15 @@ struct ContentView: View {
     @State var hasDetachPlus = true
     @State var showSetDuration = false
     @State var keyboardVisible: Bool = false
-    @State var durationString: String = String(format: "%02d", getSessionDuration()/(60*60)) + ":" + String(format: "%02d", (getSessionDuration() % 3600)/(60))
+    @State var durationString: String = String(format: "%02d", getSessionDuration() / (60 * 60)) + ":" + String(format: "%02d", (getSessionDuration() % 3600) / 60)
     @State var sessionEndDate: Date? = nil
-    
-    func secondsToDurationString(seconds: Int) -> String {
-        print("in seconds to duration string. seconds:\(seconds)")
-        let hours = seconds / (60*60)
-        let minutes = seconds / (60)
-        let r = "\(hours):\(minutes)"
-        print("returning \(r)")
-        return r
-    }
-    
+
     func startFocusPressed() {
         let sessionDuration = getSessionDuration()
         let now = Date()
-        self.sessionEndDate = now + Double(sessionDuration)
-        setSessionEndDate(date: self.sessionEndDate!)
+        sessionEndDate = now + Double(sessionDuration)
+        setSessionEndDate(date: sessionEndDate!)
     }
-
 
     @Environment(\.colorScheme) var colorScheme
 
@@ -45,17 +35,17 @@ struct ContentView: View {
         checkSubscription()
         refreshSupportedApps()
     }
-    
+
     func showDurationOverlay() {
-        self.showSetDuration = true
+        showSetDuration = true
         print("calling self.keyboardVisible = true")
-        self.keyboardVisible = true
+        keyboardVisible = true
     }
-    
-    func hideDurationOverlay(){
-        self.showSetDuration = false
+
+    func hideDurationOverlay() {
+        showSetDuration = false
         print("calling self.keyboardVisible = false")
-        self.keyboardVisible = false
+        keyboardVisible = false
     }
 
     func checkSubscription() {
@@ -79,7 +69,7 @@ struct ContentView: View {
             //                    })
             //                } else {
             ZStack {
-                HomeMenu(durationString: self.$durationString) { (screen) in
+                HomeMenu(durationString: self.$durationString) { screen in
                     self.cScreen = screen
                 } startFocusPressed: {
                     self.startFocusPressed()
@@ -94,8 +84,8 @@ struct ContentView: View {
                 }.offset(x: self.cScreen == "Start" ? 0 : geo.size.width, y: 0).animation(.spring())
                 SetDurationOverlay(durationString: self.$durationString, setDurationString: { str in
                     self.durationString = str
-                }, keyboardVisible: self.$keyboardVisible){
-                    self.hideDurationOverlay()
+                }, keyboardVisible: self.$keyboardVisible) {
+                        self.hideDurationOverlay()
                 }.offset(y: self.showSetDuration ? 0 : (self.cScreen != "Start" ? geo.size.height : geo.size.height + 40)).animation(.easeIn(duration: 0.15))
             }
 
@@ -118,23 +108,14 @@ struct ContentView: View {
             //                    }
             //                }
         }.background(Image("bg-grain")).ignoresSafeArea(.keyboard)
-//        .frame(width: CGFloat(UIApplication.shared.windows.first!.frame.width), height: CGFloat(UIApplication.shared.windows.first!.frame.height - (UIDevice.current.hasNotch ? 100 : 70)), alignment: .topLeading)
-        .onAppear {
-            self.onAppear()
-        }
-
+            .onAppear {
+                self.onAppear()
+            }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-    }
-}
-
-extension UIDevice {
-    var hasNotch: Bool {
-        let bottom = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
-        return bottom > 0
     }
 }

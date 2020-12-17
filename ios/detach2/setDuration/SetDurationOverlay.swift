@@ -13,32 +13,32 @@ struct SetDurationOverlay: View {
     @Binding var durationString: String
     @State var validInput: Bool = false
     var setDurationString: (_ str: String) -> Void
-    
+
     @Binding var keyboardVisible: Bool
-    
+
     var hideOverlay: () -> Void
-    
+
     func calculateDurationSec(duration: String) -> Int {
         // TODO: unwrap
         let hours = Int(duration[0] + duration[1])!
         let minutes = Int(duration[3] + duration[4])!
         return hours * 60 * 60 + minutes * 60
     }
-    
+
     func saveTime(durationString: String) {
         let durationSec = calculateDurationSec(duration: durationString)
         setDurationString(durationString)
         setSessionDuration(duration: durationSec)
         hideOverlay()
     }
-    
+
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .leading) {
                 RoundedRectangle(cornerRadius: 18, style: .circular).fill(Color.tan).frame(width: geo.size.width, height: geo.size.height + 100)
-                
+
                 VStack(alignment: .leading, spacing: 0.0) {
-                    HStack{
+                    HStack {
                         VStack(alignment: .leading) {
                             Text("Set Duration").font(.system(size: 25, weight: .bold, design: .default)).kerning(-1).foregroundColor(Color.darkBlue)
                             Text("Set how long selected apps will be blocked for.").font(.system(size: 14, weight: .regular, design: .default)).kerning(-1).foregroundColor(Color.darkBlue).padding(.top, 0)
@@ -47,13 +47,13 @@ struct SetDurationOverlay: View {
                         Button(action: {
                             self.hideOverlay()
                         }) {
-                            HStack(alignment: .center, spacing: nil, content: {
+                                HStack(alignment: .center, spacing: nil, content: {
 //                                Image("cancelIcon").resizable().frame(width: 15, height: 15, alignment: .center)
-                                Text("Done").foregroundColor(.darkBlue).font(.system(size: 18, weight: .medium, design: .default))
-                            }).frame(width: 90, height: 35).overlay(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.darkBlue, lineWidth: 1)
-                            )
+                                    Text("Done").foregroundColor(.darkBlue).font(.system(size: 18, weight: .medium, design: .default))
+                                }).frame(width: 90, height: 35).overlay(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(Color.darkBlue, lineWidth: 1)
+                                )
                         }
                     }
                     HStack(alignment: .center, spacing: 0) {
@@ -103,24 +103,21 @@ struct SetDurationOverlay: View {
                     Text("Quick-Set").foregroundColor(.darkBlue)
                         .font(.system(size: 24, weight: .medium, design: .default)).padding(.top, 30)
                     HStack {
-                        quickSetButton(width: 0.41 * geo.size.width, numberText: "25", unitText: "MIN"){
+                        quickSetButton(width: 0.41 * geo.size.width, numberText: "25", unitText: "MIN") {
                             self.saveTime(durationString: "00:25")
                         }
                         Spacer()
-                        quickSetButton(width: 0.41 * geo.size.width, numberText: "45", unitText: "MIN"){
+                        quickSetButton(width: 0.41 * geo.size.width, numberText: "45", unitText: "MIN") {
                             self.saveTime(durationString: "00:45")
-                            
                         }
                     }.padding(.top, 10)
                     HStack {
-                        quickSetButton(width: 0.41 * geo.size.width, numberText: "1", unitText: "HR"){
+                        quickSetButton(width: 0.41 * geo.size.width, numberText: "1", unitText: "HR") {
                             self.saveTime(durationString: "01:00")
-                            
                         }
                         Spacer()
-                        quickSetButton(width: 0.41 * geo.size.width, numberText: "3", unitText: "HR"){
+                        quickSetButton(width: 0.41 * geo.size.width, numberText: "3", unitText: "HR") {
                             self.saveTime(durationString: "03:00")
-                            
                         }
                     }.padding(.top, 10)
                     Spacer()
@@ -131,19 +128,15 @@ struct SetDurationOverlay: View {
 }
 
 struct SetDurationOverlayu_Previews: PreviewProvider {
-    @State static var hasDetachPlus = false
     @State static var keyboardVisible = false
     @State static var durationString = "04:20"
-    
-    
+
     static var previews: some View {
         Group {
             SetDurationOverlay(durationString: self.$durationString, setDurationString: { _ in
-                
-            }, keyboardVisible: self.$keyboardVisible, hideOverlay: {
-                
-            })
-            .previewDisplayName("iPhone 11")
+
+            }, keyboardVisible: self.$keyboardVisible, hideOverlay: {})
+                .previewDisplayName("iPhone 11")
             //      r
         }
     }
@@ -153,23 +146,22 @@ struct quickSetButton: View {
     var width: CGFloat
     var numberText: String
     var unitText: String
-    var onPress: ()->Void
-    
+    var onPress: () -> Void
+
     var body: some View {
         Button(action: {
             self.onPress()
         }) {
-            ZStack(alignment: Alignment(horizontal: .center, vertical: .center)) {
-                RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .fill(Color.darkBlue)
-                    .frame(width: width, height: 70)
-                HStack(alignment: .center, spacing: nil, content: {
-                    Text(numberText).foregroundColor(.white).font(.system(size: 40, weight: .heavy, design: .default))
-                    Text(unitText).foregroundColor(.white).font(.system(size: 40, weight: .medium, design: .default))
-                    
-                })
-            }
-            
+                ZStack(alignment: Alignment(horizontal: .center, vertical: .center)) {
+                    RoundedRectangle(cornerRadius: 12, style: .continuous)
+                        .fill(Color.darkBlue)
+                        .frame(width: width, height: 70)
+                    HStack(alignment: .center, spacing: nil, content: {
+                        Text(numberText).foregroundColor(.white).font(.system(size: 40, weight: .heavy, design: .default))
+                        Text(unitText).foregroundColor(.white).font(.system(size: 40, weight: .medium, design: .default))
+
+                    })
+                }
         }
     }
 }

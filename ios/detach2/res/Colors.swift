@@ -12,10 +12,6 @@ import SwiftUI
 extension Color {
     static let tan: Color = Color("tan")
     static let darkBlue: Color = Color("darkBlue")
-
-    public static var sliderGreen: Color {
-        Color(red: 18 / 255.0, green: 212 / 255.0, blue: 0 / 255.0)
-    }
 }
 
 // extension UIColor {

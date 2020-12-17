@@ -19,12 +19,10 @@
 		A32A96F624E32DAF002C1145 /* detach2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32A96F524E32DAF002C1145 /* detach2UITests.swift */; };
 		A32A970724E3330B002C1145 /* georgia italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A32A970624E3330B002C1145 /* georgia italic.ttf */; };
 		A32A970B24E3405B002C1145 /* HomeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32A970A24E3405B002C1145 /* HomeMenu.swift */; };
-		A32A970F24E341DA002C1145 /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32A970E24E341DA002C1145 /* StartScreen.swift */; };
 		A34B1F3B257C37FD004753BE /* SetDurationOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34B1F3A257C37FD004753BE /* SetDurationOverlay.swift */; };
 		A34D2E2A258ACBE00046372C /* SessionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34D2E29258ACBE00046372C /* SessionScreen.swift */; };
 		A350D57725785F3700DA3739 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A350D57625785F3700DA3739 /* Colors.xcassets */; };
 		A350D5912578781700DA3739 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A350D5902578781700DA3739 /* Fonts.swift */; };
-		A37D8BBE24E8821600E8EAFE /* EndingSessionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D8BBD24E8821600E8EAFE /* EndingSessionScreen.swift */; };
 		A37D8BC024E88FBC00E8EAFE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D8BBF24E88FBC00E8EAFE /* User.swift */; };
 		A37D8BC224E88FDD00E8EAFE /* AppDomains.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D8BC124E88FDD00E8EAFE /* AppDomains.swift */; };
 		A37D8BC724E89C7400E8EAFE /* SelectAppsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D8BC624E89C7400E8EAFE /* SelectAppsScreen.swift */; };
@@ -43,11 +41,7 @@
 		A392C7FC24E4507C00D5DAF4 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A392C7FB24E4507C00D5DAF4 /* NetworkExtension.framework */; };
 		A392C7FE24E4509800D5DAF4 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A392C7FB24E4507C00D5DAF4 /* NetworkExtension.framework */; };
 		A39A952624E4B79900377CD5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39A952524E4B79900377CD5 /* Colors.swift */; };
-		A39A952824E4C0EA00377CD5 /* SliderBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39A952724E4C0EA00377CD5 /* SliderBar.swift */; };
-		A39A952A24E4C15D00377CD5 /* SetupProxyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39A952924E4C15D00377CD5 /* SetupProxyButton.swift */; };
 		A39A952C24E4C17D00377CD5 /* CustomUIKitTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39A952B24E4C17D00377CD5 /* CustomUIKitTextField.swift */; };
-		A39B285324E4F41B004DCE2C /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B285224E4F41B004DCE2C /* Images.swift */; };
-		A39B285524E4F571004DCE2C /* SessionScreenOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B285424E4F571004DCE2C /* SessionScreenOld.swift */; };
 		A3B7E5FF24E34B4900E06E47 /* NewYorkLarge-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A3B7E5FE24E34B4900E06E47 /* NewYorkLarge-SemiboldItalic.otf */; };
 		A3D639D324EF672E00612AF9 /* SignInWithAppleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D639D224EF672E00612AF9 /* SignInWithAppleButton.swift */; };
 		A3D639D624EF75AA00612AF9 /* UpgradeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D639D524EF75AA00612AF9 /* UpgradeScreen.swift */; };
@@ -135,12 +129,10 @@
 		A32A96F724E32DAF002C1145 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A32A970624E3330B002C1145 /* georgia italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "georgia italic.ttf"; sourceTree = "<group>"; };
 		A32A970A24E3405B002C1145 /* HomeMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMenu.swift; sourceTree = "<group>"; };
-		A32A970E24E341DA002C1145 /* StartScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreen.swift; sourceTree = "<group>"; };
 		A34B1F3A257C37FD004753BE /* SetDurationOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDurationOverlay.swift; sourceTree = "<group>"; };
 		A34D2E29258ACBE00046372C /* SessionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionScreen.swift; sourceTree = "<group>"; };
 		A350D57625785F3700DA3739 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		A350D5902578781700DA3739 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
-		A37D8BBD24E8821600E8EAFE /* EndingSessionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndingSessionScreen.swift; sourceTree = "<group>"; };
 		A37D8BBF24E88FBC00E8EAFE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A37D8BC124E88FDD00E8EAFE /* AppDomains.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDomains.swift; sourceTree = "<group>"; };
 		A37D8BC624E89C7400E8EAFE /* SelectAppsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAppsScreen.swift; sourceTree = "<group>"; };
@@ -161,11 +153,7 @@
 		A392C7FB24E4507C00D5DAF4 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		A392C7FD24E4509800D5DAF4 /* detach2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = detach2.entitlements; sourceTree = "<group>"; };
 		A39A952524E4B79900377CD5 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		A39A952724E4C0EA00377CD5 /* SliderBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderBar.swift; sourceTree = "<group>"; };
-		A39A952924E4C15D00377CD5 /* SetupProxyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProxyButton.swift; sourceTree = "<group>"; };
 		A39A952B24E4C17D00377CD5 /* CustomUIKitTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIKitTextField.swift; sourceTree = "<group>"; };
-		A39B285224E4F41B004DCE2C /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
-		A39B285424E4F571004DCE2C /* SessionScreenOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionScreenOld.swift; sourceTree = "<group>"; };
 		A3B7E5FE24E34B4900E06E47 /* NewYorkLarge-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NewYorkLarge-SemiboldItalic.otf"; sourceTree = "<group>"; };
 		A3D639D224EF672E00612AF9 /* SignInWithAppleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleButton.swift; sourceTree = "<group>"; };
 		A3D639D524EF75AA00612AF9 /* UpgradeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeScreen.swift; sourceTree = "<group>"; };
@@ -258,29 +246,20 @@
 		A32A96D224E32DAD002C1145 /* detach2 */ = {
 			isa = PBXGroup;
 			children = (
+				A32A96DB24E32DAF002C1145 /* Preview Content */,
+				A34D2E65258AEC1C0046372C /* misc */,
+				A34D2E5D258AEB710046372C /* res */,
 				A3D639D424EF759600612AF9 /* upgrade */,
 				A38CDC1B24E9C16600B226B6 /* auth */,
 				A37D8BC324E89C5D00E8EAFE /* selectApps */,
 				A37D8BBA24E881ED00E8EAFE /* session */,
 				A3F5E60E24E5EC0500DCF879 /* util */,
-				A392C7FD24E4509800D5DAF4 /* detach2.entitlements */,
 				A392C7B924E4480000D5DAF4 /* vpn */,
-				A392C78F24E42DC600D5DAF4 /* start */,
-				A3B7E5FE24E34B4900E06E47 /* NewYorkLarge-SemiboldItalic.otf */,
+				A392C78F24E42DC600D5DAF4 /* setDuration */,
 				A32A96D324E32DAD002C1145 /* AppDelegate.swift */,
-				A32A96D524E32DAD002C1145 /* SceneDelegate.swift */,
 				A32A96D724E32DAD002C1145 /* ContentView.swift */,
-				A32A96D924E32DAF002C1145 /* Assets.xcassets */,
-				A350D57625785F3700DA3739 /* Colors.xcassets */,
-				A32A970624E3330B002C1145 /* georgia italic.ttf */,
 				A32A96DE24E32DAF002C1145 /* LaunchScreen.storyboard */,
-				A32A96E124E32DAF002C1145 /* Info.plist */,
-				A32A96DB24E32DAF002C1145 /* Preview Content */,
 				A32A970A24E3405B002C1145 /* HomeMenu.swift */,
-				A39A952524E4B79900377CD5 /* Colors.swift */,
-				A39B285224E4F41B004DCE2C /* Images.swift */,
-				A34B1F3A257C37FD004753BE /* SetDurationOverlay.swift */,
-				A34D2E29258ACBE00046372C /* SessionScreen.swift */,
 			);
 			path = detach2;
 			sourceTree = "<group>";
@@ -311,11 +290,40 @@
 			path = detach2UITests;
 			sourceTree = "<group>";
 		};
+		A34D2E5D258AEB710046372C /* res */ = {
+			isa = PBXGroup;
+			children = (
+				A39A952524E4B79900377CD5 /* Colors.swift */,
+				A32A96D924E32DAF002C1145 /* Assets.xcassets */,
+				A350D57625785F3700DA3739 /* Colors.xcassets */,
+				A34D2E5E258AEB760046372C /* fonts */,
+			);
+			path = res;
+			sourceTree = "<group>";
+		};
+		A34D2E5E258AEB760046372C /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A32A970624E3330B002C1145 /* georgia italic.ttf */,
+				A3B7E5FE24E34B4900E06E47 /* NewYorkLarge-SemiboldItalic.otf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
+		A34D2E65258AEC1C0046372C /* misc */ = {
+			isa = PBXGroup;
+			children = (
+				A32A96D524E32DAD002C1145 /* SceneDelegate.swift */,
+				A32A96E124E32DAF002C1145 /* Info.plist */,
+				A392C7FD24E4509800D5DAF4 /* detach2.entitlements */,
+			);
+			path = misc;
+			sourceTree = "<group>";
+		};
 		A37D8BBA24E881ED00E8EAFE /* session */ = {
 			isa = PBXGroup;
 			children = (
-				A39B285424E4F571004DCE2C /* SessionScreenOld.swift */,
-				A37D8BBD24E8821600E8EAFE /* EndingSessionScreen.swift */,
+				A34D2E29258ACBE00046372C /* SessionScreen.swift */,
 			);
 			path = session;
 			sourceTree = "<group>";
@@ -337,15 +345,13 @@
 			path = auth;
 			sourceTree = "<group>";
 		};
-		A392C78F24E42DC600D5DAF4 /* start */ = {
+		A392C78F24E42DC600D5DAF4 /* setDuration */ = {
 			isa = PBXGroup;
 			children = (
-				A32A970E24E341DA002C1145 /* StartScreen.swift */,
-				A39A952724E4C0EA00377CD5 /* SliderBar.swift */,
-				A39A952924E4C15D00377CD5 /* SetupProxyButton.swift */,
+				A34B1F3A257C37FD004753BE /* SetDurationOverlay.swift */,
 				A39A952B24E4C17D00377CD5 /* CustomUIKitTextField.swift */,
 			);
-			path = start;
+			path = setDuration;
 			sourceTree = "<group>";
 		};
 		A392C7B924E4480000D5DAF4 /* vpn */ = {
@@ -759,20 +765,14 @@
 				A3F537FF24EF86B200D107DE /* IAP.swift in Sources */,
 				A39A952624E4B79900377CD5 /* Colors.swift in Sources */,
 				A34B1F3B257C37FD004753BE /* SetDurationOverlay.swift in Sources */,
-				A39B285524E4F571004DCE2C /* SessionScreenOld.swift in Sources */,
 				A392C7BB24E4480F00D5DAF4 /* TunnelController.swift in Sources */,
 				A392C7BF24E448C300D5DAF4 /* Logs.swift in Sources */,
-				A39B285324E4F41B004DCE2C /* Images.swift in Sources */,
-				A39A952824E4C0EA00377CD5 /* SliderBar.swift in Sources */,
 				A37D8BC224E88FDD00E8EAFE /* AppDomains.swift in Sources */,
 				A38CDC1A24E9C15800B226B6 /* LoginScreen.swift in Sources */,
 				A32A96D424E32DAD002C1145 /* AppDelegate.swift in Sources */,
-				A32A970F24E341DA002C1145 /* StartScreen.swift in Sources */,
-				A37D8BBE24E8821600E8EAFE /* EndingSessionScreen.swift in Sources */,
 				A3D639D624EF75AA00612AF9 /* UpgradeScreen.swift in Sources */,
 				A392C7BD24E4482400D5DAF4 /* Util.swift in Sources */,
 				A32A96D624E32DAD002C1145 /* SceneDelegate.swift in Sources */,
-				A39A952A24E4C15D00377CD5 /* SetupProxyButton.swift in Sources */,
 				A32A96D824E32DAD002C1145 /* ContentView.swift in Sources */,
 				A39A952C24E4C17D00377CD5 /* CustomUIKitTextField.swift in Sources */,
 				A3F5E61024E5F8CD00DCF879 /* SessionManager.swift in Sources */,
@@ -962,12 +962,12 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = detach2/detach2.entitlements;
+				CODE_SIGN_ENTITLEMENTS = detach2/misc/detach2.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"detach2/Preview Content\"";
 				DEVELOPMENT_TEAM = 356ZKVC65R;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = detach2/Info.plist;
+				INFOPLIST_FILE = detach2/misc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -986,12 +986,12 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = detach2/detach2.entitlements;
+				CODE_SIGN_ENTITLEMENTS = detach2/misc/detach2.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"detach2/Preview Content\"";
 				DEVELOPMENT_TEAM = 356ZKVC65R;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = detach2/Info.plist;
+				INFOPLIST_FILE = detach2/misc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
