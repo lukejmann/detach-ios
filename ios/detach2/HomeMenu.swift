@@ -22,6 +22,8 @@ struct HomeMenu: View {
         //        }
         //        return true
     }
+    
+    var startFocusPressed: () -> Void
 
     var showDurationScreen: () -> Void
 
@@ -39,7 +41,8 @@ struct HomeMenu: View {
                         self.showDurationScreen()
                     }.padding(.top, 30)
                     Button(action: {
-                        self.setScreen("start")
+                        self.startFocusPressed()
+                        self.setScreen("Start")
                     }) {
                             HStack(alignment: .center) {
                                 Text("Start Focus").font(.system(size: 45, weight: .bold, design: .default)).kerning(-1).foregroundColor(Color.tan).padding(.horizontal, 25)
@@ -104,9 +107,13 @@ struct HomeMenu_Previews: PreviewProvider {
 
     static var previews: some View {
         Group {
-            HomeMenu(durationString: self.$durationString){
-                _ in
-            } showDurationScreen: {}.background(Image("bg-grain"))
+            HomeMenu(durationString: self.$durationString) { (_) in
+                //
+            } startFocusPressed: {
+                //
+            } showDurationScreen: {
+                //
+            }.background(Image("bg-grain"))
                 .previewDevice(PreviewDevice(rawValue: "iPhone 11"))
                 .previewDisplayName("iPhone 11")
 //      r

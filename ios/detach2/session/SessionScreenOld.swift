@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct SessionScreen: View {
+struct SessionScreenOld: View {
     var setScreen: (_ screen: String) -> Void
 
     func timerEndString() -> String {
@@ -69,9 +69,9 @@ struct SessionScreen: View {
     }
 }
 
-struct SessionScreen_Previews: PreviewProvider {
+struct SessionScreenOld_Previews: PreviewProvider {
     static var previews: some View {
-        SessionScreen { _ in
+        SessionScreenOld { _ in
         }
     }
 }

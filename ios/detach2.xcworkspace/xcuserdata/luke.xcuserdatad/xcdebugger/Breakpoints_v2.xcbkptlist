@@ -814,10 +814,10 @@
             filePath = "detach2/util/Storage.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "setSupportedApps(apps:)"
-            landmarkType = "9">
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -830,8 +830,8 @@
             filePath = "detach2/util/Storage.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "unknown"
             landmarkType = "0">
          </BreakpointContent>
@@ -846,8 +846,8 @@
             filePath = "detach2/util/Storage.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "getSupportedApps()"
             landmarkType = "9">
          </BreakpointContent>
@@ -862,8 +862,8 @@
             filePath = "detach2/util/Storage.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "getSupportedApps()"
             landmarkType = "9">
          </BreakpointContent>
@@ -878,8 +878,8 @@
             filePath = "detach2/util/Storage.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "getSelectedAppNames()"
             landmarkType = "9">
          </BreakpointContent>
@@ -942,8 +942,8 @@
             filePath = "detach2/HomeMenu.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -958,8 +958,8 @@
             filePath = "detach2/HomeMenu.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -1006,8 +1006,8 @@
             filePath = "detach2/util/Storage.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
             landmarkName = "getUserID()"
             landmarkType = "9">
          </BreakpointContent>
@@ -1246,8 +1246,8 @@
             filePath = "detach2/HomeMenu.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -1262,10 +1262,26 @@
             filePath = "detach2/SetDurationOverlay.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "body"
             landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7BB394BB-BC5A-4374-B382-7687F86F793B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "detach2/SessionScreen.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "SessionScreen"
+            landmarkType = "14">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

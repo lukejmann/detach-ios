@@ -99,7 +99,7 @@ struct AppRow: View {
     var body: some View {
         HStack(alignment: .center, spacing: 18) {
             RowButton(app: app)
-            Text("\(app.app.Name.uppercased())").foregroundColor(Color.darkBlue).font(.system(size: 16, weight: .regular, design: .default))
+            Text("\(app.app.Name.uppercased())").foregroundColor(app.selected ? Color.tan : Color.darkBlue).font(.system(size: 16, weight: .regular, design: .default))
         }.frame(minWidth: 0, maxWidth: .infinity, alignment: .leading).onTapGesture {
             self.app.toggle()
         }

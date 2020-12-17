@@ -18,20 +18,17 @@ struct SetDurationOverlay: View {
     
     var hideOverlay: () -> Void
     
-    func calculateEndTimeSec(duration: String) -> Int {
+    func calculateDurationSec(duration: String) -> Int {
         // TODO: unwrap
         let hours = Int(duration[0] + duration[1])!
         let minutes = Int(duration[3] + duration[4])!
-        let today = Date()
-        let hoursAdded = Calendar.current.date(byAdding: .hour, value: hours, to: today)!
-        let minutesAdded = Calendar.current.date(byAdding: .minute, value: minutes, to: hoursAdded)!
-        return Int(minutesAdded.timeIntervalSince1970)
+        return hours * 60 * 60 + minutes * 60
     }
     
     func saveTime(durationString: String) {
-        let endTimeSec = calculateEndTimeSec(duration: durationString)
+        let durationSec = calculateDurationSec(duration: durationString)
         setDurationString(durationString)
-        setEndTime(endTime: endTimeSec)
+        setSessionDuration(duration: durationSec)
         hideOverlay()
     }
     
@@ -41,8 +38,24 @@ struct SetDurationOverlay: View {
                 RoundedRectangle(cornerRadius: 18, style: .circular).fill(Color.tan).frame(width: geo.size.width, height: geo.size.height + 100)
                 
                 VStack(alignment: .leading, spacing: 0.0) {
-                    Text("Set Duration").font(.system(size: 25, weight: .bold, design: .default)).kerning(-1).foregroundColor(Color.darkBlue)
-                    Text("Set how long selected apps will be blocked for.").font(.system(size: 14, weight: .regular, design: .default)).kerning(-1).foregroundColor(Color.darkBlue).padding(.top, 0)
+                    HStack{
+                        VStack(alignment: .leading) {
+                            Text("Set Duration").font(.system(size: 25, weight: .bold, design: .default)).kerning(-1).foregroundColor(Color.darkBlue)
+                            Text("Set how long selected apps will be blocked for.").font(.system(size: 14, weight: .regular, design: .default)).kerning(-1).foregroundColor(Color.darkBlue).padding(.top, 0)
+                        }
+                        Spacer()
+                        Button(action: {
+                            self.hideOverlay()
+                        }) {
+                            HStack(alignment: .center, spacing: nil, content: {
+//                                Image("cancelIcon").resizable().frame(width: 15, height: 15, alignment: .center)
+                                Text("Done").foregroundColor(.darkBlue).font(.system(size: 18, weight: .medium, design: .default))
+                            }).frame(width: 90, height: 35).overlay(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(Color.darkBlue, lineWidth: 1)
+                            )
+                        }
+                    }
                     HStack(alignment: .center, spacing: 0) {
                         Spacer()
                         CustomUIKitTextField(text: self.$durationString, validInput: self.$validInput, isFirstResponder: self.$keyboardVisible, placeholder: "00:00")
@@ -60,33 +73,33 @@ struct SetDurationOverlay: View {
                         Text("MINUTES").foregroundColor(.darkBlue).font(.system(size: 16.8, weight: .regular, design: .default)).kerning(-1)
                         Spacer()
                     }.padding(.top, 8)
-                    HStack {
-                        Button(action: {
-                            self.hideOverlay()
-                        }) {
-                            HStack(alignment: .center, spacing: nil, content: {
-                                Image("cancelIcon").resizable().frame(width: 15, height: 15, alignment: .center)
-                                Text("Cancel").foregroundColor(.darkBlue).font(.system(size: 18, weight: .medium, design: .default))
-                            }).frame(width: 122, height: 44).overlay(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.darkBlue, lineWidth: 1)
-                            )
-                        }
-                        Spacer()
-                        Button(action: {
-                            self.saveTime(durationString: self.durationString)
-                        }) {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 8, style: .continuous)
-                                    .fill(Color.darkBlue)
-                                    .frame(width: 122, height: 44)
-                                HStack(alignment: .center, spacing: nil, content: {
-                                    Image("checkIcon").resizable().frame(width: 15, height: 15, alignment: .center)
-                                    Text("Done").foregroundColor(.white).font(.system(size: 18, weight: .bold, design: .default))
-                                })
-                            }
-                        }
-                    }.padding(.top, 34).padding(.horizontal, 30)
+                    //                    HStack {
+                    //                        Button(action: {
+                    //                            self.hideOverlay()
+                    //                        }) {
+                    //                            HStack(alignment: .center, spacing: nil, content: {
+                    //                                Image("cancelIcon").resizable().frame(width: 15, height: 15, alignment: .center)
+                    //                                Text("Cancel").foregroundColor(.darkBlue).font(.system(size: 18, weight: .medium, design: .default))
+                    //                            }).frame(width: 122, height: 44).overlay(
+                    //                                RoundedRectangle(cornerRadius: 8)
+                    //                                    .stroke(Color.darkBlue, lineWidth: 1)
+                    //                            )
+                    //                        }
+                    //                        Spacer()
+                    //                        Button(action: {
+                    //                            self.saveTime(durationString: self.durationString)
+                    //                        }) {
+                    //                            ZStack {
+                    //                                RoundedRectangle(cornerRadius: 8, style: .continuous)
+                    //                                    .fill(Color.darkBlue)
+                    //                                    .frame(width: 122, height: 44)
+                    //                                HStack(alignment: .center, spacing: nil, content: {
+                    //                                    Image("checkIcon").resizable().frame(width: 15, height: 15, alignment: .center)
+                    //                                    Text("Done").foregroundColor(.white).font(.system(size: 18, weight: .bold, design: .default))
+                    //                                })
+                    //                            }
+                    //                        }
+                    //                    }.padding(.top, 34).padding(.horizontal, 30)
                     Text("Quick-Set").foregroundColor(.darkBlue)
                         .font(.system(size: 24, weight: .medium, design: .default)).padding(.top, 30)
                     HStack {
@@ -96,18 +109,18 @@ struct SetDurationOverlay: View {
                         Spacer()
                         quickSetButton(width: 0.41 * geo.size.width, numberText: "45", unitText: "MIN"){
                             self.saveTime(durationString: "00:45")
-
+                            
                         }
                     }.padding(.top, 10)
                     HStack {
                         quickSetButton(width: 0.41 * geo.size.width, numberText: "1", unitText: "HR"){
                             self.saveTime(durationString: "01:00")
-
+                            
                         }
                         Spacer()
                         quickSetButton(width: 0.41 * geo.size.width, numberText: "3", unitText: "HR"){
                             self.saveTime(durationString: "03:00")
-
+                            
                         }
                     }.padding(.top, 10)
                     Spacer()
@@ -121,7 +134,7 @@ struct SetDurationOverlayu_Previews: PreviewProvider {
     @State static var hasDetachPlus = false
     @State static var keyboardVisible = false
     @State static var durationString = "04:20"
-
+    
     
     static var previews: some View {
         Group {

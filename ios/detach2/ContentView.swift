@@ -14,7 +14,21 @@ struct ContentView: View {
     @State var hasDetachPlus = true
     @State var showSetDuration = false
     @State var keyboardVisible: Bool = false
-    @State var durationString: String = "00:00"
+    @State var durationString: String = String(format: "%02d", getSessionDuration()/(60*60)) + ":" + String(format: "%02d", getSessionDuration()/(60))
+    @State var sessionEndDate: Date? = nil
+    
+    func secondsToDurationString(seconds: Int) -> String {
+        let hours = seconds / (60*60)
+        let minutes = seconds / (60)
+        return "\(hours):\(minutes)"
+    }
+    
+    func startFocusPressed() {
+        let sessionDuration = getSessionDuration()
+        let now = Date()
+        self.sessionEndDate = now + Double(sessionDuration)
+        setSessionEndDate(date: self.sessionEndDate!)
+    }
 
 
     @Environment(\.colorScheme) var colorScheme
@@ -62,14 +76,19 @@ struct ContentView: View {
             //                    })
             //                } else {
             ZStack {
-                HomeMenu(durationString: self.$durationString){ screen in
+                HomeMenu(durationString: self.$durationString) { (screen) in
                     self.cScreen = screen
+                } startFocusPressed: {
+                    self.startFocusPressed()
                 } showDurationScreen: {
                     self.showDurationOverlay()
                 }.offset(x: self.cScreen != "HomeMenu" ? -1 * geo.size.width : 0).animation(.spring())
                 SelectAppsScreen { screen in
                     self.cScreen = screen
                 }.offset(x: self.cScreen == "SelectApps" ? 0 : geo.size.width, y: 0).animation(.spring())
+                SessionScreen(endDate: self.$sessionEndDate) { screen in
+                    self.cScreen = screen
+                }.offset(x: self.cScreen == "Start" ? 0 : geo.size.width, y: 0).animation(.spring())
                 SetDurationOverlay(durationString: self.$durationString, setDurationString: { str in
                     self.durationString = str
                 }, keyboardVisible: self.$keyboardVisible){

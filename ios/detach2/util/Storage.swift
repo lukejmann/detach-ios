@@ -6,20 +6,51 @@ let appsDefaults = UserDefaults(suiteName: "group.com.detachapp.ios1.blockedApps
 
 let userInfoDefaults = UserDefaults(suiteName: "group.com.detachapp.ios1.userInfo")!
 
-let kEndTime = "timerEndTime"
-
 var supportedApps = [App]()
 
-public func getEndTime() -> Int {
-    let endTime = timerDefaults.integer(forKey: kEndTime)
-    print("in getEndTime. endTime: \(endTime)")
+
+
+let kSessionEndDate = "sessionEndDate"
+
+public func getSessionEndDate() -> Date? {
+    if let data = timerDefaults.object(forKey: kSessionEndDate) as? Data {
+        let decoder = JSONDecoder()
+        if let date = try? decoder.decode(Date.self, from: data) {
+            print("sessionEndDate: \(date)")
+            return date
+        }
+    }
+    return nil
+}
+
+public func setSessionEndDate(date: Date) {
+    let encoder = JSONEncoder()
+    if let encoded = try? encoder.encode(date) {
+        timerDefaults.set(encoded, forKey: kSessionEndDate)
+        print("set SessionEndDate in store. date \(date)")
+    } else {
+        print("failed to store SessionEndDate")
+    }
+}
+
+public func clearSessionEndDate(){
+    timerDefaults.removeObject(forKey: kSessionEndDate)
+}
+
+//in seconds
+let kSessionDuration = "sessionDuration"
+
+public func getSessionDuration() -> Int {
+    let endTime = timerDefaults.integer(forKey: kSessionDuration)
+    print("in getSessionDuration. duration: \(endTime)")
     return endTime
 }
 
-public func setEndTime(endTime: Int) {
-    print("in setEndTime. setting end time to : \(endTime)")
-    defaults.set(endTime, forKey: kEndTime)
+public func setSessionDuration(duration: Int) {
+    print("in setSessionDuration. setting end time to : \(duration)")
+    timerDefaults.set(duration, forKey: kSessionDuration)
 }
+
 
 let kSupportedApps = "supportedApps"
 let kSelectedAppNames = "selectedAppNames"
@@ -47,7 +78,7 @@ public func setSupportedApps(apps: [App]) {
 
 public func getSelectedAppNames() -> [String] {
     if let appNames = appsDefaults.array(forKey: kSelectedAppNames) {
-        print("in getSelectedAppNames. selected app names: \(appNames)")
+//        print("in getSelectedAppNames. selected app names: \(appNames)")
         return appNames as! [String]
     }
     print("in getSelectedAppNames. failed to apps")
