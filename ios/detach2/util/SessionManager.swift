@@ -8,38 +8,29 @@
 
 import Foundation
 
-var timerEnd = Date()
 
-func uploadSession(endTimeUnix: Int, completion: @escaping (Bool) -> Void) {
+func uploadSession(endTime: Date, completion: @escaping (Bool) -> Void) {
     let appNames = getSelectedAppNames()
     setupBlockedDomains(appNames: appNames)
-
-    let sessionCreateOpt = SessionCreateOpt(userID: getUserID(), endTime: endTimeUnix, deviceToken: deviceToken)
+    let sessionCreateOpt = SessionCreateOpt(userID: getUserID(), endTime: Int(endTime.timeIntervalSince1970), deviceToken: deviceToken)
     detachProvier.request(.createSession(opt: sessionCreateOpt)) { result in
-
         print("result in createSession res: \(result)")
         switch result {
         case let .success(moyaResponse):
             let data = moyaResponse.data // Data, your JSON response is probably in here!
             let statusCode = moyaResponse.statusCode // Int - 200, 401, 500, etc
-
             if statusCode == 200 {
                 print("data: \(data)")
                 do {
                     let res = try JSONDecoder().decode(SessionCreateRes.self, from: data)
                     print("res: \(res)")
                     if res.success {
-                        timerEnd = Date(timeIntervalSince1970: TimeInterval(endTimeUnix))
                         setSessionID(sessionID: res.sessionID)
-                        if getSubStatus()?.status != "active" {
-                            setTrialSession(trialSession: TrialSession(date: Date()))
-                        }
                         print("successfully started session \(res.sessionID)")
                         completion(true)
                     } else {
                         completion(false)
                     }
-
                 } catch {
                     print("err: \(error)")
                 }

@@ -122,7 +122,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         @escaping (UIBackgroundFetchResult) -> Void)
     {
         print("in didReceiveRemoteNotification. notif: \(notif). userInfo: \(userInfo)")
-        if Date() > timerEnd {
+        if Date() > getSessionEndDate() ?? Date().addingTimeInterval(.infinity) {
             print("in notifDidReceiveRemoteNotification. notif: \(notif)")
             print("disabling VPN")
             TunnelController.shared.disable()

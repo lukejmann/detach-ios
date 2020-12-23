@@ -27,15 +27,20 @@ struct SessionScreen: View {
             return "N/A"
         }
     }
+    
+    func endSession(){
+        clearSessionEndDate()
+        TunnelController.shared.disable()
+    }
 
     func sessionCancelled() {
         setScreen("HomeMenu")
-        clearSessionEndDate()
+        endSession()
     }
 
     func donePressed() {
         setScreen("HomeMenu")
-        clearSessionEndDate()
+        endSession()
     }
 
     var body: some View {

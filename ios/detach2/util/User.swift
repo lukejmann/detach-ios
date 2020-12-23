@@ -25,7 +25,7 @@ public func loginUser(userID: String, email: String, completion: @escaping (_ su
 }
 
 public struct LoginRes: Decodable {
-    var subStatus: SubStatus
+//    var subStatus: SubStatus
     var success: Bool
 }
 

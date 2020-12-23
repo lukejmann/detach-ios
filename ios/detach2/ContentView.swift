@@ -25,20 +25,35 @@ struct ContentView: View {
         let now = Date()
         sessionEndDate = now + Double(sessionDuration)
         setSessionEndDate(date: sessionEndDate!)
+        uploadSession(endTime: sessionEndDate!) { (success) in
+            if success{
+                self.cScreen = "Start"
+                connectProxy(i: 0) { success in
+                    if success {
+                        //TODO: handle
+                    } else {
+                        // TODO: handle
+                        print("Error!! unable to connect proxy")
+                    }
+                }
+            } else {
+                //TODO handle err
+                print("Error!! unable to start session")
+            }
+        }
     }
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-
+    
     
     @Environment(\.colorScheme) var colorScheme
     
     func onAppear() {
         print("in app appeared")
-        if Date() > timerEnd {
+        if Date() > getSessionEndDate() ?? Date().addingTimeInterval(.infinity)  {
             TunnelController.shared.disable()
             cScreen = "HomeMenu"
         }
-        checkSubscription()
         refreshSupportedApps()
     }
     
@@ -54,18 +69,7 @@ struct ContentView: View {
         keyboardVisible = false
     }
     
-    func checkSubscription() {
-        checkUserReceipt { success in
-            if success {
-                let subStatus = getSubStatus()
-                if subStatus != nil {
-                    print("in check sub. subStatus: \(subStatus?.status)")
-                    //                    self.hasDetachPlus = subStatus?.status == "active"
-                    self.hasDetachPlus = true
-                }
-            }
-        }
-    }
+    
     
     var body: some View {
         GeometryReader { geo in
@@ -79,24 +83,24 @@ struct ContentView: View {
                     Spacer()
                     VStack(alignment: .trailing, spacing: 5){
                         Text("Distraction-Blocking Proxy").kerning(-0.5).font(.system(size: 14, weight: .bold, design: .default)).foregroundColor(Color.tan)
-                        if self.proxyStatus == .connected{
-                            HStack(alignment: .center){
-                                Image("greenStatus").resizable().frame(width: 10, height: 10, alignment: .center)
-                                Text("Connected").kerning(-0.4).font(.system(size: 14, weight: .medium, design: .default)).foregroundColor(Color.tan)
-                            }
-                        } else {
-                            HStack(alignment: .center){
-                                Image("greyStatus").resizable().frame(width: 10, height: 10, alignment: .center)
-                                Text("Disconnected").kerning(-0.4).font(.system(size: 14, weight: .medium, design: .default)).foregroundColor(Color.tan)
-                            }
+                        HStack(alignment: .center){
+                            HStack{
+                                Spacer()
+                                self.proxyStatus == .connected ?                            Image("greenStatus").resizable().frame(width: 16, height: 16, alignment: .center)
+                                    :  Image("greyStatus").resizable().frame(width: 8, height: 8, alignment: .center)
+                                
+                            }.frame(width: 16, height: 16)
+                            Text(self.proxyStatus == .connected ?   "Connected" : "Disconnected").kerning(-0.4).font(.system(size: 14, weight: .medium, design: .default)).foregroundColor(Color.tan)
+                            
                         }
+                        
                         
                         
                     }.padding(.trailing, 16)
                 }.onReceive(timer) { _ in
                     self.proxyStatus = TunnelController.shared.status()
                 }.padding(.top, 30)
-            ZStack {
+                ZStack {
                     HomeMenu(durationString: self.$durationString) { screen in
                         self.cScreen = screen
                     } startFocusPressed: {

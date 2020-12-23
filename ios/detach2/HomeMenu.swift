@@ -31,7 +31,6 @@ struct HomeMenu: View {
                     }.padding(.top, 30)
                     Button(action: {
                         self.startFocusPressed()
-                        self.setScreen("Start")
                     }) {
                             HStack(alignment: .center) {
                                 Text("Start Focus").font(.system(size: 45, weight: .bold, design: .default)).kerning(-1).foregroundColor(Color.tan).padding(.horizontal, 25)
