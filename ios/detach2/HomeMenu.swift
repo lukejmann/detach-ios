@@ -24,7 +24,7 @@ struct HomeMenu: View {
                 VStack(alignment: .leading, spacing: 0) {
                     HStack(alignment: .center) {
                         Text("detach").font(.custom("Georgia-Italic", size: 42)).foregroundColor(Color.tan)
-                    }.frame(width: geo.size.width, height: .none, alignment: .center).padding(.top, 65)
+                    }.frame(width: geo.size.width, height: .none, alignment: .center).padding(.top, 45)
                     Text("Set Focus Duration").kerning(-0.65).font(.system(size: 25, weight: .light, design: .default)).padding(.top, 65).foregroundColor(Color.tan).padding(.horizontal, 25)
                     SetDurationButton(durationString: self.$durationString) {
                         self.showDurationScreen()
@@ -48,7 +48,7 @@ struct HomeMenu: View {
                     }.padding(.top, 20)
 
                     Spacer()
-                }.padding(.horizontal, 25).padding(.top, 15).frame(width: geo.size.width, height: geo.size.height, alignment: .center)
+                }.padding(.horizontal, 25).padding(.top, 0).frame(width: geo.size.width, height: geo.size.height, alignment: .center)
             }
         }
     }
