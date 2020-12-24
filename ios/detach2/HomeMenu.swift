@@ -25,7 +25,7 @@ struct HomeMenu: View {
                     HStack(alignment: .center) {
                         Text("detach").font(.custom("Georgia-Italic", size: 42)).foregroundColor(Color.tan)
                     }.frame(width: geo.size.width, height: .none, alignment: .center).padding(.top, 45)
-                    Text("Set Focus Duration").kerning(-0.65).font(.system(size: 25, weight: .light, design: .default)).padding(.top, 65).foregroundColor(Color.tan).padding(.horizontal, 25)
+                    Text("Set Focus Duration").kerning(-0.65).font(.system(size: 25, weight: .medium, design: .default)).padding(.top, 65).foregroundColor(Color.tan)
                     SetDurationButton(durationString: self.$durationString) {
                         self.showDurationScreen()
                     }.padding(.top, 30)
@@ -33,18 +33,20 @@ struct HomeMenu: View {
                         self.startFocusPressed()
                     }) {
                             HStack(alignment: .center) {
-                                Text("Start Focus").font(.system(size: 45, weight: .bold, design: .default)).kerning(-1).foregroundColor(Color.tan).padding(.horizontal, 25)
+                                Text("Start Focus").font(.system(size: 45, weight: .bold, design: .default)).kerning(-1).foregroundColor(Color.tan)
+                                Spacer()
                                 Image("rightArrow").resizable().frame(width: 52.25, height: 25, alignment: .center)
-                            }.frame(width: 0.82 * geo.size.width, height: .none, alignment: .leading)
+                            }.frame(width: geo.size.width * 0.9, height: .none, alignment: .leading)
                     }.padding(.top, 40)
                     Button(action: {
                         self.setScreen("SelectApps")
                     }) {
                             HStack(alignment: .center) {
-                                Text("Select Apps").font(.system(size: 45, weight: .bold, design: .default)).kerning(-1).foregroundColor(Color.tan).padding(.horizontal, 25)
+                                Text("Select Apps").font(.system(size: 45, weight: .bold, design: .default)).kerning(-1).foregroundColor(Color.tan)
+                                Spacer()
                                 Image("rightArrow").resizable().frame(width: 52.25, height: 25, alignment: .center)
-                            }.frame(width: 0.85 * geo.size.width, height: .none, alignment: .leading)
-                    }.padding(.top, 20)
+                            }.frame(width: geo.size.width * 0.9, height: .none, alignment: .leading)
+                    }.padding(.top, 15)
 
                     Spacer()
                 }.padding(.horizontal, 25).padding(.top, 0).frame(width: geo.size.width, height: geo.size.height, alignment: .center)
@@ -66,23 +68,23 @@ struct SetDurationButton: View {
                 Button(action: {
                     showSetDuration()
                 }) {
-                        VStack(alignment: .center) {
+                    VStack(alignment: .center, spacing: 0) {
                             Text(self.durationString).font(.newYorkXL(size: 60.0)).foregroundColor(Color.darkBlue)
                             HStack(alignment: .center, spacing: 0) {
                                 Spacer()
                                 Rectangle().fill(Color.darkBlue).frame(width: 200, height: 1, alignment: .center)
                                 Spacer()
-                            }.padding(.top, 1)
+                            }.padding(.top, 4)
                             HStack(alignment: .center, spacing: 0) {
                                 Spacer()
                                 Text("HOURS")
                                 Spacer().frame(width: 31, height: 0, alignment: .center)
                                 Text("MINUTES")
                                 Spacer()
-                            }.foregroundColor(Color.darkBlue)
+                            }.padding(.top, 5).foregroundColor(Color.darkBlue)
                         }
                 }
-                .frame(width: geometry.size.width * 0.6, height: 154).background(Color.tan).cornerRadius(15.0)
+                .frame(width: geometry.size.width * 0.75, height: 154).background(Color.tan).cornerRadius(15.0)
                 Spacer()
             }
         }.frame(height: 154)

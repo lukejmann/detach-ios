@@ -23,14 +23,14 @@ struct SelectAppsScreen: View {
                         .padding(.top, 30).foregroundColor(.tan)
                     Text("Select which apps are blocked during a session.")
                         .font(.system(size: 14, weight: .regular, design: .default)).padding(.top, 10).foregroundColor(.tan)
-                }.padding(.horizontal, 37)
+                }
                 Rectangle()
                     .border(Color.black, width: 2)
                     .frame(width: 0, height: 38, alignment: .leading)
                     .foregroundColor(Color(hue: 0, saturation: 0, brightness: 0, opacity: 0))
                 ScrollView {
                     ForEach(self.apps) { sApp in
-                        AppRow(app: sApp).listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0)).padding(.horizontal, 37).padding(.vertical, 5)
+                        AppRow(app: sApp).listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0)).padding(.vertical, 5)
                     }
                     Rectangle().frame(width: 0, height: 50, alignment: .center)
                 }.clipped()

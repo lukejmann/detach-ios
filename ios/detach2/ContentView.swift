@@ -10,36 +10,8 @@ import SwiftUI
 import NetworkExtension
 
 
-struct YellowStatus: View {
-    
-    
-    @State var nFrame = 1
-    @Binding var proxyStatus: NEVPNStatus {
-        didSet {
-            if self.proxyStatus == .connecting || self.proxyStatus == .disconnecting {
-                self.nFrame = 1
-            }
-        }
-    }
-    
-    let timer = Timer.publish(every: 0.05, on: .main, in: .common).autoconnect()
-    
-    
-    
-    var body: some View {
-        GeometryReader{ geo in
-            
-        }.onReceive(timer, perform: { _ in
-            if self.proxyStatus == .disconnecting || self.proxyStatus == .connecting {
-                if nFrame > 4 {
-                    self.nFrame = 1
-                } else {
-                    self.nFrame += 1
-                }
-            }
-        })
-    }
-}
+
+
 
 
 struct ContentView: View {
@@ -51,6 +23,7 @@ struct ContentView: View {
     @State var durationString: String = String(format: "%02d", getSessionDuration() / (60 * 60)) + ":" + String(format: "%02d", (getSessionDuration() % 3600) / 60)
     @State var sessionEndDate: Date? = nil
     @State var proxyStatus: NEVPNStatus = .invalid
+   
     
     
     func startFocusPressed() {
@@ -76,7 +49,7 @@ struct ContentView: View {
         }
     }
     
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect()
     
     
     
@@ -87,6 +60,11 @@ struct ContentView: View {
         if Date() > getSessionEndDate() ?? Date().addingTimeInterval(.infinity)  {
             TunnelController.shared.disable()
             cScreen = "HomeMenu"
+        }
+        if let sessionEndDate = getSessionEndDate() {
+            if Date() <= sessionEndDate {
+                cScreen = "Start"
+            }
         }
         refreshSupportedApps()
     }
@@ -103,6 +81,14 @@ struct ContentView: View {
         keyboardVisible = false
     }
     
+    func proxyCheckIn() {
+        if let sessionEndDate = getSessionEndDate() {
+            if Date() > sessionEndDate {
+                TunnelController.shared.disable()
+            }
+        }
+    }
+    
     
     
     var body: some View {
@@ -112,56 +98,30 @@ struct ContentView: View {
             //                        self.showLoginScreen = false
             //                    })
             //                } else {
-            VStack(spacing: 0){
-                HStack{
-                    Spacer()
-                    VStack(alignment: .trailing, spacing: 5){
-                        Text("Distraction-Blocking Proxy").kerning(-0.5).font(.system(size: 14, weight: .bold, design: .default)).foregroundColor(Color.tan)
-                        HStack(alignment: .center){
-                            HStack{
-                                Spacer()
-                                switch self.proxyStatus {
-                                case .connected:
-                                    Image("greenStatus").resizable().frame(width: 16, height: 16, alignment: .center)
-                                case .connecting || .disconnecting:
-                                    YellowStatus(proxyStatus: self.$proxyStatus)
-                                default:
-                                    Image("greyStatus").resizable().frame(width: 8, height: 8, alignment: .center)
-                                }
-                                
-                                
-                            }.frame(width: 16, height: 16)
-                            Text(self.proxyStatus == .connected ?   "Connected" : "Disconnected").kerning(-0.4).font(.system(size: 14, weight: .medium, design: .default)).foregroundColor(Color.tan)
-                            
-                        }
-                        
-                        
-                        
-                    }.padding(.trailing, 16)
-                }.onReceive(timer) { _ in
-                    self.proxyStatus = TunnelController.shared.status()
-                }.padding(.top, 30)
+                
                 ZStack {
-                    HomeMenu(durationString: self.$durationString) { screen in
-                        self.cScreen = screen
-                    } startFocusPressed: {
-                        self.startFocusPressed()
-                    } showDurationScreen: {
-                        self.showDurationOverlay()
-                    }.offset(x: self.cScreen != "HomeMenu" ? -1 * geo.size.width : 0).animation(.spring())
-                    SelectAppsScreen { screen in
-                        self.cScreen = screen
-                    }.offset(x: self.cScreen == "SelectApps" ? 0 : geo.size.width, y: 0).animation(.spring())
-                    SessionScreen(endDate: self.$sessionEndDate) { screen in
-                        self.cScreen = screen
-                    }.offset(x: self.cScreen == "Start" ? 0 : geo.size.width, y: 0).animation(.spring())
+                    ZStack{
+                        HomeMenu(durationString: self.$durationString) { screen in
+                            self.cScreen = screen
+                        } startFocusPressed: {
+                            self.startFocusPressed()
+                        } showDurationScreen: {
+                            self.showDurationOverlay()
+                        }.offset(x: self.cScreen != "HomeMenu" ? -1 * geo.size.width : 0).animation(.spring())
+                        SelectAppsScreen { screen in
+                            self.cScreen = screen
+                        }.offset(x: self.cScreen == "SelectApps" ? 0 : geo.size.width, y: 0).animation(.spring())
+                        SessionScreen(endDate: self.$sessionEndDate) { screen in
+                            self.cScreen = screen
+                        }.offset(x: self.cScreen == "Start" ? 0 : geo.size.width, y: 0).animation(.spring())
+                    }.padding(.horizontal,30)
                     SetDurationOverlay(durationString: self.$durationString, setDurationString: { str in
                         self.durationString = str
                     }, keyboardVisible: self.$keyboardVisible) {
                         self.hideDurationOverlay()
-                    }.offset(y: self.showSetDuration ? 0 : (self.cScreen != "Start" ? geo.size.height : geo.size.height + 40)).animation(.easeIn(duration: 0.15))
+                    }.offset(y: self.showSetDuration ? 0 : (geo.size.height + 40)).animation(.easeInOut(duration: 0.45))
+                    StatusIndicator(timer: self.timer, proxyStatus: self.$proxyStatus, cScreen: self.$cScreen)
                 }
-            }
             
             //                    else if self.cScreen == "Start" {
             //                        StartScreen { screen in
@@ -184,7 +144,9 @@ struct ContentView: View {
         }.background(Image("bg-grain")).ignoresSafeArea(.keyboard)
         .onAppear {
             self.onAppear()
-        }
+        }.onReceive(timer, perform: { _ in
+            self.proxyCheckIn()
+        })
     }
 }
 

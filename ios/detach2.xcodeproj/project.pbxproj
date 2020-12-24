@@ -19,6 +19,8 @@
 		A32A96F624E32DAF002C1145 /* detach2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32A96F524E32DAF002C1145 /* detach2UITests.swift */; };
 		A32A970724E3330B002C1145 /* georgia italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A32A970624E3330B002C1145 /* georgia italic.ttf */; };
 		A32A970B24E3405B002C1145 /* HomeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32A970A24E3405B002C1145 /* HomeMenu.swift */; };
+		A32D8E342594297E00F37EA9 /* YellowStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32D8E332594297E00F37EA9 /* YellowStatus.swift */; };
+		A32D8E3C259433D800F37EA9 /* StatusIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32D8E3B259433D800F37EA9 /* StatusIndicator.swift */; };
 		A34B1F3B257C37FD004753BE /* SetDurationOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34B1F3A257C37FD004753BE /* SetDurationOverlay.swift */; };
 		A34D2E2A258ACBE00046372C /* SessionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34D2E29258ACBE00046372C /* SessionScreen.swift */; };
 		A350D57725785F3700DA3739 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A350D57625785F3700DA3739 /* Colors.xcassets */; };
@@ -127,6 +129,8 @@
 		A32A96F724E32DAF002C1145 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A32A970624E3330B002C1145 /* georgia italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "georgia italic.ttf"; sourceTree = "<group>"; };
 		A32A970A24E3405B002C1145 /* HomeMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMenu.swift; sourceTree = "<group>"; };
+		A32D8E332594297E00F37EA9 /* YellowStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YellowStatus.swift; sourceTree = "<group>"; };
+		A32D8E3B259433D800F37EA9 /* StatusIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusIndicator.swift; sourceTree = "<group>"; };
 		A34B1F3A257C37FD004753BE /* SetDurationOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDurationOverlay.swift; sourceTree = "<group>"; };
 		A34D2E29258ACBE00046372C /* SessionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionScreen.swift; sourceTree = "<group>"; };
 		A350D57625785F3700DA3739 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -242,6 +246,7 @@
 		A32A96D224E32DAD002C1145 /* detach2 */ = {
 			isa = PBXGroup;
 			children = (
+				A32D8E322594296D00F37EA9 /* views */,
 				A32A96DB24E32DAF002C1145 /* Preview Content */,
 				A34D2E65258AEC1C0046372C /* misc */,
 				A34D2E5D258AEB710046372C /* res */,
@@ -283,6 +288,15 @@
 				A32A96F724E32DAF002C1145 /* Info.plist */,
 			);
 			path = detach2UITests;
+			sourceTree = "<group>";
+		};
+		A32D8E322594296D00F37EA9 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				A32D8E332594297E00F37EA9 /* YellowStatus.swift */,
+				A32D8E3B259433D800F37EA9 /* StatusIndicator.swift */,
+			);
+			path = views;
 			sourceTree = "<group>";
 		};
 		A34D2E5D258AEB710046372C /* res */ = {
@@ -743,6 +757,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A32D8E342594297E00F37EA9 /* YellowStatus.swift in Sources */,
 				A32A970B24E3405B002C1145 /* HomeMenu.swift in Sources */,
 				A3D639D324EF672E00612AF9 /* SignInWithAppleButton.swift in Sources */,
 				A34D2E2A258ACBE00046372C /* SessionScreen.swift in Sources */,
@@ -763,6 +778,7 @@
 				A3F5E61224E600D700DCF879 /* API.swift in Sources */,
 				A3F5E60D24E5EBFF00DCF879 /* Storage.swift in Sources */,
 				A37D8BC024E88FBC00E8EAFE /* User.swift in Sources */,
+				A32D8E3C259433D800F37EA9 /* StatusIndicator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -5,7 +5,7 @@ struct SessionScreen: View {
     var setScreen: (_ screen: String) -> Void
 
     var sessionCompleted: Bool {
-        endDate == nil ? false : Date() > endDate!
+        return self.endDate == nil ? true : Date() > endDate!
     }
 
     @State var countDownStr: String = "N/A"
@@ -29,28 +29,33 @@ struct SessionScreen: View {
     }
     
     func endSession(){
+        setScreen("HomeMenu")
         clearSessionEndDate()
         TunnelController.shared.disable()
     }
 
     func sessionCancelled() {
-        setScreen("HomeMenu")
         endSession()
     }
 
     func donePressed() {
-        setScreen("HomeMenu")
         endSession()
     }
 
     var body: some View {
         GeometryReader { geo in
             VStack(alignment: .leading, spacing: 0) {
-                Text("Focus Session Started").font(.system(size: 25, weight: .bold, design: .default)).kerning(-1).foregroundColor(Color.tan)
-                Text(self.countDownStr).font(.newYorkXL(size: 60.0)).foregroundColor(Color.tan).padding(.top, 15).onReceive(timer) { _ in
-                    self.countDownStr = dateToCountdownStr(endDateOpt: self.endDate)
+                if !sessionCompleted{
+                    Text("Focus Session Started").font(.system(size: 25, weight: .bold, design: .default)).kerning(-1).foregroundColor(Color.tan)
+                    Text(self.countDownStr).font(.newYorkXL(size: 60.0)).foregroundColor(Color.tan).padding(.top, 15).onReceive(timer) { _ in
+                        self.countDownStr = dateToCountdownStr(endDateOpt: self.endDate)
+                    }.animation(.none).onAppear(perform: {
+                        self.countDownStr = dateToCountdownStr(endDateOpt: self.endDate)
+                    })
+                    Spacer()
+                } else {
+                    Text("Focus Session Completed!").font(.system(size: 25, weight: .bold, design: .default)).kerning(-1).foregroundColor(Color.tan)
                 }
-                Spacer()
                 HStack {
                     Spacer()
                     if !sessionCompleted {
@@ -78,10 +83,11 @@ struct SessionScreen: View {
                                         Text("Done").foregroundColor(.white).font(.system(size: 18, weight: .bold, design: .default))
                                     })
                                 }
-                        }
+                        }.padding(.top,30)
                     }
                 }
-            }.padding(.top, 100).padding(.horizontal, 45).frame(width: nil, height: geo.size.height * 0.7, alignment: .center)
+                if sessionCompleted {Spacer()}
+            }.padding(.top, 100).frame(width: nil, height: geo.size.height * 0.7, alignment: .center)
         }
     }
 }
