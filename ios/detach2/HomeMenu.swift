@@ -1,10 +1,10 @@
-//
-//  HomeMenu.swift
-//  detach2
-//
-//  Created by Luke Mann on 8/11/20.
-//  Copyright © 2020 Luke Mann. All rights reserved.
-//
+
+
+
+
+
+
+
 
 import SwiftUI
 
@@ -97,11 +97,11 @@ struct HomeMenu_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             HomeMenu(durationString: self.$durationString) { _ in
-                //
+
             } startFocusPressed: {
-                //
+
             } showDurationScreen: {
-                //
+                
             }.background(Image("bg-grain"))
                 .previewDevice(PreviewDevice(rawValue: "iPhone 11"))
                 .previewDisplayName("iPhone 11")

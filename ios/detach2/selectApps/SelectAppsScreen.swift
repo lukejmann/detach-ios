@@ -63,7 +63,6 @@ struct SelectableApp: Identifiable {
             print("app \(app.Name) toggled to \(selected)")
             let oldSelectedApps = getSelectedAppNames()
             if selected {
-                // check if already there. if it is do nothing. if not add
                 var done = false
                 oldSelectedApps.forEach { appName in
                     if appName == app.Name.lowercased() {
@@ -74,7 +73,6 @@ struct SelectableApp: Identifiable {
                     setSelectedAppNames(appNames: oldSelectedApps + [app.Name.lowercased()])
                 }
             } else {
-                // filter appname from list
                 setSelectedAppNames(appNames: oldSelectedApps.filter { $0 != app.Name.lowercased() })
             }
         }
@@ -88,7 +86,6 @@ struct SelectableApp: Identifiable {
 struct AppRow: View {
     @State var app: SelectableApp
 
-//    let hPadding = CGFloat(37-10)
     @Environment(\.colorScheme) var colorScheme
 
     var body: some View {

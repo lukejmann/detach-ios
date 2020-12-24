@@ -1,10 +1,4 @@
-//
-//  SignInWithAppleButton.swift
-//  iOS-Demo-SignInWithApple-SwiftUI
-//
-//  Created by Jaap Mengers on 05/06/2019.
-//  Copyright © 2019 Jaap Mengers. All rights reserved.
-//
+
 
 import AuthenticationServices
 import SwiftUI
@@ -22,15 +16,12 @@ struct Credentials {
 }
 
 struct SignInWithAppleButton: View {
-//    @Binding var credentials: CredentialsOrError?
-
     var setCredentials: (_ creds: CredentialsOrError) -> Void
 
     var body: some View {
         let button = ButtonController(setCredentials: setCredentials)
 
         return button
-//            .frame(width: button.button.frame.width, height: button.button.frame.height, alignment: .center)
     }
 
     struct ButtonController: UIViewControllerRepresentable {
@@ -38,14 +29,7 @@ struct SignInWithAppleButton: View {
         let vc: UIViewController = UIViewController()
         var setCredentials: (_ creds: CredentialsOrError) -> Void
 
-//        @Binding var credentials: CredentialsOrError?
-
         func makeCoordinator() -> Coordinator {
-//            self.button.constraints.forEach { (constraint) in
-//                if (constraint.firstAttribute == .width) {
-//                        constraint.isActive = false
-//                }
-//            }
             button.translatesAutoresizingMaskIntoConstraints = false
             button.widthAnchor.constraint(equalToConstant: 300).isActive = true
             button.heightAnchor.constraint(equalToConstant: 44).isActive = true
@@ -95,8 +79,6 @@ struct SignInWithAppleButton: View {
                     return
                 }
                 parent.setCredentials(CredentialsOrError.credentials(user: credentials.user, email: credentials.email))
-//
-//                parent.credentials = .credentials(user: credentials.user, email: credentials.email)
             }
 
             func authorizationController(controller _: ASAuthorizationController, didCompleteWithError error: Error) {
@@ -109,7 +91,6 @@ struct SignInWithAppleButton: View {
 struct SignInWithAppleButton_Previews: PreviewProvider {
     static var previews: some View {
         SignInWithAppleButton { _ in
-            //
         }
     }
 }

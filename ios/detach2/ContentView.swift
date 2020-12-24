@@ -1,10 +1,10 @@
-//
-//  ContentView.swift
-//  detach2
-//
-//  Created by Luke Mann on 8/11/20.
-//  Copyright © 2020 Luke Mann. All rights reserved.
-//
+
+
+
+
+
+
+
 
 import NetworkExtension
 import SwiftUI
@@ -29,14 +29,14 @@ struct ContentView: View {
                 self.cScreen = "Start"
                 connectProxy(i: 0) { success in
                     if success {
-                        // TODO: handle
+//                         TODO: handle
                     } else {
-                        // TODO: handle
+//                         TODO: handle
                         print("Error!! unable to connect proxy")
                     }
                 }
             } else {
-                // TODO: handle err
+//                 TODO: handle err
                 print("Error!! unable to start session")
             }
         }
@@ -93,7 +93,7 @@ struct ContentView: View {
                     StatusIndicator(timer: self.timer, proxyStatus: self.$proxyStatus, cScreen: self.$cScreen).frame(width: 203, height: 33, alignment: .trailing).padding(.trailing, 30)
                 }.frame(width: geo.size.width, height: 33, alignment: .center).padding(.top, 30)
                 ZStack(alignment: .center) {
-//                    GeometryReader { geo2 in
+
                     HomeMenu(durationString: self.$durationString) { screen in
                         self.cScreen = screen
                     } startFocusPressed: {
@@ -104,13 +104,13 @@ struct ContentView: View {
                     SelectAppsScreen { screen in
                         self.cScreen = screen
                     }
-//                        .frame(width: geo2.size.width, height: geo2.size.width, alignment: .center)
+
                     .offset(x: self.cScreen == "SelectApps" ? 0 : geo.size.width, y: 0).animation(.spring())
                     SessionScreen(endDate: self.$sessionEndDate) { screen in
                         self.cScreen = screen
                     }.offset(x: self.cScreen == "Start" ? 0 : geo.size.width, y: 0).animation(.spring())
                 }.padding(.horizontal, 30)
-//                    }
+
             }
             SetDurationOverlay(durationString: self.$durationString, setDurationString: { str in
                 self.durationString = str
@@ -118,24 +118,24 @@ struct ContentView: View {
                     self.hideDurationOverlay()
             }.offset(y: self.showSetDuration ? 0 : (geo.size.height + 40)).animation(.easeInOut(duration: 0.45))
 
-            //                    else if self.cScreen == "Start" {
-            //                        StartScreen { screen in
-            //                            self.cScreen = screen
-            //                        }
-            //                    } else if self.cScreen == "Session" {
-            //                        SessionScreen { screen in
-            //                            self.cScreen = screen
-            //                        }
-            //                    } else if self.cScreen == "SelectApps" {
 
-            //                    } else if self.cScreen == "Upgrade" {
-            //                        UpgradeScreen(parentRefreshSubStatus: self.checkSubscription) { screen in
-            //                            self.cScreen = screen
-            //                        }
-            //                    } else {
-            //                        Text("Unknown Screen" + self.cScreen)
-            //                    }
-            //                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         }.background(Image("bg-grain")).ignoresSafeArea(.keyboard)
             .onAppear {
                 self.onAppear()

@@ -97,7 +97,6 @@ struct SessionScreen_Previews: PreviewProvider {
 
     static var previews: some View {
         SessionScreen(endDate: self.$endDate, setScreen: { _ in
-            //
         }).background(Image("bg-grain"))
             .previewDevice(PreviewDevice(rawValue: "iPhone XS Max"))
             .previewDisplayName("iPhone 11 Pro")

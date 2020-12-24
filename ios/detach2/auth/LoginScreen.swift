@@ -1,10 +1,4 @@
-//
-//  LoginScreen.swift
-//  detach2
-//
-//  Created by Luke Mann on 8/16/20.
-//  Copyright © 2020 Luke Mann. All rights reserved.
-//
+
 
 import AuthenticationServices
 import SwiftUI
@@ -37,9 +31,7 @@ struct LoginScreen: View {
         connectProxy(i: 0) { success in
             if success {
                 self.loginCompleted()
-            } else {
-                // TODO: handle
-            }
+            } else {}
         }
     }
 
@@ -74,7 +66,6 @@ struct LoginScreen: View {
                 }
             } else {
                 Text("error")
-//                .frame(width: geo.size.width, height: geo.size.height)
             }
         }.padding(.horizontal, 37).padding(.top, 100)
     }

@@ -1,7 +1,6 @@
 
 import NetworkExtension
 import UIKit
-// import CocoaLumberjackSwift
 import Willow
 
 let kTunnelLocalizedDescription = "Detach Configuration"
@@ -119,92 +118,3 @@ func connectProxy(i: Int, callback: @escaping (_ success: Bool) -> Void) {
         }
     }
 }
-
-// just to be sure, reload the managers to make sure we don't make multiple configs
-//    NETunnelProviderManager.loadAllFromPreferences { (managers, error) -> Void in
-//      Print("MARK: In loadAllFromPreferences. error: \(error)")
-//      if let managers = managers, managers.count > 0 {
-//        self.manager = nil
-//        self.manager = managers[0]
-//      }
-//      else {
-//        self.manager = nil
-//        self.manager = NETunnelProviderManager()
-//        self.manager!.protocolConfiguration = NETunnelProviderProtocol()
-//      }
-//      self.manager!.localizedDescription = kTunnelLocalizedDescription
-//      self.manager!.protocolConfiguration?.serverAddress = kTunnelLocalizedDescription
-//      self.manager!.isEnabled = enabled
-//      self.manager!.isOnDemandEnabled = enabled
-//
-//      let connectRule = NEOnDemandRuleConnect()
-//      connectRule.interfaceTypeMatch = .any
-//      self.manager!.onDemandRules = [connectRule]
-//      self.manager!.saveToPreferences(completionHandler: { (error) -> Void in
-//        Print("MARK: In saveToPreferences. error: \(error)")
-//
-//        // TODO: Handle each case specifically
-//        if let e = error as? NEVPNError {
-//          //                    DDLogError("VPN Error while saving state: \(enabled) \(e)")
-//          switch e.code {
-//          case .configurationDisabled:
-//            Print("LoadAllFromPreference Error is configurationDisabled")
-//            break;
-//          case .configurationInvalid:
-//            Print("LoadAllFromPreference Error is configurationInvalid")
-//
-//            break;
-//          case .configurationReadWriteFailed:
-//            Print("LoadAllFromPreference Error is configurationReadWriteFailed")
-//
-//            break;
-//          case .configurationStale:
-//            Print("LoadAllFromPreference Error is configurationStale")
-//
-//            break;
-//          case .configurationUnknown:
-//            Print("LoadAllFromPreference Error is configurationUnknown")
-//
-//          case .connectionFailed:
-//            Print("LoadAllFromPreference Error is connectionFailed")
-//
-//            break;
-//          }
-//        }
-//        else if let e = error {
-//          Print("Error saving config for enabled state: \(enabled): \(e)")
-//        }
-//        else {
-//          Print("Successfully saved config for enabled state: \(enabled)")
-//        }
-//        self.refreshManager(completion: { error in
-//          completion(nil)
-//        })
-//      })
-//    }
-
-// MARK: temp
-
-//    NETunnelProviderManager.loadAllFromPreferences { (managers, error) -> Void in
-//      Print("MARK: In loadAllFromPreferences. error: \(error)")
-//      if let managers = managers, managers.count > 0 {
-//        self.manager = nil
-//        self.manager = managers[0]
-//      }
-//      else {
-//        self.manager = nil
-//        self.manager = NETunnelProviderManager()
-//        self.manager!.protocolConfiguration = NETunnelProviderProtocol()
-//      }
-//      let manager = self.manager!
-//      manager.localizedDescription = "Detach Tunnel"
-//      manager.protocolConfiguration?.serverAddress = "Detach"
-//      manager.isEnabled = true
-//      manager.isOnDemandEnabled = true
-//      let connectRule = NEOnDemandRuleConnect()
-//      connectRule.interfaceTypeMatch = .any
-//      manager.onDemandRules = [connectRule]
-//      manager.saveToPreferences(completionHandler: { (error) -> Void in
-//        Print("MARK: in saveToPreferences completion. error: \(error)")
-//      })
-//    }

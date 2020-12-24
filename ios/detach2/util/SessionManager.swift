@@ -1,10 +1,4 @@
-//
-//  SessionManager.swift
-//  detach2
-//
-//  Created by Luke Mann on 8/13/20.
-//  Copyright © 2020 Luke Mann. All rights reserved.
-//
+
 
 import Foundation
 
@@ -16,8 +10,8 @@ func uploadSession(endTime: Date, completion: @escaping (Bool) -> Void) {
         print("result in createSession res: \(result)")
         switch result {
         case let .success(moyaResponse):
-            let data = moyaResponse.data // Data, your JSON response is probably in here!
-            let statusCode = moyaResponse.statusCode // Int - 200, 401, 500, etc
+            let data = moyaResponse.data
+            let statusCode = moyaResponse.statusCode
             if statusCode == 200 {
                 print("data: \(data)")
                 do {

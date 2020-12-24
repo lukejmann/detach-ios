@@ -1,10 +1,4 @@
-//
-//  AppDomains.swift
-//  detach2
-//
-//  Created by Luke Mann on 8/15/20.
-//  Copyright © 2020 Luke Mann. All rights reserved.
-//
+
 
 import Foundation
 
@@ -13,7 +7,7 @@ func refreshSupportedApps() {
         print("result in fetchAppDomains callback: \(result)")
         switch result {
         case let .success(moyaResponse):
-            let data = moyaResponse.data // Data, your JSON response is probably in here!
+            let data = moyaResponse.data
             let statusCode = moyaResponse.statusCode
             if statusCode == 200 {
                 do {
@@ -21,13 +15,11 @@ func refreshSupportedApps() {
                     let res = try JSONDecoder().decode([App].self, from: data)
                     print("res: \(res)")
                     if !res.isEmpty {
-//                            setSessionID(sessionID: res.sessionID)
                         print("successfully decoded appDomains: \(res)")
                         setSupportedApps(apps: res)
-//                            completion(true)
+
                     } else {
                         print("failed to decoded appDomains. length is zero")
-//                            completion(false)
                     }
 
                 } catch {

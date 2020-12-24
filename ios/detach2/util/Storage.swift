@@ -33,7 +33,7 @@ public func clearSessionEndDate() {
     timerDefaults.removeObject(forKey: kSessionEndDate)
 }
 
-// in seconds
+// Unit: Seconds
 let kSessionDuration = "sessionDuration"
 
 public func getSessionDuration() -> Int {
@@ -73,7 +73,6 @@ public func setSupportedApps(apps: [App]) {
 
 public func getSelectedAppNames() -> [String] {
     if let appNames = appsDefaults.array(forKey: kSelectedAppNames) {
-//        print("in getSelectedAppNames. selected app names: \(appNames)")
         return appNames as! [String]
     }
     print("in getSelectedAppNames. failed to apps")

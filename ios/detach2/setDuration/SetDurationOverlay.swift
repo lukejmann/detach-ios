@@ -1,10 +1,4 @@
-//
-//  SetDurationOverlay.swift
-//  detach2
-//
-//  Created by Luke Mann on 12/5/20.
-//  Copyright © 2020 Luke Mann. All rights reserved.
-//
+
 
 import Foundation
 import SwiftUI
@@ -19,7 +13,6 @@ struct SetDurationOverlay: View {
     var hideOverlay: () -> Void
 
     func calculateDurationSec(duration: String) -> Int {
-        // TODO: unwrap
         let hours = Int(duration[0] + duration[1])!
         let minutes = Int(duration[3] + duration[4])!
         return hours * 60 * 60 + minutes * 60
@@ -44,17 +37,6 @@ struct SetDurationOverlay: View {
                             Text("Set how long selected apps will be blocked for.").font(.system(size: 14, weight: .regular, design: .default)).kerning(-1).foregroundColor(Color.darkBlue).padding(.top, 0)
                         }
                         Spacer()
-//                        Button(action: {
-//                            self.hideOverlay()
-//                        }) {
-//                                HStack(alignment: .center, spacing: nil, content: {
-                        ////                                Image("cancelIcon").resizable().frame(width: 15, height: 15, alignment: .center)
-//                                    Text("Done").foregroundColor(.darkBlue).font(.system(size: 18, weight: .medium, design: .default))
-//                                }).frame(width: 90, height: 35).overlay(
-//                                    RoundedRectangle(cornerRadius: 8)
-//                                        .stroke(Color.darkBlue, lineWidth: 1)
-//                                )
-//                        }
                     }
                     HStack(alignment: .center, spacing: 0) {
                         Spacer()
@@ -75,33 +57,6 @@ struct SetDurationOverlay: View {
                         Text("MINUTES").foregroundColor(.darkBlue).font(.system(size: 16.8, weight: .regular, design: .default)).kerning(-1)
                         Spacer()
                     }.padding(.top, 8)
-                    //                    HStack {
-                    //                        Button(action: {
-                    //                            self.hideOverlay()
-                    //                        }) {
-                    //                            HStack(alignment: .center, spacing: nil, content: {
-                    //                                Image("cancelIcon").resizable().frame(width: 15, height: 15, alignment: .center)
-                    //                                Text("Cancel").foregroundColor(.darkBlue).font(.system(size: 18, weight: .medium, design: .default))
-                    //                            }).frame(width: 122, height: 44).overlay(
-                    //                                RoundedRectangle(cornerRadius: 8)
-                    //                                    .stroke(Color.darkBlue, lineWidth: 1)
-                    //                            )
-                    //                        }
-                    //                        Spacer()
-                    //                        Button(action: {
-                    //                            self.saveTime(durationString: self.durationString)
-                    //                        }) {
-                    //                            ZStack {
-                    //                                RoundedRectangle(cornerRadius: 8, style: .continuous)
-                    //                                    .fill(Color.darkBlue)
-                    //                                    .frame(width: 122, height: 44)
-                    //                                HStack(alignment: .center, spacing: nil, content: {
-                    //                                    Image("checkIcon").resizable().frame(width: 15, height: 15, alignment: .center)
-                    //                                    Text("Done").foregroundColor(.white).font(.system(size: 18, weight: .bold, design: .default))
-                    //                                })
-                    //                            }
-                    //                        }
-                    //                    }.padding(.top, 34).padding(.horizontal, 30)
 
                     Text("Quick-Set").foregroundColor(.darkBlue)
                         .font(.system(size: 24, weight: .medium, design: .default)).padding(.top, 30)
@@ -140,7 +95,6 @@ struct SetDurationOverlayu_Previews: PreviewProvider {
 
             }, keyboardVisible: self.$keyboardVisible, hideOverlay: {})
                 .previewDisplayName("iPhone 11")
-            //      r
         }
     }
 }

@@ -1,17 +1,17 @@
-//
-//  AppDelegate.swift
-//  detach2
-//
-//  Created by Luke Mann on 8/11/20.
-//  Copyright © 2020 Luke Mann. All rights reserved.
-//
+
+
+
+
+
+
+
 
 import AuthenticationServices
 import SwiftyStoreKit
 import UIKit
 
 var deviceToken = "default"
-// var userLoggedInOnOpen = false
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -53,18 +53,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    // MARK: UISceneSession Lifecycle
+
 
     func application(_: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options _: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        // Called when a new scene session is being created.
-        // Use this method to select a configuration to create the new scene with.
+
+
         UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 
     func application(_: UIApplication, didDiscardSceneSessions _: Set<UISceneSession>) {
-        // Called when the user discards a scene session.
-        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+
+
+
     }
 
     func registerForPushNotifications() {
@@ -99,25 +99,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("Failed to register: \(error)")
     }
 
-    ////   fetch notifications in the background and foreground
-//    -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)notification
-//    fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-//      NSLog(@"[notif]didReceiveRemoteNotification %@", notification);
-//    [RNCPushNotificationIOS didReceiveRemoteNotification:notification fetchCompletionHandler:completionHandler];
-//    NSLog(@"[notif]Notification Body %@", notification);
-    //  completionHandler(UIBackgroundFetchResultNewData);
-//    }
-//    func application(_: UIApplication, didReceiveRemoteNotification notif: [AnyHashable: Any], fetchCompletionHandler completion: @escaping (UIBackgroundFetchResult) -> Void) {
-//        Print("in notifDidReceiveRemoteNotification. notif: \(notif)")
-//        print("in notifDidReceiveRemoteNotification. notif: \(notif)")
-//
-//        if Date() > timerEnd {
-//            print("in notifDidReceiveRemoteNotification. notif: \(notif)")
-//            print("disabling VPN")
-//            TunnelController.shared.disable()
-//        }
-//        completion(.newData)
-//    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     func application(
         _ notif: UIApplication,

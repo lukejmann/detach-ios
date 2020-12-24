@@ -1,14 +1,14 @@
-//
-//  CustomUIKitTextField.swift
-//  detach2
-//
-//  Created by Luke Mann on 8/12/20.
-//  Copyright © 2020 Luke Mann. All rights reserved.
-//
+
+
+
+
+
+
+
 
 import SwiftUI
 
-// make final class? https://developer.apple.com/forums/thread/124671
+
 struct CustomUIKitTextField: UIViewRepresentable {
     @Binding var text: String {
         didSet {
@@ -96,7 +96,7 @@ struct CustomUIKitTextField: UIViewRepresentable {
             parent.hours = parent.hours[1] + parent.minutes[0]
             parent.minutes = parent.minutes[1] + string
 
-            // return true to indicate that the textField should display the changes from the user
+            
             return true
         }
     }

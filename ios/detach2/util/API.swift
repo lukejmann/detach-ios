@@ -1,8 +1,6 @@
 import Foundation
 import Moya
 
-// MARK: - Provider setup
-
 private func JSONResponseDataFormatter(_ data: Data) -> String {
     do {
         let dataAsJSON = try JSONSerialization.jsonObject(with: data)
@@ -23,8 +21,6 @@ public let detachProvier = MoyaProvider<DetachAPI>(plugins: [
     ),
 ]
 )
-
-// MARK: - Provider support
 
 private extension String {
     var urlEscaped: String {
@@ -76,7 +72,7 @@ extension DetachAPI: TargetType {
         switch self {
         case let .login(userID, email):
             return .requestParameters(parameters: ["userID": userID, "email": email], encoding: URLEncoding.default)
-        case let .createSession(opt): // Always send parameters as JSON in request body
+        case let .createSession(opt):
             print("opt in task: \(opt)")
             return .requestJSONEncodable(opt)
         case let .cancelSession(opt):
@@ -86,26 +82,11 @@ extension DetachAPI: TargetType {
             return .requestJSONEncodable(opt)
         case .fetchAppDomains:
             return .requestPlain
-//        case .updateUser
-//        default:
-//            return .requestJSONEncodable()
         }
     }
 
-//
-//    var parameterEncoding: Moya.ParameterEncoding {
-//        switch self {
-//        case .login:
-//            return ParameterEncoding
-//        default:
-//            return JSONEncoding.default
-//        }
-//    }
-
     public var validationType: ValidationType {
         switch self {
-//        case .login:
-//            return .successCodes
         default:
             return .none
         }
@@ -136,8 +117,6 @@ public func url(_ route: TargetType) -> String {
     print("url: ", r)
     return r
 }
-
-// MARK: - Response Handlers
 
 extension Moya.Response {
     func mapNSArray() throws -> NSArray {
