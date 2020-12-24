@@ -46,10 +46,10 @@ struct HomeMenu: View {
                                 Spacer()
                                 Image("rightArrow").resizable().frame(width: 52.25, height: 25, alignment: .center)
                             }.frame(width: geo.size.width * 0.9, height: .none, alignment: .leading)
-                    }.padding(.top, 15)
+                    }.padding(.top, 10)
 
                     Spacer()
-                }.padding(.horizontal, 25).padding(.top, 0).frame(width: geo.size.width, height: geo.size.height, alignment: .center)
+                }.padding(.horizontal, 25).frame(width: geo.size.width, height: geo.size.height, alignment: .center).padding(.top, 80)
             }
         }
     }
@@ -68,7 +68,7 @@ struct SetDurationButton: View {
                 Button(action: {
                     showSetDuration()
                 }) {
-                    VStack(alignment: .center, spacing: 0) {
+                        VStack(alignment: .center, spacing: 0) {
                             Text(self.durationString).font(.newYorkXL(size: 60.0)).foregroundColor(Color.darkBlue)
                             HStack(alignment: .center, spacing: 0) {
                                 Spacer()

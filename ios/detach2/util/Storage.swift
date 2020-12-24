@@ -124,4 +124,3 @@ public func setUserAgreedToVPN(userAgreedToVPN: Bool) {
     print("in userAgreedToVPN. Setting userAgreedToVPN to : \(userAgreedToVPN)")
     userInfoDefaults.set(userAgreedToVPN, forKey: kUserAgreedToVPN)
 }
-

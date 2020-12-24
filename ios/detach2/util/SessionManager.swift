@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 func uploadSession(endTime: Date, completion: @escaping (Bool) -> Void) {
     let appNames = getSelectedAppNames()
     setupBlockedDomains(appNames: appNames)

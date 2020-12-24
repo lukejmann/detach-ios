@@ -718,13 +718,13 @@
             filePath = "detach2/selectApps/SelectAppsScreen.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "previews"
             landmarkType = "24">
             <Locations>
                <Location
-                  uuid = "E1F457B1-53BB-4884-94E6-CF725EBE1E9E - 70fe736aef09a981"
+                  uuid = "E1F457B1-53BB-4884-94E6-CF725EBE1E9E - 70fe736aef09aa5c"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -734,12 +734,12 @@
                   urlString = "file:///Users/luke/detach2/ios/detach2/selectApps/SelectAppsScreen.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "113"
-                  endingLineNumber = "113"
+                  startingLineNumber = "108"
+                  endingLineNumber = "108"
                   offsetFromSymbolStart = "768">
                </Location>
                <Location
-                  uuid = "E1F457B1-53BB-4884-94E6-CF725EBE1E9E - 14438358482443ca"
+                  uuid = "E1F457B1-53BB-4884-94E6-CF725EBE1E9E - 1443835848244017"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -749,8 +749,8 @@
                   urlString = "file:///Users/luke/detach2/ios/detach2/selectApps/SelectAppsScreen.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "113"
-                  endingLineNumber = "113"
+                  startingLineNumber = "108"
+                  endingLineNumber = "108"
                   offsetFromSymbolStart = "0">
                </Location>
             </Locations>

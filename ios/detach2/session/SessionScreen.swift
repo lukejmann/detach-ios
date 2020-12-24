@@ -5,7 +5,7 @@ struct SessionScreen: View {
     var setScreen: (_ screen: String) -> Void
 
     var sessionCompleted: Bool {
-        return self.endDate == nil ? true : Date() > endDate!
+        endDate == nil ? true : Date() > endDate!
     }
 
     @State var countDownStr: String = "N/A"
@@ -27,8 +27,8 @@ struct SessionScreen: View {
             return "N/A"
         }
     }
-    
-    func endSession(){
+
+    func endSession() {
         setScreen("HomeMenu")
         clearSessionEndDate()
         TunnelController.shared.disable()
@@ -45,7 +45,7 @@ struct SessionScreen: View {
     var body: some View {
         GeometryReader { geo in
             VStack(alignment: .leading, spacing: 0) {
-                if !sessionCompleted{
+                if !sessionCompleted {
                     Text("Focus Session Started").font(.system(size: 25, weight: .bold, design: .default)).kerning(-1).foregroundColor(Color.tan)
                     Text(self.countDownStr).font(.newYorkXL(size: 60.0)).foregroundColor(Color.tan).padding(.top, 15).onReceive(timer) { _ in
                         self.countDownStr = dateToCountdownStr(endDateOpt: self.endDate)
@@ -83,10 +83,10 @@ struct SessionScreen: View {
                                         Text("Done").foregroundColor(.white).font(.system(size: 18, weight: .bold, design: .default))
                                     })
                                 }
-                        }.padding(.top,30)
+                        }.padding(.top, 30)
                     }
                 }
-                if sessionCompleted {Spacer()}
+                if sessionCompleted { Spacer() }
             }.padding(.top, 100).frame(width: nil, height: geo.size.height * 0.7, alignment: .center)
         }
     }

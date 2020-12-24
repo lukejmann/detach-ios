@@ -13,11 +13,6 @@ struct SelectAppsScreen: View {
         GeometryReader { geo in
             VStack(alignment: .leading, spacing: 0) {
                 VStack(alignment: .leading, spacing: 0) {
-                    Button(action: {
-                        self.setScreen("HomeMenu")
-                    }) {
-                            Image("leftArrow").resizable().frame(width: 44, height: 21, alignment: .leading)
-                    }
                     Text("Select Apps")
                         .font(.system(size: 25, weight: .bold, design: .default))
                         .padding(.top, 30).foregroundColor(.tan)
@@ -34,7 +29,7 @@ struct SelectAppsScreen: View {
                     }
                     Rectangle().frame(width: 0, height: 50, alignment: .center)
                 }.clipped()
-            }.padding(.top, 60).frame(width: nil, height: geo.size.height, alignment: .center)
+            }.padding(.top, 25).frame(width: nil, height: geo.size.height, alignment: .center)
         }
     }
 }

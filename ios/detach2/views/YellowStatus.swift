@@ -6,21 +6,21 @@
 //  Copyright © 2020 Luke Mann. All rights reserved.
 //
 
-import SwiftUI
 import NetworkExtension
+import SwiftUI
 
 struct YellowStatus: View {
     @State var nFrame = 1
     @Binding var proxyStatus: NEVPNStatus {
         didSet {
-            if self.proxyStatus == .connecting {
-                self.nFrame = 1
+            if proxyStatus == .connecting {
+                nFrame = 1
             }
         }
     }
-    
+
     var frameImage: String {
-        switch self.nFrame{
+        switch nFrame {
         case 1:
             return "yellowStatus1"
         case 2:
@@ -35,11 +35,11 @@ struct YellowStatus: View {
             return "yellowStatus6"
         }
     }
-    
+
     let timer = Timer.publish(every: 0.2, on: .main, in: .common).autoconnect()
 
     var body: some View {
-        GeometryReader{ geo in
+        GeometryReader { _ in
             Image(self.frameImage).resizable().frame(width: 16, height: 16, alignment: .center)
         }.onReceive(timer, perform: { _ in
             if self.proxyStatus == .disconnecting || self.proxyStatus == .connecting {
