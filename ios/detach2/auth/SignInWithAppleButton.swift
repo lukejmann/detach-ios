@@ -1,10 +1,6 @@
-
-
 import AuthenticationServices
 import SwiftUI
-
 extension String: Error {}
-
 enum CredentialsOrError {
     case credentials(user: String, email: String?)
     case error(_ error: Error)
@@ -17,10 +13,8 @@ struct Credentials {
 
 struct SignInWithAppleButton: View {
     var setCredentials: (_ creds: CredentialsOrError) -> Void
-
     var body: some View {
         let button = ButtonController(setCredentials: setCredentials)
-
         return button
     }
 
@@ -28,12 +22,10 @@ struct SignInWithAppleButton: View {
         let button: ASAuthorizationAppleIDButton = ASAuthorizationAppleIDButton()
         let vc: UIViewController = UIViewController()
         var setCredentials: (_ creds: CredentialsOrError) -> Void
-
         func makeCoordinator() -> Coordinator {
             button.translatesAutoresizingMaskIntoConstraints = false
             button.widthAnchor.constraint(equalToConstant: 300).isActive = true
             button.heightAnchor.constraint(equalToConstant: 44).isActive = true
-
             return Coordinator(self)
         }
 
@@ -43,15 +35,11 @@ struct SignInWithAppleButton: View {
         }
 
         func updateUIViewController(_: UIViewController, context _: Context) {}
-
         class Coordinator: NSObject, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
             let parent: ButtonController
-
             init(_ parent: ButtonController) {
                 self.parent = parent
-
                 super.init()
-
                 parent.button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
             }
 
@@ -60,7 +48,6 @@ struct SignInWithAppleButton: View {
                 let appleIDProvider = ASAuthorizationAppleIDProvider()
                 let request = appleIDProvider.createRequest()
                 request.requestedScopes = [.email]
-
                 let authorizationController = ASAuthorizationController(authorizationRequests: [request])
                 authorizationController.presentationContextProvider = self
                 authorizationController.delegate = self
@@ -75,7 +62,6 @@ struct SignInWithAppleButton: View {
                 guard let credentials = authorization.credential as? ASAuthorizationAppleIDCredential else {
                     let e = CredentialsOrError.error(" are not of type ASAuthorizationAppleIDCredential")
                     parent.setCredentials(e)
-
                     return
                 }
                 parent.setCredentials(CredentialsOrError.credentials(user: credentials.user, email: credentials.email))

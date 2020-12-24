@@ -1,19 +1,14 @@
 import SwiftUI
-
 struct SessionScreen: View {
     @Binding var endDate: Date?
     var setScreen: (_ screen: String) -> Void
-
     var sessionCompleted: Bool {
         endDate == nil ? true : Date() > endDate!
     }
 
     @State var countDownStr: String = "N/A"
-
     @Environment(\.colorScheme) var colorScheme
-
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-
     func dateToCountdownStr(endDateOpt: Date?) -> String {
         if let endDate = endDateOpt as? Date {
             let now = Date()
@@ -22,7 +17,6 @@ struct SessionScreen: View {
             let minutes = Int((secondsDiff % 3600) / 60)
             let seconds = secondsDiff - (minutes * 60) + (hours * 60 * 60)
             return "\(String(format: "%02d", hours)):\(String(format: "%02d", minutes)):\(String(format: "%02d", seconds))"
-
         } else {
             return "N/A"
         }
@@ -47,11 +41,11 @@ struct SessionScreen: View {
             VStack(alignment: .leading, spacing: 0) {
                 if !sessionCompleted {
                     Text("Focus Session Started").font(.system(size: 25, weight: .bold, design: .default)).kerning(-1).foregroundColor(Color.tan)
-                    Text(self.countDownStr).font(.newYorkXL(size: 60.0)).foregroundColor(Color.tan).padding(.top, 15).onReceive(timer) { _ in
+                    Text(self.countDownStr + "  ").font(.newYorkXL(size: 60.0)).foregroundColor(Color.tan).padding(.top, 15).onReceive(timer) { _ in
                         self.countDownStr = dateToCountdownStr(endDateOpt: self.endDate)
-                    }.animation(.none).onAppear(perform: {
+                    }.animation(.spring()).onAppear(perform: {
                         self.countDownStr = dateToCountdownStr(endDateOpt: self.endDate)
-                    })
+                    }).frame(width: 350, height: .none, alignment: .leading)
                     Spacer()
                 } else {
                     Text("Focus Session Completed!").font(.system(size: 25, weight: .bold, design: .default)).kerning(-1).foregroundColor(Color.tan)
@@ -94,10 +88,9 @@ struct SessionScreen: View {
 
 struct SessionScreen_Previews: PreviewProvider {
     @State static var endDate: Date? = nil
-
     static var previews: some View {
         SessionScreen(endDate: self.$endDate, setScreen: { _ in
-        }).background(Image("bg-grain"))
+        }).background(Image("bg-grain").resizable())
             .previewDevice(PreviewDevice(rawValue: "iPhone XS Max"))
             .previewDisplayName("iPhone 11 Pro")
     }

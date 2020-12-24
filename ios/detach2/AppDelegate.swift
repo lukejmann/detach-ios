@@ -1,26 +1,13 @@
-
-
-
-
-
-
-
-
 import AuthenticationServices
 import SwiftyStoreKit
 import UIKit
-
 var deviceToken = "default"
-
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         registerForPushNotifications()
-
         let appleIDProvider = ASAuthorizationAppleIDProvider()
-
         SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
             for purchase in purchases {
                 switch purchase.transaction.transactionState {
@@ -45,7 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Error: \(result.error)")
             }
         }
-
         let proxyStatus = TunnelController.shared.status()
         if Date() > getSessionEndDate() ?? Date().addingTimeInterval(.infinity) {
             TunnelController.shared.disable()
@@ -53,25 +39,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-
-
     func application(_: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options _: UIScene.ConnectionOptions) -> UISceneConfiguration {
-
-
         UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 
-    func application(_: UIApplication, didDiscardSceneSessions _: Set<UISceneSession>) {
-
-
-
-    }
-
+    func application(_: UIApplication, didDiscardSceneSessions _: Set<UISceneSession>) {}
     func registerForPushNotifications() {
         UNUserNotificationCenter.current()
             .requestAuthorization(options: [.alert, .sound, .badge]) {
                 [weak self] granted, _ in
-
                 print("Permission granted: \(granted)")
                 guard granted else { return }
                 self?.getNotificationSettings()
@@ -98,26 +74,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("Failed to register: \(error)")
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     func application(
         _ notif: UIApplication,

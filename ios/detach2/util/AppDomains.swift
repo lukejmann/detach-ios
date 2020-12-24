@@ -1,7 +1,4 @@
-
-
 import Foundation
-
 func refreshSupportedApps() {
     detachProvier.request(.fetchAppDomains) { result in
         print("result in fetchAppDomains callback: \(result)")
@@ -17,11 +14,9 @@ func refreshSupportedApps() {
                     if !res.isEmpty {
                         print("successfully decoded appDomains: \(res)")
                         setSupportedApps(apps: res)
-
                     } else {
                         print("failed to decoded appDomains. length is zero")
                     }
-
                 } catch {
                     print("failed to decode appDomains. err: \(error)")
                 }

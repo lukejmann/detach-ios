@@ -1,14 +1,4 @@
-
-
-
-
-
-
-
-
 import SwiftUI
-
-
 struct CustomUIKitTextField: UIViewRepresentable {
     @Binding var text: String {
         didSet {
@@ -18,14 +8,10 @@ struct CustomUIKitTextField: UIViewRepresentable {
 
     @Binding var validInput: Bool
     @Binding var isFirstResponder: Bool
-
     var placeholder: String
-
     var hours = "00"
     var minutes = "00"
-
     var dismissOverlay: () -> Void
-
     func makeUIView(context: UIViewRepresentableContext<CustomUIKitTextField>) -> UITextField {
         let textField = UITextField(frame: .zero)
         textField.delegate = context.coordinator
@@ -59,9 +45,7 @@ struct CustomUIKitTextField: UIViewRepresentable {
 
     class Coordinator: NSObject, UITextFieldDelegate {
         var parent: CustomUIKitTextField
-
         var didBecomeFirstResponder = false
-
         init(parent: CustomUIKitTextField) {
             self.parent = parent
         }
@@ -75,11 +59,9 @@ struct CustomUIKitTextField: UIViewRepresentable {
                 let replacementText = self.parent.hours + ":" + self.parent.minutes
                 self.parent.text = replacementText
             }
-
             if string == "0", textField.text == "00:00" {
                 return false
             }
-
             if string.isEmpty {
                 if textField.text == "00:00" {
                     return false
@@ -88,15 +70,11 @@ struct CustomUIKitTextField: UIViewRepresentable {
                 parent.hours = "0" + parent.hours[0]
                 return true
             }
-
             if parent.hours[0] != "0" {
                 return false
             }
-
             parent.hours = parent.hours[1] + parent.minutes[0]
             parent.minutes = parent.minutes[1] + string
-
-            
             return true
         }
     }
@@ -129,14 +107,11 @@ extension UITextField {
     func addDoneButtonOnKeyboard() {
         let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
         doneToolbar.barStyle = .default
-
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonAction))
-
         let items = [flexSpace, done]
         doneToolbar.items = items
         doneToolbar.sizeToFit()
-
         inputAccessoryView = doneToolbar
     }
 

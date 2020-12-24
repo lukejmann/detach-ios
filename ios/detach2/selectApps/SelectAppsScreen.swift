@@ -1,14 +1,11 @@
 import SwiftUI
-
 struct SelectAppsScreen: View {
     @State var apps: [SelectableApp] = getSupportedApps().map { (app) -> SelectableApp in
         SelectableApp(app: app, selected: getSelectedAppNames().contains(app.Name.lowercased()))
     }
 
     var setScreen: (_ screen: String) -> Void
-
     @Environment(\.colorScheme) var colorScheme
-
     var body: some View {
         GeometryReader { geo in
             VStack(alignment: .leading, spacing: 0) {
@@ -24,21 +21,42 @@ struct SelectAppsScreen: View {
                     .frame(width: 0, height: 38, alignment: .leading)
                     .foregroundColor(Color(hue: 0, saturation: 0, brightness: 0, opacity: 0))
                 ScrollView {
-                    ForEach(self.apps) { sApp in
+                    ForEach(self.apps.sorted(by: { (app1, app2) -> Bool in
+                        if app1.selected && !app2.selected {
+                            return true
+                        }
+                        if app2.selected && !app1.selected{
+                            return false
+                        }
+                        return app1.app.Name < app2.app.Name
+
+                    })) { sApp in
                         AppRow(app: sApp).listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0)).padding(.vertical, 5)
                     }
                     Rectangle().frame(width: 0, height: 50, alignment: .center)
                 }.clipped()
-            }.padding(.top, 25).frame(width: nil, height: geo.size.height, alignment: .center)
+            }.padding(.leading, 30).padding(.top, 25).frame(width: nil, height: geo.size.height, alignment: .center).gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local).onEnded({ value in
+                if value.translation.width < 0 {
+                    // left
+                }
+                if value.translation.width > 0 {
+                    // right
+                }
+                if value.translation.height < 0 {
+                    // up
+                }
+
+                if value.translation.height > 0 {
+                    // down
+                }
+            }))
         }
     }
 }
 
 struct RowButton: View {
     var app: SelectableApp
-
     @Environment(\.colorScheme) var colorScheme
-
     var body: some View {
         ZStack(alignment: .center) {
             Rectangle()
@@ -55,9 +73,7 @@ struct RowButton: View {
 struct SelectableApp: Identifiable {
     public let id = UUID()
     var app: App
-
     @Environment(\.colorScheme) var colorScheme
-
     var selected: Bool {
         didSet {
             print("app \(app.Name) toggled to \(selected)")
@@ -85,9 +101,7 @@ struct SelectableApp: Identifiable {
 
 struct AppRow: View {
     @State var app: SelectableApp
-
     @Environment(\.colorScheme) var colorScheme
-
     var body: some View {
         HStack(alignment: .center, spacing: 18) {
             RowButton(app: app)
@@ -102,8 +116,6 @@ struct SelectAppsScreen_Previews: PreviewProvider {
     static var previews: some View {
         SelectAppsScreen {
             _ in
-        }.background(Image("bg-grain"))
-            .previewDevice(PreviewDevice(rawValue: "iPhone XS Max"))
-            .previewDisplayName("iPhone 11 Pro")
+        }.background(Image("bg-grain").resizable())
     }
 }

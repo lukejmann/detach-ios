@@ -1,13 +1,8 @@
 import Foundation
-
 let timerDefaults = UserDefaults(suiteName: "group.com.detachapp.ios1.timer")!
-
 let appsDefaults = UserDefaults(suiteName: "group.com.detachapp.ios1.blockedApps")!
-
 let userInfoDefaults = UserDefaults(suiteName: "group.com.detachapp.ios1.userInfo")!
-
 let kSessionEndDate = "sessionEndDate"
-
 public func getSessionEndDate() -> Date? {
     if let data = timerDefaults.object(forKey: kSessionEndDate) as? Data {
         let decoder = JSONDecoder()
@@ -35,7 +30,6 @@ public func clearSessionEndDate() {
 
 // Unit: Seconds
 let kSessionDuration = "sessionDuration"
-
 public func getSessionDuration() -> Int {
     let endTime = timerDefaults.integer(forKey: kSessionDuration)
     print("in getSessionDuration. duration: \(endTime)")
@@ -49,7 +43,6 @@ public func setSessionDuration(duration: Int) {
 
 let kSupportedApps = "supportedApps"
 let kSelectedAppNames = "selectedAppNames"
-
 public func getSupportedApps() -> [App] {
     if let data = appsDefaults.object(forKey: kSupportedApps) as? Data {
         let decoder = JSONDecoder()
@@ -76,7 +69,6 @@ public func getSelectedAppNames() -> [String] {
         return appNames as! [String]
     }
     print("in getSelectedAppNames. failed to apps")
-
     return ["instagram"]
 }
 
@@ -86,11 +78,10 @@ public func setSelectedAppNames(appNames: [String]) {
 }
 
 let kUserID = "userID"
-
-public func getUserID() -> String {
+public func getUserID() -> String? {
     let userID = userInfoDefaults.string(forKey: kUserID)
     print("in getUserID. userID: \(userID)")
-    return userID ?? "N/A userID"
+    return userID
 }
 
 public func setUserID(userID: String) {
@@ -99,7 +90,6 @@ public func setUserID(userID: String) {
 }
 
 let kSessionID = "sessionID"
-
 public func getSessionID() -> String {
     let sessionID = userInfoDefaults.string(forKey: kSessionID)
     print("in getSessionID. sessionID: \(sessionID)")
@@ -112,7 +102,6 @@ public func setSessionID(sessionID: String) {
 }
 
 let kUserAgreedToVPN = "userAgreedToVPN"
-
 public func getUserAgreedToVPN() -> Bool {
     let userAgreedToVPN = userInfoDefaults.bool(forKey: kUserAgreedToVPN)
     print("in getUserAgreedToVPN. userAgreedToVPN: \(userAgreedToVPN)")

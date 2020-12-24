@@ -1,7 +1,4 @@
-
-
 import Foundation
-
 public func loginUser(userID: String, email: String, completion: @escaping (_ success: Bool) -> Void) {
     setUserID(userID: userID)
     detachProvier.request(.login(userID: userID, email: email)) { result in

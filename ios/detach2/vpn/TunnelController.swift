@@ -1,19 +1,13 @@
-
 import NetworkExtension
 import UIKit
 import Willow
-
 let kTunnelLocalizedDescription = "Detach Configuration"
-
 class TunnelController: NSObject {
     static let shared = TunnelController()
-
     var manager: NETunnelProviderManager?
-
     override private init() {
         super.init()
         Print("MARK: In TunnelController init ")
-
         refreshManager()
     }
 
@@ -24,7 +18,6 @@ class TunnelController: NSObject {
 
     func refreshManager(completion: @escaping (_ error: Error?) -> Void = { _ in }) {
         Print("MARK: In TunnelController refreshManager ")
-
         // get the reference to the latest manager in Settings
         NETunnelProviderManager.loadAllFromPreferences { (managers, error) -> Void in
             if let managers = managers, !managers.isEmpty {
@@ -49,7 +42,6 @@ class TunnelController: NSObject {
 
     func restart(completion: @escaping (_ error: Error?) -> Void = { _ in }) {
         Print("MARK: In TunnelController restart ")
-
         // Don't let this affect userWantsFirewallOn/Off config
         TunnelController.shared.setEnabled(false, completion: {
             error in
@@ -69,7 +61,6 @@ class TunnelController: NSObject {
 
     func setEnabled(_ enabled: Bool, isUserExplicitToggle _: Bool = false, completion: @escaping (_ error: Error?) -> Void = { _ in }) {
         Print("MARK: In TunnelController setEnabled")
-
         let vpnManager = NEVPNManager.shared()
         vpnManager.loadFromPreferences(completionHandler: { (_ error: Error?) -> Void in
             Print("MARK: in loadFromPreferences completion. error: \(error)")

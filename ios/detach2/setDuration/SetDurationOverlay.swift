@@ -1,17 +1,11 @@
-
-
 import Foundation
 import SwiftUI
-
 struct SetDurationOverlay: View {
     @Binding var durationString: String
     @State var validInput: Bool = false
     var setDurationString: (_ str: String) -> Void
-
     @Binding var keyboardVisible: Bool
-
     var hideOverlay: () -> Void
-
     func calculateDurationSec(duration: String) -> Int {
         let hours = Int(duration[0] + duration[1])!
         let minutes = Int(duration[3] + duration[4])!
@@ -29,7 +23,6 @@ struct SetDurationOverlay: View {
         GeometryReader { geo in
             ZStack(alignment: .leading) {
                 RoundedRectangle(cornerRadius: 18, style: .circular).fill(Color.tan).frame(width: geo.size.width, height: geo.size.height + 100)
-
                 VStack(alignment: .leading, spacing: 0.0) {
                     HStack {
                         VStack(alignment: .leading) {
@@ -41,7 +34,7 @@ struct SetDurationOverlay: View {
                     HStack(alignment: .center, spacing: 0) {
                         Spacer()
                         CustomUIKitTextField(text: self.$durationString, validInput: self.$validInput, isFirstResponder: self.$keyboardVisible, placeholder: "00:00") {
-                            self.hideOverlay()
+                            self.saveTime(durationString: self.durationString)
                         }
                         Spacer()
                     }.padding(.top, 50)
@@ -57,7 +50,6 @@ struct SetDurationOverlay: View {
                         Text("MINUTES").foregroundColor(.darkBlue).font(.system(size: 16.8, weight: .regular, design: .default)).kerning(-1)
                         Spacer()
                     }.padding(.top, 8)
-
                     Text("Quick-Set").foregroundColor(.darkBlue)
                         .font(.system(size: 24, weight: .medium, design: .default)).padding(.top, 30)
                     HStack {
@@ -88,11 +80,9 @@ struct SetDurationOverlay: View {
 struct SetDurationOverlayu_Previews: PreviewProvider {
     @State static var keyboardVisible = false
     @State static var durationString = "04:20"
-
     static var previews: some View {
         Group {
             SetDurationOverlay(durationString: self.$durationString, setDurationString: { _ in
-
             }, keyboardVisible: self.$keyboardVisible, hideOverlay: {})
                 .previewDisplayName("iPhone 11")
         }
@@ -104,7 +94,6 @@ struct quickSetButton: View {
     var numberText: String
     var unitText: String
     var onPress: () -> Void
-
     var body: some View {
         Button(action: {
             self.onPress()
@@ -116,7 +105,6 @@ struct quickSetButton: View {
                     HStack(alignment: .center, spacing: nil, content: {
                         Text(numberText).foregroundColor(.white).font(.system(size: 40, weight: .heavy, design: .default))
                         Text(unitText).foregroundColor(.white).font(.system(size: 40, weight: .medium, design: .default))
-
                     })
                 }
         }

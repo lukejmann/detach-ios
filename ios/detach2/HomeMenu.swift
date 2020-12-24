@@ -1,23 +1,10 @@
-
-
-
-
-
-
-
-
 import SwiftUI
-
 struct HomeMenu: View {
     @Binding var durationString: String
     var setScreen: (_ screen: String) -> Void
-
     var startFocusPressed: () -> Void
-
     var showDurationScreen: () -> Void
-
     @Environment(\.colorScheme) var colorScheme
-
     var body: some View {
         GeometryReader { geo in
             ZStack {
@@ -25,7 +12,7 @@ struct HomeMenu: View {
                     HStack(alignment: .center) {
                         Text("detach").font(.custom("Georgia-Italic", size: 42)).foregroundColor(Color.tan)
                     }.frame(width: geo.size.width, height: .none, alignment: .center).padding(.top, 45)
-                    Text("Set Focus Duration").kerning(-0.65).font(.system(size: 25, weight: .medium, design: .default)).padding(.top, 65).foregroundColor(Color.tan)
+                    Text("Set Focus Duration").kerning(-0.65).font(.system(size: 25, weight: .medium, design: .default)).padding(.top, 50).foregroundColor(Color.tan)
                     SetDurationButton(durationString: self.$durationString) {
                         self.showDurationScreen()
                     }.padding(.top, 30)
@@ -47,7 +34,6 @@ struct HomeMenu: View {
                                 Image("rightArrow").resizable().frame(width: 52.25, height: 25, alignment: .center)
                             }.frame(width: geo.size.width * 0.9, height: .none, alignment: .leading)
                     }.padding(.top, 10)
-
                     Spacer()
                 }.padding(.horizontal, 25).frame(width: geo.size.width, height: geo.size.height, alignment: .center).padding(.top, 0)
             }
@@ -58,9 +44,7 @@ struct HomeMenu: View {
 struct SetDurationButton: View {
     @Environment(\.colorScheme) var colorScheme
     @Binding var durationString: String
-
     var showSetDuration: () -> Void
-
     var body: some View {
         GeometryReader { geometry in
             HStack(alignment: .center) {
@@ -69,7 +53,7 @@ struct SetDurationButton: View {
                     showSetDuration()
                 }) {
                         VStack(alignment: .center, spacing: 0) {
-                            Text(self.durationString).font(.newYorkXL(size: 60.0)).foregroundColor(Color.darkBlue)
+                            Text(" " + self.durationString + " ").font(.newYorkXL(size: 60.0)).foregroundColor(Color.darkBlue)
                             HStack(alignment: .center, spacing: 0) {
                                 Spacer()
                                 Rectangle().fill(Color.darkBlue).frame(width: 200, height: 1, alignment: .center)
@@ -93,16 +77,10 @@ struct SetDurationButton: View {
 
 struct HomeMenu_Previews: PreviewProvider {
     @State static var durationString = "04:20"
-
     static var previews: some View {
         Group {
             HomeMenu(durationString: self.$durationString) { _ in
-
-            } startFocusPressed: {
-
-            } showDurationScreen: {
-                
-            }.background(Image("bg-grain"))
+            } startFocusPressed: {} showDurationScreen: {}.background(Image("bg-grain"))
                 .previewDevice(PreviewDevice(rawValue: "iPhone 11"))
                 .previewDisplayName("iPhone 11")
         }

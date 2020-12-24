@@ -1,6 +1,5 @@
 import NetworkExtension
 import SwiftUI
-
 struct YellowStatus: View {
     @State var nFrame = 1
     @Binding var proxyStatus: NEVPNStatus {
@@ -29,7 +28,6 @@ struct YellowStatus: View {
     }
 
     let timer = Timer.publish(every: 0.2, on: .main, in: .common).autoconnect()
-
     var body: some View {
         GeometryReader { _ in
             Image(self.frameImage).resizable().frame(width: 16, height: 16, alignment: .center)

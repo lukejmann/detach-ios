@@ -1,6 +1,5 @@
 import Foundation
 import Moya
-
 private func JSONResponseDataFormatter(_ data: Data) -> String {
     do {
         let dataAsJSON = try JSONSerialization.jsonObject(with: data)
@@ -21,7 +20,6 @@ public let detachProvier = MoyaProvider<DetachAPI>(plugins: [
     ),
 ]
 )
-
 private extension String {
     var urlEscaped: String {
         addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
