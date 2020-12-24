@@ -24,10 +24,13 @@ struct CustomUIKitTextField: UIViewRepresentable {
     var hours = "00"
     var minutes = "00"
 
+    var dismissOverlay: () -> Void
+
     func makeUIView(context: UIViewRepresentableContext<CustomUIKitTextField>) -> UITextField {
         let textField = UITextField(frame: .zero)
         textField.delegate = context.coordinator
         textField.placeholder = placeholder
+        textField.addDoneButtonOnKeyboard()
         return textField
     }
 
@@ -61,6 +64,10 @@ struct CustomUIKitTextField: UIViewRepresentable {
 
         init(parent: CustomUIKitTextField) {
             self.parent = parent
+        }
+
+        func textFieldDidEndEditing(_: UITextField, reason _: UITextField.DidEndEditingReason) {
+            parent.dismissOverlay()
         }
 
         func textField(_ textField: UITextField, shouldChangeCharactersIn _: NSRange, replacementString string: String) -> Bool {
@@ -104,5 +111,37 @@ struct CustomUIKitTextField_Previews: PreviewProvider {
 extension StringProtocol {
     subscript(offset: Int) -> String {
         String(self[index(startIndex, offsetBy: offset)])
+    }
+}
+
+extension UITextField {
+    @IBInspectable var doneAccessory: Bool {
+        get {
+            self.doneAccessory
+        }
+        set(hasDone) {
+            if hasDone {
+                addDoneButtonOnKeyboard()
+            }
+        }
+    }
+
+    func addDoneButtonOnKeyboard() {
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        doneToolbar.barStyle = .default
+
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonAction))
+
+        let items = [flexSpace, done]
+        doneToolbar.items = items
+        doneToolbar.sizeToFit()
+
+        inputAccessoryView = doneToolbar
+    }
+
+    @objc
+    func doneButtonAction() {
+        resignFirstResponder()
     }
 }

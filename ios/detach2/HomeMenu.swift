@@ -49,7 +49,7 @@ struct HomeMenu: View {
                     }.padding(.top, 10)
 
                     Spacer()
-                }.padding(.horizontal, 25).frame(width: geo.size.width, height: geo.size.height, alignment: .center).padding(.top, 80)
+                }.padding(.horizontal, 25).frame(width: geo.size.width, height: geo.size.height, alignment: .center).padding(.top, 0)
             }
         }
     }

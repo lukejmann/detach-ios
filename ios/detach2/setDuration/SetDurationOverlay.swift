@@ -44,21 +44,23 @@ struct SetDurationOverlay: View {
                             Text("Set how long selected apps will be blocked for.").font(.system(size: 14, weight: .regular, design: .default)).kerning(-1).foregroundColor(Color.darkBlue).padding(.top, 0)
                         }
                         Spacer()
-                        Button(action: {
-                            self.hideOverlay()
-                        }) {
-                                HStack(alignment: .center, spacing: nil, content: {
-//                                Image("cancelIcon").resizable().frame(width: 15, height: 15, alignment: .center)
-                                    Text("Done").foregroundColor(.darkBlue).font(.system(size: 18, weight: .medium, design: .default))
-                                }).frame(width: 90, height: 35).overlay(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .stroke(Color.darkBlue, lineWidth: 1)
-                                )
-                        }
+//                        Button(action: {
+//                            self.hideOverlay()
+//                        }) {
+//                                HStack(alignment: .center, spacing: nil, content: {
+                        ////                                Image("cancelIcon").resizable().frame(width: 15, height: 15, alignment: .center)
+//                                    Text("Done").foregroundColor(.darkBlue).font(.system(size: 18, weight: .medium, design: .default))
+//                                }).frame(width: 90, height: 35).overlay(
+//                                    RoundedRectangle(cornerRadius: 8)
+//                                        .stroke(Color.darkBlue, lineWidth: 1)
+//                                )
+//                        }
                     }
                     HStack(alignment: .center, spacing: 0) {
                         Spacer()
-                        CustomUIKitTextField(text: self.$durationString, validInput: self.$validInput, isFirstResponder: self.$keyboardVisible, placeholder: "00:00")
+                        CustomUIKitTextField(text: self.$durationString, validInput: self.$validInput, isFirstResponder: self.$keyboardVisible, placeholder: "00:00") {
+                            self.hideOverlay()
+                        }
                         Spacer()
                     }.padding(.top, 50)
                     HStack(alignment: .center, spacing: 0) {
@@ -100,6 +102,7 @@ struct SetDurationOverlay: View {
                     //                            }
                     //                        }
                     //                    }.padding(.top, 34).padding(.horizontal, 30)
+
                     Text("Quick-Set").foregroundColor(.darkBlue)
                         .font(.system(size: 24, weight: .medium, design: .default)).padding(.top, 30)
                     HStack {
