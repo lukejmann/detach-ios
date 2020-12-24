@@ -4,6 +4,9 @@ struct SelectAppsScreen: View {
         SelectableApp(app: app, selected: getSelectedAppNames().contains(app.Name.lowercased()))
     }
 
+    @Binding var swipeState: CGSize
+    var setSwipeState: (_ state: CGSize) -> Void
+
     var setScreen: (_ screen: String) -> Void
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
@@ -22,35 +25,30 @@ struct SelectAppsScreen: View {
                     .foregroundColor(Color(hue: 0, saturation: 0, brightness: 0, opacity: 0))
                 ScrollView {
                     ForEach(self.apps.sorted(by: { (app1, app2) -> Bool in
-                        if app1.selected && !app2.selected {
+                        if app1.selected, !app2.selected {
                             return true
                         }
-                        if app2.selected && !app1.selected{
+                        if app2.selected, !app1.selected {
                             return false
                         }
                         return app1.app.Name < app2.app.Name
 
                     })) { sApp in
-                        AppRow(app: sApp).listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0)).padding(.vertical, 5)
+                            AppRow(app: sApp).listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0)).padding(.vertical, 5)
                     }
                     Rectangle().frame(width: 0, height: 50, alignment: .center)
                 }.clipped()
-            }.padding(.leading, 30).padding(.top, 25).frame(width: nil, height: geo.size.height, alignment: .center).gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local).onEnded({ value in
-                if value.translation.width < 0 {
-                    // left
-                }
+            }.frame(width: geo.size.width, height: geo.size.height, alignment: .center).gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local).onChanged { value in
                 if value.translation.width > 0 {
-                    // right
+                    self.setSwipeState(value.translation)
                 }
-                if value.translation.height < 0 {
-                    // up
+            }.onEnded { _ in
+                if self.swipeState.width > 100 {
+                    self.setScreen("HomeMenu")
                 }
-
-                if value.translation.height > 0 {
-                    // down
-                }
-            }))
-        }
+                self.swipeState = .zero
+            }).offset(x: 30 + swipeState.width, y: 25)
+        }.animation(.easeIn)
     }
 }
 
@@ -113,9 +111,12 @@ struct AppRow: View {
 }
 
 struct SelectAppsScreen_Previews: PreviewProvider {
+    @State static var swipeState = CGSize.zero
     static var previews: some View {
-        SelectAppsScreen {
-            _ in
-        }.background(Image("bg-grain").resizable())
+        SelectAppsScreen(swipeState: self.$swipeState, setSwipeState: { s in
+            self.swipeState = s
+        }, setScreen: { _ in
+            //
+        }).background(Image("bg-grain").resizable())
     }
 }

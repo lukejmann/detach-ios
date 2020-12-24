@@ -30,13 +30,13 @@ struct StatusIndicator: View {
                     ZStack {
                         switch self.proxyStatus {
                         case .connected:
-                           Image("greenStatus").resizable().frame(width: 16, height: 16, alignment: .center)
+                            Image("greenStatus").resizable().frame(width: 16, height: 16, alignment: .center)
                         case .connecting:
                             YellowStatus(proxyStatus: self.$proxyStatus)
                         case .disconnecting:
                             YellowStatus(proxyStatus: self.$proxyStatus)
                         default:
-                           Image("greyStatus").resizable().frame(width: 8, height: 8, alignment: .center)
+                            Image("greyStatus").resizable().frame(width: 8, height: 8, alignment: .center)
                         }
                     }.frame(width: 16, height: 16).animation(.none)
                     Text(self.proxyStatusText).kerning(-0.4).font(.system(size: 14, weight: .medium, design: .default)).foregroundColor(Color.tan)

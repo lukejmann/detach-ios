@@ -11,6 +11,7 @@ struct ContentView: View {
     @State var durationString: String = String(format: "%02d", getSessionDuration() / (60 * 60)) + ":" + String(format: "%02d", (getSessionDuration() % 3600) / 60)
     @State var sessionEndDate: Date? = nil
     @State var proxyStatus: NEVPNStatus = .invalid
+    @State var selectAppsSwipeState: CGSize = CGSize.zero
 
     func startFocusPressed() {
         let sessionDuration = getSessionDuration()
@@ -87,7 +88,7 @@ struct ContentView: View {
                             if self.cScreen == "SelectApps" { Button(action: {
                                 self.cScreen = "HomeMenu"
                             }) {
-                                    Image("leftArrow").resizable().frame(width: 44, height: 21, alignment: .leading).padding(.leading, 30).animation(.easeOut(duration: 0.5))
+                                    Image("leftArrow").resizable().frame(width: 44, height: 21, alignment: .leading).padding(.leading, 30).animation(.easeOut(duration: 0.5)).offset(x: self.selectAppsSwipeState.width).opacity((100.0 - Double(self.selectAppsSwipeState.width)) / 100)
                             }}
                             Spacer()
                             StatusIndicator(timer: self.timer, proxyStatus: self.$proxyStatus, cScreen: self.$cScreen).frame(width: 203, height: 33, alignment: .trailing)
@@ -100,13 +101,14 @@ struct ContentView: View {
                             } showDurationScreen: {
                                 self.showDurationOverlay()
                             }.offset(x: self.cScreen != "HomeMenu" ? -1 * geo.size.width : 0).animation(.spring()).padding(.horizontal, 30)
-                            SelectAppsScreen { screen in
+                            SelectAppsScreen(swipeState: self.$selectAppsSwipeState, setSwipeState: { state in
+                                self.selectAppsSwipeState = state
+                            }, setScreen: { screen in
                                 self.cScreen = screen
-                            }
-                            .offset(x: self.cScreen == "SelectApps" ? 0 : geo.size.width, y: 0).animation(.spring())
+                            }).offset(x: self.cScreen == "SelectApps" ? 0 : geo.size.width, y: 0).animation(.spring())
                             SessionScreen(endDate: self.$sessionEndDate) { screen in
                                 self.cScreen = screen
-                            }.offset(x: self.cScreen == "Start" ? 0 : geo.size.width, y: 0).animation(.spring())
+                            }.offset(x: self.cScreen == "Start" ? 0 : geo.size.width, y: 0).animation(.spring()).padding(.horizontal, 30)
                         }
                     }
                     SetDurationOverlay(durationString: self.$durationString, setDurationString: { str in
