@@ -1,9 +1,10 @@
+import CoreMotion
 import NetworkExtension
 import SwiftUI
 
 struct ContentView: View {
     @State public var cScreen: String = "HomeMenu"
-    @State var showLoginScreen = false
+    @State var showLoginScreen = getUserID() == nil
 //        = getUserID() == nil
     @State var hasDetachPlus = true
     @State var showSetDuration = false
@@ -12,6 +13,8 @@ struct ContentView: View {
     @State var sessionEndDate: Date? = nil
     @State var proxyStatus: NEVPNStatus = .invalid
     @State var selectAppsSwipeState: CGSize = CGSize.zero
+
+    @ObservedObject var manager = MotionManager()
 
     func startFocusPressed() {
         let sessionDuration = getSessionDuration()
@@ -68,7 +71,7 @@ struct ContentView: View {
 
     func proxyCheckIn() {
         if let sessionEndDate = getSessionEndDate() {
-            if Date() > sessionEndDate {
+            if Date() > sessionEndDate && !(TunnelController.shared.status() == .disconnecting || TunnelController.shared.status() == .disconnected || TunnelController.shared.status() == .invalid) {
                 TunnelController.shared.disable()
             }
         }
@@ -118,17 +121,51 @@ struct ContentView: View {
                     }.offset(y: self.showSetDuration ? 0 : (geo.size.height + 40)).animation(.easeInOut(duration: 0.45))
                 }.frame(width: geo.size.width, height: geo.size.height, alignment: .center).ignoresSafeArea(.keyboard)
             }
-        }
-        .onAppear {
-            self.onAppear()
-        }.onReceive(timer, perform: { _ in
-            self.proxyCheckIn()
-        }).background(Image("bg-grain").offset(x: 0, y: -7))
+        }.modifier(ParallaxMotionModifier(manager: manager, magnitude: 10))
+
+            .onAppear {
+                self.onAppear()
+            }.onReceive(timer, perform: { _ in
+                self.proxyCheckIn()
+            }).background(Image("bg-grain").offset(x: 0, y: -7))
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+struct ParallaxMotionModifier: ViewModifier {
+    @ObservedObject var manager: MotionManager
+    var magnitude: Double
+
+    func body(content: Content) -> some View {
+        content
+            .offset(x: CGFloat(manager.roll * magnitude), y: CGFloat(manager.pitch * magnitude))
+    }
+}
+
+class MotionManager: ObservableObject {
+    @Published var pitch: Double = 0.0
+    @Published var roll: Double = 0.0
+
+    private var manager: CMMotionManager
+
+    init() {
+        manager = CMMotionManager()
+        manager.deviceMotionUpdateInterval = 1 / 60
+        manager.startDeviceMotionUpdates(to: .main) { motionData, error in
+            guard error == nil else {
+                print(error!)
+                return
+            }
+
+            if let motionData = motionData {
+                self.pitch = motionData.attitude.pitch
+                self.roll = motionData.attitude.roll
+            }
+        }
     }
 }

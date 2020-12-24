@@ -12,11 +12,11 @@ struct StatusIndicator: View {
         case .connecting:
             return "Connecting"
         case .disconnected:
-            return "Disconnected"
+            return "Not Connected"
         case .disconnecting:
             return "Disconnecting"
         case .invalid:
-            return "Invalid"
+            return "Not Connected"
         case .reasserting:
             return "Reasserting"
         }

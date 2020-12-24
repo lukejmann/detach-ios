@@ -25,6 +25,7 @@ struct LoginScreen: View {
         connectProxy(i: 0) { success in
             if success {
                 self.loginCompleted()
+                TunnelController.shared.disable()
             } else {
                 // MARK: TODO: handle err
             }

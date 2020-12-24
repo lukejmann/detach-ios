@@ -91,6 +91,7 @@ class TunnelController: NSObject {
     }
 }
 
+//
 func connectProxy(i: Int, callback: @escaping (_ success: Bool) -> Void) {
     let seconds = 1.0
     if i >= 4 {
@@ -109,3 +110,14 @@ func connectProxy(i: Int, callback: @escaping (_ success: Bool) -> Void) {
         }
     }
 }
+
+// func connectProxy(callback: @escaping (_ success: Bool) -> Void) {
+//    TunnelController.shared.setEnabled(true) { _ in
+//        let status = TunnelController.shared.status()
+//        if status == .connected {
+//            callback(true)
+//        } else {
+//            callback(false)
+//        }
+//    }
+// }

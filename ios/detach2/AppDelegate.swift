@@ -32,10 +32,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Error: \(result.error)")
             }
         }
-        let proxyStatus = TunnelController.shared.status()
-        if Date() > getSessionEndDate() ?? Date().addingTimeInterval(.infinity) {
-            TunnelController.shared.disable()
-        }
+//        let proxyStatus = TunnelController.shared.status()
+//        if Date() > getSessionEndDate() ?? Date().addingTimeInterval(.infinity) {
+//            TunnelController.shared.disable()
+//        }
         return true
     }
 
