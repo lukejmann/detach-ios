@@ -8,39 +8,40 @@ public class IntrospectionUIViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         view = IntrospectionUIView()
     }
-
+    
     @available(*, unavailable)
-    required init?(coder _: NSCoder) {
+    required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 
 /// This is the same logic as IntrospectionView but for view controllers. Please see details above.
 public struct UIKitIntrospectionViewController<TargetViewControllerType: UIViewController>: UIViewControllerRepresentable {
+    
     let selector: (IntrospectionUIViewController) -> TargetViewControllerType?
     let customize: (TargetViewControllerType) -> Void
-
+    
     public init(
         selector: @escaping (UIViewController) -> TargetViewControllerType?,
-        customize: @escaping (TargetViewControllerType) -> Void)
-    {
+        customize: @escaping (TargetViewControllerType) -> Void
+    ) {
         self.selector = selector
         self.customize = customize
     }
-
+    
     public func makeUIViewController(
-        context _: UIViewControllerRepresentableContext<UIKitIntrospectionViewController>
+        context: UIViewControllerRepresentableContext<UIKitIntrospectionViewController>
     ) -> IntrospectionUIViewController {
         let viewController = IntrospectionUIViewController()
         viewController.accessibilityLabel = "IntrospectionUIViewController<\(TargetViewControllerType.self)>"
         viewController.view.accessibilityLabel = "IntrospectionUIView<\(TargetViewControllerType.self)>"
         return viewController
     }
-
+    
     public func updateUIViewController(
         _ uiViewController: IntrospectionUIViewController,
-        context _: UIViewControllerRepresentableContext<UIKitIntrospectionViewController>)
-    {
+        context: UIViewControllerRepresentableContext<UIKitIntrospectionViewController>
+    ) {
         DispatchQueue.main.async {
             guard let targetView = self.selector(uiViewController) else {
                 return

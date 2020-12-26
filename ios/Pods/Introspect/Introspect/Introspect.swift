@@ -16,13 +16,14 @@ public typealias PlatformViewController = UIViewController
 
 /// Utility methods to inspect the UIKit view hierarchy.
 public enum Introspect {
+    
     /// Finds a subview of the specified type.
     /// This method will recursively look for this view.
     /// Returns nil if it can't find a view of the specified type.
     public static func findChild<AnyViewType: PlatformView>(
         ofType type: AnyViewType.Type,
-        in root: PlatformView) -> AnyViewType?
-    {
+        in root: PlatformView
+    ) -> AnyViewType? {
         for subview in root.subviews {
             if let typed = subview as? AnyViewType {
                 return typed
@@ -32,14 +33,14 @@ public enum Introspect {
         }
         return nil
     }
-
+    
     /// Finds a child view controller of the specified type.
     /// This method will recursively look for this child.
     /// Returns nil if it can't find a view of the specified type.
     public static func findChild<AnyViewControllerType: PlatformViewController>(
         ofType type: AnyViewControllerType.Type,
-        in root: PlatformViewController) -> AnyViewControllerType?
-    {
+        in root: PlatformViewController
+    ) -> AnyViewControllerType? {
         for child in root.children {
             if let typed = child as? AnyViewControllerType {
                 return typed
@@ -49,102 +50,106 @@ public enum Introspect {
         }
         return nil
     }
-
+    
     /// Finds a previous sibling that contains a view of the specified type.
     /// This method inspects siblings recursively.
     /// Returns nil if no sibling contains the specified type.
     public static func previousSibling<AnyViewType: PlatformView>(
         containing type: AnyViewType.Type,
-        from entry: PlatformView) -> AnyViewType?
-    {
+        from entry: PlatformView
+    ) -> AnyViewType? {
+        
         guard let superview = entry.superview,
             let entryIndex = superview.subviews.firstIndex(of: entry),
             entryIndex > 0
         else {
             return nil
         }
-
-        for subview in superview.subviews[0 ..< entryIndex].reversed() {
+        
+        for subview in superview.subviews[0..<entryIndex].reversed() {
             if let typed = findChild(ofType: type, in: subview) {
                 return typed
             }
         }
-
+        
         return nil
     }
-
+    
     /// Finds a previous sibling that contains a view controller of the specified type.
     /// This method inspects siblings recursively.
     /// Returns nil if no sibling contains the specified type.
     @available(macOS, unavailable)
     public static func previousSibling<AnyViewControllerType: PlatformViewController>(
         containing type: AnyViewControllerType.Type,
-        from entry: PlatformViewController) -> AnyViewControllerType?
-    {
+        from entry: PlatformViewController
+    ) -> AnyViewControllerType? {
+        
         guard let parent = entry.parent,
             let entryIndex = parent.children.firstIndex(of: entry),
             entryIndex > 0
         else {
             return nil
         }
-
-        for child in parent.children[0 ..< entryIndex].reversed() {
+        
+        for child in parent.children[0..<entryIndex].reversed() {
             if let typed = findChild(ofType: type, in: child) {
                 return typed
             }
         }
-
+        
         return nil
     }
-
+    
     /// Finds a previous sibling that is a view controller of the specified type.
     /// This method does not inspect siblings recursively.
     /// Returns nil if no sibling is of the specified type.
     public static func previousSibling<AnyViewControllerType: PlatformViewController>(
-        ofType _: AnyViewControllerType.Type,
-        from entry: PlatformViewController) -> AnyViewControllerType?
-    {
+        ofType type: AnyViewControllerType.Type,
+        from entry: PlatformViewController
+    ) -> AnyViewControllerType? {
+        
         guard let parent = entry.parent,
             let entryIndex = parent.children.firstIndex(of: entry),
             entryIndex > 0
         else {
             return nil
         }
-
-        for child in parent.children[0 ..< entryIndex].reversed() {
+        
+        for child in parent.children[0..<entryIndex].reversed() {
             if let typed = child as? AnyViewControllerType {
                 return typed
             }
         }
-
+        
         return nil
     }
-
+    
     /// Finds a next sibling that contains a view of the specified type.
     /// This method inspects siblings recursively.
     /// Returns nil if no sibling contains the specified type.
     public static func nextSibling<AnyViewType: PlatformView>(
         containing type: AnyViewType.Type,
-        from entry: PlatformView) -> AnyViewType?
-    {
+        from entry: PlatformView
+    ) -> AnyViewType? {
+        
         guard let superview = entry.superview,
             let entryIndex = superview.subviews.firstIndex(of: entry)
         else {
             return nil
         }
-
-        for subview in superview.subviews[entryIndex ..< superview.subviews.endIndex] {
+        
+        for subview in superview.subviews[entryIndex..<superview.subviews.endIndex] {
             if let typed = findChild(ofType: type, in: subview) {
                 return typed
             }
         }
-
+        
         return nil
     }
-
+    
     /// Finds an ancestor of the specified type.
     /// If it reaches the top of the view without finding the specified view type, it returns nil.
-    public static func findAncestor<AnyViewType: PlatformView>(ofType _: AnyViewType.Type, from entry: PlatformView) -> AnyViewType? {
+    public static func findAncestor<AnyViewType: PlatformView>(ofType type: AnyViewType.Type, from entry: PlatformView) -> AnyViewType? {
         var superview = entry.superview
         while let s = superview {
             if let typed = s as? AnyViewType {
@@ -154,7 +159,7 @@ public enum Introspect {
         }
         return nil
     }
-
+    
     /// Finds the hosting view of a specific subview.
     /// Hosting views generally contain subviews for one specific SwiftUI element.
     /// For instance, if there are multiple text fields in a VStack, the hosting view will contain those text fields (and their host views, see below).
@@ -169,7 +174,7 @@ public enum Introspect {
         }
         return nil
     }
-
+    
     /// Finds the view host of a specific view.
     /// SwiftUI wraps each UIView within a ViewHost, then within a HostingView.
     /// Returns nil if it couldn't find a view host. This should never happen when called with an IntrospectionView.
@@ -192,7 +197,7 @@ enum TargetViewSelector {
         }
         return Introspect.previousSibling(containing: TargetView.self, from: viewHost)
     }
-
+    
     public static func ancestorOrSibling<TargetView: PlatformView>(from entry: PlatformView) -> TargetView? {
         if let tableView = Introspect.findAncestor(ofType: TargetView.self, from: entry) {
             return tableView

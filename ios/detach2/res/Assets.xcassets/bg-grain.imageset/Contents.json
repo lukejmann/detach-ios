@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "bg-grain-1.png",
+      "filename" : "bg-grain.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "bg-grain-2.png",
+      "filename" : "bg-grain-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "bg-grain-3.png",
+      "filename" : "bg-grain-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

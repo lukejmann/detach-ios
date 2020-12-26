@@ -52,7 +52,7 @@ struct LoginScreen: View {
                         }.frame(width: 0.9 * geo.size.width).padding(.top, 40)
                     }.offset(x: self.loginPage == .descriptionOne ? 0 : -1.5 * geo.size.width).padding(.horizontal, 25)
                     VStack {
-                        Text("Login or create an account to get started.").font(.system(size: 25, weight: .semibold, design: .default)).kerning(-0.5).foregroundColor(Color.tan).frame(width: 300, height: .none)
+                        Text("Login or sign up to get started.").font(.system(size: 25, weight: .semibold, design: .default)).kerning(-0.5).foregroundColor(Color.tan).frame(width: 300, height: .none)
                         HStack {
                             Spacer()
                             SignInWithAppleButton(setCredentials: self.setCredentials).frame(width: 300, height: 44, alignment: .center).padding(.top, 30)
