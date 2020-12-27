@@ -34,15 +34,3 @@ func readableStatus(status: NEVPNStatus) -> String {
     }
 }
 
-func sendProxyTestConnection(completion: @escaping () -> Void) {
-    if let url = URL(string: "https://apple.com") {
-      var request = URLRequest(url: url)
-      request.httpMethod = "HEAD"
-
-      URLSession(configuration: .default)
-        .dataTask(with: request) { (_, response, error) -> Void in
-            completion()
-        }
-        .resume()
-    }
-}

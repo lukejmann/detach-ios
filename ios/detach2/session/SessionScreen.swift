@@ -7,8 +7,8 @@ struct SessionScreen: View {
     var setScreen: (_ screen: String) -> Void
     
     var sessionCompleted: Bool {
-                endDate == nil ? true : Date() > endDate!
-//        false
+//                endDate == nil ? true : Date() > endDate!
+        false
     }
 
     @State var countDownStr: String = "N/A"
@@ -98,7 +98,7 @@ struct SessionScreen: View {
                             }
                         }.padding(.top, 30)
                     }
-                }.padding(.trailing, 15)
+                }.padding(.trailing, 10)
                 if sessionCompleted { Spacer() }
             }.onReceive(timer) { _ in
                 self.countDownStr = dateToCountdownStr(endDateOpt: self.endDate)

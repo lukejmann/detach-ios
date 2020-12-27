@@ -35,7 +35,7 @@ struct SelectAppsScreen: View {
                             AppRow(app: sApp).listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0)).padding(.vertical, 5)
                     }
                     Rectangle().frame(width: 0, height: 50, alignment: .center)
-                }.clipped()
+                }
             }.frame(width: geo.size.width, height: geo.size.height, alignment: .center).gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local).onChanged { value in
                 if value.translation.width > 0 {
                     self.setSwipeState(value.translation)
@@ -60,7 +60,7 @@ struct RowButton: View {
     var body: some View {
         ZStack(alignment: .center) {
             Rectangle()
-                .border(app.selected ? Color.tan : Color.black, width: 1.6)
+                .border(app.selected ? Color.tan : Color.midPurple, width: 1.6)
                 .animation(.easeIn(duration: 0.15))
                 .frame(width: 20, height: 20, alignment: .leading)
                 .foregroundColor(Color(hue: 0, saturation: 0, brightness: 0, opacity: 0))
@@ -105,7 +105,7 @@ struct AppRow: View {
     var body: some View {
         HStack(alignment: .center, spacing: 18) {
             RowButton(app: app)
-            Text("\(app.app.Name.uppercased())").foregroundColor(app.selected ? Color.tan : Color.darkBlue).font(.system(size: 16, weight: .regular, design: .default))
+            Text("\(app.app.Name)").foregroundColor(app.selected ? Color.tan : Color.midPurple).font(.system(size: 16, weight: .medium, design: .default))
         }.frame(minWidth: 0, maxWidth: .infinity, alignment: .leading).onTapGesture {
             self.app.toggle()
         }

@@ -22,24 +22,16 @@ struct LoginScreen: View {
     }
 
     func setupProxy() {
-//        connectProxy(i: 0) { success  in
-//            if success {
-//                self.loginCompleted()
-//                TunnelController.shared.disable()
-//            } else {
-//                // MARK: TODO: handle err
-//                TunnelController.shared.disable()
-//            }
-//        }
-        TunnelController.shared.setEnabled(true){ error in
+
+    /* calling enable() fails on login. can just call setEnable to setup once and then manage once in app. */
+        TunnelController.shared.setEnabled(true) { error in
             if error != nil {
-                print("[LOGIN][ERROR] error enabling proxy. error: \(error)")
+                print("[LOGIN] successfully setup proxy")
+            } else {
+                print("[LOGIN] error setting up proxy. error: \(String(describing: error))")
             }
-            else {
-                print("[LOGIN] successfully enabled proxy")
-                loginCompleted() 
-            }
-            
+            loginCompleted()
+
         }
     }
 

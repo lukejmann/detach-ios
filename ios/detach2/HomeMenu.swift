@@ -27,14 +27,14 @@ struct HomeMenu: View {
         return
     }
 
-    func initSessionDuration() -> String {
+    func initSessionDuration() {
         let storedDuration = getSessionDuration()
         if storedDuration != 0 {
-            return String(format: "%02d", storedDuration / (60 * 60)) + ":" + String(format: "%02d", (storedDuration % 3600) / 60)
+            self.durationString = String(format: "%02d", storedDuration / (60 * 60)) + ":" + String(format: "%02d", (storedDuration % 3600) / 60)
         }
         else {
             setSessionDuration(duration: 25 * 60)
-            return "00:25"
+            self.durationString = "00:25"
         }
     }
 
@@ -111,22 +111,23 @@ struct HomeMenu: View {
                             Text("Cancel").font(.system(size: 20, weight: .semibold, design: .default)).foregroundColor(Color.lightPurple)
                         }
                         .frame(width: (geo.size.width - s.home.setDurationEditorButtonsHSpace) / 2, height: 50).background(Image("bg-blur").resizable()).cornerRadius(7.0)
-                        .offset(x: self.editDurationMode ? 0 : -1 * (s.universal.horizontalPadding + (geo.size.width - s.home.setDurationEditorButtonsHSpace) / 2))
-
+                        /*10 to correct unwanted edges with paralax*/
+                        .offset(x: self.editDurationMode ? 0 : -1 * (10 + s.universal.horizontalPadding + (geo.size.width - s.home.setDurationEditorButtonsHSpace) / 2))
 
                         Rectangle().frame(width: s.home.setDurationEditorButtonsHSpace, height: 50).foregroundColor(Color.clear)
                         Button(action: self.saveEditButtonPressed) {
                             Text("Save").font(.system(size: 20, weight: .bold, design: .default)).foregroundColor(Color.lightPurple)
                         }.disabled(!self.validInput)
                         .frame(width: (geo.size.width - s.home.setDurationEditorButtonsHSpace) / 2, height: 50).background(Image("bg-blur").resizable()).cornerRadius(7.0)
-                        .offset(x: self.editDurationMode ? 0 : (s.universal.horizontalPadding + (geo.size.width - s.home.setDurationEditorButtonsHSpace) / 2))
+                        /*10 to correct unwanted edges with paralax*/
+                        .offset(x: self.editDurationMode ? 0 : (10 + s.universal.horizontalPadding + (geo.size.width - s.home.setDurationEditorButtonsHSpace) / 2))
                         .opacity(self.validInput ? 1.0 : 0.7)
                     }.padding(.top, 10)}
                     Spacer()
                 }.offset(y: self.editDurationMode ? s.home.setDurationEditorPaddingTop : setDurationButtonTopPadding)
             }
         }.onAppear{
-            self.durationString = String(format: "%02d", getSessionDuration() / (60 * 60)) + ":" + String(format: "%02d", (getSessionDuration() % 3600) / 60)
+            self.initSessionDuration()
         }.animation(.spring())
     }
 }

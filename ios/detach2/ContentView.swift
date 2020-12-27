@@ -2,7 +2,6 @@ import CoreMotion
 import NetworkExtension
 import SwiftUI
 
-var connectingProxyPingCount = 0
 
 struct ContentView: View {
     @State public var cScreen: String = "HomeMenu"
@@ -23,12 +22,18 @@ struct ContentView: View {
         startSession(endTime: sessionEndDate!) { success in
             self.cScreen = "Start"
             if success {
-                TunnelController.shared.setEnabled(true){ error in
-                    if error != nil {
-                        print("[SESSION][ERROR] error enabling proxy. error: \(error)")
-                    }
-                    else {
-                        print("[SESSION] successfully enabled proxy")
+                TunnelController.shared.enable { (success) in
+                    if !success{
+                        print("[SESSION][ERROR] error enabling proxy. cancelling session")
+                        cancelSession { (success) in
+                            if success {
+                            print("[SESSION] session cancelled")
+                            } else {
+                                print("[SESSION][ERROR] error cancelling session")
+                            }
+                        }
+                    } else {
+                       print("[SESSION] successfully enabled proxy")
                     }
                 }
             } else {
@@ -43,10 +48,6 @@ struct ContentView: View {
     
     func onAppear() {
         print("[SCREEN_CONTENTVIEW] onAppear called")
-//        if Date() > getSessionEndDate() ?? Date().addingTimeInterval(.infinity) {
-//            TunnelController.shared.disable()
-//            cScreen = "HomeMenu"
-//        }
         if let sessionEndDate = getSessionEndDate() {
             self.sessionEndDate = sessionEndDate
             if Date() <= sessionEndDate {
@@ -55,34 +56,6 @@ struct ContentView: View {
         }
         refreshSupportedApps()
     }
-
-
-    /* attempt bug where after starting session VPN status stays on "Connecting" or "Disconnected" despite returning no connection error
-     i'm going to try just showing 'connected' because I suspect the status simply is not updating because a lack of requests?
-     */
-//    let connectingProxyRestartThreshold = 15
-//     func connectingProxyCheckIn() {
-//        let status = TunnelController.shared.status()
-//        if getSessionEndDate() != nil {
-//            if status == .disconnected || status == .connecting {
-//                connectingProxyPingCount += 1
-//                print("connectingProxyPingCount: \(connectingProxyPingCount)")
-//                if connectingProxyPingCount % connectingProxyRestartThreshold == 0 {
-//                    sendProxyTestConnection {
-//                        let newStatus = TunnelController.shared.status()
-//                        if TunnelController.shared.status() == .connected {
-//                            print("[SESSION][TUNNEL_CONTROLLER] ping to update connection successful")
-//                            connectingProxyPingCount = 0
-//                        }
-//                    }
-//                }
-//            } else {
-//                connectingProxyPingCount = 0
-//            }
-//        } else {
-//            connectingProxyPingCount = 0
-//        }
-//    }
 
    
 
@@ -93,7 +66,7 @@ struct ContentView: View {
                     // log in completed
                     self.showLoginScreen = false
                 }
-//                .modifier(ParallaxMotionModifier(manager: manager, magnitude: 12))
+                .modifier(ParallaxMotionModifier(manager: manager, magnitude: 10))
             } else {
                 ZStack {
                     VStack {
@@ -104,7 +77,7 @@ struct ContentView: View {
                                 }) {
                                         Image("leftArrow").resizable().frame(width: 44, height: 21, alignment: .leading).padding(.leading, s.universal.horizontalPadding).animation(.easeOut(duration: 0.5)).offset(x: self.selectAppsSwipeState.width).opacity((100.0 - Double(self.selectAppsSwipeState.width)) / 100)
                                 }
-//                                .modifier(ParallaxMotionModifier(manager: manager, magnitude: 12))
+                                .modifier(ParallaxMotionModifier(manager: manager, magnitude: 10))
                                 }
                                 Spacer()
                                 StatusIndicator(timer: self.timer, proxyStatus: self.$proxyStatus, cScreen: self.$cScreen).frame(width: 203, height: 33, alignment: .trailing)
@@ -127,20 +100,15 @@ struct ContentView: View {
                                 self.cScreen = screen
                             }.offset(x: self.cScreen == "Start" ? 0 : geo.size.width, y: 0).animation(.spring()).padding(.horizontal, s.universal.horizontalPadding)
                         }
-//                        .modifier(ParallaxMotionModifier(manager: manager, magnitude: 12))
+                        .modifier(ParallaxMotionModifier(manager: manager, magnitude: 10))
                     }
-                    //                    SetDurationOverlay(durationString: self.$durationString, setDurationString: { str in
-                    //                        self.durationString = str
-                    //                    }, keyboardVisible: self.$keyboardVisible) {
-                    //                            self.hideDurationOverlay()
-                    //                    }.offset(y: self.showSetDuration ? 0 : (geo.size.height + 40)).animation(.easeInOut(duration: 0.45))
                 }.frame(width: geo.size.width, height: geo.size.height, alignment: .center).ignoresSafeArea(.keyboard)
             }
         }
         .onAppear {
             self.onAppear()
         }.onReceive(timer, perform: { _ in
-            self.connectingProxyCheckIn()
+//            self.connectingProxyCheckIn()
         }).background(Image("bg-grain").resizable().edgesIgnoringSafeArea([.top, .bottom]))
     }
 }

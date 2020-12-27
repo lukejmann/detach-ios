@@ -16,7 +16,7 @@ struct StatusIndicator: View {
         case .disconnecting:
             return "Disconnecting"
         case .invalid:
-            return "Invalid"
+            return "Not Connected"
         case .reasserting:
             return "Reasserting"
         }
@@ -43,19 +43,7 @@ struct StatusIndicator: View {
                     Text(self.proxyStatusText).kerning(-0.4).font(.system(size: 14, weight: .medium, design: .default)).foregroundColor(Color.tan)
                 }
             }.onReceive(timer) { _ in
-                var status = TunnelController.shared.status()
-//                print("status: \(readableStatus(status: status))")
-//                if let sessionEndTime = getSessionEndDate() {
-//                    if status == .disconnected {
-//                        status = .connecting
-//                    }
-//                } else {
-//
-//                }
-//                if self.cScreen == "Start", status == .disconnected {
-//                    status = .connecting
-//                }
-                self.proxyStatus = status
+                self.proxyStatus = TunnelController.shared.status()
             }.animation(.spring())
         }
     }
