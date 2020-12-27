@@ -7,7 +7,7 @@ public func getSessionEndDate() -> Date? {
     if let data = timerDefaults.object(forKey: kSessionEndDate) as? Data {
         let decoder = JSONDecoder()
         if let date = try? decoder.decode(Date.self, from: data) {
-            print("sessionEndDate: \(date)")
+//            print("sessionEndDate: \(date)")
             return date
         }
     }

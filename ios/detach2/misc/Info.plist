@@ -29,6 +29,7 @@
 	<array>
 		<string>Georgia-Italic</string>
 		<string>NewYorkLarge-SemiboldItalic.otf</string>
+		<string>NewYorkLarge-BoldItalic.otf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

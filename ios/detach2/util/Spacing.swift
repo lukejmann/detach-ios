@@ -39,7 +39,7 @@ let s = DSpacing(
     home:
     DHomeSpacing(
         detachTitleHeight: 50,
-        detachTitleToTop: 80,
+        detachTitleToTop: 70,
         detachTitleWidth: 126,
         setDurationLabelHeight: 25,
         setDurationLabelPaddingTop: 50,

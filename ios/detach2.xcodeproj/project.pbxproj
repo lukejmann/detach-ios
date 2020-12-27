@@ -47,6 +47,8 @@
 		A39A952624E4B79900377CD5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39A952524E4B79900377CD5 /* Colors.swift */; };
 		A39A952C24E4C17D00377CD5 /* CustomUIKitTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39A952B24E4C17D00377CD5 /* CustomUIKitTextField.swift */; };
 		A3B7A1942597F85200DB9967 /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B7A1932597F85200DB9967 /* Spacing.swift */; };
+		A3B7A1C825981E7D00DB9967 /* NewYorkLarge-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A3B7A1C725981E7D00DB9967 /* NewYorkLarge-BoldItalic.otf */; };
+		A3B7A1D92598244800DB9967 /* UtilFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B7A1D82598244800DB9967 /* UtilFuncs.swift */; };
 		A3B7E5FF24E34B4900E06E47 /* NewYorkLarge-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A3B7E5FE24E34B4900E06E47 /* NewYorkLarge-SemiboldItalic.otf */; };
 		A3D639D324EF672E00612AF9 /* SignInWithAppleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D639D224EF672E00612AF9 /* SignInWithAppleButton.swift */; };
 		A3F5E60D24E5EBFF00DCF879 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F5E60C24E5EBFF00DCF879 /* Storage.swift */; };
@@ -157,6 +159,8 @@
 		A39A952524E4B79900377CD5 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		A39A952B24E4C17D00377CD5 /* CustomUIKitTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIKitTextField.swift; sourceTree = "<group>"; };
 		A3B7A1932597F85200DB9967 /* Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
+		A3B7A1C725981E7D00DB9967 /* NewYorkLarge-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NewYorkLarge-BoldItalic.otf"; path = "res/NewYorkLarge-BoldItalic.otf"; sourceTree = SOURCE_ROOT; };
+		A3B7A1D82598244800DB9967 /* UtilFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilFuncs.swift; sourceTree = "<group>"; };
 		A3B7E5FE24E34B4900E06E47 /* NewYorkLarge-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NewYorkLarge-SemiboldItalic.otf"; sourceTree = "<group>"; };
 		A3D639D224EF672E00612AF9 /* SignInWithAppleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleButton.swift; sourceTree = "<group>"; };
 		A3F5E60C24E5EBFF00DCF879 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
@@ -315,6 +319,7 @@
 		A34D2E5E258AEB760046372C /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				A3B7A1C725981E7D00DB9967 /* NewYorkLarge-BoldItalic.otf */,
 				A32A970624E3330B002C1145 /* georgia italic.ttf */,
 				A3B7E5FE24E34B4900E06E47 /* NewYorkLarge-SemiboldItalic.otf */,
 			);
@@ -399,6 +404,7 @@
 				A37D8BC124E88FDD00E8EAFE /* AppDomains.swift */,
 				A350D5902578781700DA3739 /* Fonts.swift */,
 				A3B7A1932597F85200DB9967 /* Spacing.swift */,
+				A3B7A1D82598244800DB9967 /* UtilFuncs.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -556,6 +562,7 @@
 				A3B7E5FF24E34B4900E06E47 /* NewYorkLarge-SemiboldItalic.otf in Resources */,
 				A32A96E024E32DAF002C1145 /* LaunchScreen.storyboard in Resources */,
 				A32A96DD24E32DAF002C1145 /* Preview Assets.xcassets in Resources */,
+				A3B7A1C825981E7D00DB9967 /* NewYorkLarge-BoldItalic.otf in Resources */,
 				A350D57725785F3700DA3739 /* Colors.xcassets in Resources */,
 				A32A970724E3330B002C1145 /* georgia italic.ttf in Resources */,
 				A32A96DA24E32DAF002C1145 /* Assets.xcassets in Resources */,
@@ -783,6 +790,7 @@
 				A3F5E60D24E5EBFF00DCF879 /* Storage.swift in Sources */,
 				A37D8BC024E88FBC00E8EAFE /* User.swift in Sources */,
 				A32D8E3C259433D800F37EA9 /* StatusIndicator.swift in Sources */,
+				A3B7A1D92598244800DB9967 /* UtilFuncs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

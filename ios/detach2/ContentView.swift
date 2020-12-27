@@ -8,7 +8,7 @@ struct ContentView: View {
     @State var hasDetachPlus = true
     @State var showSetDuration = false
     @State var keyboardVisible: Bool = false
-    @State var durationString: String = String(format: "%02d", getSessionDuration() / (60 * 60)) + ":" + String(format: "%02d", (getSessionDuration() % 3600) / 60)
+//    @State var durationString: String = String(format: "%02d", getSessionDuration() / (60 * 60)) + ":" + String(format: "%02d", (getSessionDuration() % 3600) / 60)
     @State var sessionEndDate: Date? = nil
     @State var proxyStatus: NEVPNStatus = .invalid
     @State var selectAppsSwipeState: CGSize = CGSize.zero
@@ -101,7 +101,7 @@ struct ContentView: View {
                             }.frame(width: geo.size.width, height: 33, alignment: .center).padding(.top, s.universal.statusIndicatorToTop)
                         }
                         ZStack(alignment: .center) {
-                            HomeMenu(durationString: self.$durationString) { screen in
+                            HomeMenu(){ screen in
                                 self.cScreen = screen
                             } startFocusPressed: {
                                 self.startFocusPressed()
