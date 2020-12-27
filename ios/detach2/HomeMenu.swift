@@ -5,21 +5,26 @@ struct HomeMenu: View {
     var startFocusPressed: () -> Void
     var showDurationScreen: () -> Void
     @Environment(\.colorScheme) var colorScheme
+    @State var editDurationMode: Bool = false
 
-
-    func setDurationButtonTopPadding() {
-        return s.home.detachTitleHeight + s.home.detachTitleToTop + s.home.setDurationLabelHeight + s.home.setDurationLabelPaddingTop + s.homeset.DurationButtonPaddingTop
+    var setDurationButtonTopPadding: CGFloat {
+        s.home.detachTitleHeight + s.home.detachTitleToTop + s.home.setDurationLabelHeight + s.home.setDurationLabelPaddingTop + s.home.setDurationButtonPaddingTop
     }
 
     var body: some View {
         GeometryReader { geo in
             ZStack {
                 VStack(alignment: .leading, spacing: 0) {
-                    HStack(alignment: .center) {
-                        Text("detach").font(.custom("Georgia-Italic", size: 42)).foregroundColor(Color.tan)
-                    }.frame(width: geo.size.width, height: s.home.detachTitleHeight, alignment: .center).padding(.top, s.home.detachTitleToTop)
-                    Text("Set Focus Duration").kerning(-0.65).font(.system(size: 25, weight: .medium, design: .default)).foregroundColor(Color.tan).frame(height: s.home.setDurationLabelHeight).padding(.top, s.home.setDurationLabelPaddingTop)
-                    Rectangle().frame(height: 154).padding(.top, s.home.setDurationButtonPaddingTop)
+                    VStack(alignment: .leading, spacing: 0) {
+                        HStack(alignment: .center) {
+                            Spacer()
+                            Text("detach").font(.custom("Georgia-Italic", size: 42)).foregroundColor(Color.tan)
+                            Spacer()
+                        }.padding(.top, s.home.detachTitleToTop)
+                        Text("Set Focus Duration").kerning(-0.65).font(.system(size: 25, weight: .medium, design: .default)).foregroundColor(Color.tan).frame(width: s.home.setDurationLabelWidth, height: s.home.setDurationLabelHeight).padding(.top, s.home.setDurationLabelPaddingTop)
+                        Rectangle().frame(width: geo.size.width, height: s.home.setDurationButtonHeight).padding(.top, s.home.setDurationButtonPaddingTop).foregroundColor(.clear)
+                    }
+
                     Button(action: {
                         self.startFocusPressed()
                     }) {
@@ -40,12 +45,28 @@ struct HomeMenu: View {
                     }.padding(.top, 10)
                     Spacer()
                 }.padding(.horizontal, 25).frame(width: geo.size.width, height: geo.size.height, alignment: .center)
-                VStack{
-                    SetDurationButton(durationString: self.$durationString) {
-                        self.showDurationScreen()
-                    }.padding(.top, setDurationButtonTopPadding())
+                VStack {
+                    HStack{
+                        Spacer()
+                        SetDurationButton(durationString: self.$durationString, editDurationMode: self.$editDurationMode) {
+                            self.editDurationMode.toggle()
+                        }.frame(width: self.editDurationMode ? geo.size.width : geo.size.width * 0.75)
+                        Spacer()
+                    }
+                    HStack(spacing: 0) {
+                        Button(action: {}) {
+                            Text("Cancel").font(.system(size: 20, weight: .semibold, design: .default)).foregroundColor(Color.lightPurple)
+                        }
+                        .frame(width: (geo.size.width - s.home.setDurationEditorButtonsHSpace) / 2, height: 50).background(Image("bg-blur").resizable()).cornerRadius(7.0).offset(x: self.editDurationMode ? 0 : -1 * (s.universal.horizontalPadding + (geo.size.width - s.home.setDurationEditorButtonsHSpace) / 2))
+                        Rectangle().frame(width: s.home.setDurationEditorButtonsHSpace, height: 50).foregroundColor(Color.clear)
+                        Button(action: {}) {
+                            Text("Save").font(.system(size: 20, weight: .bold, design: .default)).foregroundColor(Color.lightPurple)
+                        }
+                        .frame(width: (geo.size.width - s.home.setDurationEditorButtonsHSpace) / 2, height: 50).background(Image("bg-blur").resizable()).cornerRadius(7.0).offset(x: self.editDurationMode ? 0 : (s.universal.horizontalPadding + (geo.size.width - s.home.setDurationEditorButtonsHSpace) / 2))
+                    }
                     Spacer()
-                }
+                }.offset(y: self.editDurationMode ?  s.home.setDurationEditorPaddingTop : setDurationButtonTopPadding)
+
             }
         }
     }
@@ -54,11 +75,12 @@ struct HomeMenu: View {
 struct SetDurationButton: View {
     @Environment(\.colorScheme) var colorScheme
     @Binding var durationString: String
+    @Binding var editDurationMode: Bool
     var showSetDuration: () -> Void
     var body: some View {
         GeometryReader { geometry in
-            HStack(alignment: .center) {
-                Spacer()
+//            HStack(alignment: .center, spacing: 0) {
+//                Spacer()
                 Button(action: {
                     showSetDuration()
                 }) {
@@ -77,11 +99,10 @@ struct SetDurationButton: View {
                                 Spacer()
                             }.padding(.top, 5).foregroundColor(Color.midPurple)
                         }
-                }
-                .frame(width: geometry.size.width * 0.75, height: 154).background(Image("bg-blur").resizable().edgesIgnoringSafeArea([.top,.bottom])).cornerRadius(15.0)
-                Spacer()
-            }
-        }.frame(height: 154)
+                }.frame(height: s.home.setDurationButtonHeight).background(Image("bg-blur").resizable().edgesIgnoringSafeArea([.top, .bottom])).cornerRadius(15.0)
+//                Spacer()
+//            }
+        }.frame(height: s.home.setDurationButtonHeight)
     }
 }
 
@@ -90,9 +111,9 @@ struct HomeMenu_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             HomeMenu(durationString: self.$durationString) { _ in
-            } startFocusPressed: {} showDurationScreen: {}.background(Image("bg-grain").resizable().edgesIgnoringSafeArea(.all))
+            } startFocusPressed: {} showDurationScreen: {}.padding(.horizontal, s.universal.horizontalPadding).background(Image("bg-grain").resizable().edgesIgnoringSafeArea(.all))
                 .previewDevice(PreviewDevice(rawValue: "iPhone 12 Pro"))
-//                .previewDisplayName("iPhone 11")
+            //                .previewDisplayName("iPhone 11")
         }
     }
 }

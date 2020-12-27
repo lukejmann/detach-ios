@@ -22,22 +22,30 @@ public struct DUniversalSpacing {
 public struct DHomeSpacing {
     var detachTitleHeight: CGFloat
     var detachTitleToTop: CGFloat
+    var detachTitleWidth: CGFloat
     var setDurationLabelHeight: CGFloat
     var setDurationLabelPaddingTop: CGFloat
     var setDurationButtonPaddingTop: CGFloat
+    var setDurationButtonHeight: CGFloat
+    var setDurationLabelWidth: CGFloat
+    var setDurationEditorPaddingTop: CGFloat
+    var setDurationEditorButtonsHSpace: CGFloat
 }
 
-public var s = DSpacing(
+let s = DSpacing(
     universal: DUniversalSpacing(
         horizontalPadding: 30,
-        statusIndicatorToTop: 30
-    ),
+        statusIndicatorToTop: 30),
     home:
-        DHomeSpacing(
-            detachTitleHeight: 50,
-            detachTitleToTop: 100,
-            setDurationLabelHeight: 25,
-            setDurationLabelPaddingTop: 50,
-            setDurationButtonPaddingTop: 30
-        )
-)
+    DHomeSpacing(
+        detachTitleHeight: 50,
+        detachTitleToTop: 100,
+        detachTitleWidth: 126,
+        setDurationLabelHeight: 25,
+        setDurationLabelPaddingTop: 50,
+        setDurationButtonPaddingTop: 30,
+        setDurationButtonHeight: 154,
+        setDurationLabelWidth: 199,
+        setDurationEditorPaddingTop: 30,
+        setDurationEditorButtonsHSpace: 14
+    ))

@@ -4,7 +4,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State public var cScreen: String = "HomeMenu"
-    @State var showLoginScreen  = getUserID() == nil
+    @State var showLoginScreen = getUserID() == nil
     @State var hasDetachPlus = true
     @State var showSetDuration = false
     @State var keyboardVisible: Bool = false
@@ -82,21 +82,23 @@ struct ContentView: View {
                 LoginScreen {
                     // log in completed
                     self.showLoginScreen = false
-                }.modifier(ParallaxMotionModifier(manager: manager, magnitude: 12))
+                }
+//                .modifier(ParallaxMotionModifier(manager: manager, magnitude: 12))
             } else {
                 ZStack {
-                    ZStack {
-                        VStack{
+                    VStack {
+                        VStack {
                             HStack {
                                 if self.cScreen == "SelectApps" { Button(action: {
                                     self.cScreen = "HomeMenu"
                                 }) {
-                                    Image("leftArrow").resizable().frame(width: 44, height: 21, alignment: .leading).padding(.leading, 30).animation(.easeOut(duration: 0.5)).offset(x: self.selectAppsSwipeState.width).opacity((100.0 - Double(self.selectAppsSwipeState.width)) / 100)
-                                }.modifier(ParallaxMotionModifier(manager: manager, magnitude: 12)) }
+                                    Image("leftArrow").resizable().frame(width: 44, height: 21, alignment: .leading).padding(.leading, s.universal.horizontalPadding).animation(.easeOut(duration: 0.5)).offset(x: self.selectAppsSwipeState.width).opacity((100.0 - Double(self.selectAppsSwipeState.width)) / 100)
+                                }
+//                                .modifier(ParallaxMotionModifier(manager: manager, magnitude: 12))
+                                }
                                 Spacer()
                                 StatusIndicator(timer: self.timer, proxyStatus: self.$proxyStatus, cScreen: self.$cScreen).frame(width: 203, height: 33, alignment: .trailing)
                             }.frame(width: geo.size.width, height: 33, alignment: .center).padding(.top, s.universal.statusIndicatorToTop)
-                            Spacer()
                         }
                         ZStack(alignment: .center) {
                             HomeMenu(durationString: self.$durationString) { screen in
@@ -114,7 +116,9 @@ struct ContentView: View {
                             SessionScreen(endDate: self.$sessionEndDate) { screen in
                                 self.cScreen = screen
                             }.offset(x: self.cScreen == "Start" ? 0 : geo.size.width, y: 0).animation(.spring()).padding(.horizontal, s.universal.horizontalPadding)
-                        }.modifier(ParallaxMotionModifier(manager: manager, magnitude: 12))
+                        }
+//                        .modifier(ParallaxMotionModifier(manager: manager, magnitude: 12))
+
                     }
                     //                    SetDurationOverlay(durationString: self.$durationString, setDurationString: { str in
                     //                        self.durationString = str
@@ -128,7 +132,7 @@ struct ContentView: View {
             self.onAppear()
         }.onReceive(timer, perform: { _ in
             self.proxyCheckIn()
-        }).background(Image("bg-grain").resizable().edgesIgnoringSafeArea([.top,.bottom]))
+        }).background(Image("bg-grain").resizable().edgesIgnoringSafeArea([.top, .bottom]))
     }
 }
 
