@@ -16,7 +16,7 @@ struct StatusIndicator: View {
         case .disconnecting:
             return "Disconnecting"
         case .invalid:
-            return "Not Connected"
+            return "Invalid"
         case .reasserting:
             return "Reasserting"
         }

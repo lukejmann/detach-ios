@@ -1,36 +1,37 @@
 import Foundation
-func uploadSession(endTime: Date, completion: @escaping (Bool) -> Void) {
+func startSession(endTime: Date, completion: @escaping (Bool) -> Void) {
     let appNames = getSelectedAppNames()
     setupBlockedDomains(appNames: appNames)
     if let userID = getUserID() {
         let sessionCreateOpt = SessionCreateOpt(userID: userID, endTime: Int(endTime.timeIntervalSince1970), deviceToken: deviceToken)
         detachProvier.request(.createSession(opt: sessionCreateOpt)) { result in
-            print("result in createSession res: \(result)")
+            //            print("result in createSession res: \(result)")
             switch result {
             case let .success(moyaResponse):
                 let data = moyaResponse.data
                 let statusCode = moyaResponse.statusCode
                 if statusCode == 200 {
-                    print("data: \(data)")
+                    //                    print("data: \(data)")
                     do {
                         let res = try JSONDecoder().decode(SessionCreateRes.self, from: data)
-                        print("res: \(res)")
+                        //                        print("res: \(res)")
                         if res.success {
                             setSessionID(sessionID: res.sessionID)
-                            print("successfully started session \(res.sessionID)")
+                            print("[API] successfully started session. session ID: \(res.sessionID)")
                             completion(true)
                         } else {
+                            print("[API][ERROR] error decoding createSession response. error: \(statusCode)")
                             completion(false)
                         }
                     } catch {
                         print("err: \(error)")
                     }
                 } else {
-                    print("bad code in createSession res: \(statusCode)")
-                    completion(true)
+                    print("[API][ERROR] error in createSession. status code: \(statusCode)")
+                    completion(false)
                 }
             case let .failure(error):
-                print("error in createSession res: \(error)")
+                print("[API][ERROR] error in createSession. error: \(error)")
                 completion(false)
             }
         }
@@ -39,11 +40,43 @@ func uploadSession(endTime: Date, completion: @escaping (Bool) -> Void) {
     }
 }
 
+func cancelSession(completion: @escaping (Bool) -> Void) {
+    if let userID = getUserID() {
+        let sessionID = getSessionID()
+        let opt = SessionCancelOpt(userID: userID, sessionID: sessionID)
+        detachProvier.request(.cancelSession(opt: opt)) { result in
+//            if statusCode == 200 {
+
+//            }
+            switch result{
+            case let .success(moyaResponse):
+                let statusCode = moyaResponse.statusCode
+                if statusCode == 200 {
+                    print("[API] successfully cancelled session")
+                    completion(true)
+                } else {
+                    print("[API][ERROR] error cancelling session. status code: \(statusCode)")
+                    completion(false)
+                }
+            case let .failure(error):
+                print("[API][ERROR] error cancelling session. error: \(error)")
+                completion(false)
+
+            }
+        }
+    } else {
+        print("[API][ERROR] error fetching userID in cancelSession")
+    }
+}
+
+
+
 func setupBlockedDomains(appNames: [String]) {
-    print("in setupBlockedDomains. appNames: \(appNames)")
+    print("[SESSION] in setupBlockedDomains. selected app names length: \(appNames.count)")
     var domains = [String]()
-    print("supported apps :\(getSupportedApps())")
-    getSupportedApps().forEach { app in
+    let supportedApps = getSupportedApps()
+    print("[SESSION] in setupBlockedDomains. supportedApps length: \(supportedApps.count)")
+    supportedApps.forEach { app in
         if appNames.contains(app.Name.lowercased()) {
             app.URLs.forEach { url in
                 domains.append(url)

@@ -11,13 +11,13 @@ private func JSONResponseDataFormatter(_ data: Data) -> String {
 }
 
 public let detachProvier = MoyaProvider<DetachAPI>(plugins: [
-    NetworkLoggerPlugin(
-        configuration:
-        .init(
-            formatter:
-            .init(responseData: JSONResponseDataFormatter),
-            logOptions: .default)
-    ),
+//    NetworkLoggerPlugin(
+//        configuration:
+//        .init(
+//            formatter:
+//            .init(responseData: JSONResponseDataFormatter),
+//            logOptions: [.errorResponseBody])
+//    ),
 ]
 )
 private extension String {
@@ -71,7 +71,7 @@ extension DetachAPI: TargetType {
         case let .login(userID, email):
             return .requestParameters(parameters: ["userID": userID, "email": email], encoding: URLEncoding.default)
         case let .createSession(opt):
-            print("opt in task: \(opt)")
+//            print("opt in task: \(opt)")
             return .requestJSONEncodable(opt)
         case let .cancelSession(opt):
             return .requestJSONEncodable(opt)

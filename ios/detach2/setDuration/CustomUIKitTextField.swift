@@ -26,7 +26,6 @@ struct CustomUIKitTextField: UIViewRepresentable {
         uiView.textColor = UIColor(Color.midPurple)
         uiView.tintColor = UIColor(Color.clear)
         uiView.textAlignment = .center
-        print("isFirstResponder in updateUIView:\(isFirstResponder)")
         if isFirstResponder {
             uiView.becomeFirstResponder()
             context.coordinator.didBecomeFirstResponder = true

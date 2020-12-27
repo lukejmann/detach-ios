@@ -7,22 +7,22 @@ class TunnelController: NSObject {
     var manager: NETunnelProviderManager?
     override private init() {
         super.init()
-        Print("MARK: In TunnelController init ")
+        Print("[TUNNEL_CONTROLLER] in TunnelController init ")
         refreshManager()
     }
 
     func disable() {
-        setVPNDomains(domains: [""])
+//        setVPNDomains(domains: [""])
         setEnabled(false)
     }
 
     func refreshManager(completion: @escaping (_ error: Error?) -> Void = { _ in }) {
-        Print("MARK: In TunnelController refreshManager ")
+        Print("[TUNNEL_CONTROLLER] in TunnelController refreshManager ")
         // get the reference to the latest manager in Settings
         NETunnelProviderManager.loadAllFromPreferences { (managers, error) -> Void in
             if let managers = managers, !managers.isEmpty {
                 if self.manager == managers[0] {
-                    Print("Encountered same manager while refreshing manager, not replacing it.")
+                    Print("[TUNNEL_CONTROLLER] encountered same manager while refreshing manager, not replacing it.")
                     completion(nil)
                 }
                 self.manager = nil
@@ -40,32 +40,19 @@ class TunnelController: NSObject {
         }
     }
 
-    func restart(completion: @escaping (_ error: Error?) -> Void = { _ in }) {
-        Print("MARK: In TunnelController restart ")
-        // Don't let this affect userWantsFirewallOn/Off config
-        TunnelController.shared.setEnabled(false, completion: {
-            error in
-            // TODO: Handle the error (throw?)
-            if error != nil {
-                Print("Error disabling on Firewall restart: \(error!)")
-            }
-            TunnelController.shared.setEnabled(true, completion: {
-                error in
-                if error != nil {
-                    Print("Error enabling on Firewall restart: \(error!)")
-                }
-                completion(error)
-            })
-        })
-    }
-
     func setEnabled(_ enabled: Bool, isUserExplicitToggle _: Bool = false, completion: @escaping (_ error: Error?) -> Void = { _ in }) {
-        Print("MARK: In TunnelController setEnabled")
+        Print("[TUNNEL_CONTROLLER] in TunnelController setEnabled. enabled: \(enabled)")
         let vpnManager = NEVPNManager.shared()
         vpnManager.loadFromPreferences(completionHandler: { (_ error: Error?) -> Void in
-            Print("MARK: in loadFromPreferences completion. error: \(error)")
+            if error != nil{
+                Print("[TUNNEL_CONTROLLER][ERROR] in loadFromPreferences completion. error: \(String(describing: error))")
+                completion(error)
+            }
             NETunnelProviderManager.loadAllFromPreferences { (managers, error) -> Void in
-                Print("MARK: In loadAllFromPreferences. error: \(error)")
+                if error != nil{
+                    Print("ERROR: In loadAllFromPreferences. error: \(String(describing: error))")
+                    completion(error)
+                }
                 if let managers = managers, !managers.isEmpty {
                     self.manager = nil
                     self.manager = managers[0]
@@ -83,7 +70,10 @@ class TunnelController: NSObject {
                 connectRule.interfaceTypeMatch = .any
                 manager.onDemandRules = [connectRule]
                 manager.saveToPreferences(completionHandler: { (error) -> Void in
-                    Print("MARK: in saveToPreferences completion. error: \(error)")
+                    if error != nil{
+                        Print("ERROR: in saveToPreferences completion. error: \(String(describing: error))")
+                        completion(error)
+                    }
                     completion(error)
                 })
             }
@@ -92,24 +82,26 @@ class TunnelController: NSObject {
 }
 
 //
-func connectProxy(i: Int, callback: @escaping (_ success: Bool) -> Void) {
-    let seconds = 1.0
-    if i >= 4 {
-        callback(false)
-        return
-    }
-    TunnelController.shared.setEnabled(true) { _ in
-        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-            let status = TunnelController.shared.status()
-            if status == .connected {
-                callback(true)
-                return
-            } else {
-                connectProxy(i: i + 1, callback: callback)
-            }
-        }
-    }
-}
+//func connectProxy(i: Int, callback: @escaping (_ success: Bool) -> Void) {
+//    let seconds = 8.0
+//    if i > 2 {
+//        print("[TUNNEL_CONTROLLER][ERROR] unable to connect to proxy after \(i + 1) \(seconds) second attempts")
+//        callback(false)
+//        return
+//    }
+//    TunnelController.shared.setEnabled(true) { _ in
+//        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+//            let status = TunnelController.shared.status()
+//            if status == .connected {
+//                print("[TUNNEL_CONTROLLER] connected to proxy after \(i + 1) \(seconds) second attempts")
+//                callback(true)
+//                return
+//            } else {
+//                connectProxy(i: i + 1, callback: callback)
+//            }
+//        }
+//    }
+//}
 
 // func connectProxy(callback: @escaping (_ success: Bool) -> Void) {
 //    TunnelController.shared.setEnabled(true) { _ in

@@ -7,35 +7,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         registerForPushNotifications()
-        let appleIDProvider = ASAuthorizationAppleIDProvider()
-        SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
-            for purchase in purchases {
-                switch purchase.transaction.transactionState {
-                case .purchased, .restored:
-                    if purchase.needsFinishTransaction {
-                        // Deliver content from server, then:
-                        SwiftyStoreKit.finishTransaction(purchase.transaction)
-                    }
-                // Unlock content
-                case .failed, .purchasing, .deferred:
-                    break // do nothing
-                }
-            }
-        }
-        SwiftyStoreKit.retrieveProductsInfo(["com.detachapp.ios1.onemonth"]) { result in
-            if let product = result.retrievedProducts.first {
-                let priceString = product.localizedPrice!
-                print("Product: \(product.localizedDescription), price: \(priceString)")
-            } else if let invalidProductId = result.invalidProductIDs.first {
-                print("Invalid product identifier: \(invalidProductId)")
-            } else {
-                print("Error: \(result.error)")
-            }
-        }
-//        let proxyStatus = TunnelController.shared.status()
-//        if Date() > getSessionEndDate() ?? Date().addingTimeInterval(.infinity) {
-//            TunnelController.shared.disable()
-//        }
+
         return true
     }
 
@@ -48,7 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UNUserNotificationCenter.current()
             .requestAuthorization(options: [.alert, .sound, .badge]) {
                 [weak self] granted, _ in
-                print("Permission granted: \(granted)")
+                if granted {
+                    print("[DEVICE] notifications permissions granted")
+                }
+                else {
+                    print("[DEVICE][ERROR] notifications permissions granted")
+
+                }
                 guard granted else { return }
                 self?.getNotificationSettings()
             }
@@ -56,7 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func getNotificationSettings() {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
-            print("Notification settings: \(settings)")
             guard settings.authorizationStatus == .authorized else { return }
             DispatchQueue.main.async {
                 UIApplication.shared.registerForRemoteNotifications()
@@ -67,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken dToken: Data) {
         let tokenParts = dToken.map { data in String(format: "%02.2hhx", data) }
         let token = tokenParts.joined()
-        print("Device Token: \(token)")
+        print("[DEVICE] device token: \(token)")
         deviceToken = token
     }
 

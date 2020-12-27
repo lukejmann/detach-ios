@@ -5,9 +5,7 @@ import SwiftUI
 struct ContentView: View {
     @State public var cScreen: String = "HomeMenu"
     @State var showLoginScreen = getUserID() == nil
-    @State var hasDetachPlus = true
     @State var showSetDuration = false
-    @State var keyboardVisible: Bool = false
 //    @State var durationString: String = String(format: "%02d", getSessionDuration() / (60 * 60)) + ":" + String(format: "%02d", (getSessionDuration() % 3600) / 60)
     @State var sessionEndDate: Date? = nil
     @State var proxyStatus: NEVPNStatus = .invalid
@@ -20,32 +18,33 @@ struct ContentView: View {
         let now = Date()
         sessionEndDate = now + Double(sessionDuration)
         setSessionEndDate(date: sessionEndDate!)
-        uploadSession(endTime: sessionEndDate!) { success in
+        startSession(endTime: sessionEndDate!) { success in
+            self.cScreen = "Start"
             if success {
-                self.cScreen = "Start"
-                connectProxy(i: 0) { success in
-                    if success {
-                        //                         TODO: handle
-                    } else {
-                        //                         TODO: handle
-                        print("Error!! unable to connect proxy")
+                TunnelController.shared.setEnabled(true){ error in
+                    if error != nil {
+                        print("[SESSION][ERROR] error enabling proxy. error: \(error)")
+                    }
+                    else {
+                        print("[SESSION] successfully enabled proxy")
                     }
                 }
             } else {
-                //                 TODO: handle err
-                print("Error!! unable to start session")
+                // TODO: handle err
+                print("[SESSION] error starting session")
             }
         }
     }
 
     let timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect()
     @Environment(\.colorScheme) var colorScheme
+    
     func onAppear() {
-        print("in app appeared")
-        if Date() > getSessionEndDate() ?? Date().addingTimeInterval(.infinity) {
-            TunnelController.shared.disable()
-            cScreen = "HomeMenu"
-        }
+        print("[SCREEN_CONTENTVIEW] onAppear called")
+//        if Date() > getSessionEndDate() ?? Date().addingTimeInterval(.infinity) {
+//            TunnelController.shared.disable()
+//            cScreen = "HomeMenu"
+//        }
         if let sessionEndDate = getSessionEndDate() {
             if Date() <= sessionEndDate {
                 cScreen = "Start"
@@ -54,25 +53,18 @@ struct ContentView: View {
         refreshSupportedApps()
     }
 
-    func showDurationOverlay() {
-        showSetDuration = true
-        print("calling self.keyboardVisible = true")
-        keyboardVisible = true
-    }
-
-    func hideDurationOverlay() {
-        showSetDuration = false
-        print("calling self.keyboardVisible = false")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            keyboardVisible = false
-        }
-    }
 
     func proxyCheckIn() {
+        var disable = false
         if let sessionEndDate = getSessionEndDate() {
-            if Date() > sessionEndDate && !(TunnelController.shared.status() == .disconnecting || TunnelController.shared.status() == .disconnected || TunnelController.shared.status() == .invalid) {
-                TunnelController.shared.disable()
+            if Date() > sessionEndDate {
+                disable = true
             }
+        } else {
+            disable = true
+        }
+        if disable && !(TunnelController.shared.status() == .disconnecting || TunnelController.shared.status() == .disconnected || TunnelController.shared.status() == .invalid) {
+            TunnelController.shared.disable()
         }
     }
 
@@ -101,12 +93,10 @@ struct ContentView: View {
                             }.frame(width: geo.size.width, height: 33, alignment: .center).padding(.top, s.universal.statusIndicatorToTop)
                         }
                         ZStack(alignment: .center) {
-                            HomeMenu(){ screen in
+                            HomeMenu(currentScreen: self.$cScreen){ screen in
                                 self.cScreen = screen
                             } startFocusPressed: {
                                 self.startFocusPressed()
-                            } showDurationScreen: {
-                                self.showDurationOverlay()
                             }
                             .padding(.horizontal, s.universal.horizontalPadding)
                             .offset(x: self.cScreen != "HomeMenu" ? -1 * geo.size.width : 0).animation(.spring())
@@ -115,7 +105,7 @@ struct ContentView: View {
                             }, setScreen: { screen in
                                 self.cScreen = screen
                             }).offset(x: self.cScreen == "SelectApps" ? 0 : geo.size.width, y: 0).animation(.spring())
-                            SessionScreen(endDate: self.$sessionEndDate) { screen in
+                            SessionScreen(endDate: self.$sessionEndDate, timer: self.timer) { screen in
                                 self.cScreen = screen
                             }.offset(x: self.cScreen == "Start" ? 0 : geo.size.width, y: 0).animation(.spring()).padding(.horizontal, s.universal.horizontalPadding)
                         }

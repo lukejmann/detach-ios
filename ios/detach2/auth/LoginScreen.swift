@@ -22,13 +22,24 @@ struct LoginScreen: View {
     }
 
     func setupProxy() {
-        connectProxy(i: 0) { success in
-            if success {
-                self.loginCompleted()
-                TunnelController.shared.disable()
-            } else {
-                // MARK: TODO: handle err
+//        connectProxy(i: 0) { success  in
+//            if success {
+//                self.loginCompleted()
+//                TunnelController.shared.disable()
+//            } else {
+//                // MARK: TODO: handle err
+//                TunnelController.shared.disable()
+//            }
+//        }
+        TunnelController.shared.setEnabled(true){ error in
+            if error != nil {
+                print("[LOGIN][ERROR] error enabling proxy. error: \(error)")
             }
+            else {
+                print("[LOGIN] successfully enabled proxy")
+                loginCompleted() 
+            }
+            
         }
     }
 

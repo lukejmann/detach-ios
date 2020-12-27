@@ -1,8 +1,6 @@
 import SwiftUI
 struct SelectAppsScreen: View {
-    @State var apps: [SelectableApp] = getSupportedApps().map { (app) -> SelectableApp in
-        SelectableApp(app: app, selected: getSelectedAppNames().contains(app.Name.lowercased()))
-    }
+    @State var apps: [SelectableApp] = []
 
     @Binding var swipeState: CGSize
     var setSwipeState: (_ state: CGSize) -> Void
@@ -48,7 +46,11 @@ struct SelectAppsScreen: View {
                 }
                 self.swipeState = .zero
             }).offset(x: 30 + swipeState.width, y: 25)
-        }.animation(.easeIn)
+        }.animation(.easeIn).onAppear{
+            self.apps = getSupportedApps().map { (app) -> SelectableApp in
+                SelectableApp(app: app, selected: getSelectedAppNames().contains(app.Name.lowercased()))
+            }
+        }
     }
 }
 
@@ -74,18 +76,18 @@ struct SelectableApp: Identifiable {
     @Environment(\.colorScheme) var colorScheme
     var selected: Bool {
         didSet {
-            print("app \(app.Name) toggled to \(selected)")
+            print("[SELECT_APPS] app \(app.Name) toggled to \(selected)")
             let oldSelectedApps = getSelectedAppNames()
             if selected {
-                var done = false
-                oldSelectedApps.forEach { appName in
-                    if appName == app.Name.lowercased() {
-                        done = true
-                    }
-                }
-                if !done {
+//                var done = false
+//                oldSelectedApps.forEach { appName in
+//                    if appName == app.Name.lowercased() {
+//                        done = true
+//                    }
+//                }
+//                if !done {
                     setSelectedAppNames(appNames: oldSelectedApps + [app.Name.lowercased()])
-                }
+//                }
             } else {
                 setSelectedAppNames(appNames: oldSelectedApps.filter { $0 != app.Name.lowercased() })
             }

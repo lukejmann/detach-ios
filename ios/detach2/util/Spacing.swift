@@ -27,7 +27,7 @@ public struct DHomeSpacing {
     var setDurationLabelPaddingTop: CGFloat
     var setDurationButtonPaddingTop: CGFloat
     var setDurationButtonHeight: CGFloat
-    var setDurationLabelWidth: CGFloat
+//    var setDurationLabelWidth: CGFloat
     var setDurationEditorPaddingTop: CGFloat
     var setDurationEditorButtonsHSpace: CGFloat
 }
@@ -39,12 +39,12 @@ let s = DSpacing(
     home:
     DHomeSpacing(
         detachTitleHeight: 50,
-        detachTitleToTop: 70,
+        detachTitleToTop: 65,
         detachTitleWidth: 126,
         setDurationLabelHeight: 25,
-        setDurationLabelPaddingTop: 50,
+        setDurationLabelPaddingTop: 35,
         setDurationButtonPaddingTop: 30,
         setDurationButtonHeight: 154,
-        setDurationLabelWidth: 199,
+//        setDurationLabelWidth: 250,
         setDurationEditorPaddingTop: 30,
         setDurationEditorButtonsHSpace: 14))

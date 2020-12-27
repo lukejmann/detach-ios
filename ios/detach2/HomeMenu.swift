@@ -1,22 +1,53 @@
 import SwiftUI
 struct HomeMenu: View {
+    @Binding var currentScreen: String
     @State var durationString: String = ""
     @State var oldDurationString: String = ""
     var setScreen: (_ screen: String) -> Void
     var startFocusPressed: () -> Void
-    var showDurationScreen: () -> Void
     @Environment(\.colorScheme) var colorScheme
     @State var editDurationMode: Bool = false
+    
    var validInput: Bool {
     durationString != "00:00"
    }
 
     var setDurationButtonTopPadding: CGFloat {
-        s.home.detachTitleHeight + s.home.detachTitleToTop + s.home.setDurationLabelHeight + s.home.setDurationLabelPaddingTop + s.home.setDurationButtonPaddingTop
+        s.home.detachTitleHeight + s.home.detachTitleToTop + s.home.setDurationButtonPaddingTop
+    }
+
+    func refactorDurationString() {
+        let minutes = Int(self.durationString[3] + self.durationString[4]) ?? 0
+        let hours = Int(self.durationString[0] + self.durationString[1]) ?? 0
+
+        if minutes + hours * 60 > 60 &&  minutes + hours * 60 < 100 * 60{
+            let durationSec = calculateDurationSec(duration: durationString)
+            self.durationString = String(format: "%02d", durationSec / (60 * 60)) + ":" + String(format: "%02d", (durationSec % 3600) / 60)
+        }
+        return
     }
 
     func initSessionDuration() -> String {
-        return String(format: "%02d", getSessionDuration() / (60 * 60)) + ":" + String(format: "%02d", (getSessionDuration() % 3600) / 60)
+        let storedDuration = getSessionDuration()
+        if storedDuration != 0 {
+            return String(format: "%02d", storedDuration / (60 * 60)) + ":" + String(format: "%02d", (storedDuration % 3600) / 60)
+        }
+        else {
+            setSessionDuration(duration: 25 * 60)
+            return "00:25"
+        }
+    }
+
+    func cancelEditButtonPressed() {
+        self.durationString = self.oldDurationString
+        self.editDurationMode = false
+    }
+
+    func saveEditButtonPressed() {
+        let durationSec = calculateDurationSec(duration: durationString)
+        self.editDurationMode = false
+        setSessionDuration(duration: durationSec)
+        refactorDurationString()
     }
 
     var body: some View {
@@ -27,15 +58,11 @@ struct HomeMenu: View {
                         HStack(alignment: .center) {
                             Spacer()
                             Text("detach").font(.custom("Georgia-Italic", size: 42)).foregroundColor(Color.tan).frame(width: s.home.detachTitleWidth)
-
                             Spacer()
                         }
                         .padding(.top, s.home.detachTitleToTop)
-                        Text("Set Focus Duration").kerning(-0.65).font(.system(size: 25, weight: .medium, design: .default)).foregroundColor(Color.tan)
-                            .frame(width: s.home.setDurationLabelWidth, height: s.home.setDurationLabelHeight)
-                            .padding(.top, s.home.setDurationLabelPaddingTop)
-                        Rectangle().frame(width: geo.size.width, height: s.home.setDurationButtonHeight).foregroundColor(.clear)
-                            .padding(.top, s.home.setDurationButtonPaddingTop)
+
+                        Rectangle().frame(width: geo.size.width, height: s.home.setDurationButtonHeight + s.home.setDurationLabelHeight + s.home.setDurationButtonPaddingTop + s.home.setDurationLabelPaddingTop).foregroundColor(.clear)
                     }
 
                     Button(action: {
@@ -47,7 +74,7 @@ struct HomeMenu: View {
                             Image("rightArrow").resizable().frame(width: 52.25, height: 25, alignment: .center)
                         }.frame(width: geo.size.width * 0.9, height: .none, alignment: .leading)
                     }
-                    .padding(.top, 40)
+                    .padding(.top, 50)
                     Button(action: {
                         self.setScreen("SelectApps")
                     }) {
@@ -61,42 +88,46 @@ struct HomeMenu: View {
                 }
                 .padding(.horizontal, 25).frame(width: geo.size.width, height: geo.size.height, alignment: .center)
                 .offset(x: self.editDurationMode ? -1 * (geo.size.width + s.universal.horizontalPadding) : 0)
-                VStack {
-                    SetDurationButton(durationString: self.$durationString, editDurationMode: self.$editDurationMode){
-                        if !self.editDurationMode {
-                            self.editDurationMode = true
-                            print("in switch to edit. self.durationString: \(self.durationString)")
-                            self.oldDurationString = self.durationString
+                VStack(spacing: 0) {
+//                    VStack(spacing:0){
+                        HStack{
+                            Text("Set Focus Duration").kerning(-0.65).font(.system(size: 25, weight: self.editDurationMode ? .bold : .medium, design: .default)).foregroundColor(Color.tan)
+                                .frame(height: s.home.setDurationLabelHeight)
+                                .padding(.top, self.editDurationMode ? 0 : s.home.setDurationLabelPaddingTop)
+                            Spacer()
                         }
-                    }
-                        .frame(width: self.editDurationMode ? geo.size.width : geo.size.width * 0.75)
+                        SetDurationButton(durationString: self.$durationString, editDurationMode: self.$editDurationMode){
+                            if !self.editDurationMode {
+                                self.editDurationMode = true
+                                print("in switch to edit. self.durationString: \(self.durationString)")
+                                self.oldDurationString = self.durationString
+                            }
+                        }    .frame(width: self.editDurationMode ? geo.size.width : geo.size.width * 0.75)
+                        .padding(.top, s.home.setDurationButtonPaddingTop)
+//                    }
+                    if self.currentScreen == "HomeMenu"{
                     HStack(spacing: 0) {
-                        Button(action: {
-                            print("cancel pressed.\n\tself.oldDurationString: \(self.oldDurationString)\n\tself.durationString: \(self.durationString)")
-                            self.durationString = self.oldDurationString
-                            self.editDurationMode = false
-                        }) {
+                        Button(action: self.cancelEditButtonPressed) {
                             Text("Cancel").font(.system(size: 20, weight: .semibold, design: .default)).foregroundColor(Color.lightPurple)
                         }
                         .frame(width: (geo.size.width - s.home.setDurationEditorButtonsHSpace) / 2, height: 50).background(Image("bg-blur").resizable()).cornerRadius(7.0)
                         .offset(x: self.editDurationMode ? 0 : -1 * (s.universal.horizontalPadding + (geo.size.width - s.home.setDurationEditorButtonsHSpace) / 2))
 
+
                         Rectangle().frame(width: s.home.setDurationEditorButtonsHSpace, height: 50).foregroundColor(Color.clear)
-                        Button(action: {
-                            let durationSec = calculateDurationSec(duration: durationString)
-                            self.editDurationMode = false
-                        }) {
+                        Button(action: self.saveEditButtonPressed) {
                             Text("Save").font(.system(size: 20, weight: .bold, design: .default)).foregroundColor(Color.lightPurple)
                         }.disabled(!self.validInput)
                         .frame(width: (geo.size.width - s.home.setDurationEditorButtonsHSpace) / 2, height: 50).background(Image("bg-blur").resizable()).cornerRadius(7.0)
                         .offset(x: self.editDurationMode ? 0 : (s.universal.horizontalPadding + (geo.size.width - s.home.setDurationEditorButtonsHSpace) / 2))
-                    }
+                        .opacity(self.validInput ? 1.0 : 0.7)
+                    }.padding(.top, 10)}
                     Spacer()
                 }.offset(y: self.editDurationMode ? s.home.setDurationEditorPaddingTop : setDurationButtonTopPadding)
             }
         }.onAppear{
             self.durationString = String(format: "%02d", getSessionDuration() / (60 * 60)) + ":" + String(format: "%02d", (getSessionDuration() % 3600) / 60)
-        }
+        }.animation(.spring())
     }
 }
 
@@ -133,10 +164,11 @@ struct SetDurationButton: View {
 }
 
 struct HomeMenu_Previews: PreviewProvider {
+    @State static var cScreen = "HomeMenu"
     static var previews: some View {
         Group {
-            HomeMenu() { _ in
-            } startFocusPressed: {} showDurationScreen: {}.padding(.horizontal, s.universal.horizontalPadding).background(Image("bg-grain").resizable().edgesIgnoringSafeArea(.all))
+            HomeMenu(currentScreen: self.$cScreen) { _ in
+            } startFocusPressed: {}.padding(.horizontal, s.universal.horizontalPadding).background(Image("bg-grain").resizable().edgesIgnoringSafeArea(.all))
             .previewDevice(PreviewDevice(rawValue: "iPhone 12 Pro"))
             //                .previewDisplayName("iPhone 11")
         }
