@@ -18,11 +18,19 @@ struct HomeMenu: View {
                     VStack(alignment: .leading, spacing: 0) {
                         HStack(alignment: .center) {
                             Spacer()
-                            Text("detach").font(.custom("Georgia-Italic", size: 42)).foregroundColor(Color.tan)
+                            Text("detach").font(.custom("Georgia-Italic", size: 42)).foregroundColor(Color.tan).frame(width: s.home.detachTitleWidth)
+
                             Spacer()
-                        }.padding(.top, s.home.detachTitleToTop)
-                        Text("Set Focus Duration").kerning(-0.65).font(.system(size: 25, weight: .medium, design: .default)).foregroundColor(Color.tan).frame(width: s.home.setDurationLabelWidth, height: s.home.setDurationLabelHeight).padding(.top, s.home.setDurationLabelPaddingTop)
-                        Rectangle().frame(width: geo.size.width, height: s.home.setDurationButtonHeight).padding(.top, s.home.setDurationButtonPaddingTop).foregroundColor(.clear)
+                        }.onTapGesture {
+                            self.editDurationMode.toggle()
+                        }
+                        .padding(.top, s.home.detachTitleToTop)
+                        Text("Set Focus Duration").kerning(-0.65).font(.system(size: 25, weight: .medium, design: .default)).foregroundColor(Color.tan)
+                            .frame(width: s.home.setDurationLabelWidth, height: s.home.setDurationLabelHeight)
+                            .padding(.top, s.home.setDurationLabelPaddingTop)
+//                            .offset(x: self.editDurationMode ? -1 * (s.universal.horizontalPadding + s.home.setDurationLabelWidth) : 0)
+                        Rectangle().frame(width: geo.size.width, height: s.home.setDurationButtonHeight).foregroundColor(.clear)
+                            .padding(.top, s.home.setDurationButtonPaddingTop)
                     }
 
                     Button(action: {
@@ -44,15 +52,15 @@ struct HomeMenu: View {
                             }.frame(width: geo.size.width * 0.90, height: .none, alignment: .leading)
                     }.padding(.top, 10)
                     Spacer()
-                }.padding(.horizontal, 25).frame(width: geo.size.width, height: geo.size.height, alignment: .center)
+                }
+                .padding(.horizontal, 25).frame(width: geo.size.width, height: geo.size.height, alignment: .center)
+                .offset(x: self.editDurationMode ? -1 * (geo.size.width + s.universal.horizontalPadding) : 0)
                 VStack {
-                    HStack{
-                        Spacer()
-                        SetDurationButton(durationString: self.$durationString, editDurationMode: self.$editDurationMode) {
-                            self.editDurationMode.toggle()
-                        }.frame(width: self.editDurationMode ? geo.size.width : geo.size.width * 0.75)
-                        Spacer()
+                    SetDurationButton(durationString: self.$durationString, editDurationMode: self.$editDurationMode) {
+                        self.editDurationMode.toggle()
                     }
+                    .frame(width: self.editDurationMode ? geo.size.width : geo.size.width * 0.75)
+
                     HStack(spacing: 0) {
                         Button(action: {}) {
                             Text("Cancel").font(.system(size: 20, weight: .semibold, design: .default)).foregroundColor(Color.lightPurple)
@@ -65,8 +73,7 @@ struct HomeMenu: View {
                         .frame(width: (geo.size.width - s.home.setDurationEditorButtonsHSpace) / 2, height: 50).background(Image("bg-blur").resizable()).cornerRadius(7.0).offset(x: self.editDurationMode ? 0 : (s.universal.horizontalPadding + (geo.size.width - s.home.setDurationEditorButtonsHSpace) / 2))
                     }
                     Spacer()
-                }.offset(y: self.editDurationMode ?  s.home.setDurationEditorPaddingTop : setDurationButtonTopPadding)
-
+                }.offset(y: self.editDurationMode ? s.home.setDurationEditorPaddingTop : setDurationButtonTopPadding)
             }
         }
     }
@@ -78,30 +85,30 @@ struct SetDurationButton: View {
     @Binding var editDurationMode: Bool
     var showSetDuration: () -> Void
     var body: some View {
-        GeometryReader { geometry in
-//            HStack(alignment: .center, spacing: 0) {
-//                Spacer()
-                Button(action: {
-                    showSetDuration()
-                }) {
-                        VStack(alignment: .center, spacing: 0) {
-                            Text(" " + self.durationString + " ").font(.newYorkXL(size: 60.0)).foregroundColor(Color.midPurple)
-                            HStack(alignment: .center, spacing: 0) {
-                                Spacer()
-                                Rectangle().fill(Color.midPurple).frame(width: 200, height: 1, alignment: .center)
-                                Spacer()
-                            }.padding(.top, 4)
-                            HStack(alignment: .center, spacing: 0) {
-                                Spacer()
-                                Text("HOURS")
-                                Spacer().frame(width: 31, height: 0, alignment: .center)
-                                Text("MINUTES")
-                                Spacer()
-                            }.padding(.top, 5).foregroundColor(Color.midPurple)
-                        }
-                }.frame(height: s.home.setDurationButtonHeight).background(Image("bg-blur").resizable().edgesIgnoringSafeArea([.top, .bottom])).cornerRadius(15.0)
-//                Spacer()
-//            }
+        GeometryReader { _ in
+            //            HStack(alignment: .center, spacing: 0) {
+            //                Spacer()
+            Button(action: {
+                showSetDuration()
+            }) {
+                    VStack(alignment: .center, spacing: 0) {
+                        Text(" " + self.durationString + " ").font(.newYorkXL(size: 60.0)).foregroundColor(Color.midPurple)
+                        HStack(alignment: .center, spacing: 0) {
+                            Spacer()
+                            Rectangle().fill(Color.midPurple).frame(width: 200, height: 1, alignment: .center)
+                            Spacer()
+                        }.padding(.top, 4)
+                        HStack(alignment: .center, spacing: 0) {
+                            Spacer()
+                            Text("HOURS")
+                            Spacer().frame(width: 31, height: 0, alignment: .center)
+                            Text("MINUTES")
+                            Spacer()
+                        }.padding(.top, 5).foregroundColor(Color.midPurple)
+                    }
+            }.frame(height: s.home.setDurationButtonHeight).background(Image("bg-blur").resizable().edgesIgnoringSafeArea([.top, .bottom])).cornerRadius(15.0)
+            //                Spacer()
+            //            }
         }.frame(height: s.home.setDurationButtonHeight)
     }
 }

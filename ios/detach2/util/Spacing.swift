@@ -39,7 +39,7 @@ let s = DSpacing(
     home:
     DHomeSpacing(
         detachTitleHeight: 50,
-        detachTitleToTop: 100,
+        detachTitleToTop: 80,
         detachTitleWidth: 126,
         setDurationLabelHeight: 25,
         setDurationLabelPaddingTop: 50,
@@ -47,5 +47,4 @@ let s = DSpacing(
         setDurationButtonHeight: 154,
         setDurationLabelWidth: 199,
         setDurationEditorPaddingTop: 30,
-        setDurationEditorButtonsHSpace: 14
-    ))
+        setDurationEditorButtonsHSpace: 14))

@@ -92,7 +92,7 @@ struct ContentView: View {
                                 if self.cScreen == "SelectApps" { Button(action: {
                                     self.cScreen = "HomeMenu"
                                 }) {
-                                    Image("leftArrow").resizable().frame(width: 44, height: 21, alignment: .leading).padding(.leading, s.universal.horizontalPadding).animation(.easeOut(duration: 0.5)).offset(x: self.selectAppsSwipeState.width).opacity((100.0 - Double(self.selectAppsSwipeState.width)) / 100)
+                                        Image("leftArrow").resizable().frame(width: 44, height: 21, alignment: .leading).padding(.leading, s.universal.horizontalPadding).animation(.easeOut(duration: 0.5)).offset(x: self.selectAppsSwipeState.width).opacity((100.0 - Double(self.selectAppsSwipeState.width)) / 100)
                                 }
 //                                .modifier(ParallaxMotionModifier(manager: manager, magnitude: 12))
                                 }
@@ -107,7 +107,9 @@ struct ContentView: View {
                                 self.startFocusPressed()
                             } showDurationScreen: {
                                 self.showDurationOverlay()
-                            }.offset(x: self.cScreen != "HomeMenu" ? -1 * geo.size.width : 0).animation(.spring()).padding(.horizontal, s.universal.horizontalPadding)
+                            }
+                            .padding(.horizontal, s.universal.horizontalPadding)
+                            .offset(x: self.cScreen != "HomeMenu" ? -1 * geo.size.width : 0).animation(.spring())
                             SelectAppsScreen(swipeState: self.$selectAppsSwipeState, setSwipeState: { state in
                                 self.selectAppsSwipeState = state
                             }, setScreen: { screen in
@@ -118,7 +120,6 @@ struct ContentView: View {
                             }.offset(x: self.cScreen == "Start" ? 0 : geo.size.width, y: 0).animation(.spring()).padding(.horizontal, s.universal.horizontalPadding)
                         }
 //                        .modifier(ParallaxMotionModifier(manager: manager, magnitude: 12))
-
                     }
                     //                    SetDurationOverlay(durationString: self.$durationString, setDurationString: { str in
                     //                        self.durationString = str
