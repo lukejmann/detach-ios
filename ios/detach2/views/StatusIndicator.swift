@@ -21,6 +21,7 @@ struct StatusIndicator: View {
             return "Reasserting"
         }
     }
+    
 
     var body: some View {
         GeometryReader { _ in
@@ -43,9 +44,17 @@ struct StatusIndicator: View {
                 }
             }.onReceive(timer) { _ in
                 var status = TunnelController.shared.status()
-                if self.cScreen == "Start", status == .disconnected {
-                    status = .connecting
-                }
+//                print("status: \(readableStatus(status: status))")
+//                if let sessionEndTime = getSessionEndDate() {
+//                    if status == .disconnected {
+//                        status = .connecting
+//                    }
+//                } else {
+//
+//                }
+//                if self.cScreen == "Start", status == .disconnected {
+//                    status = .connecting
+//                }
                 self.proxyStatus = status
             }.animation(.spring())
         }

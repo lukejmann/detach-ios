@@ -7,14 +7,14 @@ struct SessionScreen: View {
     var setScreen: (_ screen: String) -> Void
     
     var sessionCompleted: Bool {
-//        endDate == nil ? true : Date() > endDate!
-        false
+                endDate == nil ? true : Date() > endDate!
+//        false
     }
 
     @State var countDownStr: String = "N/A"
     @Environment(\.colorScheme) var colorScheme
 
-//    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    //    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
 
     func dateToCountdownStr(endDateOpt: Date?) -> String {
@@ -61,9 +61,9 @@ struct SessionScreen: View {
                     Text(self.countDownStr + "  ").font(.newYorkXL(size: 60.0)).foregroundColor(Color.tan).padding(.top, 15)
 
                         .animation(.spring())
-//                        .onAppear(perform: {
-//                            self.countDownStr = dateToCountdownStr(endDateOpt: self.endDate)
-//                        })
+                        //                        .onAppear(perform: {
+                        //                            self.countDownStr = dateToCountdownStr(endDateOpt: self.endDate)
+                        //                        })
                         .frame(width: 350, height: .none, alignment: .leading)
                     Spacer()
                 } else {
@@ -96,9 +96,9 @@ struct SessionScreen: View {
                                     Text("Done").foregroundColor(.white).font(.system(size: 18, weight: .bold, design: .default))
                                 })
                             }
-                        }.padding(.top, 30).padding(.trailing,30)
+                        }.padding(.top, 30)
                     }
-                }
+                }.padding(.trailing, 15)
                 if sessionCompleted { Spacer() }
             }.onReceive(timer) { _ in
                 self.countDownStr = dateToCountdownStr(endDateOpt: self.endDate)

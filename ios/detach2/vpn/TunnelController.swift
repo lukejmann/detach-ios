@@ -14,7 +14,32 @@ class TunnelController: NSObject {
     func disable() {
 //        setVPNDomains(domains: [""])
         setEnabled(false)
+        detachProvier.request(.fetchAppDomains) { _ in
+            //
+        }
     }
+
+//    func restart(completion: @escaping (_ error: Error?) -> Void = { _ in }) {
+//         Print("MARK: In TunnelController restart ")
+//         // Don't let this affect userWantsFirewallOn/Off config
+//         TunnelController.shared.setEnabled(false, completion: {  error in
+//             if error != nil {
+//                 Print("Error disabling on Firewall restart: \(error!)")
+//             }
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) {
+//                TunnelController.shared.setEnabled(true, completion: {
+//                    error in
+//                    if error != nil {
+//                        Print("Error enabling on Firewall restart: \(error!)")
+//                    }
+//                    completion(error)
+//                })
+//            }
+//
+//         })
+//     }
+
+    
 
     func refreshManager(completion: @escaping (_ error: Error?) -> Void = { _ in }) {
         Print("[TUNNEL_CONTROLLER] in TunnelController refreshManager ")

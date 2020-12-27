@@ -2,6 +2,8 @@ import CoreMotion
 import NetworkExtension
 import SwiftUI
 
+var connectingProxyPingCount = 0
+
 struct ContentView: View {
     @State public var cScreen: String = "HomeMenu"
     @State var showLoginScreen = getUserID() == nil
@@ -46,6 +48,7 @@ struct ContentView: View {
 //            cScreen = "HomeMenu"
 //        }
         if let sessionEndDate = getSessionEndDate() {
+            self.sessionEndDate = sessionEndDate
             if Date() <= sessionEndDate {
                 cScreen = "Start"
             }
@@ -54,19 +57,34 @@ struct ContentView: View {
     }
 
 
-    func proxyCheckIn() {
-        var disable = false
-        if let sessionEndDate = getSessionEndDate() {
-            if Date() > sessionEndDate {
-                disable = true
-            }
-        } else {
-            disable = true
-        }
-        if disable && !(TunnelController.shared.status() == .disconnecting || TunnelController.shared.status() == .disconnected || TunnelController.shared.status() == .invalid) {
-            TunnelController.shared.disable()
-        }
-    }
+    /* attempt bug where after starting session VPN status stays on "Connecting" or "Disconnected" despite returning no connection error
+     i'm going to try just showing 'connected' because I suspect the status simply is not updating because a lack of requests?
+     */
+//    let connectingProxyRestartThreshold = 15
+//     func connectingProxyCheckIn() {
+//        let status = TunnelController.shared.status()
+//        if getSessionEndDate() != nil {
+//            if status == .disconnected || status == .connecting {
+//                connectingProxyPingCount += 1
+//                print("connectingProxyPingCount: \(connectingProxyPingCount)")
+//                if connectingProxyPingCount % connectingProxyRestartThreshold == 0 {
+//                    sendProxyTestConnection {
+//                        let newStatus = TunnelController.shared.status()
+//                        if TunnelController.shared.status() == .connected {
+//                            print("[SESSION][TUNNEL_CONTROLLER] ping to update connection successful")
+//                            connectingProxyPingCount = 0
+//                        }
+//                    }
+//                }
+//            } else {
+//                connectingProxyPingCount = 0
+//            }
+//        } else {
+//            connectingProxyPingCount = 0
+//        }
+//    }
+
+   
 
     var body: some View {
         GeometryReader { geo in
@@ -122,7 +140,7 @@ struct ContentView: View {
         .onAppear {
             self.onAppear()
         }.onReceive(timer, perform: { _ in
-            self.proxyCheckIn()
+            self.connectingProxyCheckIn()
         }).background(Image("bg-grain").resizable().edgesIgnoringSafeArea([.top, .bottom]))
     }
 }

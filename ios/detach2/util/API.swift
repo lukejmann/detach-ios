@@ -35,7 +35,7 @@ public enum DetachAPI {
 }
 
 extension DetachAPI: TargetType {
-    public var baseURL: URL { URL(string: "http://192.168.1.92/1")! }
+    public var baseURL: URL { URL(string: "http://api.detachapp.com/1")! }
     public var path: String {
         switch self {
         case .login:
