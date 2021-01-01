@@ -50,11 +50,13 @@ class TunnelController: NSObject {
                     } else {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                             self.sendProxyTestConnection {
-                                if TunnelController.shared.status() == .connected {
+                                let status = TunnelController.shared.status()
+                                if status == .connected {
                                     print("[TUNNEL_CONTROLLER] proxy successfully enabled with ping 2")
                                     completion(true)
                                     return
                                 } else {
+                                    print("[TUNNEL_CONTROLLER][ERROR] proxy failed to enable with ping 2. status: \(readableStatus(status: status))")
                                     completion(false)
                                     return
                                 }

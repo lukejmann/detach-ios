@@ -4,6 +4,7 @@ enum loginPage {
     case descriptionOne
     case signIn
     case proxySetup
+    case proxyError
 }
 
 struct LoginScreen: View {
@@ -13,9 +14,11 @@ struct LoginScreen: View {
     func setCredentials(creds: CredentialsOrError) {
         if creds.isSuccess {
             loginUser(userID: creds.values?.user ?? "", email: creds.values?.email ?? "") { success in
-                print("loginUser completion. success: \(success)")
                 if success {
+                    print("[LOGIN][API] loginUser successful")
                     self.loginPage = .proxySetup
+                } else {
+                    print("[LOGIN][API][ERROR] loginUser failure")
                 }
             }
         }
@@ -23,16 +26,19 @@ struct LoginScreen: View {
 
     func setupProxy() {
 
-    /* calling enable() fails on login. can just call setEnable to setup once and then manage once in app. */
-        TunnelController.shared.setEnabled(true) { error in
-            if error != nil {
-                print("[LOGIN] successfully setup proxy")
-            } else {
-                print("[LOGIN] error setting up proxy. error: \(String(describing: error))")
-            }
-            loginCompleted()
+//         calling enable() fails on login. can just call setEnable to setup once and then manage once in app.
+                TunnelController.shared.setEnabled(true) { error in
+                    if error != nil {
+                        print("[LOGIN] successfully setup proxy")
+                        TunnelController.shared.disable()
+                        loginCompleted()
+                    } else {
+                        print("[LOGIN] error setting up proxy. error: \(String(describing: error))")
+                        self.loginPage = .proxyError
+                    }
+                }
 
-        }
+
     }
 
     var body: some View {
@@ -40,22 +46,26 @@ struct LoginScreen: View {
             VStack {
                 HStack {
                     Text("detach").font(.custom("Georgia-Italic", size: 42)).foregroundColor(Color.tan)
-                }.frame(width: geo.size.width, height: .none, alignment: .center).padding(.top, 60)
+                }.frame(width: geo.size.width, height: .none, alignment: .center).padding(.top, 0.071 * geo.size.height)
                 ZStack(alignment: .topLeading) {
                     VStack(alignment: .leading) {
-                        Text("Our phones are great, but it’s become increasingly difficult to use them without getting distracted.").font(.system(size: 25, weight: .semibold, design: .default)).kerning(-0.8).foregroundColor(Color.tan)
-                        Text("Detach temorarily blocks chosen apps from your phone so you can stay focused.").font(.system(size: 25, weight: .bold, design: .default)).kerning(-1).foregroundColor(Color.tan).padding(.top, 30)
+                        Text("We love the apps on our phones, but using our phones without getting distracted is a challenge.").font(.system(size: 25, weight: .semibold, design: .default)).kerning(-0.8).foregroundColor(Color.tan)
+                        Text("Detach temorarily blocks chosen apps from your phone so you can stay focused on what matters.").font(.system(size: 25, weight: .bold, design: .default)).kerning(-1).foregroundColor(Color.tan).padding(.top, 30)
                         HStack {
                             Spacer()
                             Button(action: {
                                 self.loginPage = .signIn
                             }) {
-                                    Image("rightArrow").resizable().frame(width: 52.25, height: 25, alignment: .center)
+                                Image("rightArrow").resizable().frame(width: 52.25, height: 25, alignment: .center)
                             }
                         }.frame(width: 0.9 * geo.size.width).padding(.top, 40)
                     }.offset(x: self.loginPage == .descriptionOne ? 0 : -1.5 * geo.size.width).padding(.horizontal, 25)
                     VStack {
-                        Text("Login or sign up to get started.").font(.system(size: 25, weight: .semibold, design: .default)).kerning(-0.5).foregroundColor(Color.tan).frame(width: 300, height: .none)
+                        Text("Login or sign up to get started.").font(.system(size: 23, weight: .semibold, design: .default)).kerning(-0.5).foregroundColor(Color.tan).frame(width: 300, height: .none)
+                            .onTapGesture {
+                                if isBeingDebugged(){
+                            self.loginPage = .proxySetup}
+                        }
                         HStack {
                             Spacer()
                             SignInWithAppleButton(setCredentials: self.setCredentials).frame(width: 300, height: 44, alignment: .center).padding(.top, 30)
@@ -64,22 +74,45 @@ struct LoginScreen: View {
                     }.offset(x: self.loginPage == .signIn ? 0 : self.loginPage == .descriptionOne ? 1.5 * geo.size.width : -1.5 * geo.size.width)
                     VStack(alignment: .leading) {
                         Text("Last step! Detach blocks apps by preventing them from connecting to the internet using a DNS filter.").font(.system(size: 25, weight: .semibold, design: .default)).kerning(-1).foregroundColor(Color.tan)
-                        Text("To proceed, please enable the DNS filter.").kerning(-1).foregroundColor(Color.tan).padding(.top, 30).font(.system(size: 25, weight: .bold, design: .default))
+                            .onTapGesture {
+                                if isBeingDebugged(){
+                                self.loginCompleted()}
+                        }
+                        Text("To proceed, setup the DNS filter.").kerning(-1).foregroundColor(Color.tan).padding(.top, 30).font(.system(size: 25, weight: .bold, design: .default))
                         Button(action: {
                             self.setupProxy()
                         }) {
-                                ZStack {
-                                    RoundedRectangle(cornerRadius: 8, style: .continuous)
-                                        .fill(Color.darkBlue)
-                                        .frame(width: geo.size.width - 50, height: 44)
-                                    HStack(alignment: .center, spacing: nil, content: {
-                                        Text("Setup Proxy").foregroundColor(.white).font(.system(size: 18, weight: .bold, design: .default))
-                                    })
-                                }
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 7.0, style: .continuous)
+                                    .fill(Color.clear)
+                                    .background(Image("bg-blur").resizable()).cornerRadius(7.0)
+                                    .frame(width: geo.size.width - 50, height: 44)
+                                HStack(alignment: .center, spacing: nil, content: {
+                                    Text("Setup Proxy").foregroundColor(.midPurple).font(.system(size: 18, weight: .bold, design: .default))
+                                })
+                            }
                         }.padding(.top, 30)
-                    }.offset(x: self.loginPage == .proxySetup ? 0 : 1.5 * geo.size.width).padding(.horizontal, 25)
+                        //                    }.offset(x: self.loginPage == .proxySetup ? 0 : 1.5 * geo.size.width).padding(.horizontal, 25)
+                    }.offset(x: self.loginPage == .proxySetup ? 0 : self.loginPage == .proxyError ? -1.5 * geo.size.width : 1.5 * geo.size.width).padding(.horizontal, 25)
 
-                }.padding(.top, 100)
+                    VStack(alignment: .leading) {
+                        Text("Error enabling DNS filter. Set up the filter later to enable app-blocking.").font(.system(size: 25, weight: .semibold, design: .default)).kerning(-1).foregroundColor(Color.tan)
+                        Button(action: {
+                            self.loginCompleted()
+                        }) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 7.0, style: .continuous)
+                                    .fill(Color.clear)
+                                    .background(Image("bg-blur").resizable()).cornerRadius(7.0)
+                                    .frame(width: geo.size.width - 50, height: 44)
+                                HStack(alignment: .center, spacing: nil, content: {
+                                    Text("Continue to Detach").foregroundColor(.midPurple).font(.system(size: 18, weight: .bold, design: .default))
+                                })
+                            }
+                        }.padding(.top, 30)
+                    }.offset(x: self.loginPage == .proxyError ? 0 : 1.5 * geo.size.width).padding(.horizontal, 25)
+
+                }.padding(.top, geo.size.height * 0.13)
                 Spacer()
             }.frame(width: geo.size.width, height: geo.size.height).animation(.spring())
         }
@@ -89,8 +122,9 @@ struct LoginScreen: View {
 struct LoginScreen_Previews: PreviewProvider {
     static var previews: some View {
         LoginScreen(loginCompleted: {})
-//            .previewDevice(PreviewDevice(rawValue: "iPhone XS Max"))
-            .previewDisplayName("iPhone 11 Pro").background(Image("bg-grain").resizable())
+                        .previewDevice(PreviewDevice(rawValue: "iPhone 12 Pro Max"))
+//            .previewDisplayName("iPhone 11 Pro")
+            .background(Image("bg-grain").resizable())
     }
 }
 

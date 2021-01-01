@@ -32,7 +32,7 @@ public struct DHomeSpacing {
     var setDurationEditorButtonsHSpace: CGFloat
 }
 
-let s = DSpacing(
+var s = DSpacing(
     universal: DUniversalSpacing(
         horizontalPadding: 30,
         statusIndicatorToTop: 30),
@@ -48,3 +48,9 @@ let s = DSpacing(
 //        setDurationLabelWidth: 250,
         setDurationEditorPaddingTop: 30,
         setDurationEditorButtonsHSpace: 14))
+
+func calculateSpacing(screenWidth: CGFloat, screenHeight: CGFloat) {
+    s.universal.statusIndicatorToTop = 0.035 * screenHeight
+    s.home.detachTitleToTop = 0.05 * screenHeight
+    s.home.setDurationLabelPaddingTop = 0.024 * screenHeight
+}

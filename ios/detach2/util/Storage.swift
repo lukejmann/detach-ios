@@ -14,7 +14,7 @@ public func getSessionEndDate() -> Date? {
     return nil
 }
 
-public func setSessionEndDate(date: Date) {
+public func setSessionEndDate(date: Date?) {
     let encoder = JSONEncoder()
     if let encoded = try? encoder.encode(date) {
         timerDefaults.set(encoded, forKey: kSessionEndDate)

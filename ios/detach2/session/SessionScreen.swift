@@ -7,8 +7,8 @@ struct SessionScreen: View {
     var setScreen: (_ screen: String) -> Void
     
     var sessionCompleted: Bool {
-//                endDate == nil ? true : Date() > endDate!
-        false
+                endDate == nil ? true : Date() > endDate!
+//        false
     }
 
     @State var countDownStr: String = "N/A"
@@ -58,12 +58,7 @@ struct SessionScreen: View {
             VStack(alignment: .leading, spacing: 0) {
                 if !sessionCompleted {
                     Text("Focus Session Started").font(.system(size: 25, weight: .bold, design: .default)).kerning(-1).foregroundColor(Color.tan)
-                    Text(self.countDownStr + "  ").font(.newYorkXL(size: 60.0)).foregroundColor(Color.tan).padding(.top, 15)
-
-                        .animation(.spring())
-                        //                        .onAppear(perform: {
-                        //                            self.countDownStr = dateToCountdownStr(endDateOpt: self.endDate)
-                        //                        })
+                    Text(self.countDownStr + "  ").font(.newYorkXL(size: 60.0)).foregroundColor(Color.tan).padding(.top, 15).animation(.spring())
                         .frame(width: 350, height: .none, alignment: .leading)
                     Spacer()
                 } else {
@@ -88,12 +83,13 @@ struct SessionScreen: View {
                             self.donePressed()
                         }) {
                             ZStack {
-                                RoundedRectangle(cornerRadius: 8, style: .continuous)
-                                    .fill(Color.darkBlue)
+                                RoundedRectangle(cornerRadius: 7.0, style: .continuous)
+                                    .fill(Color.clear)
+                                    .background(Image("bg-blur").resizable()).cornerRadius(7.0)
                                     .frame(width: 122, height: 44)
                                 HStack(alignment: .center, spacing: nil, content: {
                                     Image("checkIcon").resizable().frame(width: 15, height: 15, alignment: .center)
-                                    Text("Done").foregroundColor(.white).font(.system(size: 18, weight: .bold, design: .default))
+                                    Text("Done").foregroundColor(.lightPurple).font(.system(size: 18, weight: .bold, design: .default))
                                 })
                             }
                         }.padding(.top, 30)
@@ -102,7 +98,7 @@ struct SessionScreen: View {
                 if sessionCompleted { Spacer() }
             }.onReceive(timer) { _ in
                 self.countDownStr = dateToCountdownStr(endDateOpt: self.endDate)
-            }.padding(.top, 100).frame(width: nil, height: geo.size.height * 0.7, alignment: .center)
+            }.padding(.top, geo.size.height * 0.13).frame(width: nil, height: geo.size.height * 0.7, alignment: .center)
         }
     }
 }

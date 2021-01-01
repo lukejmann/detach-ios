@@ -69,7 +69,8 @@ struct HomeMenu: View {
                         self.startFocusPressed()
                     }) {
                         HStack(alignment: .center) {
-                            Text("Start Focus").font(.system(size: 45, weight: .bold, design: .default)).kerning(-1).foregroundColor(Color.tan)
+                            Text("Start Focus").font(.system(size: 45, weight: .bold, design: .default)).kerning(-1).minimumScaleFactor(0.7).lineLimit(1)
+                                .foregroundColor(Color.tan)
                             Spacer()
                             Image("rightArrow").resizable().frame(width: 52.25, height: 25, alignment: .center)
                         }.frame(width: geo.size.width * 0.9, height: .none, alignment: .leading)
@@ -79,7 +80,7 @@ struct HomeMenu: View {
                         self.setScreen("SelectApps")
                     }) {
                         HStack(alignment: .center) {
-                            Text("Select Apps").font(.system(size: 45, weight: .regular, design: .default)).kerning(-1).foregroundColor(Color.tan)
+                            Text("Select Apps").font(.system(size: 45, weight: .regular, design: .default)).kerning(-1).minimumScaleFactor(0.7).lineLimit(1).foregroundColor(Color.tan)
                             Spacer()
                             Image("rightArrow-thin").resizable().frame(width: 52.25, height: 25, alignment: .center)
                         }.frame(width: geo.size.width * 0.90, height: .none, alignment: .leading)

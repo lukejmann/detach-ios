@@ -44,6 +44,7 @@
 		A392C7F524E44AA100D5DAF4 /* DomainEval.swift in Sources */ = {isa = PBXBuildFile; fileRef = A392C7F424E44AA100D5DAF4 /* DomainEval.swift */; };
 		A392C7FC24E4507C00D5DAF4 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A392C7FB24E4507C00D5DAF4 /* NetworkExtension.framework */; };
 		A392C7FE24E4509800D5DAF4 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A392C7FB24E4507C00D5DAF4 /* NetworkExtension.framework */; };
+		A3975402259E886000DA0DC3 /* PushNotifs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3975401259E886000DA0DC3 /* PushNotifs.swift */; };
 		A39A952624E4B79900377CD5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39A952524E4B79900377CD5 /* Colors.swift */; };
 		A39A952C24E4C17D00377CD5 /* CustomUIKitTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39A952B24E4C17D00377CD5 /* CustomUIKitTextField.swift */; };
 		A3B7A1942597F85200DB9967 /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B7A1932597F85200DB9967 /* Spacing.swift */; };
@@ -156,6 +157,7 @@
 		A392C7F624E44F9300D5DAF4 /* NEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NEKit.framework; path = Carthage/Build/iOS/NEKit.framework; sourceTree = "<group>"; };
 		A392C7FB24E4507C00D5DAF4 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		A392C7FD24E4509800D5DAF4 /* detach2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = detach2.entitlements; sourceTree = "<group>"; };
+		A3975401259E886000DA0DC3 /* PushNotifs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotifs.swift; sourceTree = "<group>"; };
 		A39A952524E4B79900377CD5 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		A39A952B24E4C17D00377CD5 /* CustomUIKitTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIKitTextField.swift; sourceTree = "<group>"; };
 		A3B7A1932597F85200DB9967 /* Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
@@ -405,6 +407,7 @@
 				A350D5902578781700DA3739 /* Fonts.swift */,
 				A3B7A1932597F85200DB9967 /* Spacing.swift */,
 				A3B7A1D82598244800DB9967 /* UtilFuncs.swift */,
+				A3975401259E886000DA0DC3 /* PushNotifs.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -776,6 +779,7 @@
 				A39A952624E4B79900377CD5 /* Colors.swift in Sources */,
 				A34B1F3B257C37FD004753BE /* SetDurationOverlay.swift in Sources */,
 				A392C7BB24E4480F00D5DAF4 /* TunnelController.swift in Sources */,
+				A3975402259E886000DA0DC3 /* PushNotifs.swift in Sources */,
 				A392C7BF24E448C300D5DAF4 /* Logs.swift in Sources */,
 				A37D8BC224E88FDD00E8EAFE /* AppDomains.swift in Sources */,
 				A38CDC1A24E9C15800B226B6 /* LoginScreen.swift in Sources */,
@@ -1111,6 +1115,7 @@
 				CODE_SIGN_ENTITLEMENTS = DetachExtension/DetachExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 356ZKVC65R;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1137,6 +1142,7 @@
 				CODE_SIGN_ENTITLEMENTS = DetachExtension/DetachExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 356ZKVC65R;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",

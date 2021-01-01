@@ -7,48 +7,61 @@ struct ContentView: View {
     @State public var cScreen: String = "HomeMenu"
     @State var showLoginScreen = getUserID() == nil
     @State var showSetDuration = false
-//    @State var durationString: String = String(format: "%02d", getSessionDuration() / (60 * 60)) + ":" + String(format: "%02d", (getSessionDuration() % 3600) / 60)
     @State var sessionEndDate: Date? = nil
     @State var proxyStatus: NEVPNStatus = .invalid
     @State var selectAppsSwipeState: CGSize = CGSize.zero
+    @State var showPushNotifAlert = false
 
     @ObservedObject var manager = MotionManager()
 
     func startFocusPressed() {
-        let sessionDuration = getSessionDuration()
-        let now = Date()
-        sessionEndDate = now + Double(sessionDuration)
-        setSessionEndDate(date: sessionEndDate!)
-        startSession(endTime: sessionEndDate!) { success in
-            self.cScreen = "Start"
-            if success {
-                TunnelController.shared.enable { (success) in
-                    if !success{
-                        print("[SESSION][ERROR] error enabling proxy. cancelling session")
-                        cancelSession { (success) in
-                            if success {
-                            print("[SESSION] session cancelled")
+        checkNotifSettings() { enabled in
+            if enabled {
+                let sessionDuration = getSessionDuration()
+                let now = Date()
+                sessionEndDate = now + Double(sessionDuration)
+                startSession(endTime: sessionEndDate!) { success in
+                    setSessionEndDate(date: sessionEndDate!)
+                    self.cScreen = "Start"
+                    if success {
+                        TunnelController.shared.enable { (success) in
+                            if !success{
+                                print("[SESSION][ERROR] error enabling proxy. cancelling session")
+                                cancelSession { (success) in
+                                    if success {
+                                        print("[SESSION] session cancelled")
+                                    } else {
+                                        print("[SESSION][ERROR] error cancelling session")
+                                    }
+                                }
                             } else {
-                                print("[SESSION][ERROR] error cancelling session")
+                                print("[SESSION] successfully enabled proxy")
+                                
                             }
                         }
                     } else {
-                       print("[SESSION] successfully enabled proxy")
+                        // TODO: handle err
+                        print("[SESSION] error starting session")
                     }
                 }
+
             } else {
-                // TODO: handle err
-                print("[SESSION] error starting session")
+                self.showPushNotifAlert.toggle()
+                return
             }
         }
+        return
     }
+
 
     let timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect()
     @Environment(\.colorScheme) var colorScheme
     
     func onAppear() {
+//        calculateSpacing(screenWidth: <#T##CGFloat#>, screenHeight: <#T##CGFloat#>)
         print("[SCREEN_CONTENTVIEW] onAppear called")
         if let sessionEndDate = getSessionEndDate() {
+            print("SESSION ENDDATE: \(sessionEndDate)")
             self.sessionEndDate = sessionEndDate
             if Date() <= sessionEndDate {
                 cScreen = "Start"
@@ -57,10 +70,13 @@ struct ContentView: View {
         refreshSupportedApps()
     }
 
-   
+
 
     var body: some View {
         GeometryReader { geo in
+            ZStack{
+
+
             if showLoginScreen {
                 LoginScreen {
                     // log in completed
@@ -75,7 +91,7 @@ struct ContentView: View {
                                 if self.cScreen == "SelectApps" { Button(action: {
                                     self.cScreen = "HomeMenu"
                                 }) {
-                                        Image("leftArrow").resizable().frame(width: 44, height: 21, alignment: .leading).padding(.leading, s.universal.horizontalPadding).animation(.easeOut(duration: 0.5)).offset(x: self.selectAppsSwipeState.width).opacity((100.0 - Double(self.selectAppsSwipeState.width)) / 100)
+                                    Image("leftArrow").resizable().frame(width: 44, height: 21, alignment: .leading).padding(.leading, s.universal.horizontalPadding).animation(.easeOut(duration: 0.5)).opacity((100.0 - Double(self.selectAppsSwipeState.width)) / 100)
                                 }
                                 .modifier(ParallaxMotionModifier(manager: manager, magnitude: 10))
                                 }
@@ -104,11 +120,30 @@ struct ContentView: View {
                     }
                 }.frame(width: geo.size.width, height: geo.size.height, alignment: .center).ignoresSafeArea(.keyboard)
             }
+            }.onAppear(perform: {
+                calculateSpacing(screenWidth: geo.size.width, screenHeight: geo.size.height)
+            })
+        }.alert(isPresented: self.$showPushNotifAlert) {
+            Alert(title: Text("Push Notifications Required"), message: Text("Detach requires push notifications to disable the DNS filter when sessions are completed. Please enable push notifications in settings." ), primaryButton: Alert.Button.default(Text("Open Settings"), action: {
+                print("OPEN SETTINGS PRESSED")
+
+                if let bundleIdentifier = Bundle.main.bundleIdentifier, let appSettings = URL(string: UIApplication.openSettingsURLString + bundleIdentifier) {
+                    if UIApplication.shared.canOpenURL(appSettings) {
+                        UIApplication.shared.open(appSettings)
+                    }
+                }
+//                self.showPushNotifAlert = false
+            }),
+            secondaryButton: Alert.Button.cancel(Text("Cancel"), action: {
+                print("CANCEL PRESSED")
+//                self.showPushNotifAlert = false
+            })
+            )
         }
         .onAppear {
             self.onAppear()
         }.onReceive(timer, perform: { _ in
-//            self.connectingProxyCheckIn()
+            //            self.connectingProxyCheckIn()
         }).background(Image("bg-grain").resizable().edgesIgnoringSafeArea([.top, .bottom]))
     }
 }
@@ -153,3 +188,5 @@ class MotionManager: ObservableObject {
         }
     }
 }
+
+

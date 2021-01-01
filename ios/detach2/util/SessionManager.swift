@@ -67,6 +67,8 @@ func cancelSession(completion: @escaping (Bool) -> Void) {
     } else {
         print("[API][ERROR] error fetching userID in cancelSession")
     }
+    setSessionEndDate(date: nil)
+
 }
 
 
@@ -83,6 +85,7 @@ func setupBlockedDomains(appNames: [String]) {
             }
         }
     }
+    print("setting VPMDomains to \(domains)")
     setVPNDomains(domains: domains)
 }
 
