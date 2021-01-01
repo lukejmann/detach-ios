@@ -183,13 +183,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A392C7DF24E449A500D5DAF4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -420,7 +413,7 @@
 				A32A96CE24E32DAD002C1145 /* Resources */,
 				A392C7D024E448E200D5DAF4 /* Embed App Extensions */,
 				28DDED386AC3D8606F2AD7AC /* [CP] Embed Pods Frameworks */,
-				A3DAF7AA259EF68B0053F7C7 /* ShellScript */,
+				A3DAF7AB259EF6AF0053F7C7 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -477,9 +470,6 @@
 			buildPhases = (
 				0756E1BF88B1215CC0E2F5B8 /* [CP] Check Pods Manifest.lock */,
 				A392C7DE24E449A500D5DAF4 /* Sources */,
-				A392C7DF24E449A500D5DAF4 /* Frameworks */,
-				A392C7E024E449A500D5DAF4 /* Resources */,
-				A392C7FA24E44FE700D5DAF4 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -560,13 +550,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A32A96EF24E32DAF002C1145 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A392C7E024E449A500D5DAF4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -694,7 +677,7 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#swiftformat . --config f.swiftformat  --verbose\n";
 		};
-		A392C7FA24E44FE700D5DAF4 /* ShellScript */ = {
+		A3DAF7AB259EF6AF0053F7C7 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -720,23 +703,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
-		};
-		A3DAF7AA259EF68B0053F7C7 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
 		};
 		A44DE497E1776A0FC439DF52 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

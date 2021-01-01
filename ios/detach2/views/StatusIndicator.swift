@@ -42,7 +42,7 @@ struct StatusIndicator: View {
                     }.frame(width: 16, height: 16).animation(.none)
                     Text(self.proxyStatusText).kerning(-0.4).font(.system(size: 14, weight: .medium, design: .default)).foregroundColor(Color.tan)
                 }
-            }.onReceive(timer) { _ in
+            }.frame(width: 173, height: 33, alignment: .center).onReceive(timer) { _ in
                 self.proxyStatus = TunnelController.shared.status()
             }.animation(.spring())
         }
@@ -54,6 +54,6 @@ struct StatusIndicator_Previews: PreviewProvider {
     @State static var proxyStatus: NEVPNStatus = .connecting
     @State static var cScreen: String = "SelectApps"
     static var previews: some View {
-        StatusIndicator(timer: self.timer, proxyStatus: self.$proxyStatus, cScreen: self.$cScreen).background(Image("bg-grain"))
+        StatusIndicator(timer: self.timer, proxyStatus: self.$proxyStatus, cScreen: self.$cScreen).background(Image("bg-grain").resizable())
     }
 }

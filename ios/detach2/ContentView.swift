@@ -121,7 +121,7 @@ struct ContentView: View {
                                 self.cScreen = screen
                             }.offset(x: self.cScreen == "Start" ? 0 : geo.size.width, y: 0).animation(.spring()).padding(.horizontal, s.universal.horizontalPadding)
                         }
-                        .modifier(ParallaxMotionModifier(manager: manager, magnitude: 10))
+                        .modifier(ParallaxMotionModifier(manager: manager, magnitude: 7))
                     }
                 }.frame(width: geo.size.width, height: geo.size.height, alignment: .center).ignoresSafeArea(.keyboard)
             }

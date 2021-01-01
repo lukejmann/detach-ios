@@ -92,7 +92,7 @@ struct SessionScreen: View {
                             }
                         }.padding(.top, 30)
                     }
-                }.padding(.trailing, 10)
+                }.padding(.trailing, 17)
                 if sessionCompleted { Spacer() }
             }.onReceive(timer) { _ in
                 self.countDownStr = dateToCountdownStr(endDateOpt: self.endDate)

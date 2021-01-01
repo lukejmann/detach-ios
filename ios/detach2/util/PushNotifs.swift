@@ -35,6 +35,7 @@ class RegistrationHelper {
 }
 
 func checkNotifSettings (completion: @escaping (Bool) -> Void) {
+    UIApplication.shared.registerForRemoteNotifications()
     var isRegisteredForRemoteNotifications = UIApplication.shared.isRegisteredForRemoteNotifications
     if !isRegisteredForRemoteNotifications {
         let center = UNUserNotificationCenter.current()
@@ -47,11 +48,12 @@ func checkNotifSettings (completion: @escaping (Bool) -> Void) {
             }
             if granted{
                 print("[PUSHNOTFIS] permissions granted")
-                print("isRegisteredForRemoteNotifications 1: \(isRegisteredForRemoteNotifications)")
                completion(true)
                 return
             }
         }
+    } else {
+        completion(true)
     }
     return
 }

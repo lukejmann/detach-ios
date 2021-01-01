@@ -58,7 +58,7 @@ struct LoginScreen: View {
                             }) {
                                 Image("rightArrow").resizable().frame(width: 52.25, height: 25, alignment: .center)
                             }
-                        }.frame(width: 0.9 * geo.size.width).padding(.top, 40)
+                        }.frame(width: geo.size.width - s.universal.horizontalPadding * 2).padding(.top, 40)
                     }.offset(x: self.loginPage == .descriptionOne ? 0 : -1.5 * geo.size.width).padding(.horizontal, 25)
                     VStack {
                         Text("Login or sign up to get started.").font(.system(size: 23, weight: .semibold, design: .default)).kerning(-0.5).foregroundColor(Color.tan).frame(width: 300, height: .none)
