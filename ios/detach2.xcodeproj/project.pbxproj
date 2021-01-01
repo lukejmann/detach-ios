@@ -129,7 +129,6 @@
 		A37D8BBF24E88FBC00E8EAFE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A37D8BC124E88FDD00E8EAFE /* AppDomains.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDomains.swift; sourceTree = "<group>"; };
 		A37D8BC624E89C7400E8EAFE /* SelectAppsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAppsScreen.swift; sourceTree = "<group>"; };
-		A38C12AE255D0A8700E024D5 /* NEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NEKit.framework; path = ../../Downloads/Carthage/Build/iOS/NEKit.framework; sourceTree = "<group>"; };
 		A38CDC1924E9C15800B226B6 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		A392C7BA24E4480F00D5DAF4 /* TunnelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunnelController.swift; sourceTree = "<group>"; };
 		A392C7BC24E4482400D5DAF4 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
@@ -403,7 +402,6 @@
 		C7832D03B69040BEA28028E3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A38C12AE255D0A8700E024D5 /* NEKit.framework */,
 				A392C7FB24E4507C00D5DAF4 /* NetworkExtension.framework */,
 				A392C7F624E44F9300D5DAF4 /* NEKit.framework */,
 				2624817171B25DA987549187 /* Pods_DetachExtension.framework */,
