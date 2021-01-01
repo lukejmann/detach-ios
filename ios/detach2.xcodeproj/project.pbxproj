@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		020FA4EDC0549BBB186E8204 /* Pods_detach2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DB743EEFFCABBE96E4AD0E0 /* Pods_detach2.framework */; };
 		385EF55A9031AAD39396073B /* Pods_detach2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D66539DE9305E5431CF91200 /* Pods_detach2Tests.framework */; };
-		7ADE404E5E365F22E8C45292 /* Pods_DetachExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2624817171B25DA987549187 /* Pods_DetachExtension.framework */; };
 		8F5EB6B0A41BE7199D6ED712 /* Pods_detach2_detach2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 484C0A3803DD88F41299774B /* Pods_detach2_detach2UITests.framework */; };
 		A32A96D424E32DAD002C1145 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32A96D324E32DAD002C1145 /* AppDelegate.swift */; };
 		A32A96D624E32DAD002C1145 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32A96D524E32DAD002C1145 /* SceneDelegate.swift */; };
@@ -30,7 +29,6 @@
 		A37D8BC024E88FBC00E8EAFE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D8BBF24E88FBC00E8EAFE /* User.swift */; };
 		A37D8BC224E88FDD00E8EAFE /* AppDomains.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D8BC124E88FDD00E8EAFE /* AppDomains.swift */; };
 		A37D8BC724E89C7400E8EAFE /* SelectAppsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D8BC624E89C7400E8EAFE /* SelectAppsScreen.swift */; };
-		A38C12C1255D0ABA00E024D5 /* NEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A392C7F624E44F9300D5DAF4 /* NEKit.framework */; };
 		A38CDC1A24E9C15800B226B6 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38CDC1924E9C15800B226B6 /* LoginScreen.swift */; };
 		A392C7BB24E4480F00D5DAF4 /* TunnelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A392C7BA24E4480F00D5DAF4 /* TunnelController.swift */; };
 		A392C7BD24E4482400D5DAF4 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A392C7BC24E4482400D5DAF4 /* Util.swift */; };
@@ -41,7 +39,6 @@
 		A392C7F124E44A8700D5DAF4 /* DetachProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A392C7F024E44A8700D5DAF4 /* DetachProxy.swift */; };
 		A392C7F324E44A9400D5DAF4 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A392C7F224E44A9400D5DAF4 /* Utils.swift */; };
 		A392C7F524E44AA100D5DAF4 /* DomainEval.swift in Sources */ = {isa = PBXBuildFile; fileRef = A392C7F424E44AA100D5DAF4 /* DomainEval.swift */; };
-		A392C7FC24E4507C00D5DAF4 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A392C7FB24E4507C00D5DAF4 /* NetworkExtension.framework */; };
 		A392C7FE24E4509800D5DAF4 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A392C7FB24E4507C00D5DAF4 /* NetworkExtension.framework */; };
 		A3975402259E886000DA0DC3 /* PushNotifs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3975401259E886000DA0DC3 /* PushNotifs.swift */; };
 		A39A952624E4B79900377CD5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39A952524E4B79900377CD5 /* Colors.swift */; };
@@ -190,9 +187,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A392C7FC24E4507C00D5DAF4 /* NetworkExtension.framework in Frameworks */,
-				A38C12C1255D0ABA00E024D5 /* NEKit.framework in Frameworks */,
-				7ADE404E5E365F22E8C45292 /* Pods_DetachExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +420,7 @@
 				A32A96CE24E32DAD002C1145 /* Resources */,
 				A392C7D024E448E200D5DAF4 /* Embed App Extensions */,
 				28DDED386AC3D8606F2AD7AC /* [CP] Embed Pods Frameworks */,
+				A3DAF7AA259EF68B0053F7C7 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -725,6 +720,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+		};
+		A3DAF7AA259EF68B0053F7C7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
 		};
 		A44DE497E1776A0FC439DF52 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
