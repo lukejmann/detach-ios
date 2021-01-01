@@ -1,0 +1,70 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Push a new beta build to TestFlight"
+  lane :beta do
+        # Before calling match, we make sure all our devices are registered on the Apple Developer Portal
+      register_devices(devices_file: "fastlane/devices.txt")
+
+    # After registering the new devices, we'll make sure to update the provisioning profile if necessary
+    # Note how we make sure to pass "adhoc" to get and use a provisioning profile for Ad Hoc distribution
+      match(type: 'adhoc', app_identifier: 'com.detachapp.ios1.DetachExtension')
+      sync_code_signing(force_for_new_devices: true, type: "adhoc")
+      increment_build_number(xcodeproj: "Detach.xcodeproj")
+      build_app(workspace: "Detach.xcworkspace", scheme: "Detach", export_method: 'ad-hoc',export_options: {method: 'ad-hoc', iCloudContainerEnvironment: 'Production'})
+      firebase_app_distribution(
+        app: "1:252730701263:ios:bf2f0f46b6fadd4d51ceba",
+        testers: "l@mann.xyz",
+        release_notes: "N/A",
+        firebase_cli_path: "/Users/luke/.nvm/versions/node/v10.20.1/bin/firebase",
+        debug: true
+    )
+
+    # upload_to_testflight
+  end
+
+  lane :tf do
+        # Before calling match, we make sure all our devices are registered on the Apple Developer Portal
+      register_devices(devices_file: "fastlane/devices.txt")
+
+    # After registering the new devices, we'll make sure to update the provisioning profile if necessary
+    # Note how we make sure to pass "adhoc" to get and use a provisioning profile for Ad Hoc distribution
+      match(type: 'appstore', app_identifier: 'com.detachapp.ios1.DetachExtension')
+      sync_code_signing(force_for_new_devices: true, type: "appstore")
+      increment_build_number(xcodeproj: "Detach.xcodeproj")
+      build_app(workspace: "Detach.xcworkspace", scheme: "Detach", export_options: {iCloudContainerEnvironment: 'Production'})
+      # upload_to_testflight()
+      upload_to_testflight(
+        distribute_external: true,
+        beta_app_description: "Feedback Form: https://forms.gle/RBu9ufWr6zGY7CT26
+        Bug Form: https://forms.gle/PWyK1zybE3Pspjnb9",
+        beta_app_feedback_email: "hello@detachapp.com",
+        notify_external_testers: true,
+        )
+
+    # upload_to_testflight
+  end
+  lane :release do
+    increment_build_number(workspace: "detach2.xcworkspace")
+    sync_code_signing(type: "appstore")  # see code signing guide for more information
+    build_app(scheme: "detach2",
+            workspace: "detach2.xcworkspace",
+            include_bitcode: true)
+    upload_to_app_store                  # upload your app to App Store Connect
+  end
+end

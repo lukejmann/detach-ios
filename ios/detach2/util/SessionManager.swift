@@ -5,16 +5,13 @@ func startSession(endTime: Date, completion: @escaping (Bool) -> Void) {
     if let userID = getUserID() {
         let sessionCreateOpt = SessionCreateOpt(userID: userID, endTime: Int(endTime.timeIntervalSince1970), deviceToken: deviceToken)
         detachProvier.request(.createSession(opt: sessionCreateOpt)) { result in
-            //            print("result in createSession res: \(result)")
             switch result {
             case let .success(moyaResponse):
                 let data = moyaResponse.data
                 let statusCode = moyaResponse.statusCode
                 if statusCode == 200 {
-                    //                    print("data: \(data)")
                     do {
                         let res = try JSONDecoder().decode(SessionCreateRes.self, from: data)
-                        //                        print("res: \(res)")
                         if res.success {
                             setSessionID(sessionID: res.sessionID)
                             print("[API] successfully started session. session ID: \(res.sessionID)")
@@ -45,9 +42,6 @@ func cancelSession(completion: @escaping (Bool) -> Void) {
         let sessionID = getSessionID()
         let opt = SessionCancelOpt(userID: userID, sessionID: sessionID)
         detachProvier.request(.cancelSession(opt: opt)) { result in
-//            if statusCode == 200 {
-
-//            }
             switch result{
             case let .success(moyaResponse):
                 let statusCode = moyaResponse.statusCode

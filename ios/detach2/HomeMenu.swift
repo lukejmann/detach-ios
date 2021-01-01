@@ -90,7 +90,6 @@ struct HomeMenu: View {
                 .padding(.horizontal, 25).frame(width: geo.size.width, height: geo.size.height, alignment: .center)
                 .offset(x: self.editDurationMode ? -1 * (geo.size.width + s.universal.horizontalPadding) : 0)
                 VStack(spacing: 0) {
-//                    VStack(spacing:0){
                         HStack{
                             Text("Set Focus Duration").kerning(-0.65).font(.system(size: 25, weight: self.editDurationMode ? .bold : .medium, design: .default)).foregroundColor(Color.tan)
                                 .frame(height: s.home.setDurationLabelHeight)
@@ -105,7 +104,6 @@ struct HomeMenu: View {
                             }
                         }    .frame(width: self.editDurationMode ? geo.size.width : geo.size.width * 0.75)
                         .padding(.top, s.home.setDurationButtonPaddingTop)
-//                    }
                     if self.currentScreen == "HomeMenu"{
                     HStack(spacing: 0) {
                         Button(action: self.cancelEditButtonPressed) {
@@ -172,7 +170,6 @@ struct HomeMenu_Previews: PreviewProvider {
             HomeMenu(currentScreen: self.$cScreen) { _ in
             } startFocusPressed: {}.padding(.horizontal, s.universal.horizontalPadding).background(Image("bg-grain").resizable().edgesIgnoringSafeArea(.all))
             .previewDevice(PreviewDevice(rawValue: "iPhone 12 Pro"))
-            //                .previewDisplayName("iPhone 11")
         }
     }
 }

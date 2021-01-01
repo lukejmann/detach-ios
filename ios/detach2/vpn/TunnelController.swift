@@ -69,26 +69,6 @@ class TunnelController: NSObject {
         }
     }
 
-        //    func restart(completion: @escaping (_ error: Error?) -> Void = { _ in }) {
-        //         Print("MARK: In TunnelController restart ")
-        //         // Don't let this affect userWantsFirewallOn/Off config
-        //         TunnelController.shared.setEnabled(false, completion: {  error in
-        //             if error != nil {
-        //                 Print("Error disabling on Firewall restart: \(error!)")
-        //             }
-        //            DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) {
-        //                TunnelController.shared.setEnabled(true, completion: {
-        //                    error in
-        //                    if error != nil {
-        //                        Print("Error enabling on Firewall restart: \(error!)")
-        //                    }
-        //                    completion(error)
-        //                })
-        //            }
-        //
-        //         })
-        //     }
-
 
 
         func refreshManager(completion: @escaping (_ error: Error?) -> Void = { _ in }) {
@@ -155,36 +135,3 @@ class TunnelController: NSObject {
             })
         }
     }
-
-//
-//func connectProxy(i: Int, callback: @escaping (_ success: Bool) -> Void) {
-//    let seconds = 8.0
-//    if i > 2 {
-//        print("[TUNNEL_CONTROLLER][ERROR] unable to connect to proxy after \(i + 1) \(seconds) second attempts")
-//        callback(false)
-//        return
-//    }
-//    TunnelController.shared.setEnabled(true) { _ in
-//        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-//            let status = TunnelController.shared.status()
-//            if status == .connected {
-//                print("[TUNNEL_CONTROLLER] connected to proxy after \(i + 1) \(seconds) second attempts")
-//                callback(true)
-//                return
-//            } else {
-//                connectProxy(i: i + 1, callback: callback)
-//            }
-//        }
-//    }
-//}
-
-// func connectProxy(callback: @escaping (_ success: Bool) -> Void) {
-//    TunnelController.shared.setEnabled(true) { _ in
-//        let status = TunnelController.shared.status()
-//        if status == .connected {
-//            callback(true)
-//        } else {
-//            callback(false)
-//        }
-//    }
-// }

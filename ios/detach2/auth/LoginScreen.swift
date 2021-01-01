@@ -92,7 +92,6 @@ struct LoginScreen: View {
                                 })
                             }
                         }.padding(.top, 30)
-                        //                    }.offset(x: self.loginPage == .proxySetup ? 0 : 1.5 * geo.size.width).padding(.horizontal, 25)
                     }.offset(x: self.loginPage == .proxySetup ? 0 : self.loginPage == .proxyError ? -1.5 * geo.size.width : 1.5 * geo.size.width).padding(.horizontal, 25)
 
                     VStack(alignment: .leading) {
@@ -123,7 +122,6 @@ struct LoginScreen_Previews: PreviewProvider {
     static var previews: some View {
         LoginScreen(loginCompleted: {})
                         .previewDevice(PreviewDevice(rawValue: "iPhone 12 Pro Max"))
-//            .previewDisplayName("iPhone 11 Pro")
             .background(Image("bg-grain").resizable())
     }
 }

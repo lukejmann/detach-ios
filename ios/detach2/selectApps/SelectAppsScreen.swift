@@ -1,4 +1,7 @@
 import SwiftUI
+
+var hasLoadedApps = false
+
 struct SelectAppsScreen: View {
     @State var apps: [SelectableApp] = []
 
@@ -7,6 +10,8 @@ struct SelectAppsScreen: View {
 
     var setScreen: (_ screen: String) -> Void
     @Environment(\.colorScheme) var colorScheme
+
+
     var body: some View {
         GeometryReader { geo in
             VStack(alignment: .leading, spacing: 0) {
@@ -47,9 +52,11 @@ struct SelectAppsScreen: View {
                 self.swipeState = .zero
             }).offset(x: 30 + swipeState.width, y: 25)
         }.animation(.easeIn).onAppear{
-            self.apps = getSupportedApps().map { (app) -> SelectableApp in
-                SelectableApp(app: app, selected: getSelectedAppNames().contains(app.Name.lowercased()))
-            }
+            let selectedApps = getSelectedAppNames()
+                self.apps = getSupportedApps().map { (app) -> SelectableApp in
+                    SelectableApp(app: app, selected: selectedApps.contains(app.Name.lowercased()))
+                }
+
         }
     }
 }
@@ -79,15 +86,7 @@ struct SelectableApp: Identifiable {
             print("[SELECT_APPS] app \(app.Name) toggled to \(selected)")
             let oldSelectedApps = getSelectedAppNames()
             if selected {
-//                var done = false
-//                oldSelectedApps.forEach { appName in
-//                    if appName == app.Name.lowercased() {
-//                        done = true
-//                    }
-//                }
-//                if !done {
                     setSelectedAppNames(appNames: oldSelectedApps + [app.Name.lowercased()])
-//                }
             } else {
                 setSelectedAppNames(appNames: oldSelectedApps.filter { $0 != app.Name.lowercased() })
             }

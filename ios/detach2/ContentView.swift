@@ -2,6 +2,9 @@ import CoreMotion
 import NetworkExtension
 import SwiftUI
 
+enum AlertType {
+    case unableToStartSession, notifs
+}
 
 struct ContentView: View {
     @State public var cScreen: String = "HomeMenu"
@@ -10,7 +13,9 @@ struct ContentView: View {
     @State var sessionEndDate: Date? = nil
     @State var proxyStatus: NEVPNStatus = .invalid
     @State var selectAppsSwipeState: CGSize = CGSize.zero
-    @State var showPushNotifAlert = false
+    @State private var showAlert = false
+    @State private var activeAlert: AlertType = .unableToStartSession
+
 
     @ObservedObject var manager = MotionManager()
 
@@ -21,9 +26,9 @@ struct ContentView: View {
                 let now = Date()
                 sessionEndDate = now + Double(sessionDuration)
                 startSession(endTime: sessionEndDate!) { success in
-                    setSessionEndDate(date: sessionEndDate!)
-                    self.cScreen = "Start"
                     if success {
+                        setSessionEndDate(date: sessionEndDate!)
+                        self.cScreen = "Start"
                         TunnelController.shared.enable { (success) in
                             if !success{
                                 print("[SESSION][ERROR] error enabling proxy. cancelling session")
@@ -40,14 +45,15 @@ struct ContentView: View {
                             }
                         }
                     } else {
-                        // TODO: handle err
                         print("[SESSION] error starting session")
+                        self.activeAlert = .unableToStartSession
+                        self.showAlert = true
                     }
                 }
 
             } else {
-                self.showPushNotifAlert.toggle()
-                return
+                self.activeAlert = .notifs
+                self.showAlert = true
             }
         }
         return
@@ -58,7 +64,6 @@ struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
     
     func onAppear() {
-//        calculateSpacing(screenWidth: <#T##CGFloat#>, screenHeight: <#T##CGFloat#>)
         print("[SCREEN_CONTENTVIEW] onAppear called")
         if let sessionEndDate = getSessionEndDate() {
             print("SESSION ENDDATE: \(sessionEndDate)")
@@ -123,35 +128,37 @@ struct ContentView: View {
             }.onAppear(perform: {
                 calculateSpacing(screenWidth: geo.size.width, screenHeight: geo.size.height)
             })
-        }.alert(isPresented: self.$showPushNotifAlert) {
-            Alert(title: Text("Push Notifications Required"), message: Text("Detach requires push notifications to disable the DNS filter when sessions are completed. Please enable push notifications in settings." ), primaryButton: Alert.Button.default(Text("Open Settings"), action: {
-                print("OPEN SETTINGS PRESSED")
-
-                if let bundleIdentifier = Bundle.main.bundleIdentifier, let appSettings = URL(string: UIApplication.openSettingsURLString + bundleIdentifier) {
-                    if UIApplication.shared.canOpenURL(appSettings) {
-                        UIApplication.shared.open(appSettings)
-                    }
-                }
-//                self.showPushNotifAlert = false
-            }),
-            secondaryButton: Alert.Button.cancel(Text("Cancel"), action: {
-                print("CANCEL PRESSED")
-//                self.showPushNotifAlert = false
-            })
-            )
         }
+        .alert(isPresented: $showAlert) {
+                   switch activeAlert {
+                   case .unableToStartSession:
+                        return Alert(title: Text("Unable to start session"), message: Text("Please try again later."), dismissButton: .default(Text("Done")))
+                   case .notifs:
+                       return Alert(title: Text("Push Notifications Required"), message: Text("Detach requires push notifications to disable the DNS filter when sessions are completed. Please enable push notifications in settings." ), primaryButton: Alert.Button.default(Text("Open Settings"), action: {
+                        print("OPEN SETTINGS PRESSED")
+
+                        if let bundleIdentifier = Bundle.main.bundleIdentifier, let appSettings = URL(string: UIApplication.openSettingsURLString + bundleIdentifier) {
+                            if UIApplication.shared.canOpenURL(appSettings) {
+                                UIApplication.shared.open(appSettings)
+                            }
+                        }
+                    }),
+                    secondaryButton: Alert.Button.cancel(Text("Cancel"), action: {
+                        print("CANCEL PRESSED")
+                    })
+                    )
+                   }
+               }
+
         .onAppear {
             self.onAppear()
-        }.onReceive(timer, perform: { _ in
-            //            self.connectingProxyCheckIn()
-        }).background(Image("bg-grain").resizable().edgesIgnoringSafeArea([.top, .bottom]))
+        }.background(Image("bg-grain").resizable().edgesIgnoringSafeArea([.top, .bottom]))
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            //            .previewDevice(PreviewDevice(rawValue: "iPhone 12 Pro"))
             .previewDevice(PreviewDevice(rawValue: "iPhone XR"))
     }
 }

@@ -7,7 +7,6 @@ public func getSessionEndDate() -> Date? {
     if let data = timerDefaults.object(forKey: kSessionEndDate) as? Data {
         let decoder = JSONDecoder()
         if let date = try? decoder.decode(Date.self, from: data) {
-//            print("sessionEndDate: \(date)")
             return date
         }
     }
@@ -47,7 +46,6 @@ public func getSupportedApps() -> [App] {
     if let data = appsDefaults.object(forKey: kSupportedApps) as? Data {
         let decoder = JSONDecoder()
         if let apps = try? decoder.decode([App].self, from: data) {
-//            print("apps: \(apps)")
             return apps
         }
     }
@@ -68,8 +66,7 @@ public func getSelectedAppNames() -> [String] {
     if let appNames = appsDefaults.array(forKey: kSelectedAppNames) {
         return appNames as! [String]
     }
-    print("[STORAGE][ERROR] in getSelectedAppNames. failed to get selected app names")
-    return ["instagram"]
+    return [""]
 }
 
 public func setSelectedAppNames(appNames: [String]) {

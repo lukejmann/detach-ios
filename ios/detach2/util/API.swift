@@ -11,13 +11,7 @@ private func JSONResponseDataFormatter(_ data: Data) -> String {
 }
 
 public let detachProvier = MoyaProvider<DetachAPI>(plugins: [
-//    NetworkLoggerPlugin(
-//        configuration:
-//        .init(
-//            formatter:
-//            .init(responseData: JSONResponseDataFormatter),
-//            logOptions: [.errorResponseBody])
-//    ),
+
 ]
 )
 private extension String {
@@ -35,7 +29,7 @@ public enum DetachAPI {
 }
 
 extension DetachAPI: TargetType {
-    public var baseURL: URL { URL(string: "http://api.detachapp.com/1")! }
+    public var baseURL: URL { URL(string: "https://api.detachapp.com/1")! }
     public var path: String {
         switch self {
         case .login:

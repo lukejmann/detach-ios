@@ -33,9 +33,6 @@ struct SetDurationOverlay: View {
                     }
                     HStack(alignment: .center, spacing: 0) {
                         Spacer()
-//                        CustomUIKitTextField(text: self.$durationString, validInput: self.$validInput, isFirstResponder: self.$keyboardVisible, placeholder: "00:00") {
-//                            self.saveTime(durationString: self.durationString)
-//                        }
                         Spacer()
                     }.padding(.top, 50)
                     HStack(alignment: .center, spacing: 0) {

@@ -7,7 +7,6 @@ func refreshSupportedApps() {
             let statusCode = moyaResponse.statusCode
             if statusCode == 200 {
                 do {
-//                    print("[API] status code is 200. decoding appDomains \n\n\n")
                     let res = try JSONDecoder().decode([App].self, from: data)
                     if !res.isEmpty {
                         print("[API] successfully recived and decoded appDomains. length: \(res.count)")

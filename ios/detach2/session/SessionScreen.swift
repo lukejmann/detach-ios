@@ -8,13 +8,11 @@ struct SessionScreen: View {
     
     var sessionCompleted: Bool {
                 endDate == nil ? true : Date() > endDate!
-//        false
     }
 
     @State var countDownStr: String = "N/A"
     @Environment(\.colorScheme) var colorScheme
 
-    //    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
 
     func dateToCountdownStr(endDateOpt: Date?) -> String {
